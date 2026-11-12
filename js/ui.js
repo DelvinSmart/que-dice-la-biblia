@@ -2,9 +2,8 @@
 // El idioma de cada página lo da el estudio que se abre (campo "idioma" de su archivo en estudios/).
 const TEXTOS = {
   es: {
-    sitio: "Estudios Bíblicos",
     intro: "Estudios de la Biblia organizados como un mapa: cada tema con sus puntos, sus textos y sus versículos. Se pueden leer y descargar en PDF.",
-    abrir: "Abrir estudio", temas: "temas", puntos: "puntos", cargando: "Cargando…",
+    temas: "temas", puntos: "puntos", cargando: "Cargando…",
     noEncontrado: "No se encontró este estudio.", volver: "← Todos los estudios",
     anterior: "← Anterior", siguiente: "Siguiente →", mapa: "Mapa ↑",
     nuevo: "nuevo",
@@ -12,9 +11,8 @@ const TEXTOS = {
     pdf: "Descargar PDF"
   },
   pt: {
-    sitio: "Estudos Bíblicos",
     intro: "Estudos da Bíblia organizados como um mapa: cada tema com seus pontos, seus textos e seus versículos. Dá para ler e baixar em PDF.",
-    abrir: "Abrir estudo", temas: "temas", puntos: "pontos", cargando: "Carregando…",
+    temas: "temas", puntos: "pontos", cargando: "Carregando…",
     noEncontrado: "Este estudo não foi encontrado.", volver: "← Todos os estudos",
     anterior: "← Anterior", siguiente: "Próximo →", mapa: "Mapa ↑",
     nuevo: "novo",

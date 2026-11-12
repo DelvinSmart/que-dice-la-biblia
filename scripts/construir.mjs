@@ -21,6 +21,7 @@ const indice = fs.readdirSync(carpeta)
       slug: f.replace(/\.json$/, ""),
       titulo: e.titulo,
       idioma: e.idioma || "es",
+      otro_idioma: e.otro_idioma || "",
       descripcion: e.descripcion || "",
       color: temas[0]?.color || "azul",
       temas: temas.length,
