@@ -1,6 +1,6 @@
 # Estudios Bíblicos
 
-Estudios de la Biblia organizados como un mapa: cada estudio tiene temas (1, 2, 3…), cada tema tiene puntos (1.1, 1.2…), y cada punto tiene su contenido: textos, pasajes bíblicos y subtítulos. Se leen en la página, se escuchan en voz alta y se descargan en PDF.
+Estudios de la Biblia organizados como un mapa: cada estudio tiene temas (1, 2, 3…), cada tema tiene puntos (1.1, 1.2…), y cada punto tiene su contenido: textos, pasajes bíblicos y subtítulos. Se leen en la página y se descargan en PDF.
 
 Página: https://delvinsmart.github.io/estudios-biblicos/
 
@@ -19,7 +19,6 @@ Para tener un estudio en dos idiomas, crea uno en español y otro en portugués,
 - `index.html` + `js/inicio.js`: la página de inicio con la lista de estudios.
 - `estudio.html` + `js/mapa.js`: la página de cada estudio (`estudio.html?e=nombre-del-archivo`).
 - `js/estudios.js`: carga los estudios y convierte los bloques en HTML.
-- `js/audio.js`: el lector de voz.
 - `js/ui.js`: los textos de los botones en español y portugués.
 - `pdf.html` + `js/pdf.js` + `css/pdf.css`: la versión para PDF.
 - `css/styles.css`: colores, letras y diseño.

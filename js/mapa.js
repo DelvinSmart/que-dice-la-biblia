@@ -1,5 +1,5 @@
 // Página de un estudio: carga estudios/<e>.json (e viene en el link: estudio.html?e=lenguas-extranas)
-// y dibuja el mapa de temas y puntos, el panel de lectura y el lector de voz.
+// y dibuja el mapa de temas y puntos y el panel de lectura.
 const $ = id => document.getElementById(id);
 const SLUG = new URLSearchParams(location.search).get("e") || "";
 let ESTUDIO = null, LANG = "es", T = TEXTOS.es;
@@ -67,7 +67,6 @@ function show(i, fromMap) {
   chips.forEach((c, k) => c.classList.toggle("on", k === cur));
   if (fromMap && window.matchMedia("(max-width:920px)").matches) $("reader").scrollIntoView({ behavior: "smooth", block: "start" });
   try { localStorage.setItem("paso-" + SLUG, String(cur)); } catch (e) {}
-  document.dispatchEvent(new CustomEvent("punto", { detail: { index: cur } }));
 }
 
 function controles() {
@@ -102,5 +101,4 @@ function controles() {
   let start = 0;
   try { start = parseInt(localStorage.getItem("paso-" + SLUG) || "0", 10) || 0; } catch (e) {}
   show(start);
-  iniciarAudio();
 })();
