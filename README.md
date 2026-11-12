@@ -12,7 +12,7 @@ Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.
 1. La primera vez en cada aparato, pega tu llave de GitHub (ver abajo). Se guarda solo en ese aparato.
 2. Toca **+ Nuevo estudio**, o abre uno de la lista.
 3. Llena la portada; añade **+ Tema**, dentro de cada tema **+ Punto**, y dentro de cada punto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
-4. En cada punto, **Ver cómo queda** muestra cómo se verá.
+4. Mientras escribes, la **vista previa** muestra la página real del estudio, en el punto que estás editando: al lado en la computadora y el iPad, o con el botón **Vista previa** en el iPhone. En cada punto, **Ver cómo queda** muestra solo ese punto.
 5. Toca **Publicar**. En uno o dos minutos la página y el PDF se actualizan solos.
 
 Lo que escribes se guarda solo en el aparato mientras editas, así que si se cierra la página no se pierde: al volver, el panel ofrece **Recuperar**.
@@ -33,7 +33,7 @@ Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea ot
 
 - `estudios/`: un archivo JSON por estudio. Aquí está todo el contenido.
 - `index.html` + `js/inicio.js`: la página de inicio con la lista de estudios.
-- `estudio.html` + `js/mapa.js`: la página de cada estudio (`estudio.html?e=nombre-del-archivo`).
+- `estudio.html` + `js/mapa.js`: la página de cada estudio (`estudio.html?e=nombre-del-archivo`). Con `?vista=1` es la vista previa del panel.
 - `js/estudios.js`: carga los estudios y convierte los bloques en HTML.
 - `js/ui.js`: los textos de los botones en español y portugués.
 - `js/efectos.js`: el efecto de entrada de tarjetas, temas y textos (el mismo de Copiloto Driver).

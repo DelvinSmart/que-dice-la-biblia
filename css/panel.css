@@ -104,3 +104,26 @@
 @media (prefers-reduced-motion:reduce){
   .btn,.mini,.color,.tarjeta-panel{transition:none}
 }
+
+/* Separación entre Portada, temas y demás secciones del editor */
+#editor{display:grid;gap:20px;align-content:start;min-width:0}
+
+/* Vista previa en vivo: al lado en pantallas grandes; en el teléfono, con el botón "Vista previa" */
+.panel:has(#pEditor:not([hidden])){max-width:1500px}
+.editor-y-vista{display:grid;gap:20px;align-items:start}
+.vista-lateral{display:none;gap:8px}
+.vista-titulo{margin:0;font-size:13px;font-weight:600;color:var(--muted)}
+#vistaFrame{width:100%;height:calc(100vh - 150px);border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+@media (min-width:1100px){
+  .editor-y-vista{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+  .vista-lateral{display:grid;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+  #btnVista{display:none}
+}
+@media (max-width:1099px){
+  #pEditor.ver-vista #editor,#pEditor.ver-vista .aviso-borrador{display:none}
+  #pEditor.ver-vista .vista-lateral{display:grid}
+  #pEditor.ver-vista #vistaFrame{height:calc(100vh - 130px)}
+}
+@media (max-width:600px){
+  .barra.fija .estado{order:5;flex-basis:100%;text-align:left}
+}

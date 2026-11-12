@@ -7,8 +7,8 @@
   <title>Panel · Estudios Bíblicos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="css/styles.css?v=5">
-  <link rel="stylesheet" href="css/panel.css?v=1">
+  <link rel="stylesheet" href="css/styles.css?v=6">
+  <link rel="stylesheet" href="css/panel.css?v=3">
 </head>
 <body>
 <main class="panel">
@@ -47,6 +47,7 @@
     <header class="barra fija">
       <button class="btn" type="button" id="btnVolver">← Estudios</button>
       <span class="estado" id="estado"></span>
+      <button class="btn" type="button" id="btnVista">Vista previa</button>
       <button class="btn principal" type="button" id="btnPublicar">Publicar</button>
     </header>
     <div class="aviso-borrador" id="borrador" hidden>
@@ -54,14 +55,20 @@
       <button class="btn" type="button" data-accion="recuperar">Recuperar</button>
       <button class="btn" type="button" data-accion="descartar">Descartar</button>
     </div>
-    <div id="editor"></div>
+    <div class="editor-y-vista">
+      <div id="editor"></div>
+      <aside class="vista-lateral" aria-label="Vista previa">
+        <p class="vista-titulo">Así se verá en la página</p>
+        <iframe id="vistaFrame" title="Vista previa del estudio" src="estudio.html?vista=1"></iframe>
+      </aside>
+    </div>
   </section>
 
 </main>
 
-<script src="js/estudios.js?v=5"></script>
-<script src="js/efectos.js?v=5"></script>
+<script src="js/estudios.js?v=6"></script>
+<script src="js/efectos.js?v=6"></script>
 <script src="js/github.js?v=1"></script>
-<script src="js/panel.js?v=1"></script>
+<script src="js/panel.js?v=2"></script>
 </body>
 </html>

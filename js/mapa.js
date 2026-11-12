@@ -1,15 +1,20 @@
 // Página de un estudio: carga estudios/<e>.json (e viene en el link: estudio.html?e=lenguas-extranas)
 // y dibuja el mapa de temas y puntos y el panel de lectura.
+// Con ?vista=1 es la vista previa del panel: no carga ningún archivo, recibe el estudio desde el panel
+// (postMessage) cada vez que cambia y se vuelve a dibujar.
 const $ = id => document.getElementById(id);
-const SLUG = new URLSearchParams(location.search).get("e") || "";
+const PARAMS = new URLSearchParams(location.search);
+const SLUG = PARAMS.get("e") || "";
+const VISTA = PARAMS.has("vista");
 let ESTUDIO = null, LANG = "es", T = TEXTOS.es;
 let STEPS = [], chips = [], cur = 0;
 
 function textosFijos() {
   document.documentElement.lang = LANG === "pt" ? "pt-BR" : "es";
-  document.title = ESTUDIO.titulo;
+  document.title = ESTUDIO.titulo || TEXTOS.es.volver;
   $("volver").textContent = T.volver;
   $("titulo").textContent = ESTUDIO.titulo;
+  $("preguntas").innerHTML = "";
   (ESTUDIO.preguntas || []).forEach(q => { const li = document.createElement("li"); li.textContent = q; $("preguntas").appendChild(li); });
   $("ybien").textContent = ESTUDIO.cierre || "";
   $("prev").textContent = T.anterior;
@@ -22,15 +27,18 @@ function textosFijos() {
 
 // Botones ES | PT: aparecen si el estudio tiene su versión en el otro idioma
 function selectorIdioma() {
+  $("idiomas").hidden = !ESTUDIO.otro_idioma;
   if (!ESTUDIO.otro_idioma) return;
   const otro = LANG === "pt" ? "es" : "pt";
-  $("idiomas").hidden = false;
   $("lang-" + LANG).classList.add("on");
+  $("lang-" + otro).classList.remove("on");
   $("lang-" + LANG).href = `estudio.html?e=${encodeURIComponent(SLUG)}`;
   $("lang-" + otro).href = `estudio.html?e=${encodeURIComponent(ESTUDIO.otro_idioma)}`;
 }
 
 function dibujarMapa() {
+  STEPS = []; chips = [];
+  $("tree").innerHTML = "";
   (ESTUDIO.temas || []).forEach((tema, bi) => (tema.puntos || []).forEach((p, li) => STEPS.push({ tema, bi, p, li })));
   (ESTUDIO.temas || []).forEach((tema, bi) => {
     const el = document.createElement("div");
@@ -52,7 +60,9 @@ function dibujarMapa() {
   });
 }
 
-function show(i, fromMap) {
+// Muestra el punto i en el panel de lectura. "animar" en false lo cambia sin el efecto de entrada.
+function show(i, fromMap, animar = true) {
+  $("reader").hidden = !STEPS.length;
   if (!STEPS.length) return;
   cur = Math.max(0, Math.min(STEPS.length - 1, i));
   const s = STEPS[cur];
@@ -60,15 +70,17 @@ function show(i, fromMap) {
   $("rtag").textContent = `${s.bi + 1} · ${s.tema.titulo}`;
   $("rlabel").textContent = s.p.titulo;
   $("rbody").innerHTML = puntoHTML(s.p);
-  revelar([$("rtag"), $("rlabel")], 40);
-  revelar($("rbody").children, 50, 60);
-  $("rbody").scrollTop = 0;
+  if (animar) {
+    revelar([$("rtag"), $("rlabel")], 40);
+    revelar($("rbody").children, 50, 60);
+    $("rbody").scrollTop = 0;
+  }
   $("pos").textContent = `${cur + 1} / ${STEPS.length}`;
   $("prev").disabled = cur === 0;
   $("next").disabled = cur === STEPS.length - 1;
   chips.forEach((c, k) => c.classList.toggle("on", k === cur));
   if (fromMap && window.matchMedia("(max-width:920px)").matches) $("reader").scrollIntoView({ behavior: "smooth", block: "start" });
-  try { localStorage.setItem("paso-" + SLUG, String(cur)); } catch (e) {}
+  if (!VISTA) { try { localStorage.setItem("paso-" + SLUG, String(cur)); } catch (e) {} }
 }
 
 function controles() {
@@ -85,24 +97,44 @@ function controles() {
   });
 }
 
-(async () => {
-  try {
-    ESTUDIO = await cargarEstudio(SLUG);
-  } catch (e) {
-    $("titulo").textContent = TEXTOS.es.noEncontrado;
-    $("volver").textContent = TEXTOS.es.volver;
-    $("reader").hidden = true;
-    return;
-  }
+// Dibuja todo el estudio a partir de sus datos
+function pintar(datos) {
+  ESTUDIO = datos;
   LANG = ESTUDIO.idioma === "pt" ? "pt" : "es";
   T = TEXTOS[LANG];
   textosFijos();
   selectorIdioma();
   dibujarMapa();
-  revelar([$("volver"), document.querySelector(".root"), $("reader")], 80);
-  revelar(document.querySelectorAll(".branch"), 70, 160);
-  controles();
-  let start = 0;
-  try { start = parseInt(localStorage.getItem("paso-" + SLUG) || "0", 10) || 0; } catch (e) {}
-  show(start);
-})();
+}
+
+controles();
+
+if (VISTA) {
+  // Vista previa del panel: sin enlaces para salir y sin descargar PDF
+  document.body.classList.add("modo-vista");
+  let pasoMostrado = -1;
+  window.addEventListener("message", e => {
+    if (e.origin !== location.origin || e.data?.tipo !== "estudio") return;
+    pintar(e.data.estudio);
+    const paso = Number.isInteger(e.data.paso) ? e.data.paso : cur;
+    show(paso, false, paso !== pasoMostrado);
+    pasoMostrado = cur;
+  });
+  window.parent.postMessage({ tipo: "vista-lista" }, location.origin);
+} else {
+  (async () => {
+    try {
+      pintar(await cargarEstudio(SLUG));
+    } catch (e) {
+      $("titulo").textContent = TEXTOS.es.noEncontrado;
+      $("volver").textContent = TEXTOS.es.volver;
+      $("reader").hidden = true;
+      return;
+    }
+    revelar([$("volver"), document.querySelector(".root"), $("reader")], 80);
+    revelar(document.querySelectorAll(".branch"), 70, 160);
+    let start = 0;
+    try { start = parseInt(localStorage.getItem("paso-" + SLUG) || "0", 10) || 0; } catch (e) {}
+    show(start);
+  })();
+}

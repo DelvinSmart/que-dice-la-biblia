@@ -146,3 +146,9 @@ body{margin:0}
   .js .reveal{opacity:1;transform:none;filter:none;transition:none}
   .leaf:active,.nav button:active,.bhead:active,.idiomas a:active,.tarjeta .idiomas-tarjeta a:active{transform:none}
 }
+
+/* Vista previa dentro del panel (estudio.html?vista=1) */
+.reader[hidden]{display:none}
+.modo-vista{padding-block:16px 24px}
+.modo-vista .volver,.modo-vista #pdf{display:none}
+.modo-vista .idiomas a{pointer-events:none}
