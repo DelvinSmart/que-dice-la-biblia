@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Panel · Estudios Bíblicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css?v=5">
+  <link rel="stylesheet" href="css/panel.css?v=1">
+</head>
+<body>
+<main class="panel">
+
+  <!-- 1. Pantalla de la llave: es lo único que ve quien no tiene la llave -->
+  <section class="pantalla" id="pLlave" hidden>
+    <div class="caja-llave">
+      <h1>Panel de Estudios Bíblicos</h1>
+      <p>Para editar, pega tu llave de GitHub. Se guarda solo en este aparato.</p>
+      <form id="formLlave">
+        <label for="campoLlave">Llave</label>
+        <input id="campoLlave" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…">
+        <button type="submit" class="btn principal">Entrar</button>
+      </form>
+      <p class="aviso" id="avisoLlave" role="alert"></p>
+      <a class="volver-sitio" href="./">← Ver los estudios</a>
+    </div>
+  </section>
+
+  <!-- 2. Lista de estudios -->
+  <section class="pantalla" id="pLista" hidden>
+    <header class="barra">
+      <h1>Mis estudios</h1>
+      <div class="barra-acciones">
+        <a class="btn" href="./" target="_blank" rel="noopener">Ver página</a>
+        <button class="btn" type="button" id="btnSalir">Salir</button>
+      </div>
+    </header>
+    <button class="btn principal grande" type="button" id="btnNuevo">+ Nuevo estudio</button>
+    <div class="lista" id="listaEstudios"></div>
+    <p class="aviso" id="avisoLista" role="alert"></p>
+  </section>
+
+  <!-- 3. Editor de un estudio -->
+  <section class="pantalla" id="pEditor" hidden>
+    <header class="barra fija">
+      <button class="btn" type="button" id="btnVolver">← Estudios</button>
+      <span class="estado" id="estado"></span>
+      <button class="btn principal" type="button" id="btnPublicar">Publicar</button>
+    </header>
+    <div class="aviso-borrador" id="borrador" hidden>
+      Tienes cambios sin publicar de la última vez.
+      <button class="btn" type="button" data-accion="recuperar">Recuperar</button>
+      <button class="btn" type="button" data-accion="descartar">Descartar</button>
+    </div>
+    <div id="editor"></div>
+  </section>
+
+</main>
+
+<script src="js/estudios.js?v=5"></script>
+<script src="js/efectos.js?v=5"></script>
+<script src="js/github.js?v=1"></script>
+<script src="js/panel.js?v=1"></script>
+</body>
+</html>

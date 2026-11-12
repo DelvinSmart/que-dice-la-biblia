@@ -1,0 +1,106 @@
+/* Panel de edición: usa los mismos colores y letras de css/styles.css */
+.panel{max-width:860px;margin:0 auto}
+.pantalla{display:grid;gap:18px}
+.pantalla[hidden]{display:none}
+
+/* Botones */
+.btn{font:inherit;font-weight:600;font-size:14px;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;
+  padding:10px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  transition:transform .15s ease,filter .15s ease,border-color .15s ease}
+.btn:hover{border-color:var(--c,var(--accent));filter:brightness(1.1)}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.principal{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.btn.grande{padding:14px 18px;font-size:15px;width:100%}
+.btn.agregar{border-style:dashed;color:var(--muted);background:transparent}
+.btn.agregar:hover{color:var(--ink)}
+.btn.peligro{color:#ff8a8a;border-color:#ff8a8a55;background:transparent}
+.mini{font:inherit;font-size:13px;font-weight:600;min-width:34px;height:34px;padding:0 8px;color:var(--muted);background:transparent;
+  border:1.5px solid var(--line);border-radius:8px;cursor:pointer;transition:transform .15s ease,color .15s ease}
+.mini:hover{color:var(--ink)}
+.mini:active{transform:scale(.94)}
+.mini.peligro:hover{color:#ff8a8a;border-color:#ff8a8a}
+
+/* Pantalla de la llave */
+#pLlave{min-height:80vh;place-items:center}
+.caja-llave{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px 24px;max-width:440px;width:100%;display:grid;gap:12px}
+.caja-llave h1{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.1;margin:0}
+.caja-llave p{margin:0;color:var(--muted)}
+.caja-llave form{display:grid;gap:10px;margin-top:6px}
+.caja-llave label{font-size:13px;font-weight:600;color:var(--muted)}
+.volver-sitio{font-size:13px;color:var(--muted)}
+.aviso{margin:0;color:#ffb36b;font-size:14px}
+
+/* Barras de arriba */
+.barra{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+.barra h1{font-family:var(--display);font-weight:800;font-size:32px;margin:0}
+.barra-acciones{display:flex;gap:8px}
+.barra.fija{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line)}
+.estado{font-size:13px;color:var(--muted);flex:1;min-width:0;text-align:center}
+.estado a{color:var(--accent)}
+.aviso-borrador{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
+.aviso-borrador[hidden]{display:none}
+
+/* Tarjetas de la lista */
+.tarjeta-panel{font:inherit;text-align:left;cursor:pointer;transition:transform .15s ease,border-color .15s ease}
+.tarjeta-panel:hover{border-color:var(--c)}
+.tarjeta-panel:active{transform:scale(.98)}
+.tarjeta-panel .etiqueta{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+
+/* Campos */
+.campo{display:grid;gap:6px}
+.campo > span{font-size:13px;font-weight:600;color:var(--muted)}
+.panel input,.panel textarea,.panel select{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);
+  border-radius:10px;padding:10px 12px;width:100%;min-width:0}
+.panel textarea{resize:vertical;line-height:1.5}
+.panel input:focus,.panel textarea:focus,.panel select:focus,.rico:focus{outline:2px solid var(--c,var(--accent));outline-offset:1px;border-color:transparent}
+.fila{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.fila-item{display:flex;gap:8px;align-items:center}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.check input{width:auto}
+
+/* Secciones del editor */
+.bloque-ed{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:14px}
+.bloque-ed h2{font-family:var(--display);font-size:22px;margin:0}
+.temas-ed{display:grid;gap:14px}
+.zona-peligro{background:transparent;border-style:dashed}
+
+/* Tema y punto */
+.tema-ed{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:14px;overflow:hidden}
+.cab{display:flex;align-items:center;gap:8px;padding:12px}
+.cab .bnum{flex:none}
+.titulo-input{font-family:var(--display);font-weight:800;font-size:19px!important;flex:1}
+.orden{display:flex;gap:4px;flex:none}
+.cuerpo{display:grid;gap:14px;padding:0 14px 16px}
+.colores{display:flex;gap:8px;flex-wrap:wrap}
+.color{width:34px;height:34px;border-radius:50%;background:var(--c);border:3px solid transparent;cursor:pointer;transition:transform .15s ease}
+.color.on{border-color:var(--ink)}
+.color:active{transform:scale(.9)}
+.puntos-ed{display:grid;gap:10px}
+.punto-ed{border:1.5px solid var(--line);border-radius:12px;background:var(--bg)}
+.punto-ed .cab .n{font-weight:700;color:var(--c);font-variant-numeric:tabular-nums;flex:none}
+.punto-ed .titulo-input{font-size:17px!important}
+
+/* Bloques de contenido */
+.bloque-contenido{display:grid;gap:8px;border-top:1px dashed var(--line);padding-top:12px}
+.cab-bloque{display:flex;justify-content:space-between;align-items:center}
+.cab-bloque .tipo{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.herramientas{display:flex;gap:6px;flex-wrap:wrap}
+.rico{min-height:90px;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;line-height:1.55;font-size:16px}
+.rico p{margin:0 0 8px}
+.versiculo{display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:start}
+.versiculo .num{text-align:center}
+.versiculo .orden{grid-column:2;justify-self:end}
+.agregar-bloques{display:flex;flex-wrap:wrap;gap:8px}
+.vista summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--muted)}
+.vista-previa{border:1px solid var(--line);border-radius:10px;margin-top:10px;max-height:none}
+
+@media (max-width:480px){
+  .cab{flex-wrap:wrap}
+  .titulo-input{flex-basis:calc(100% - 50px)}
+  .cab .orden{margin-left:auto}
+  .barra h1{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  .btn,.mini,.color,.tarjeta-panel{transition:none}
+}

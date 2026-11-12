@@ -6,12 +6,28 @@ Página: https://delvinsmart.github.io/estudios-biblicos/
 
 ## Cómo añadir o editar un estudio
 
-1. Entra a https://app.pagescms.org con tu cuenta de GitHub y abre este repositorio.
-2. En **Estudios bíblicos**, toca **Añadir** para uno nuevo, o abre uno que ya existe.
-3. Llena el título, el idioma y las preguntas; añade **Temas**, dentro de cada tema **Puntos**, y dentro de cada punto el **Contenido** (Texto, Pasaje bíblico o Subtítulo), en el orden que quieras.
-4. Guarda. En uno o dos minutos la página y el PDF se actualizan solos.
+Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.html
+(también está el enlace "Editar estudios" al final de la página de inicio).
 
-Para tener un estudio en dos idiomas, crea uno en español y otro en portugués, y en cada uno escribe en **El mismo estudio en el otro idioma** el nombre del archivo del otro (sin `.json`). Así aparece el botón ES | PT.
+1. La primera vez en cada aparato, pega tu llave de GitHub (ver abajo). Se guarda solo en ese aparato.
+2. Toca **+ Nuevo estudio**, o abre uno de la lista.
+3. Llena la portada; añade **+ Tema**, dentro de cada tema **+ Punto**, y dentro de cada punto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
+4. En cada punto, **Ver cómo queda** muestra cómo se verá.
+5. Toca **Publicar**. En uno o dos minutos la página y el PDF se actualizan solos.
+
+Lo que escribes se guarda solo en el aparato mientras editas, así que si se cierra la página no se pierde: al volver, el panel ofrece **Recuperar**.
+
+Para tener un estudio en dos idiomas, crea uno en español y otro en portugués, y en cada uno escoge el otro en **El mismo estudio en el otro idioma**. Así aparece el botón ES | PT.
+
+### La llave (solo el autor puede guardar)
+
+El panel lo puede abrir cualquiera, pero sin la llave solo ve la pantalla de entrada: GitHub rechaza cualquier cambio que no venga con la llave del autor.
+
+Para crearla: GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → **Generate new token**.
+- Repository access: **Only select repositories** → `estudios-biblicos`.
+- Permissions → Repository permissions → **Contents: Read and write**.
+
+Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea otra.
 
 ## Archivos
 
@@ -23,7 +39,8 @@ Para tener un estudio en dos idiomas, crea uno en español y otro en portugués,
 - `js/efectos.js`: el efecto de entrada de tarjetas, temas y textos (el mismo de Copiloto Driver).
 - `pdf.html` + `js/pdf.js` + `css/pdf.css`: la versión para PDF.
 - `css/styles.css`: colores, letras y diseño.
-- `.pages.yml`: la configuración del panel de edición.
+- `panel.html` + `js/panel.js` + `css/panel.css`: el panel para crear y editar estudios.
+- `js/github.js`: la conexión del panel con GitHub (leer, guardar y borrar estudios con la llave).
 - `scripts/construir.mjs`: arma el sitio en `_site/` y crea la lista de estudios.
 - `scripts/pdfs.sh`: genera un PDF por estudio en `_site/descargas/`.
 - `.github/workflows/publicar.yml`: publica todo en GitHub Pages en cada cambio.

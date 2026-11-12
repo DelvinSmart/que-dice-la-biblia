@@ -5,7 +5,7 @@ import path from "node:path";
 
 const raiz = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const salida = path.join(raiz, "_site");
-const copiar = ["index.html", "estudio.html", "pdf.html", "css", "js", "estudios"];
+const copiar = ["index.html", "estudio.html", "panel.html", "pdf.html", "css", "js", "estudios"];
 
 fs.rmSync(salida, { recursive: true, force: true });
 fs.mkdirSync(salida);
