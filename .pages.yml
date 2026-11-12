@@ -1,6 +1,5 @@
 # Panel de edición (Pages CMS, https://app.pagescms.org).
 # Cada estudio es un archivo JSON en estudios/. Al guardar en el panel, GitHub publica la página sola.
-media: false
 
 content:
   - name: estudios
