@@ -60,6 +60,8 @@ function show(i, fromMap) {
   $("rtag").textContent = `${s.bi + 1} · ${s.tema.titulo}`;
   $("rlabel").textContent = s.p.titulo;
   $("rbody").innerHTML = puntoHTML(s.p);
+  revelar([$("rtag"), $("rlabel")], 40);
+  revelar($("rbody").children, 50, 60);
   $("rbody").scrollTop = 0;
   $("pos").textContent = `${cur + 1} / ${STEPS.length}`;
   $("prev").disabled = cur === 0;
@@ -97,6 +99,8 @@ function controles() {
   textosFijos();
   selectorIdioma();
   dibujarMapa();
+  revelar([$("volver"), document.querySelector(".root"), $("reader")], 80);
+  revelar(document.querySelectorAll(".branch"), 70, 160);
   controles();
   let start = 0;
   try { start = parseInt(localStorage.getItem("paso-" + SLUG) || "0", 10) || 0; } catch (e) {}

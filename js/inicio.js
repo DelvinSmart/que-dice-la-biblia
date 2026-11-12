@@ -4,6 +4,7 @@ const lista = document.getElementById("lista");
 document.getElementById("intro").textContent = TEXTOS.es.intro;
 document.getElementById("intro-pt").textContent = TEXTOS.pt.intro;
 lista.textContent = TEXTOS.es.cargando;
+revelar(document.querySelectorAll(".inicio-head > *, .pie"), 70);
 
 // Junta cada estudio con su traducción; el español va primero
 function agrupar(estudios) {
@@ -36,6 +37,7 @@ function tarjeta(versiones) {
 (async () => {
   try {
     lista.innerHTML = agrupar(await cargarIndice()).map(tarjeta).join("");
+    revelar(lista.children, 80, 220);
   } catch (e) {
     lista.textContent = "";
   }

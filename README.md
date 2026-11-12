@@ -20,6 +20,7 @@ Para tener un estudio en dos idiomas, crea uno en español y otro en portugués,
 - `estudio.html` + `js/mapa.js`: la página de cada estudio (`estudio.html?e=nombre-del-archivo`).
 - `js/estudios.js`: carga los estudios y convierte los bloques en HTML.
 - `js/ui.js`: los textos de los botones en español y portugués.
+- `js/efectos.js`: el efecto de entrada de tarjetas, temas y textos (el mismo de Copiloto Driver).
 - `pdf.html` + `js/pdf.js` + `css/pdf.css`: la versión para PDF.
 - `css/styles.css`: colores, letras y diseño.
 - `.pages.yml`: la configuración del panel de edición.

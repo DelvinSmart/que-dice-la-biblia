@@ -129,3 +129,20 @@ body{margin:0}
 .pie{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--muted)}
 .pie a{color:var(--muted);font-weight:600}
 .pie a:hover{color:var(--ink)}
+
+/* Efecto de entrada (igual que Copiloto Driver): opacidad 0→1, desenfoque 8px→0,
+   escala 0.97→1 y subida de 22px, con retraso escalonado. Lo activa js/efectos.js. */
+.js .reveal{opacity:0;transform:translateY(22px) scale(.97);filter:blur(8px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),filter .7s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--reveal-delay,0ms)}
+.js .reveal.is-visible{opacity:1;transform:none;filter:none}
+
+/* Botones y tarjetas: se encogen un poco al tocarlos y se iluminan al pasar por encima */
+.leaf,.nav button,.bhead,.idiomas a,.tarjeta .idiomas-tarjeta a,.pie a{transition:transform .15s ease,filter .15s ease,border-color .15s ease,background .15s ease}
+.leaf:active,.nav button:not(:disabled):active,.bhead:active,.idiomas a:active,.tarjeta .idiomas-tarjeta a:active{transform:scale(.97)}
+.nav button:not(:disabled):hover,.tarjeta .idiomas-tarjeta a:hover,.idiomas a:hover{filter:brightness(1.1)}
+
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none;filter:none;transition:none}
+  .leaf:active,.nav button:active,.bhead:active,.idiomas a:active,.tarjeta .idiomas-tarjeta a:active{transform:none}
+}
