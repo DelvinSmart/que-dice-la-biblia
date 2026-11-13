@@ -22,9 +22,19 @@ function leerPasajeCopiado(texto) {
   if (!cuerpo) return null;
 
   const m = /(\d+):(\d+)(?:\s*[-–]\s*(\d+))?/.exec(referencia);
-  const inicio = m ? Number(m[2]) : 1;
-  const fin = m && m[3] ? Number(m[3]) : inicio;
+  const [inicio, fin] = m ? [Number(m[2]), m[3] ? Number(m[3]) : Number(m[2])] : numerosSeguidos(cuerpo);
   return { referencia, versiculos: separarVersiculos(cuerpo, inicio, fin).map(([numero, t]) => ({ numero, texto: versalitas(t) })) };
+}
+
+// Sin referencia (por ejemplo, texto copiado de una foto con Texto en vivo): si empieza con un número
+// y después vienen los siguientes en orden ("1 … 2 … 3 …"), esos son los versículos.
+function numerosSeguidos(texto) {
+  const primero = /^(\d{1,3})\s/.exec(texto);
+  if (!primero) return [1, 1];
+  const inicio = Number(primero[1]);
+  let fin = inicio;
+  while (new RegExp(`\\s${fin + 1}\\s+\\S`).test(texto)) fin++;
+  return [inicio, fin];
 }
 
 // Si el texto trae los números ("1 Toda la tierra… 2 Y aconteció…"), se separa versículo por versículo.
@@ -43,7 +53,8 @@ function separarVersiculos(texto, inicio, fin) {
     partes.push([String(fin), resto.trim()]);
     return partes;
   }
-  return [[fin > inicio ? `${inicio}-${fin}` : String(inicio), texto]];
+  const sinNumero = fin === inicio ? texto.replace(new RegExp(`^${inicio}\\s+`), "") : texto;
+  return [[fin > inicio ? `${inicio}-${fin}` : String(inicio), sinNumero]];
 }
 
 // La app escribe SEÑOR / SENHOR en mayúsculas; en el estudio va en versalitas, como en la Biblia impresa.
