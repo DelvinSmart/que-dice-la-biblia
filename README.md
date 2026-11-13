@@ -39,7 +39,12 @@ Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea ot
 - `js/efectos.js`: el efecto de entrada de tarjetas, temas y textos (el mismo de Copiloto Driver).
 - `pdf.html` + `js/pdf.js` + `css/pdf.css`: la versión para PDF.
 - `css/styles.css`: colores, letras y diseño.
-- `panel.html` + `js/panel.js` + `css/panel.css`: el panel para crear y editar estudios.
+- `panel.html` + `css/panel.css`: el panel para crear y editar estudios. Su código está en:
+  - `js/panel-estado.js`: el estudio que se edita, las pantallas, el borrador automático y la limpieza de lo que se pega.
+  - `js/panel-lista.js`: la pantalla de la llave y la lista de estudios.
+  - `js/panel-editor.js`: el editor de temas, puntos, textos, versículos y subtítulos.
+  - `js/panel-publicar.js`: publicar y eliminar estudios.
+  - `js/panel-vista.js`: la vista previa en vivo.
 - `js/github.js`: la conexión del panel con GitHub (leer, guardar y borrar estudios con la llave).
 - `scripts/construir.mjs`: arma el sitio en `_site/` y crea la lista de estudios.
 - `scripts/pdfs.sh`: genera un PDF por estudio en `_site/descargas/`.

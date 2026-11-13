@@ -127,3 +127,8 @@
 @media (max-width:600px){
   .barra.fija .estado{order:5;flex-basis:100%;text-align:left}
 }
+
+/* Versículo: se edita viendo la cursiva y las versalitas, como en la página */
+.rico-verso{min-height:0;font-family:var(--display);font-size:17px;line-height:1.5}
+.rico-verso:empty::before{content:attr(data-placeholder);color:var(--muted)}
+.rico-verso p{margin:0}
