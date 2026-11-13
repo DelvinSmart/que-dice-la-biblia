@@ -145,6 +145,7 @@ function dibujarBloque(b, ruta) {
         <textarea rows="4" placeholder="Copia el pasaje en tu app Biblia (con “Copiar” o “Compartir”) y pégalo aquí: texto, referencia y link."></textarea>
         <button type="button" class="btn principal" data-accion="llenar-pasaje" data-ruta="${ruta}">Llenar referencia y versículos</button>
         <p class="ayuda-pegar" role="status"></p>
+        <div class="seleccion"></div>
       </details>
       <input data-campo="${ruta}.referencia" data-limpiar="referencia" value="${esc(b.referencia)}" placeholder="Referencia y versión, ej: Juan 3:16 LBLA">
       ${(b.versiculos || []).map((v, n) => `
@@ -223,7 +224,7 @@ $("editor").addEventListener("input", e => {
 });
 
 $("editor").addEventListener("change", e => {
-  if (e.target.matches("select[data-campo='idioma'], input[type=checkbox]")) dibujar();
+  if (e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo]")) dibujar();
 });
 
 // Negrita, cursiva y listas en los bloques de texto

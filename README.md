@@ -14,7 +14,7 @@ Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.
 3. Llena la portada; añade **+ Tema**, dentro de cada tema **+ Punto**, y dentro de cada punto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
 En cada **Pasaje bíblico**, usa **Pegar desde la app Biblia**: copia el pasaje en tu app (con “Copiar” o “Compartir”), pégalo y toca **Llenar referencia y versículos**. Si el texto trae los números de versículo, se separan solos; si no, queda en un solo recuadro con el rango (por ejemplo 22-23).
 
-Con el botón **Foto o captura** puedes tomar una foto o escoger una captura: el panel lee el texto (sin subir la foto a ningún servidor), lo deja en el recuadro para que lo revises, y luego tocas **Llenar referencia y versículos**. La primera vez tarda unos segundos en preparar el lector.
+Con el botón **Foto o captura** puedes tomar una foto o escoger una captura: el panel lee el texto (sin subir la foto a ningún servidor) y muestra la lista de versículos encontrados. Marca los que quieres (puedes corregir el número o el texto) y toca **Usar los seleccionados**: la referencia se arma sola con el libro y el capítulo de la foto o de la referencia, por ejemplo `Jeremías 1:1-3 LBLA` o `Jeremías 1:1, 5, 30 LBLA`. La primera vez tarda unos segundos en preparar el lector.
 
 También sirve con fotos o capturas, en iPhone, iPad y Mac: con **Texto en vivo** de Apple, abre la foto, selecciona el texto, cópialo y pégalo ahí. Si trae los números de versículo, se separan solos (la referencia se escribe a mano).
 

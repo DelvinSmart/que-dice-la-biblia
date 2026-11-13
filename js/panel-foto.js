@@ -52,8 +52,58 @@ function encabezadoFoto(texto) {
   return "";
 }
 
-// Al escoger la foto: la lee, deja el texto en el recuadro para revisarlo y, si el pasaje
-// no tiene referencia, pone la del encabezado (faltan los versículos, ej. ":1-9")
+// Separa el texto de la foto en versículos. Tolera números mal leídos: acepta un número como
+// versículo si es mayor que el anterior y a lo más 3 más (si se saltó uno, ese texto queda en el anterior).
+function separarFoto(texto) {
+  const plano = texto.replace(/\s+/g, " ").trim();
+  const marcas = [];
+  for (const m of plano.matchAll(/(?:^|\s)(\d{1,3})\s(?=\S)/g)) {
+    const n = Number(m[1]);
+    const anterior = marcas.length ? marcas[marcas.length - 1].n : null;
+    if (anterior === null ? m.index === 0 : n > anterior && n <= anterior + 3) {
+      marcas.push({ n, desde: m.index + m[0].length, hasta: m.index });
+    }
+  }
+  if (!marcas.length) return [{ numero: "", texto: plano }];
+  return marcas.map((m, i) => ({
+    numero: String(m.n),
+    texto: plano.slice(m.desde, i + 1 < marcas.length ? marcas[i + 1].hasta : plano.length).trim()
+  }));
+}
+
+// Versículos escogidos → "1-3, 5, 30" (seguidos se juntan con guion, sueltos con coma)
+function rangos(numeros) {
+  const ns = [...new Set(numeros.map(Number).filter(Number.isFinite))].sort((a, b) => a - b);
+  const grupos = [];
+  ns.forEach(n => {
+    const g = grupos[grupos.length - 1];
+    if (g && n === g[1] + 1) g[1] = n; else grupos.push([n, n]);
+  });
+  return grupos.map(([a, b]) => (a === b ? `${a}` : `${a}-${b}`)).join(", ");
+}
+
+// "Jeremías 1 LBLA" o "Jeremías 1:4 LBLA" + versículos escogidos → "Jeremías 1:1-3, 5 LBLA"
+function referenciaCon(base, numeros) {
+  const m = /^(.*?\S)\s+(\d{1,3})(?::[\d\s,\-–]*)?\s+([A-Z]{2,6}\d*)\s*$/.exec(base.trim());
+  return m ? `${m[1]} ${m[2]}:${rangos(numeros)} ${m[3]}` : "";
+}
+
+function dibujarSeleccion(caja, versos) {
+  caja.querySelector(".seleccion").innerHTML = `
+    <p class="ayuda-sel">Marca los versículos que quieres. Si un número o una palabra salió mal, corrígelo aquí.</p>
+    ${versos.map(v => `
+      <div class="verso-sel">
+        <input type="checkbox" aria-label="Usar este versículo">
+        <input class="num" value="${esc(v.numero)}" inputmode="numeric" aria-label="Número">
+        <textarea rows="2" aria-label="Texto del versículo">${esc(v.texto)}</textarea>
+      </div>`).join("")}
+    <div class="acciones-sel">
+      <button type="button" class="btn" data-foto-accion="todos">Marcar todos</button>
+      <button type="button" class="btn principal" data-foto-accion="usar">Usar los seleccionados</button>
+    </div>`;
+}
+
+// Al escoger la foto: la lee y muestra la lista de versículos para marcar
 $("editor").addEventListener("change", async e => {
   const input = e.target.closest("input[data-foto]");
   if (!input || !input.files[0]) return;
@@ -62,20 +112,38 @@ $("editor").addEventListener("change", async e => {
   aviso.textContent = "Leyendo la foto…";
   try {
     const { texto, referencia } = await leerFoto(input.files[0], n => { aviso.textContent = `Leyendo la foto… ${n}%`; });
-    caja.querySelector("textarea").value = texto;
-    const ruta = input.dataset.foto;
-    const campoRef = caja.parentElement.querySelector(`[data-campo="${ruta}.referencia"]`);
-    if (referencia && campoRef && !campoRef.value.trim()) {
-      campoRef.value = referencia;
-      asignar(`${ruta}.referencia`, referencia);
-      marcarCambio();
-    }
-    aviso.textContent = texto
-      ? "Listo. Revisa el texto: los números pequeños y las palabras en cursiva a veces salen mal. Completa la referencia (ej. :1-9) y toca “Llenar referencia y versículos”."
-      : "No se encontró texto en la foto. Prueba con una captura más clara.";
+    if (!texto) { aviso.textContent = "No se encontró texto en la foto. Prueba con una captura más clara."; return; }
+    caja.dataset.encabezado = referencia;
+    dibujarSeleccion(caja, separarFoto(texto));
+    aviso.textContent = referencia ? `Encontré ${referencia}.` : "No encontré el libro y el capítulo en la foto: escríbelos en la referencia (ej. Jeremías 1 LBLA).";
   } catch (err) {
     aviso.textContent = "No se pudo leer la foto. Revisa tu internet e inténtalo otra vez.";
   } finally {
     input.value = "";
   }
+});
+
+// Botones de la lista ("Marcar todos" y "Usar los seleccionados")
+$("editor").addEventListener("click", e => {
+  const b = e.target.closest("[data-foto-accion]");
+  if (!b) return;
+  const caja = b.closest(".pegar");
+  const filas = [...caja.querySelectorAll(".verso-sel")];
+  if (b.dataset.fotoAccion === "todos") {
+    const todos = filas.every(f => f.querySelector("input[type=checkbox]").checked);
+    filas.forEach(f => { f.querySelector("input[type=checkbox]").checked = !todos; });
+    return;
+  }
+  const escogidos = filas.filter(f => f.querySelector("input[type=checkbox]").checked)
+    .map(f => ({ numero: f.querySelector(".num").value.trim(), texto: versalitas(f.querySelector("textarea").value.trim()) }));
+  const aviso = caja.querySelector(".ayuda-pegar");
+  if (!escogidos.length) { aviso.textContent = "Marca al menos un versículo."; return; }
+
+  const ruta = caja.querySelector("input[data-foto]").dataset.foto;
+  const pasaje = obtener(ruta);
+  const base = pasaje.referencia || caja.dataset.encabezado || "";
+  pasaje.versiculos = escogidos;
+  pasaje.referencia = referenciaCon(base, escogidos.map(v => v.numero)) || base;
+  marcarCambio();
+  dibujar();
 });
