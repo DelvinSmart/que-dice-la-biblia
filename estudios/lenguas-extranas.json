@@ -1,15 +1,15 @@
 {
-  "titulo": "Lenguas extrañas?",
+  "titulo": "¿Lenguas extrañas?",
   "idioma": "es",
   "otro_idioma": "linguas-estranhas",
   "descripcion": "Qué dice la Biblia sobre hablar en lenguas: el origen de la palabra, la historia y los textos de Hechos y 1 Corintios.",
   "preguntas": [
-    "De dónde proviene?",
-    "Donde nació?",
-    "Y la pregunta más importante, ¿qué dice la Bíblia?",
-    "Qué fundamento bíblico tiene esta práctica que hoy se ve comúnmente dentro de las Iglesia?"
+    "¿De dónde proviene?",
+    "¿Dónde nació?",
+    "Y la pregunta más importante, ¿qué dice la Biblia?",
+    "¿Qué fundamento bíblico tiene esta práctica que hoy se ve comúnmente dentro de las iglesias?"
   ],
-  "cierre": "Y bien!",
+  "cierre": "¡Y bien!",
   "temas": [
     {
       "titulo": "Etimología del término",
@@ -22,7 +22,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Si Vamos a los textos originales, vemos que la palabra <b>\"extrañas\"</b> o <b>\"desconocidas\"</b></p>\n<p>Referente a este término, no existe en las Escrituras; ellas fueron injertada posteriormente por algunos traductores.</p>\n<p>(En 1 Corintios 14:21, donde la traducción dice \"lenguas extrañas\", el griego usa <i>heteroglōssois</i>, que significa \"de otras lenguas\", o sea, idiomas de otros pueblos; Pablo está citando a Isaías 28:11.)</p>\n<p>El término griego empleado es <span class=\"g\">glōssa</span>, lo que quiere decir literalmente <b>\"lengua\" o \"idioma humano\"</b>.</p>"
+              "texto": "<p>Si vamos a los textos originales, vemos que la palabra <b>\"extrañas\"</b> o <b>\"desconocidas\"</b></p>\n<p>Referente a este término, no existe en las Escrituras; ellas fueron injertadas posteriormente por algunos traductores.</p>\n<p>(En 1 Corintios 14:21, donde la traducción dice \"lenguas extrañas\", el griego usa <i>heteroglōssois</i>, que significa \"de otras lenguas\", o sea, idiomas de otros pueblos; Pablo está citando a Isaías 28:11, donde esas “otras lenguas” eran el idioma de los asirios: un idioma humano.)</p>\n<p>El término griego empleado es <span class=\"g\">glōssa</span>, lo que quiere decir literalmente <b>\"lengua\" o \"idioma humano\"</b>.</p>"
             }
           ]
         },
@@ -32,7 +32,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Y aquí está la clave de todo: la etimología, o sea, el origen de la palabra. Cuando buscamos la etimología de un término, sabemos su verdadero significado, y no lo que le fueron añadiendo con el tiempo.</p>\n<p>La misma palabra <span class=\"g\">glōssa</span> se usa en la Biblia con más de un sentido:</p>\n<ol>\n<li><b>La lengua del cuerpo</b>, el órgano con el que hablamos (Santiago 3:5-6).</li>\n<li><b>Un idioma humano</b>, como en Hechos 2:4 y 2:11.</li>\n<li><b>Una forma o apariencia</b>, como las “lenguas como de fuego” de Hechos 2:3.</li>\n</ol>\n<p>Y fíjense en algo: en Hechos 2:4 dice que hablaron en otras lenguas (<span class=\"g\">glōssa</span>), y en los versículos 6 y 8 la gente dice que los oía hablar en su propia lengua, y ahí el griego usa <span class=\"g\">diálektos</span>, de donde viene nuestra palabra “dialecto”. O sea, Lucas usa las dos palabras para lo mismo: las lenguas de Pentecostés eran idiomas y dialectos reales.</p>\n<p><b>Por eso, cuando la palabra se usa correctamente, en su contexto, el texto se entiende solo. El problema empieza cuando a una palabra que tiene dos o tres sentidos le escogemos el que no es.</b></p>"
+              "texto": "<p>Y aquí está la clave de todo: la etimología, o sea, el origen de la palabra. Cuando buscamos la etimología de un término, sabemos su verdadero significado, y no lo que le fueron añadiendo con el tiempo.</p>\n<p>La misma palabra <span class=\"g\">glōssa</span> se usa en la Biblia con más de un sentido:</p>\n<ol>\n<li><b>La lengua del cuerpo</b>, el órgano con el que hablamos (Santiago 3:5-6).</li>\n<li><b>Un idioma humano</b>, como en Hechos 2:4 y 2:11.</li>\n<li><b>Una forma o apariencia</b>, como las “lenguas como de fuego” de Hechos 2:3.</li>\n</ol>\n<p>Y fíjense en algo: en Hechos 2:4 dice que hablaron en otras lenguas (<span class=\"g\">glōssa</span>), y en los versículos 6 y 8 la gente dice que los oía hablar en su propia lengua, y ahí el griego usa <span class=\"g\">diálektos</span>, de donde viene nuestra palabra “dialecto”. O sea, Lucas usa las dos palabras para lo mismo: las lenguas de Pentecostés eran idiomas y dialectos reales.</p>\n<p>Algunos léxicos, como el BDAG, añaden también un sentido de “habla extática”, pero ese sentido sale de cómo se interpreta 1 Corintios 14, no del uso normal de la palabra. El uso normal de <span class=\"g\">glōssa</span> es lengua o idioma.</p>\n<p><b>Por eso, cuando la palabra se usa correctamente, en su contexto, el texto se entiende solo. El problema empieza cuando a una palabra que tiene dos o tres sentidos le escogemos el que no es.</b></p>"
             }
           ]
         }
@@ -49,7 +49,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Y para entender esto de forma mas fácil, vamos a abrir un paréntesis y volver un poco hacia atrás para saber cómo nos ha llegado el texto:</p>\n<p>Las Escrituras originales no fueron redactadas en español;</p>\n<ul><li>El <b>Antiguo Testamento</b> fue escrito en <b>hebreo</b></li></ul>\n<p>y</p>\n<ul><li>El <b>Nuevo Testamento</b> en <b>griego koiné</b>.</li></ul>"
+              "texto": "<p>Y para entender esto de forma más fácil, vamos a abrir un paréntesis y volver un poco hacia atrás para saber cómo nos ha llegado el texto:</p>\n<p>Las Escrituras originales no fueron redactadas en español;</p>\n<ul><li>El <b>Antiguo Testamento</b> fue escrito en <b>hebreo</b></li></ul>\n<p>y</p>\n<ul><li>El <b>Nuevo Testamento</b> en <b>griego koiné</b>.</li></ul>"
             }
           ]
         },
@@ -59,7 +59,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Durante muchos siglos, el acceso a los textos estuvo extremadamente limitado y custodiado por estructuras de poder que impedían que la gente común pudiera leerlos directamente.</p>\n<p>Esto comenzó a cambiar gracias a hombres como <b>Martín Lutero</b>, quien, en el <b>siglo XVI</b>, realizó la histórica traducción de la Biblia al alemán, impulsando nuevas traducciones al inglés (como la de William Tyndale, en 1526) y a otros idiomas modernos, permitiendo que hoy cada uno de nosotros pueda tener la Bíblia en sus manos.</p>"
+              "texto": "<p>Durante muchos siglos, el acceso a los textos estuvo extremadamente limitado y custodiado por estructuras de poder que impedían que la gente común pudiera leerlos directamente. Por ejemplo, el Concilio de Toulouse, en 1229, prohibió a los laicos tener los libros de la Biblia en su propio idioma.</p>\n<p>Esto comenzó a cambiar gracias a hombres como <b>Martín Lutero</b>, quien, en el <b>siglo XVI</b>, realizó la histórica traducción de la Biblia al alemán (el Nuevo Testamento en 1522 y la Biblia completa en 1534), impulsando nuevas traducciones al inglés (como la de William Tyndale, en 1526) y a otros idiomas modernos, permitiendo que hoy cada uno de nosotros pueda tener la Biblia en sus manos.</p>\n<p>Antes de Lutero ya existían algunas traducciones, como la de Wycliffe al inglés (hacia 1380) y, en español, la Biblia Alfonsina (siglo XIII) y la Biblia de Alba (hacia 1430). Pero eran copias hechas a mano que muy poca gente podía tener; con la imprenta, la traducción de Lutero llegó al pueblo. Y la Biblia en español que usamos hoy, la Reina-Valera (1569, revisada en 1602), se tradujo directamente del hebreo y del griego.</p>"
             }
           ]
         },
@@ -69,7 +69,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Sin embargo, Cuando hablamos de traducción, debemos tener en cuenta una realidad inevitable:</p>\n<p>cuando los traductores trasladan un texto de un idioma antiguo a nuestras lenguas actuales, se enfrentan a un desafío enorme que deja abierta la puerta a dos grandes vulnerabilidades:</p>\n<ol>\n<li>primero, que el traductor pueda cometer imprecisiones al interpretar ciertos términos, o sea, puede traducir mal el texto.</li>\n<li>segundo, que el lector malinterprete lo que el texto original quería decir realmente solo porque le llego una traducción moderna.</li>\n</ol>"
+              "texto": "<p>Sin embargo, cuando hablamos de traducción, debemos tener en cuenta una realidad inevitable:</p>\n<p>cuando los traductores trasladan un texto de un idioma antiguo a nuestras lenguas actuales, se enfrentan a un desafío enorme que deja abierta la puerta a dos grandes vulnerabilidades:</p>\n<ol>\n<li>primero, que el traductor pueda cometer imprecisiones al interpretar ciertos términos, o sea, puede traducir mal el texto.</li>\n<li>segundo, que el lector malinterprete lo que el texto original quería decir realmente solo porque le llegó una traducción moderna.</li>\n</ol>"
             }
           ]
         },
@@ -79,7 +79,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p><b>Es exactamente por este motivo que, cuando queremos conocer la verdad sin ningún tipo de alteraciones o adulterios, no podemos quedarnos solo en la superficie de una traducción moderna, sino que es indispensable verificar el idioma original.</b></p>"
+              "texto": "<p><b>Es exactamente por este motivo que, cuando queremos conocer la verdad sin ningún tipo de alteraciones o adulteraciones, no podemos quedarnos solo en la superficie de una traducción moderna, sino que es indispensable verificar el idioma original.</b></p>"
             }
           ]
         }
@@ -96,7 +96,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Ahora, ya sabiendo cómo nos llegó la Biblia, vamos a ver cuándo apareció esto de las lenguas que nadie entiende. Y aquí viene algo muy importante: esto no nació con los apóstoles, ni con la Reforma. Esto apareció casi 400 años después que Martín Lutero tradujo la Biblia.</p>\n<p>Veamos cómo encajan las fechas:</p>\n<ol>\n<li><b>1522, la traducción de Martín Lutero:</b> Lutero tradujo el Nuevo Testamento al alemán, y después vinieron otras traducciones importantes, como la King James en inglés, en 1611. Su gran objetivo era que la gente común pudiera leer la Biblia por sí misma, en su propio idioma, sin depender del latín.</li>\n<li><b>Del siglo XVI al XIX, los siglos intermedios:</b> Durante todos esos años, las grandes iglesias históricas (luteranos, reformados, bautistas, presbiterianos, católicos) leían esas traducciones y entendían que el don de lenguas eran idiomas humanos reales, como pasó en Pentecostés. Hubo algunos grupos aislados con experiencias así, como los seguidores de Edward Irving en Escocia y Londres hacia 1830, pero ninguna de las iglesias históricas enseñaba el balbuceo ininteligible como doctrina.</li>\n<li><b>1901, Topeka, Kansas:</b> 379 años después de la traducción de Lutero, en la escuela de Charles Parham, se enseñó por primera vez que hablar en lenguas era la prueba obligatoria de haber recibido el Espíritu Santo. De ahí saltó en 1906 a la Calle Azusa y se regó por todo el mundo.</li>\n</ol>"
+              "texto": "<p>Ahora, ya sabiendo cómo nos llegó la Biblia, vamos a ver cuándo apareció esto de las lenguas que nadie entiende. Y aquí viene algo muy importante: la doctrina de que hay que hablar en lenguas para demostrar que se recibió el Espíritu Santo no nació con los apóstoles, ni con la Reforma. Apareció casi 400 años después que Martín Lutero tradujo la Biblia.</p>\n<p>Veamos cómo encajan las fechas:</p>\n<ol>\n<li><b>1522, la traducción de Martín Lutero:</b> Lutero tradujo el Nuevo Testamento al alemán, y después vinieron otras traducciones importantes, como la King James en inglés, en 1611. Su gran objetivo era que la gente común pudiera leer la Biblia por sí misma, en su propio idioma, sin depender del latín.</li>\n<li><b>Del siglo XVI al XIX, los siglos intermedios:</b> Durante todos esos años, las grandes iglesias históricas (luteranos, reformados, bautistas, presbiterianos, católicos) leían esas traducciones y entendían que el don de lenguas eran idiomas humanos reales, como pasó en Pentecostés. Hubo algunos grupos aislados con experiencias de éxtasis, como los montanistas en el siglo II, los camisardos en Francia hacia 1700 y los seguidores de Edward Irving en Escocia y Londres hacia 1830, pero ninguna de las iglesias históricas enseñaba el balbuceo ininteligible como doctrina.</li>\n<li><b>1901, Topeka, Kansas:</b> 379 años después de la traducción de Lutero, en la escuela de Charles Parham, se enseñó por primera vez que hablar en lenguas era la prueba obligatoria de haber recibido el Espíritu Santo. De ahí saltó en 1906 a la Calle Azusa y se regó por todo el mundo.</li>\n</ol>"
             }
           ]
         },
@@ -110,7 +110,7 @@
             },
             {
               "tipo": "texto",
-              "texto": "<p>Este es un hecho histórico ampliamente documentado tanto por historiadores seculares como por historiadores del movimiento pentecostal:</p>\n<ul><li><b>Charles Parham y Topeka (1901):</b> El evento fundacional está registrado en los archivos históricos del movimiento pentecostal. Parham, fundador de la Bethel Bible College en Topeka, Kansas, llegó a la conclusión de que hablar en lenguas era la evidencia bíblica del bautismo en el Espíritu Santo tras estudiar el libro de Hechos con sus estudiantes. El 1 de enero de 1901, una estudiante llamada Agnes Ozman fue la primera en experimentar este hablar bajo su enseñanza (ellos decían que ella habló en chino).</li></ul>"
+              "texto": "<p>Este es un hecho histórico ampliamente documentado tanto por historiadores seculares como por historiadores del movimiento pentecostal:</p>\n<ul><li><b>Charles Parham y Topeka (1901):</b> El evento fundacional está registrado en los archivos históricos del movimiento pentecostal. Parham, fundador del Bethel Bible College en Topeka, Kansas, llegó a la conclusión de que hablar en lenguas era la evidencia bíblica del bautismo en el Espíritu Santo tras estudiar el libro de Hechos con sus estudiantes. El 1 de enero de 1901, una estudiante llamada Agnes Ozman fue la primera en experimentar este hablar bajo su enseñanza (ellos decían que ella habló en chino).</li></ul>"
             }
           ]
         },
@@ -130,21 +130,21 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Pasaron los siglos, y a principios del siglo XX algunos intérpretes leyeron las traducciones, sobre todo las que decían \"lengua desconocida\" (como la King James, que dice <i>unknown tongue</i>, y esa palabra <i>unknown</i> no está en el griego). Sacaron esos textos de su contexto del siglo I y concluyeron que el don era emitir sonidos espirituales místicos, y no hablar idiomas extranjeros reales.</p>\n<p>Y fíjense en algo: el mismo Parham creía al comienzo que eran idiomas humanos reales, para mandar misioneros a otros países sin tener que estudiar el idioma. Cuando esos misioneros llegaron al campo y nadie les entendía, el movimiento lo terminó reinterpretando como un lenguaje de oración que nadie entiende.</p>\n<p>Piénsenlo así: desde Pentecostés, hacia el año 30, hasta Topeka en 1901, pasaron unos 1.870 años. Casi 1.900 años en que el Espíritu Santo salvaba y obraba en la iglesia sin que nadie enseñara esto como doctrina. Algo que comenzó hace unos 120 años no se puede volver una ley; puede ser una distorsión que se tomó como ley.</p>\n<p><b>Por eso es tan importante volver a los textos originales y al contexto histórico, porque ahí vemos lo que los creyentes de los siglos pasados entendían perfectamente antes de que naciera esta corriente moderna del siglo XX.</b></p>"
+              "texto": "<p>Pasaron los siglos, y a principios del siglo XX algunos intérpretes leyeron las traducciones, sobre todo las que decían \"lengua desconocida\" (como la King James, que dice <i>unknown tongue</i>, y esa palabra <i>unknown</i> no está en el griego). Sacaron esos textos de su contexto del siglo I y concluyeron que el don era emitir sonidos espirituales místicos, y no hablar idiomas extranjeros reales.</p>\n<p>Y fíjense en algo: el mismo Parham creía al comienzo que eran idiomas humanos reales, para mandar misioneros a otros países sin tener que estudiar el idioma. Cuando esos misioneros llegaron al campo y nadie les entendía, el movimiento lo terminó reinterpretando como un lenguaje de oración que nadie entiende.</p>\n<p>Piénsenlo así: desde Pentecostés, hacia el año 30, hasta Topeka en 1901, pasaron unos 1.870 años. Casi 1.900 años en que el Espíritu Santo salvaba y obraba en la iglesia sin que ninguna iglesia enseñara esto como doctrina. Algo que comenzó hace unos 120 años no se puede volver una ley; puede ser una distorsión que se tomó como ley.</p>\n<p><b>Por eso es tan importante volver a los textos originales y al contexto histórico, porque ahí vemos lo que los creyentes de los siglos pasados entendían perfectamente antes de que naciera esta corriente moderna del siglo XX.</b></p>"
             }
           ]
         },
         {
-          "titulo": "Oráculo de Delfos",
+          "titulo": "Cultos de éxtasis grecorromanos",
           "nuevo": false,
           "bloques": [
             {
               "tipo": "subtitulo",
-              "texto": "2. Sobre las prácticas paganas antiguas (Oráculos de Delfos y Corinto)"
+              "texto": "2. Sobre las prácticas paganas antiguas (los cultos de éxtasis del mundo griego)"
             },
             {
               "tipo": "texto",
-              "texto": "<ul><li><b>Fuentes históricas grecorromanas:</b> Los historiadores de las religiones y los exégetas del Nuevo Testamento (como Gordon Fee en su célebre comentario sobre 1 Corintios o E.R. Dodds en Los griegos y lo irracional) documentan extensamente que el mundo helenístico estaba saturado de prácticas extáticas. En el Oráculo de Delfos, según los escritores antiguos, la Pitia (sacerdotisa de Apolo) entraba en trances y profería sonidos y palabras que los sacerdotes interpretaban.</li></ul>"
+              "texto": "<ul><li><b>Fuentes históricas grecorromanas:</b> Los historiadores de las religiones y los exégetas del Nuevo Testamento (como E. R. Dodds en <i>Los griegos y lo irracional</i>, o Gordon Fee en su comentario sobre 1 Corintios) documentan que el mundo helenístico estaba lleno de prácticas de éxtasis, como los cultos de Dionisio y de Cibeles. Fee era pentecostal y no llega a nuestra misma conclusión, pero reconoce ese trasfondo.</li>\n<li><b>El Oráculo de Delfos:</b> La Pitia, sacerdotisa de Apolo, entraba en trance y los sacerdotes interpretaban sus respuestas. Ojo: no está claro que hablara de forma ininteligible; Plutarco y estudiosos modernos dan a entender que hablaba con palabras comprensibles. Por eso lo usamos solo como ejemplo de la religión de éxtasis de esa época, no como prueba.</li></ul>"
             }
           ]
         },
@@ -154,7 +154,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<ul><li><b>El contexto corintio:</b> Los eruditos bíblicos coinciden en que los creyentes de Corinto venían de este transfondo politeísta y culturalmente asociaban el éxtasis religioso y los sonidos extraños con una señal de contacto divino superior, lo cual explica por qué Pablo tuvo que corregir severamente esa confusión en 1 Corintios 14 contrastándola con el orden y la razón.</li></ul>"
+              "texto": "<ul><li><b>El contexto corintio:</b> Los eruditos bíblicos coinciden en que los creyentes de Corinto venían de este trasfondo politeísta y culturalmente asociaban el éxtasis religioso y los sonidos extraños con una señal de contacto divino superior, lo cual explica por qué Pablo tuvo que corregir con firmeza el desorden en 1 Corintios 14, contrastándolo con el orden y la razón.</li></ul>"
             }
           ]
         },
@@ -168,7 +168,7 @@
             },
             {
               "tipo": "texto",
-              "texto": "<ul><li><b>Léxicos del griego del Nuevo Testamento:</b> Esta definición exegética no es una opinión, sino el resultado del análisis filológico formal de los textos originales recopilados en obras de referencia estándar a nivel mundial:\n<ul>\n<li>El Léxico Griego-Inglés del Nuevo Testamento de Walter Bauer y Frederick Danker (conocido como BDAG), donde se define diermēneuō como traducir de un idioma a otro o explicar con claridad el significado de algo.</li>\n<li>El Diccionario Teológico del Nuevo Testamento (TDNT), editado por Gerhard Kittel, que analiza cómo en el mundo clásico helenístico esta familia de palabras se usaba principalmente para la traducción lingüística literal entre diferentes pueblos e idiomas (por ejemplo, pasar del arameo al griego).</li>\n</ul></li></ul>"
+              "texto": "<ul><li><b>Léxicos del griego del Nuevo Testamento:</b> Esta definición exegética no es una opinión, sino el resultado del análisis filológico formal de los textos originales recopilados en obras de referencia estándar a nivel mundial:\n<ul>\n<li>El Léxico Griego-Inglés del Nuevo Testamento de Walter Bauer y Frederick Danker (conocido como BDAG), donde se define diermēneuō como traducir de un idioma a otro o explicar con claridad el significado de algo.</li>\n<li>El Diccionario Teológico del Nuevo Testamento (TDNT), editado por Gerhard Kittel, que analiza cómo en el mundo clásico helenístico esta familia de palabras se usaba principalmente para traducir entre diferentes pueblos e idiomas (por ejemplo, pasar del arameo al griego) o para explicar con claridad. Por ejemplo, en Lucas 24:27 Jesús les “explicaba” (<i>diermēneuō</i>) las Escrituras.</li>\n</ul></li></ul>"
             }
           ]
         }
@@ -185,7 +185,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Vamos examinar los dos libros del Nuevo Testamento donde este tema es tratado a fondo: comenzando por el relato de Hechos capítulo 2</p>"
+              "texto": "<p>Vamos a examinar los dos libros del Nuevo Testamento donde este tema es tratado a fondo: comenzando por el relato de Hechos capítulo 2.</p>"
             },
             {
               "tipo": "pasaje",
@@ -245,7 +245,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<ul>\n<li><b>Primero, vs1 “estaban todos juntos”</b> según el contexto en el capítulo 1 del mismo libro está hablando de los 12 apostoles (incluyendo a Matías, quien acababa de ser incorporado).</li>\n<li>Los demás discípulos varones y mujeres (el grupo de los aproximadamente 120 creyentes mencionado en Hechos 1:15).</li>\n</ul>\n<p>Eran los creyentes que estaban esperando la promesa del Espíritu Santo.</p>"
+              "texto": "<ul>\n<li><b>Primero, vs1 “estaban todos juntos”</b>: según el contexto en el capítulo 1 del mismo libro, hay dos formas de entenderlo:\n<ul>\n<li>Los 12 apóstoles (incluyendo a Matías, quien acababa de ser incorporado). Hechos 2:14 dice que Pedro se levantó “con los once”.</li>\n<li>Los demás discípulos, varones y mujeres (el grupo de los aproximadamente 120 creyentes mencionado en Hechos 1:15).</li>\n</ul></li>\n</ul>\n<p>En los dos casos, eran los creyentes que estaban esperando la promesa del Espíritu Santo.</p>"
             }
           ]
         },
@@ -255,7 +255,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<ul><li><b>Segundo, vs3 “lenguas como de fuego”</b> la palabra griega usada allí también es <span class=\"g\">glōssa</span>, pero en este contexto visual tiene el sentido de “apariencia o forma”. Es decir, llamas o destellos de fuego que tenían la forma similar a una flama parecida la silueta de una lengua.</li></ul>"
+              "texto": "<ul><li><b>Segundo, vs3 “lenguas como de fuego”</b> la palabra griega usada allí también es <span class=\"g\">glōssa</span>, pero en este contexto visual tiene el sentido de “apariencia o forma”. Es decir, llamas o destellos de fuego que tenían la forma similar a una flama parecida a la silueta de una lengua.</li></ul>"
             }
           ]
         },
@@ -265,7 +265,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<ul><li><b>Tercero vs5 “había judíos que vivian en Jerusalén” “procedentes de todas las naciones”</b></li></ul>"
+              "texto": "<ul><li><b>Tercero, vs5 “había judíos que vivían en Jerusalén”, “procedentes de todas las naciones”</b></li></ul>"
             }
           ]
         },
@@ -289,7 +289,7 @@
             },
             {
               "tipo": "texto",
-              "texto": "<p>Eran como aquellos venezolanos que nunca salieron de su tierra y cuyo idioma único y natural es el español. En el contexto bíblico, eran los habitantes locales de Judea y Jerusalén. Los discípulos de Jesús eran pescadores y gente común de la región de Galilea; personas humildes a las que nadie les había  enseñado jamás un idioma extranjero.</p>"
+              "texto": "<p>Eran como aquellos venezolanos que nunca salieron de su tierra y cuyo idioma único y natural es el español. En el contexto bíblico, eran los habitantes locales de Judea y Jerusalén. Los discípulos de Jesús eran pescadores y gente común de la región de Galilea; personas humildes a las que nadie les había enseñado jamás un idioma extranjero.</p>"
             }
           ]
         },
@@ -410,7 +410,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Ahora vamos a analizar las directrices del apóstol Pablo en 1 Corintios 14 —un pasaje frecuentemente invocado—,</p>"
+              "texto": "<p>Ahora vamos a analizar las directrices del apóstol Pablo en 1 Corintios 14 —un pasaje frecuentemente invocado—:</p>"
             },
             {
               "tipo": "pasaje",
@@ -526,7 +526,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<ul><li><b>Primero v2, “en su espíritu habla misterios”</b> la palabra “misterios” Bíblicamente es una verdad divina que antes estaba oculta en los planes de Dios, pero que ahora ha sido revelada.</li></ul>\n<p>Por ejemplo, el apóstol Pablo llama misterio a la unión de Judíos y Gentiles en un mismo cuerpo en (Efesios 3:3-6).</p>"
+              "texto": "<ul><li><b>Primero, v2, “en su espíritu habla misterios”</b>: la palabra “misterios”, bíblicamente, es una verdad divina que antes estaba oculta en los planes de Dios, pero que ahora ha sido revelada.</li></ul>\n<p>Por ejemplo, el apóstol Pablo llama misterio a la unión de judíos y gentiles en un mismo cuerpo, en Efesios 3:3-6.</p>"
             },
             {
               "tipo": "pasaje",
@@ -558,7 +558,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Ahora vamos a imaginarnos que estamos en una reunión de la iglesia y se levanta alguien a orar o hablar y en lugar de hablar en el español para que la gente le diga \"amén\" y entienda el mensaje, empieza a hablar con una emoción super altísima en un idioma que nadie entiende.</p>\n<p>Nadie procesa ni entiende nada y ni siquiera la misma persona que está hablando entiende lo que está diciendo con su propia mente; simplemente siente una “corriente de emoción espiritual muy fuerte y deja salir las palabras”.</p>\n<p>Ahí es donde entra la frase de Pablo cuando dice: <b>\"pues nadie lo entiende, sino que en su espíritu habla misterios\" (1 Corintios 14:2).</b></p>\n<p>No quiere decir que la persona se convirtió en un profeta de códigos divinos ocultos, Significa que para el ser humano, el mensaje se queda en un misterio impenetrable. Es un secreto entre esa persona y Dios, porque como nadie tiene la capacidad de entender ese idioma extranjero, para la congregación es un acertijo porque no lo entiende.</p>"
+              "texto": "<p>Ahora vamos a imaginarnos que estamos en una reunión de la iglesia y se levanta alguien a orar o hablar y en lugar de hablar en el español para que la gente le diga \"amén\" y entienda el mensaje, empieza a hablar con una emoción superaltísima en un idioma que nadie entiende.</p>\n<p>Nadie procesa ni entiende nada y ni siquiera la misma persona que está hablando entiende lo que está diciendo con su propia mente; simplemente siente una “corriente de emoción espiritual muy fuerte y deja salir las palabras”.</p>\n<p>Ahí es donde entra la frase de Pablo cuando dice: <b>\"pues nadie lo entiende, sino que en su espíritu habla misterios\" (1 Corintios 14:2).</b></p>\n<p>No quiere decir que la persona se convirtió en un profeta de códigos divinos ocultos. Significa que para el ser humano, el mensaje se queda en un misterio impenetrable. Es un secreto entre esa persona y Dios, porque como nadie tiene la capacidad de entender ese idioma extranjero, para la congregación es un acertijo porque no lo entiende.</p>"
             }
           ]
         },
@@ -578,7 +578,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<ul><li><b>Segundo v9</b> Así también vosotros, a menos que con la boca pronunciéis palabras inteligibles, ¿cómo se sabrá lo que decís? Pues hablaréis al aire.</li></ul>\n<p><b>Inteligible</b> es lo opuesto a <b>ininteligible</b>, algo que es comprensible, claro, que se entiende o de lo contrario no se podría traducir.</p>\n<p>En el Griego original la palabra usada es <span class=\"g\">eúsēmon</span> (de <i>eu</i>, \"bien\", y <i>sēma</i>, \"señal\"), o sea, una palabra con un significado claro<br>(en el texto se usa la idea de dar un mensaje \"fácil de entender\" o \"bien articulado\").</p>"
+              "texto": "<ul><li><b>Segundo, v9:</b> Así también vosotros, a menos que con la boca pronunciéis palabras inteligibles, ¿cómo se sabrá lo que decís? Pues hablaréis al aire.</li></ul>\n<p><b>Inteligible</b> es lo opuesto a <b>ininteligible</b>, algo que es comprensible, claro, que se entiende o de lo contrario no se podría traducir.</p>\n<p>En el griego original la palabra usada es <span class=\"g\">eúsēmon</span> (de <i>eu</i>, \"bien\", y <i>sēma</i>, \"señal\"), o sea, una palabra con un significado claro<br>(en el texto se usa la idea de dar un mensaje \"fácil de entender\" o \"bien articulado\").</p>"
             }
           ]
         },
@@ -776,37 +776,41 @@
       ]
     },
     {
-      "titulo": "Lo que dirán:",
+      "titulo": "Lo que dirán",
       "subtitulo": "Análisis de los textos clave utilizados en el debate",
       "color": "morado",
       "puntos": [
         {
           "titulo": "¿Lenguas de ángeles?",
-          "nuevo": false,
+          "nuevo": true,
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p><font face=\"var(--body)\">Para mantener una exégesis rigurosa y no eludir ningún pasaje, es indispensable examinar los textos a los que </font>comúnmente<font face=\"var(--body)\">&nbsp;se recurre para defender la postura de las lenguas extáticas o no humanas, contrastándolos con el contexto inmediato de las Escrituras (LBLA).</font></p><p>&nbsp; &nbsp; El argumento común: Se suele citar el texto: Si yo hablo en lenguas humanas y angélicas, pero no tengo amor, he venido a ser como metal que resuena o címbalo que retiñe, para afirmar que existen lenguas celestiales o no humanas.</p><p>&nbsp; &nbsp; La respuesta exegética: Pablo está utilizando una hipérbole retórica y condicional (un recurso literario de exageración extrema muy común en sus cartas, similar a decir \"si entregase mi cuerpo para ser quemado\" o \"si tuviese toda la fe\"). En el mismo capítulo usa otra hipérbole en el versículo 2: y si tuviera toda la fe, como para trasladar montañas. Pablo no está afirmando que los ángeles hablen un idioma secreto de balbuceos, sino poniendo un extremo hipotético (\"si pudiera hablar cualquier idioma imaginable, humano o celestial\") para demostrar que sin amor, el don carece de valor absoluto.</p>"
+              "texto": "<p>Para mantener una exégesis rigurosa y no eludir ningún pasaje, es indispensable examinar los textos a los que comúnmente se recurre para defender la postura de las lenguas extáticas o no humanas, contrastándolos con el contexto inmediato de las Escrituras.</p>\n<p><b>El argumento común:</b> se suele citar 1 Corintios 13:1, “Si yo hablara lenguas humanas y angélicas, pero no tengo amor, he llegado a ser como metal que resuena o címbalo que retiñe”, para afirmar que existen lenguas celestiales o no humanas.</p>"
             },
             {
               "tipo": "pasaje",
-              "referencia": "‭‭1 Corintios‬ ‭13‬:‭1‬ ‭LBLA‬‬",
+              "referencia": "1 Corintios 13:1 LBLA",
               "versiculos": [
                 {
                   "numero": "1",
-                  "texto": "“Si yo hablara lenguas humanas y angélicas, pero no tengo amor, he llegado a ser como metal que resuena o címbalo que retiñe.”\n"
+                  "texto": "Si yo hablara lenguas humanas y angélicas, pero no tengo amor, he llegado a ser como metal que resuena o címbalo que retiñe."
                 }
               ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta exegética:</b> Pablo está utilizando una hipérbole retórica y condicional, un recurso literario de exageración extrema muy común en sus cartas. En el mismo capítulo usa otras: “y si tuviera toda la fe, como para trasladar montañas” (v. 2) y “si entregara mi cuerpo para ser quemado” (v. 3). Pablo no está afirmando que los ángeles hablen un idioma secreto de balbuceos, sino poniendo un extremo hipotético (“si pudiera hablar cualquier idioma imaginable, humano o celestial”) para demostrar que, sin amor, el don no tiene ningún valor.</p>\n<ul>\n<li><b>Cuando los ángeles hablan en la Biblia, se les entiende.</b> Gabriel les habló a Zacarías y a María en palabras que ellos entendieron (Lucas 1). No hay un solo caso en la Biblia de un ángel hablando algo que nadie entiende.</li>\n<li><b>El capítulo 14 lo aclara.</b> Pablo compara las lenguas con los idiomas del mundo (14:10-11) y cita a Isaías sobre “otras lenguas”, de otros pueblos (14:21).</li>\n</ul>\n<p>Para ser honestos: hay quienes leen ese versículo como un idioma real de los ángeles. Pero ningún otro texto de la Biblia lo enseña, y no se puede construir una doctrina sobre un “si yo hablara…”.</p>"
             }
           ]
         },
         {
           "titulo": "¿Pablo promueve o prohíbe las lenguas?",
-          "nuevo": false,
+          "nuevo": true,
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>&nbsp; &nbsp; Se argumenta que como Pablo dice «quisiera que todos hablarais en lenguas»</p><p>&nbsp; &nbsp;(v. 5), «hablo en lenguas más que todos vosotros»</p><p>&nbsp; &nbsp;(v. 18) y «no impidáis el hablar en lenguas»</p><p>&nbsp; &nbsp;(v. 39), entonces está avalando las expresiones extáticas desordenadas en la actualidad.</p><p>&nbsp; &nbsp; La respuesta exegética: Pablo no está prohibiendo el don legítimo (la capacidad otorgada por el Espíritu de hablar en idiomas extranjeros reales para la misión), pero lo está regulando estrictamente. En los versículos 27 y 28 pone el candado definitivo: si se habla en un idioma extranjero, debe haber un traductor (*diērmēneutēs*), y si no hay intérprete, el mandato es absoluto: «guarde silencio en la iglesia». Su postura es clara: prefiere la profecía inteligible para edificar a la mente antes que diez mil palabras sin traducción (v. 19).</p>"
+              "texto": "<p><b>El argumento común:</b> como Pablo dice «quisiera que todos hablarais en lenguas» (v. 5), «hablo en lenguas más que todos vosotros» (v. 18) y «no prohibáis hablar en lenguas» (v. 39), se argumenta que está avalando las expresiones extáticas desordenadas de la actualidad.</p>"
             },
             {
               "tipo": "pasaje",
@@ -814,105 +818,131 @@
               "versiculos": [
                 {
                   "numero": "5",
-                  "texto": "“Yo quisiera que todos hablarais en lenguas, pero aún más, que profetizarais; pues el que profetiza es superior al que habla en lenguas, a menos de que las interprete para que la iglesia reciba edificación.”"
+                  "texto": "Yo quisiera que todos hablarais en lenguas, pero aún más, que profetizarais; pues el que profetiza es superior al que habla en lenguas, a menos de que las interprete para que la iglesia reciba edificación."
                 },
                 {
                   "numero": "18",
-                  "texto": "“Doy gracias a Dios porque hablo en lenguas más que todos vosotros;”"
+                  "texto": "Doy gracias a Dios porque hablo en lenguas más que todos vosotros;"
                 },
                 {
                   "numero": "39",
-                  "texto": "“Por tanto, hermanos míos, anhelad el profetizar, y no prohibáis hablar en lenguas.”"
+                  "texto": "Por tanto, hermanos míos, anhelad el profetizar, y no prohibáis hablar en lenguas."
                 }
               ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta exegética:</b> Pablo no está prohibiendo el don legítimo, la capacidad otorgada por el Espíritu de hablar en idiomas extranjeros reales para la misión, pero lo está regulando estrictamente. En los versículos 27 y 28 pone el candado definitivo: si se habla en un idioma extranjero, debe haber un intérprete (<i>diermēneutēs</i>), y si no hay intérprete, el mandato es absoluto: «que guarde silencio en la iglesia». Su postura es clara: en la iglesia prefiere hablar cinco palabras con su entendimiento, para instruir a otros, antes que diez mil palabras en lenguas (v. 19).</p>\n<p><b>O sea, nosotros no estamos en contra del don de lenguas de la Biblia. Estamos en contra de cambiarlo por un balbuceo que nadie entiende y de convertirlo en la prueba obligatoria del Espíritu Santo.</b></p>"
             }
           ]
         },
         {
           "titulo": "El principio divino del orden",
-          "nuevo": false,
+          "nuevo": true,
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>&nbsp; &nbsp; El argumento común: A veces se fomenta la idea de que la verdadera unción rompe todo protocolo y genera gritos o caos colectivo en el auditorio.</p><p>&nbsp; &nbsp; La respuesta exegética: El texto de Corintios 14 destruye esa premisa al establecer turnos precisos: «Hablen dos o tres, y los demás juzguen» (v. 27), y sentencia una de las verdades teológicas más grandes sobre la naturaleza de Dios en el versículo 33: «porque Dios no es Dios de confusión, sino de paz». Cualquier manifestación que anule el entendimiento y produzca caos contradice directamente el orden apostólico.</p>"
+              "texto": "<p><b>El argumento común:</b> a veces se fomenta la idea de que la verdadera unción rompe todo protocolo y genera gritos o caos colectivo en el auditorio.</p>"
             },
             {
               "tipo": "pasaje",
-              "referencia": "1 Corintios 14:26-33",
+              "referencia": "1 Corintios 14:26-33 LBLA",
               "versiculos": [
                 {
                   "numero": "26",
-                  "texto": "“¿Qué hay que hacer, pues, hermanos? Cuando os reunís, cada cual aporte salmo, enseñanza, revelación, lenguas o interpretación. Que todo se haga para edificación.”"
+                  "texto": "¿Qué hay que hacer, pues, hermanos? Cuando os reunís, cada cual aporte salmo, enseñanza, revelación, lenguas o interpretación. Que todo se haga para edificación."
                 },
                 {
                   "numero": "27",
-                  "texto": "“Si alguno habla en lenguas, que hablen dos, o a lo más tres, y por turno, y que uno interprete;”"
+                  "texto": "Si alguno habla en lenguas, que hablen dos, o a lo más tres, y por turno, y que uno interprete;"
                 },
                 {
                   "numero": "28",
-                  "texto": "“pero si no hay intérprete, que guarde silencio en la iglesia y que hable para sí y para Dios.”"
+                  "texto": "pero si no hay intérprete, que guarde silencio en la iglesia y que hable para sí y para Dios."
                 },
                 {
                   "numero": "29",
-                  "texto": "“Y que dos o tres profetas hablen, y los demás juzguen.”"
+                  "texto": "Y que dos o tres profetas hablen, y los demás juzguen."
                 },
                 {
                   "numero": "30",
-                  "texto": "“Pero si a otro que está sentado le es revelado algo, el primero calle.”"
+                  "texto": "Pero si a otro que está sentado le es revelado algo, el primero calle."
                 },
                 {
                   "numero": "31",
-                  "texto": "“Porque todos podéis profetizar uno por uno, para que todos aprendan y todos sean exhortados.”"
+                  "texto": "Porque todos podéis profetizar uno por uno, para que todos aprendan y todos sean exhortados."
                 },
                 {
                   "numero": "32",
-                  "texto": "“Los espíritus de los profetas están sujetos a los profetas;”"
+                  "texto": "Los espíritus de los profetas están sujetos a los profetas;"
                 },
                 {
                   "numero": "33",
-                  "texto": "“porque Dios no es Dios de confusión, sino de paz, como en todas las iglesias de los santos.”"
+                  "texto": "porque Dios no es Dios de confusión, sino de paz, como en todas las iglesias de los santos."
                 }
               ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta exegética:</b> 1 Corintios 14 destruye esa premisa al establecer reglas precisas para las lenguas: «que hablen dos, o a lo más tres, y por turno, y que uno interprete» (v. 27); y si no hay intérprete, «que guarde silencio en la iglesia» (v. 28). Lo mismo pide a los profetas: «que dos o tres profetas hablen, y los demás juzguen» (v. 29). Y sentencia una de las verdades más grandes sobre la naturaleza de Dios en el versículo 33: «porque Dios no es Dios de confusión, sino de paz». Cualquier manifestación que anule el entendimiento y produzca caos contradice directamente el orden apostólico.</p>\n<p><b>Ahora comparemos con muchos cultos de hoy: todos hablando a la vez, sin intérprete y sin que nadie entienda. Eso va en contra de las reglas de la misma Biblia que se usa para defenderlo.</b></p>"
             }
           ]
         },
         {
           "titulo": "Las señales y los nuevos grupos",
-          "nuevo": false,
+          "nuevo": true,
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>&nbsp; &nbsp; El argumento común: Se utilizan los episodios de Cesarea (casa de Cornelio) y Éfeso para decir que las lenguas eran la prueba interna de salvación para cada creyente de todos los tiempos.<br></p><p>&nbsp; &nbsp; La respuesta exegética: En Hechos 10 y 19, Dios utilizó el fenómeno de lenguas humanas comprensibles en momentos históricos de transición cruciales (la inclusión oficial de los gentiles y de los discípulos de Juan el Bautista) para demostrarles visible e irrefutablemente a los judíos escépticos que el Espíritu Santo se había derramado sobre otros grupos por igual, validando la unidad de la Iglesia bajo un mismo tronco apostólico, tal como ocurrió en el modelo original de Hechos 2.<br></p>"
+              "texto": "<p><b>El argumento común:</b> se utilizan los episodios de Cesarea (la casa de Cornelio) y de Éfeso para decir que las lenguas eran la prueba de salvación para cada creyente de todos los tiempos.</p>"
             },
             {
               "tipo": "pasaje",
-              "referencia": "Hechos 10:46",
+              "referencia": "Hechos 10:46 LBLA",
               "versiculos": [
                 {
                   "numero": "46",
-                  "texto": "“pues les oían hablar en lenguas y exaltar a Dios. Entonces Pedro dijo:”"
+                  "texto": "pues les oían hablar en lenguas y exaltar a Dios. Entonces Pedro dijo:"
                 }
               ]
             },
             {
               "tipo": "pasaje",
-              "referencia": "Hechos 19:6",
+              "referencia": "Hechos 19:6 LBLA",
               "versiculos": [
                 {
                   "numero": "6",
-                  "texto": "“Y cuando Pablo les impuso las manos, vino sobre ellos el Espíritu Santo, y hablaban en lenguas y profetizaban.”"
+                  "texto": "Y cuando Pablo les impuso las manos, vino sobre ellos el Espíritu Santo, y hablaban en lenguas y profetizaban."
                 }
               ]
             },
             {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta exegética:</b> en Hechos 10 y 19, Dios utilizó el fenómeno de lenguas humanas comprensibles en momentos históricos de transición cruciales: la inclusión oficial de los gentiles y la de los discípulos de Juan el Bautista. Así les demostró de forma visible e irrefutable a los judíos escépticos que el Espíritu Santo se había derramado sobre otros grupos por igual (Hechos 11:18), validando la unidad de la iglesia bajo un mismo tronco apostólico, tal como ocurrió en el modelo original de Hechos 2.</p>\n<ul>\n<li><b>Fue lo mismo que en Pentecostés.</b> Pedro, contando lo que pasó en casa de Cornelio, dice que el Espíritu Santo cayó sobre ellos “como sobre nosotros al principio” (Hechos 11:15-17). Si fue lo mismo que en Hechos 2, eran idiomas reales.</li>\n<li><b>No siempre pasó.</b> Los 3.000 que creyeron en Pentecostés (Hechos 2:41), los samaritanos que recibieron el Espíritu (Hechos 8:17) y el eunuco (Hechos 8:39): en ninguno de esos casos dice el texto que hablaron en lenguas.</li>\n</ul>\n<p><b>Por eso, ni siquiera el libro de Hechos enseña que todo el que recibe el Espíritu tiene que hablar en lenguas.</b></p>"
+            }
+          ]
+        },
+        {
+          "titulo": "Marcos 16:17 · “nuevas lenguas”",
+          "nuevo": true,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento común:</b> Jesús dijo que los que creyeran “hablarán en nuevas lenguas”.</p>"
+            },
+            {
               "tipo": "pasaje",
-              "referencia": "Marcos 16:17",
+              "referencia": "Marcos 16:17 LBLA",
               "versiculos": [
                 {
                   "numero": "17",
-                  "texto": "“Y estas señales acompañarán a los que han creído: en mi nombre echarán fuera demonios, hablarán en nuevas lenguas;”"
+                  "texto": "Y estas señales acompañarán a los que han creído: en mi nombre echarán fuera demonios, hablarán en nuevas lenguas;"
                 }
               ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta exegética:</b> tres cosas para tener en cuenta:</p>\n<ol>\n<li><b>Está en el final largo de Marcos (16:9-20)</b>, que no aparece en los manuscritos griegos más antiguos. Muchas Biblias lo señalan con una nota o entre corchetes. Por eso, como con Hechos 8:37, no conviene basar una doctrina en ese pasaje.</li>\n<li><b>“Nuevas” quiere decir nuevas para ellos</b>: idiomas que no habían aprendido, como pasó en Pentecostés.</li>\n<li><b>En la misma lista dice que tomarán serpientes y que, si beben algo mortífero, no les hará daño</b> (16:18). Nadie usa eso como prueba obligatoria de tener el Espíritu Santo. Entonces no se puede tomar solo una parte de la lista y volverla ley.</li>\n</ol>"
             }
           ]
         }
