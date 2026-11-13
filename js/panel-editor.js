@@ -137,7 +137,14 @@ function dibujarBloque(b, ruta) {
   } else if (b.tipo === "subtitulo") {
     cuerpo = `<input data-campo="${ruta}.texto" value="${esc(b.texto)}" placeholder="Subtítulo">`;
   } else if (b.tipo === "pasaje") {
+    const vacio = !b.referencia && (b.versiculos || []).every(v => !v.texto);
     cuerpo = `
+      <details class="pegar"${vacio ? " open" : ""}>
+        <summary>Pegar desde la app Biblia</summary>
+        <textarea rows="4" placeholder="Copia el pasaje en tu app Biblia (con “Copiar” o “Compartir”) y pégalo aquí: texto, referencia y link."></textarea>
+        <button type="button" class="btn principal" data-accion="llenar-pasaje" data-ruta="${ruta}">Llenar referencia y versículos</button>
+        <p class="ayuda-pegar" role="status"></p>
+      </details>
       <input data-campo="${ruta}.referencia" data-limpiar="referencia" value="${esc(b.referencia)}" placeholder="Referencia y versión, ej: Juan 3:16 LBLA">
       ${(b.versiculos || []).map((v, n) => `
         <div class="versiculo">
@@ -177,6 +184,7 @@ $("editor").addEventListener("click", e => {
 
   if (accion === "borrar" && b.dataset.seguro !== "1") return pedirConfirmacion(b, "¿Borrar?");
   if (accion === "eliminar-estudio") return eliminarEstudio(b);
+  if (accion === "llenar-pasaje") return llenarPasaje(b, ruta);
   if (accion === "abrir") {
     const obj = obtener(ruta);
     abiertos.has(obj) ? abiertos.delete(obj) : abiertos.add(obj);
@@ -235,3 +243,18 @@ $("editor").addEventListener("paste", e => {
   if (rico.dataset.verso) texto = texto.replace(/\s+/g, " ").trim().replace(/^[“”"«»\s]+|[“”"«»\s]+$/g, "");
   document.execCommand("insertText", false, texto);
 });
+
+// "Pegar desde la app Biblia": llena la referencia y los versículos con lo pegado (js/panel-pegar.js)
+function llenarPasaje(boton, ruta) {
+  const caja = boton.closest(".pegar");
+  const leido = leerPasajeCopiado(caja.querySelector("textarea").value);
+  if (!leido) {
+    caja.querySelector(".ayuda-pegar").textContent = "Primero pega aquí el pasaje que copiaste de la app.";
+    return;
+  }
+  const pasaje = obtener(ruta);
+  if (leido.referencia) pasaje.referencia = leido.referencia;
+  pasaje.versiculos = leido.versiculos;
+  marcarCambio();
+  dibujar();
+}

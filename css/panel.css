@@ -132,3 +132,10 @@
 .rico-verso{min-height:0;font-family:var(--display);font-size:17px;line-height:1.5}
 .rico-verso:empty::before{content:attr(data-placeholder);color:var(--muted)}
 .rico-verso p{margin:0}
+
+/* Pegar desde la app Biblia */
+.pegar{border:1.5px dashed var(--c,var(--accent));border-radius:10px;padding:10px 12px;display:grid;gap:8px}
+.pegar summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--c,var(--accent))}
+.pegar[open]{background:var(--surface)}
+.ayuda-pegar{margin:0;font-size:13px;color:#ffb36b}
+.ayuda-pegar:empty{display:none}

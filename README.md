@@ -12,6 +12,8 @@ Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.
 1. La primera vez en cada aparato, pega tu llave de GitHub (ver abajo). Se guarda solo en ese aparato.
 2. Toca **+ Nuevo estudio**, o abre uno de la lista.
 3. Llena la portada; añade **+ Tema**, dentro de cada tema **+ Punto**, y dentro de cada punto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
+En cada **Pasaje bíblico**, usa **Pegar desde la app Biblia**: copia el pasaje en tu app (con “Copiar” o “Compartir”), pégalo y toca **Llenar referencia y versículos**. Si el texto trae los números de versículo, se separan solos; si no, queda en un solo recuadro con el rango (por ejemplo 22-23).
+
 4. Mientras escribes, la **vista previa** muestra la página real del estudio, en el punto que estás editando: al lado en la computadora y el iPad, o con el botón **Vista previa** en el iPhone. En cada punto, **Ver cómo queda** muestra solo ese punto.
 5. Toca **Publicar**. En uno o dos minutos la página y el PDF se actualizan solos.
 
@@ -43,6 +45,7 @@ Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea ot
   - `js/panel-estado.js`: el estudio que se edita, las pantallas, el borrador automático y la limpieza de lo que se pega.
   - `js/panel-lista.js`: la pantalla de la llave y la lista de estudios.
   - `js/panel-editor.js`: el editor de temas, puntos, textos, versículos y subtítulos.
+  - `js/panel-pegar.js`: “Pegar desde la app Biblia”: lee lo copiado de la app y llena la referencia y los versículos.
   - `js/panel-publicar.js`: publicar y eliminar estudios.
   - `js/panel-vista.js`: la vista previa en vivo.
 - `js/github.js`: la conexión del panel con GitHub (leer, guardar y borrar estudios con la llave).
