@@ -139,3 +139,5 @@
 .pegar[open]{background:var(--surface)}
 .ayuda-pegar{margin:0;font-size:13px;color:#ffb36b}
 .ayuda-pegar:empty{display:none}
+.pegar .foto{justify-self:start;cursor:pointer}
+.ayuda-pegar{color:var(--muted)}

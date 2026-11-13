@@ -14,6 +14,8 @@ Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.
 3. Llena la portada; añade **+ Tema**, dentro de cada tema **+ Punto**, y dentro de cada punto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
 En cada **Pasaje bíblico**, usa **Pegar desde la app Biblia**: copia el pasaje en tu app (con “Copiar” o “Compartir”), pégalo y toca **Llenar referencia y versículos**. Si el texto trae los números de versículo, se separan solos; si no, queda en un solo recuadro con el rango (por ejemplo 22-23).
 
+Con el botón **Foto o captura** puedes tomar una foto o escoger una captura: el panel lee el texto (sin subir la foto a ningún servidor), lo deja en el recuadro para que lo revises, y luego tocas **Llenar referencia y versículos**. La primera vez tarda unos segundos en preparar el lector.
+
 También sirve con fotos o capturas, en iPhone, iPad y Mac: con **Texto en vivo** de Apple, abre la foto, selecciona el texto, cópialo y pégalo ahí. Si trae los números de versículo, se separan solos (la referencia se escribe a mano).
 
 4. Mientras escribes, la **vista previa** muestra la página real del estudio, en el punto que estás editando: al lado en la computadora y el iPad, o con el botón **Vista previa** en el iPhone. En cada punto, **Ver cómo queda** muestra solo ese punto.
@@ -47,6 +49,7 @@ Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea ot
   - `js/panel-estado.js`: el estudio que se edita, las pantallas, el borrador automático y la limpieza de lo que se pega.
   - `js/panel-lista.js`: la pantalla de la llave y la lista de estudios.
   - `js/panel-editor.js`: el editor de temas, puntos, textos, versículos y subtítulos.
+  - `js/panel-foto.js`: el botón “Foto o captura”: lee el texto de una imagen dentro del navegador (Tesseract.js) y lo deja listo para revisar.
   - `js/panel-pegar.js`: “Pegar desde la app Biblia”: lee lo copiado de la app y llena la referencia y los versículos.
   - `js/panel-publicar.js`: publicar y eliminar estudios.
   - `js/panel-vista.js`: la vista previa en vivo.

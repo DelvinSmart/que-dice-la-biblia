@@ -140,7 +140,8 @@ function dibujarBloque(b, ruta) {
     const vacio = !b.referencia && (b.versiculos || []).every(v => !v.texto);
     cuerpo = `
       <details class="pegar"${vacio ? " open" : ""}>
-        <summary>Pegar desde la app Biblia</summary>
+        <summary>Pegar desde la app Biblia, o leer una foto</summary>
+        <label class="btn foto">Foto o captura<input type="file" accept="image/*" data-foto="${ruta}" hidden></label>
         <textarea rows="4" placeholder="Copia el pasaje en tu app Biblia (con “Copiar” o “Compartir”) y pégalo aquí: texto, referencia y link."></textarea>
         <button type="button" class="btn principal" data-accion="llenar-pasaje" data-ruta="${ruta}">Llenar referencia y versículos</button>
         <p class="ayuda-pegar" role="status"></p>
