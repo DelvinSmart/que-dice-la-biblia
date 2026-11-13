@@ -42,3 +42,8 @@ h1{font-family:var(--display);font-weight:800;font-size:34pt;margin:0 0 8px}
 .imagen{margin:0 0 14px;background:var(--verse-bg);border-left:3px solid var(--c);border-radius:4px 10px 10px 4px;padding:12px;break-inside:avoid}
 .imagen img{max-height:150mm;object-fit:contain;display:block;width:100%;height:auto;max-width:100%;border-radius:8px}
 .imagen figcaption{margin-top:8px;font-size:9.5pt;color:var(--muted);text-align:center}
+
+.pasaje-img{display:block;width:100%;max-height:150mm;object-fit:contain;border-radius:6px;margin:2px 0 6px}
+.marco-video,.imagen video,.enlace-video{display:none}
+.solo-pdf{display:block;margin:6px 0 0;font-size:9.5pt;color:var(--muted);text-align:center;word-break:break-all}
+img.solo-pdf{width:100%;max-height:90mm;object-fit:cover;border-radius:6px}

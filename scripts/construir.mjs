@@ -10,7 +10,9 @@ const copiar = ["index.html", "estudio.html", "panel.html", "pdf.html", "css", "
 fs.rmSync(salida, { recursive: true, force: true });
 fs.mkdirSync(salida);
 copiar.forEach(f => fs.cpSync(path.join(raiz, f), path.join(salida, f), { recursive: true }));
-if (fs.existsSync(path.join(raiz, "imagenes"))) fs.cpSync(path.join(raiz, "imagenes"), path.join(salida, "imagenes"), { recursive: true });
+["imagenes", "videos"].forEach(f => {
+  if (fs.existsSync(path.join(raiz, f))) fs.cpSync(path.join(raiz, f), path.join(salida, f), { recursive: true });
+});
 
 const carpeta = path.join(raiz, "estudios");
 const indice = fs.readdirSync(carpeta)

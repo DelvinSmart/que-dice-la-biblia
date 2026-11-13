@@ -161,3 +161,12 @@ body{margin:0}
 .imagen{margin:0 0 14px;background:var(--verse-bg);border-left:3px solid var(--c);border-radius:4px 10px 10px 4px;padding:12px;break-inside:avoid}
 .imagen img{display:block;width:100%;height:auto;max-width:100%;border-radius:8px}
 .imagen figcaption{margin-top:8px;font-size:13px;color:var(--muted);text-align:center}
+
+/* Imagen dentro de un pasaje (en lugar del texto de los versículos) y videos */
+.pasaje-img{display:block;width:100%;height:auto;border-radius:8px;margin:2px 0 8px}
+.marco-video{position:relative;aspect-ratio:16/9;max-width:100%}
+.marco-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:8px}
+.imagen video{display:block;width:100%;max-width:100%;border-radius:8px;background:#000}
+.enlace-video{margin:0;text-align:center}
+.enlace-video a{color:var(--c);font-weight:600}
+.solo-pdf{display:none}

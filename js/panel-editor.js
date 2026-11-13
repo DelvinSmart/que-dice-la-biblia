@@ -5,13 +5,14 @@ const COLORES_NOMBRES = {
   morado: "Morado", verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rosado: "Rosado", azul: "Azul",
   rojo: "Rojo", celeste: "Celeste", lima: "Lima", cobre: "Cobre", pizarra: "Pizarra"
 };
-const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo", imagen: "Imagen" };
+const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo", imagen: "Imagen", video: "Video" };
 
 const nuevoTema = () => ({ titulo: "", subtitulo: "", color: "morado", puntos: [nuevoPunto()] });
 const nuevoPunto = () => ({ titulo: "", nuevo: false, bloques: [] });
 const nuevoBloque = tipo =>
   tipo === "pasaje" ? { tipo, referencia: "", versiculos: [{ numero: "1", texto: "" }] }
   : tipo === "imagen" ? { tipo, src: "", pie: "" }
+  : tipo === "video" ? { tipo, url: "", src: "", pie: "" }
   : { tipo, texto: "" };
 
 // ---------- Piezas del formulario ----------
@@ -119,6 +120,7 @@ function dibujarPunto(p, i, j) {
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="pasaje">+ Pasaje bíblico</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="subtitulo">+ Subtítulo</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="imagen">+ Imagen</button>
+        <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="video">+ Video</button>
       </div>
       <details class="vista">
         <summary>Ver cómo queda</summary>
@@ -142,9 +144,16 @@ function dibujarBloque(b, ruta) {
   } else if (b.tipo === "imagen") {
     cuerpo = `
       ${b.src ? `<figure class="imagen"><img src="${esc(rutaImagen(b.src))}" alt=""></figure>` : ""}
-      <label class="btn${b.src ? "" : " principal"} foto">${b.src ? "Cambiar imagen" : "Tomar foto o escoger imagen"}<input type="file" accept="image/*" data-imagen="${ruta}" hidden></label>
+      <label class="btn${b.src ? "" : " principal"} foto">${b.src ? "Cambiar imagen" : "Tomar foto o escoger imagen"}<input type="file" accept="image/*" data-imagen="${ruta}.src" hidden></label>
       <p class="ayuda-pegar ayuda-imagen" role="status"></p>
       <input data-campo="${ruta}.pie" value="${esc(b.pie)}" placeholder="Pie de foto (opcional), ej: Mapa de las naciones en Hechos 2">`;
+  } else if (b.tipo === "video") {
+    cuerpo = `
+      ${videoHTML(b)}
+      <input data-campo="${ruta}.url" value="${esc(b.url)}" placeholder="Link del video (YouTube u otra página)" inputmode="url">
+      <label class="btn foto">${b.src ? "Cambiar video" : "O subir un video corto (máx. 25 MB)"}<input type="file" accept="video/*" data-video="${ruta}.src" hidden></label>
+      <p class="ayuda-pegar ayuda-imagen" role="status"></p>
+      <input data-campo="${ruta}.pie" value="${esc(b.pie)}" placeholder="Pie del video (opcional)">`;
   } else if (b.tipo === "subtitulo") {
     cuerpo = `<input data-campo="${ruta}.texto" value="${esc(b.texto)}" placeholder="Subtítulo">`;
   } else if (b.tipo === "pasaje") {
@@ -159,6 +168,12 @@ function dibujarBloque(b, ruta) {
         <div class="seleccion"></div>
       </details>
       <input data-campo="${ruta}.referencia" data-limpiar="referencia" value="${esc(b.referencia)}" placeholder="Referencia y versión, ej: Juan 3:16 LBLA">
+      ${b.imagen ? `<img class="pasaje-img" src="${esc(rutaImagen(b.imagen))}" alt="">` : ""}
+      <div class="fila-botones">
+        <label class="btn foto">${b.imagen ? "Cambiar imagen" : "Imagen en vez de versículos"}<input type="file" accept="image/*" data-imagen="${ruta}.imagen" hidden></label>
+        ${b.imagen ? `<button type="button" class="btn" data-accion="quitar-imagen" data-ruta="${ruta}">Quitar imagen</button>` : ""}
+      </div>
+      <p class="ayuda-pegar ayuda-imagen" role="status"></p>
       ${(b.versiculos || []).map((v, n) => `
         <div class="versiculo">
           <input class="num" data-campo="${ruta}.versiculos.${n}.numero" value="${esc(v.numero)}" inputmode="numeric" aria-label="Número">
@@ -215,6 +230,7 @@ $("editor").addEventListener("click", e => {
     vs.push({ numero: Number.isFinite(ultimo) ? String(ultimo + 1) : "", texto: "" });
   }
   if (accion === "color") asignar(`${ruta}.color`, valor);
+  if (accion === "quitar-imagen") asignar(`${ruta}.imagen`, "");
   marcarCambio();
   dibujar();
 });
@@ -235,7 +251,7 @@ $("editor").addEventListener("input", e => {
 });
 
 $("editor").addEventListener("change", e => {
-  if (e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo]")) dibujar();
+  if (e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo], input[data-campo$='.url']")) dibujar();
 });
 
 // Negrita, cursiva y listas en los bloques de texto

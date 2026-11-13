@@ -1,8 +1,10 @@
-// Panel · imágenes dentro de un subpunto (bloque "+ Imagen").
-// Al escoger la foto se achica en el aparato (máximo 1600 px, JPG) para que la página no pese,
-// se muestra enseguida en el editor y en la vista previa, y se sube a imagenes/ al tocar Publicar.
+// Panel · imágenes y videos: bloque "+ Imagen", imagen dentro de un pasaje y video subido desde el aparato.
+// Las fotos se achican en el aparato (máximo 1600 px, JPG) para que la página no pese; los videos se suben tal cual
+// (máximo 25 MB; para videos más largos es mejor un link de YouTube). Se ven enseguida en el editor y en la
+// vista previa, y se suben a imagenes/ o videos/ al tocar Publicar.
 window.IMAGENES_LOCALES = {};      // ruta en imagenes/ → copia en el aparato (para verla antes de publicar)
-const imagenesPendientes = {};     // ruta en imagenes/ → contenido en base64, todavía sin subir
+const archivosPendientes = {};      // ruta en imagenes/ o videos/ → contenido en base64, todavía sin subir
+const VIDEO_MAXIMO = 25 * 1024 * 1024;
 
 const LADO_MAXIMO = 1600;
 
@@ -29,21 +31,15 @@ const blobABase64 = blob => new Promise(ok => {
   lector.readAsDataURL(blob);
 });
 
-// Al escoger la imagen en un bloque
+// Al escoger una imagen: data-imagen dice el campo donde va (ej. "temas.0.puntos.1.bloques.2.src")
 $("editor").addEventListener("change", async e => {
   const input = e.target.closest("input[data-imagen]");
   if (!input || !input.files[0]) return;
-  const ruta = input.dataset.imagen;
   const aviso = input.closest(".bloque-contenido").querySelector(".ayuda-imagen");
   aviso.textContent = "Preparando la imagen…";
   try {
     const blob = await achicarImagen(input.files[0]);
-    const src = `imagenes/${slug || slugDe(estudio.titulo || "estudio")}-${Date.now()}.jpg`;
-    imagenesPendientes[src] = await blobABase64(blob);
-    window.IMAGENES_LOCALES[src] = URL.createObjectURL(blob);
-    asignar(`${ruta}.src`, src);
-    marcarCambio();
-    dibujar();
+    guardarPendiente(input.dataset.imagen, `imagenes/${nombreBase()}.jpg`, blob, await blobABase64(blob));
   } catch (err) {
     aviso.textContent = "No se pudo usar esa imagen. Prueba con otra.";
   } finally {
@@ -51,13 +47,40 @@ $("editor").addEventListener("change", async e => {
   }
 });
 
-// Antes de publicar el estudio: sube las imágenes nuevas que el estudio usa
-async function subirImagenesPendientes() {
-  const usadas = new Set();
+// Al escoger un video: se sube tal cual si no pasa de 25 MB
+$("editor").addEventListener("change", async e => {
+  const input = e.target.closest("input[data-video]");
+  if (!input || !input.files[0]) return;
+  const archivo = input.files[0];
+  const aviso = input.closest(".bloque-contenido").querySelector(".ayuda-imagen");
+  if (archivo.size > VIDEO_MAXIMO) {
+    aviso.textContent = "Ese video pesa más de 25 MB. Súbelo a YouTube y pega aquí el link.";
+    input.value = "";
+    return;
+  }
+  aviso.textContent = "Preparando el video…";
+  const extension = (archivo.name.split(".").pop() || "mp4").toLowerCase();
+  guardarPendiente(input.dataset.video, `videos/${nombreBase()}.${extension}`, archivo, await blobABase64(archivo));
+  input.value = "";
+});
+
+const nombreBase = () => `${slug || slugDe(estudio.titulo || "estudio")}-${Date.now()}`;
+
+function guardarPendiente(campo, src, blob, base64) {
+  archivosPendientes[src] = base64;
+  window.IMAGENES_LOCALES[src] = URL.createObjectURL(blob);
+  asignar(campo, src);
+  marcarCambio();
+  dibujar();
+}
+
+// Antes de publicar el estudio: sube las imágenes y videos nuevos que el estudio usa
+async function subirArchivosPendientes() {
+  const usados = new Set();
   (estudio.temas || []).forEach(t => (t.puntos || []).forEach(p =>
-    (p.bloques || []).forEach(b => { if (b.tipo === "imagen" && b.src) usadas.add(b.src); })));
-  for (const src of Object.keys(imagenesPendientes)) {
-    if (usadas.has(src)) await Github.subirArchivo(src, imagenesPendientes[src], `Imagen para el estudio: ${estudio.titulo}`);
-    delete imagenesPendientes[src];
+    (p.bloques || []).forEach(b => [b.src, b.imagen].forEach(src => { if (src) usados.add(src); }))));
+  for (const src of Object.keys(archivosPendientes)) {
+    if (usados.has(src)) await Github.subirArchivo(src, archivosPendientes[src], `Archivo para el estudio: ${estudio.titulo}`);
+    delete archivosPendientes[src];
   }
 }

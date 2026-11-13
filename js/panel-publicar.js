@@ -19,7 +19,7 @@ $("btnPublicar").addEventListener("click", async () => {
       archivo = base;
       for (let n = 2; slugsExistentes.includes(archivo); n++) archivo = `${base}-${n}`;
     }
-    await subirImagenesPendientes();
+    await subirArchivosPendientes();
     const borradorViejo = claveBorrador();
     sha = await Github.guardar(archivo, estudio, sha, `${nuevo ? "Nuevo estudio" : "Actualizar estudio"}: ${estudio.titulo}`);
     try { localStorage.removeItem(borradorViejo); } catch (e) {}

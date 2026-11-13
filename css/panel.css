@@ -150,3 +150,4 @@
 .verso-sel input[type=checkbox]{width:22px;height:22px;margin-top:10px;accent-color:var(--c,var(--accent))}
 .verso-sel .num{text-align:center}
 .acciones-sel{display:flex;flex-wrap:wrap;gap:8px}
+.fila-botones{display:flex;flex-wrap:wrap;gap:8px}
