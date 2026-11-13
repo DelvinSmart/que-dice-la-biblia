@@ -774,6 +774,149 @@
           ]
         }
       ]
+    },
+    {
+      "titulo": "Lo que dirán:",
+      "subtitulo": "Análisis de los textos clave utilizados en el debate",
+      "color": "morado",
+      "puntos": [
+        {
+          "titulo": "¿Lenguas de ángeles?",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><font face=\"var(--body)\">Para mantener una exégesis rigurosa y no eludir ningún pasaje, es indispensable examinar los textos a los que </font>comúnmente<font face=\"var(--body)\">&nbsp;se recurre para defender la postura de las lenguas extáticas o no humanas, contrastándolos con el contexto inmediato de las Escrituras (LBLA).</font></p><p>&nbsp; &nbsp; El argumento común: Se suele citar el texto: Si yo hablo en lenguas humanas y angélicas, pero no tengo amor, he venido a ser como metal que resuena o címbalo que retiñe, para afirmar que existen lenguas celestiales o no humanas.</p><p>&nbsp; &nbsp; La respuesta exegética: Pablo está utilizando una hipérbole retórica y condicional (un recurso literario de exageración extrema muy común en sus cartas, similar a decir \"si entregase mi cuerpo para ser quemado\" o \"si tuviese toda la fe\"). En el mismo capítulo usa otra hipérbole en el versículo 2: y si tuviera toda la fe, como para trasladar montañas. Pablo no está afirmando que los ángeles hablen un idioma secreto de balbuceos, sino poniendo un extremo hipotético (\"si pudiera hablar cualquier idioma imaginable, humano o celestial\") para demostrar que sin amor, el don carece de valor absoluto.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "‭‭1 Corintios‬ ‭13‬:‭1‬ ‭LBLA‬‬",
+              "versiculos": [
+                {
+                  "numero": "1",
+                  "texto": "“Si yo hablara lenguas humanas y angélicas, pero no tengo amor, he llegado a ser como metal que resuena o címbalo que retiñe.”\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "¿Pablo promueve o prohíbe las lenguas?",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>&nbsp; &nbsp; Se argumenta que como Pablo dice «quisiera que todos hablarais en lenguas»</p><p>&nbsp; &nbsp;(v. 5), «hablo en lenguas más que todos vosotros»</p><p>&nbsp; &nbsp;(v. 18) y «no impidáis el hablar en lenguas»</p><p>&nbsp; &nbsp;(v. 39), entonces está avalando las expresiones extáticas desordenadas en la actualidad.</p><p>&nbsp; &nbsp; La respuesta exegética: Pablo no está prohibiendo el don legítimo (la capacidad otorgada por el Espíritu de hablar en idiomas extranjeros reales para la misión), pero lo está regulando estrictamente. En los versículos 27 y 28 pone el candado definitivo: si se habla en un idioma extranjero, debe haber un traductor (*diērmēneutēs*), y si no hay intérprete, el mandato es absoluto: «guarde silencio en la iglesia». Su postura es clara: prefiere la profecía inteligible para edificar a la mente antes que diez mil palabras sin traducción (v. 19).</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Corintios 14:5, 18 y 39 LBLA",
+              "versiculos": [
+                {
+                  "numero": "5",
+                  "texto": "“Yo quisiera que todos hablarais en lenguas, pero aún más, que profetizarais; pues el que profetiza es superior al que habla en lenguas, a menos de que las interprete para que la iglesia reciba edificación.”"
+                },
+                {
+                  "numero": "18",
+                  "texto": "“Doy gracias a Dios porque hablo en lenguas más que todos vosotros;”"
+                },
+                {
+                  "numero": "39",
+                  "texto": "“Por tanto, hermanos míos, anhelad el profetizar, y no prohibáis hablar en lenguas.”"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "El principio divino del orden",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>&nbsp; &nbsp; El argumento común: A veces se fomenta la idea de que la verdadera unción rompe todo protocolo y genera gritos o caos colectivo en el auditorio.</p><p>&nbsp; &nbsp; La respuesta exegética: El texto de Corintios 14 destruye esa premisa al establecer turnos precisos: «Hablen dos o tres, y los demás juzguen» (v. 27), y sentencia una de las verdades teológicas más grandes sobre la naturaleza de Dios en el versículo 33: «porque Dios no es Dios de confusión, sino de paz». Cualquier manifestación que anule el entendimiento y produzca caos contradice directamente el orden apostólico.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Corintios 14:26-33",
+              "versiculos": [
+                {
+                  "numero": "26",
+                  "texto": "“¿Qué hay que hacer, pues, hermanos? Cuando os reunís, cada cual aporte salmo, enseñanza, revelación, lenguas o interpretación. Que todo se haga para edificación.”"
+                },
+                {
+                  "numero": "27",
+                  "texto": "“Si alguno habla en lenguas, que hablen dos, o a lo más tres, y por turno, y que uno interprete;”"
+                },
+                {
+                  "numero": "28",
+                  "texto": "“pero si no hay intérprete, que guarde silencio en la iglesia y que hable para sí y para Dios.”"
+                },
+                {
+                  "numero": "29",
+                  "texto": "“Y que dos o tres profetas hablen, y los demás juzguen.”"
+                },
+                {
+                  "numero": "30",
+                  "texto": "“Pero si a otro que está sentado le es revelado algo, el primero calle.”"
+                },
+                {
+                  "numero": "31",
+                  "texto": "“Porque todos podéis profetizar uno por uno, para que todos aprendan y todos sean exhortados.”"
+                },
+                {
+                  "numero": "32",
+                  "texto": "“Los espíritus de los profetas están sujetos a los profetas;”"
+                },
+                {
+                  "numero": "33",
+                  "texto": "“porque Dios no es Dios de confusión, sino de paz, como en todas las iglesias de los santos.”"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titulo": "Las señales y los nuevos grupos",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>&nbsp; &nbsp; El argumento común: Se utilizan los episodios de Cesarea (casa de Cornelio) y Éfeso para decir que las lenguas eran la prueba interna de salvación para cada creyente de todos los tiempos.<br></p><p>&nbsp; &nbsp; La respuesta exegética: En Hechos 10 y 19, Dios utilizó el fenómeno de lenguas humanas comprensibles en momentos históricos de transición cruciales (la inclusión oficial de los gentiles y de los discípulos de Juan el Bautista) para demostrarles visible e irrefutablemente a los judíos escépticos que el Espíritu Santo se había derramado sobre otros grupos por igual, validando la unidad de la Iglesia bajo un mismo tronco apostólico, tal como ocurrió en el modelo original de Hechos 2.<br></p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Hechos 10:46",
+              "versiculos": [
+                {
+                  "numero": "46",
+                  "texto": "“pues les oían hablar en lenguas y exaltar a Dios. Entonces Pedro dijo:”"
+                }
+              ]
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Hechos 19:6",
+              "versiculos": [
+                {
+                  "numero": "6",
+                  "texto": "“Y cuando Pablo les impuso las manos, vino sobre ellos el Espíritu Santo, y hablaban en lenguas y profetizaban.”"
+                }
+              ]
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Marcos 16:17",
+              "versiculos": [
+                {
+                  "numero": "17",
+                  "texto": "“Y estas señales acompañarán a los que han creído: en mi nombre echarán fuera demonios, hablarán en nuevas lenguas;”"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
