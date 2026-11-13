@@ -26,11 +26,11 @@
             },
             {
               "tipo": "pasaje",
-              "referencia": "1 Corintios 14:21 LBLA",
+              "referencia": "Isaías 28:11 LBLA",
               "versiculos": [
                 {
-                  "numero": "21",
-                  "texto": "En la ley está escrito: POR HOMBRES DE LENGUAS EXTRAÑAS Y POR BOCA DE EXTRAÑOS HABLARÉ A ESTE PUEBLO, Y NI AUN ASÍ ME ESCUCHARÁN, dice el Señor."
+                  "numero": "11",
+                  "texto": "En verdad, con tartamudez de labios y en lengua extranjera, Él hablará a este pueblo,"
                 }
               ]
             }
