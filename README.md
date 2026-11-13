@@ -1,6 +1,6 @@
 # Estudios Bíblicos
 
-Estudios de la Biblia organizados como un mapa: cada estudio tiene temas (1, 2, 3…), cada tema tiene puntos (1.1, 1.2…), y cada punto tiene su contenido: textos, pasajes bíblicos y subtítulos. Se leen en la página y se descargan en PDF.
+Estudios de la Biblia organizados como un mapa: cada estudio es un tema, el tema tiene puntos (1, 2, 3…), cada punto tiene subpuntos (1.1, 1.2…), y cada subpunto tiene su contenido: textos, pasajes bíblicos y subtítulos. Se leen en la página y se descargan en PDF.
 
 Página: https://delvinsmart.github.io/estudios-biblicos/
 
@@ -11,7 +11,7 @@ Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.
 
 1. La primera vez en cada aparato, pega tu llave de GitHub (ver abajo). Se guarda solo en ese aparato.
 2. Toca **+ Nuevo estudio**, o abre uno de la lista.
-3. Llena la portada; añade **+ Tema**, dentro de cada tema **+ Punto**, y dentro de cada punto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
+3. Llena la portada; añade **+ Punto**, dentro de cada punto **+ Subpunto**, y dentro de cada subpunto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
 En cada **Pasaje bíblico**, usa **Pegar desde la app Biblia**: copia el pasaje en tu app (con “Copiar” o “Compartir”), pégalo y toca **Llenar referencia y versículos**. Si el texto trae los números de versículo, se separan solos; si no, queda en un solo recuadro con el rango (por ejemplo 22-23).
 
 Con el botón **Foto o captura** puedes tomar una foto o escoger una captura: el panel lee el texto (sin subir la foto a ningún servidor) y muestra la lista de versículos encontrados. Marca los que quieres (puedes corregir el número o el texto) y toca **Usar los seleccionados**: la referencia se arma sola con el libro y el capítulo de la foto o de la referencia, por ejemplo `Jeremías 1:1-3 LBLA` o `Jeremías 1:1, 5, 30 LBLA`. La primera vez tarda unos segundos en preparar el lector.
@@ -67,3 +67,5 @@ cd _site && python3 -m http.server 8000
 ```
 
 Y abre http://localhost:8000 en el navegador.
+
+Nota para el código: en los archivos JSON los puntos se guardan en `temas` y los subpuntos en `puntos` (nombres internos de la primera versión).

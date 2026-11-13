@@ -1,7 +1,10 @@
 // Panel · editor de un estudio: dibuja la portada, los temas, los puntos y sus bloques,
 // y responde a los botones (+ Tema, + Punto, ↑ ↓ ✕…) y a lo que se escribe.
 
-const COLORES_NOMBRES = { morado: "Morado", verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rosado: "Rosado", azul: "Azul" };
+const COLORES_NOMBRES = {
+  morado: "Morado", verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rosado: "Rosado", azul: "Azul",
+  rojo: "Rojo", celeste: "Celeste", lima: "Lima", cobre: "Cobre", pizarra: "Pizarra"
+};
 const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo" };
 
 const nuevoTema = () => ({ titulo: "", subtitulo: "", color: "morado", puntos: [nuevoPunto()] });
@@ -38,7 +41,7 @@ function dibujar() {
   $("editor").innerHTML = `
     <section class="bloque-ed datos">
       <h2>Portada</h2>
-      ${campo("titulo", "Título del estudio", { ayuda: "Ej: ¿Lenguas extrañas?" })}
+      ${campo("titulo", "Tema del estudio", { ayuda: "Ej: ¿Lenguas extrañas?" })}
       <div class="fila">
         <label class="campo"><span>Idioma</span>
           <select data-campo="idioma">
@@ -63,7 +66,7 @@ function dibujar() {
 
     <section class="temas-ed">
       ${(e.temas || []).map(dibujarTema).join("")}
-      <button type="button" class="btn agregar grande" data-accion="agregar-tema">+ Tema</button>
+      <button type="button" class="btn agregar grande" data-accion="agregar-tema">+ Punto</button>
     </section>
 
     ${slug ? `<section class="bloque-ed zona-peligro">
@@ -78,7 +81,7 @@ function dibujarTema(t, i) {
   <article class="tema-ed${abierto ? " abierto" : ""}" style="--c:var(${colorDe(t)})">
     <header class="cab">
       <span class="bnum">${i + 1}</span>
-      <input class="titulo-input" data-campo="${ruta}.titulo" value="${esc(t.titulo)}" placeholder="Título del tema">
+      <input class="titulo-input" data-campo="${ruta}.titulo" value="${esc(t.titulo)}" placeholder="Título del punto">
       ${botonesOrden(ruta)}${botonAbrir(ruta, abierto)}
     </header>
     ${abierto ? `
@@ -91,7 +94,7 @@ function dibujarTema(t, i) {
       <div class="puntos-ed">
         ${(t.puntos || []).map((p, j) => dibujarPunto(p, i, j)).join("")}
       </div>
-      <button type="button" class="btn agregar" data-accion="agregar-punto" data-ruta="${ruta}">+ Punto ${i + 1}.${(t.puntos || []).length + 1}</button>
+      <button type="button" class="btn agregar" data-accion="agregar-punto" data-ruta="${ruta}">+ Subpunto ${i + 1}.${(t.puntos || []).length + 1}</button>
     </div>` : ""}
   </article>`;
 }
@@ -103,7 +106,7 @@ function dibujarPunto(p, i, j) {
   <div class="punto-ed${abierto ? " abierto" : ""}">
     <header class="cab">
       <span class="n">${i + 1}.${j + 1}</span>
-      <input class="titulo-input" data-campo="${ruta}.titulo" value="${esc(p.titulo)}" placeholder="Título del punto">
+      <input class="titulo-input" data-campo="${ruta}.titulo" value="${esc(p.titulo)}" placeholder="Título del subpunto">
       ${botonesOrden(ruta)}${botonAbrir(ruta, abierto)}
     </header>
     ${abierto ? `

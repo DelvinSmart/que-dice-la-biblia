@@ -2,6 +2,7 @@
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --ink:#1B1F2E; --muted:#5B6275; --line:#D5D9E3; --accent:#2B3A8F;
   --b1:#2B3A8F; --b2:#7A3FA0; --b3:#0F7A6C; --b4:#C2410C; --b5:#A1336B; --b6:#8A6A00;
+  --b7:#B42318; --b8:#0B6E99; --b9:#4D7C0F; --b10:#8C4A1E; --b11:#475467;
   --verse-bg:#F6F4EE;
   --display:"Alegreya", Georgia, "Times New Roman", serif;
   --body:"Archivo", -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -9,10 +10,12 @@
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#12141C; --surface:#1B1E29; --ink:#E9EBF2; --muted:#A2A8BA; --line:#323748; --accent:#9DAEFF;
   --b1:#9DAEFF; --b2:#CDA2EC; --b3:#5FD3C1; --b4:#FF9E6B; --b5:#F08DBF; --b6:#E5C25A;
+  --b7:#FF8A80; --b8:#6CC7F0; --b9:#A3D96B; --b10:#E0A87A; --b11:#B8C1D1;
   --verse-bg:#232633; color-scheme:dark }}
 :root[data-theme="dark"]{
   --bg:#12141C; --surface:#1B1E29; --ink:#E9EBF2; --muted:#A2A8BA; --line:#323748; --accent:#9DAEFF;
   --b1:#9DAEFF; --b2:#CDA2EC; --b3:#5FD3C1; --b4:#FF9E6B; --b5:#F08DBF; --b6:#E5C25A;
+  --b7:#FF8A80; --b8:#6CC7F0; --b9:#A3D96B; --b10:#E0A87A; --b11:#B8C1D1;
   --verse-bg:#232633; color-scheme:dark }
 
 *{box-sizing:border-box}
@@ -32,6 +35,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15p
 /* Tree */
 .tree{position:relative;margin-top:14px;padding-left:22px}
 .tree::before{content:"";position:absolute;left:8px;top:-14px;bottom:24px;width:2px;background:var(--line)}
+.tree::after{content:"";position:absolute;left:5px;bottom:20px;width:8px;height:8px;border-radius:50%;background:var(--line)}
 .branch{position:relative;padding:14px 0 6px}
 .branch::before{content:"";position:absolute;left:-14px;top:31px;width:14px;height:2px;background:var(--line)}
 .bhead{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}

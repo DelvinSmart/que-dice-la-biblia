@@ -1,9 +1,13 @@
 // Carga los estudios (archivos JSON de la carpeta estudios/) y convierte sus bloques en HTML.
 // Cada estudio: titulo, idioma, otro_idioma, descripcion, preguntas[], cierre, temas[].
-// Cada tema: titulo, subtitulo, color, puntos[]. Cada punto: titulo, nuevo, bloques[].
+// Cada elemento de temas[] es un PUNTO del mapa (1, 2, 3…): titulo, subtitulo, color, puntos[].
+// Cada elemento de puntos[] es un SUBPUNTO (1.1, 1.2…): titulo, nuevo, bloques[].
 // Cada bloque tiene "tipo": texto (HTML), subtitulo, o pasaje (referencia + versiculos[{numero, texto}]).
 
-const COLORES = { azul: "--b1", morado: "--b2", verde: "--b3", naranja: "--b4", rosado: "--b5", amarillo: "--b6" };
+const COLORES = {
+  azul: "--b1", morado: "--b2", verde: "--b3", naranja: "--b4", rosado: "--b5", amarillo: "--b6",
+  rojo: "--b7", celeste: "--b8", lima: "--b9", cobre: "--b10", pizarra: "--b11"
+};
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 

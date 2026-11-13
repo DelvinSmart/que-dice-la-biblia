@@ -38,7 +38,7 @@ async function abrirLista() {
       return `<button type="button" class="tarjeta tarjeta-panel" data-slug="${esc(e.slug)}" style="--c:var(${COLORES[e.temas?.[0]?.color] || "--b1"})">
         <span class="etiqueta">${e.idioma === "pt" ? "Português" : "Español"}</span>
         <h2>${esc(e.titulo)}</h2>
-        <span class="cuenta">${(e.temas || []).length} temas · ${puntos} puntos</span>
+        <span class="cuenta">${(e.temas || []).length} puntos · ${puntos} subpuntos</span>
       </button>`;
     }).join("") || "<p>Todavía no hay estudios.</p>";
     revelar($("listaEstudios").children, 70);
