@@ -115,6 +115,7 @@ if (VISTA) {
   let pasoMostrado = -1;
   window.addEventListener("message", e => {
     if (e.origin !== location.origin || e.data?.tipo !== "estudio") return;
+    window.IMAGENES_LOCALES = e.data.imagenes || {};
     pintar(e.data.estudio);
     const paso = Number.isInteger(e.data.paso) ? e.data.paso : cur;
     show(paso, false, paso !== pasoMostrado);

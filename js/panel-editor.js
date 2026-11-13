@@ -5,12 +5,13 @@ const COLORES_NOMBRES = {
   morado: "Morado", verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rosado: "Rosado", azul: "Azul",
   rojo: "Rojo", celeste: "Celeste", lima: "Lima", cobre: "Cobre", pizarra: "Pizarra"
 };
-const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo" };
+const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo", imagen: "Imagen" };
 
 const nuevoTema = () => ({ titulo: "", subtitulo: "", color: "morado", puntos: [nuevoPunto()] });
 const nuevoPunto = () => ({ titulo: "", nuevo: false, bloques: [] });
-const nuevoBloque = tipo => tipo === "pasaje"
-  ? { tipo, referencia: "", versiculos: [{ numero: "1", texto: "" }] }
+const nuevoBloque = tipo =>
+  tipo === "pasaje" ? { tipo, referencia: "", versiculos: [{ numero: "1", texto: "" }] }
+  : tipo === "imagen" ? { tipo, src: "", pie: "" }
   : { tipo, texto: "" };
 
 // ---------- Piezas del formulario ----------
@@ -117,6 +118,7 @@ function dibujarPunto(p, i, j) {
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="texto">+ Texto</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="pasaje">+ Pasaje bíblico</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="subtitulo">+ Subtítulo</button>
+        <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="imagen">+ Imagen</button>
       </div>
       <details class="vista">
         <summary>Ver cómo queda</summary>
@@ -137,6 +139,12 @@ function dibujarBloque(b, ruta) {
         <button type="button" class="mini" data-formato="insertOrderedList">1. Lista</button>
       </div>
       <div class="rico" contenteditable="true" data-rico="${ruta}.texto">${b.texto || "<p><br></p>"}</div>`;
+  } else if (b.tipo === "imagen") {
+    cuerpo = `
+      ${b.src ? `<figure class="imagen"><img src="${esc(rutaImagen(b.src))}" alt=""></figure>` : ""}
+      <label class="btn${b.src ? "" : " principal"} foto">${b.src ? "Cambiar imagen" : "Tomar foto o escoger imagen"}<input type="file" accept="image/*" data-imagen="${ruta}" hidden></label>
+      <p class="ayuda-pegar ayuda-imagen" role="status"></p>
+      <input data-campo="${ruta}.pie" value="${esc(b.pie)}" placeholder="Pie de foto (opcional), ej: Mapa de las naciones en Hechos 2">`;
   } else if (b.tipo === "subtitulo") {
     cuerpo = `<input data-campo="${ruta}.texto" value="${esc(b.texto)}" placeholder="Subtítulo">`;
   } else if (b.tipo === "pasaje") {

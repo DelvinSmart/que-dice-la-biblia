@@ -8,7 +8,7 @@ function enviarVista() {
   clearTimeout(esperaVista);
   esperaVista = setTimeout(() => {
     if (!estudio || !vistaFrame.contentWindow) return;
-    vistaFrame.contentWindow.postMessage({ tipo: "estudio", estudio, paso: pasoEditado }, location.origin);
+    vistaFrame.contentWindow.postMessage({ tipo: "estudio", estudio, paso: pasoEditado, imagenes: window.IMAGENES_LOCALES || {} }, location.origin);
   }, 250);
 }
 

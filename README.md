@@ -11,7 +11,7 @@ Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.
 
 1. La primera vez en cada aparato, pega tu llave de GitHub (ver abajo). Se guarda solo en ese aparato.
 2. Toca **+ Nuevo estudio**, o abre uno de la lista.
-3. Llena la portada; añade **+ Punto**, dentro de cada punto **+ Subpunto**, y dentro de cada subpunto **+ Texto**, **+ Pasaje bíblico** o **+ Subtítulo**. Con ↑ ↓ cambias el orden y con ✕ borras.
+3. Llena la portada; añade **+ Punto**, dentro de cada punto **+ Subpunto**, y dentro de cada subpunto **+ Texto**, **+ Pasaje bíblico**, **+ Subtítulo** o **+ Imagen** (foto o imagen con pie de foto; se achica sola y va en un recuadro con la raya del color del punto). Con ↑ ↓ cambias el orden y con ✕ borras.
 En cada **Pasaje bíblico**, usa **Pegar desde la app Biblia**: copia el pasaje en tu app (con “Copiar” o “Compartir”), pégalo y toca **Llenar referencia y versículos**. Si el texto trae los números de versículo, se separan solos; si no, queda en un solo recuadro con el rango (por ejemplo 22-23).
 
 Con el botón **Foto o captura** puedes tomar una foto o escoger una captura: el panel lee el texto (sin subir la foto a ningún servidor) y muestra la lista de versículos encontrados. Marca los que quieres (puedes corregir el número o el texto) y toca **Usar los seleccionados**: la referencia se arma sola con el libro y el capítulo de la foto o de la referencia, por ejemplo `Jeremías 1:1-3 LBLA` o `Jeremías 1:1, 5, 30 LBLA`. La primera vez tarda unos segundos en preparar el lector.
@@ -38,6 +38,7 @@ Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea ot
 ## Archivos
 
 - `estudios/`: un archivo JSON por estudio. Aquí está todo el contenido.
+- `imagenes/`: las imágenes que se agregan a los estudios desde el panel.
 - `index.html` + `js/inicio.js`: la página de inicio con la lista de estudios.
 - `estudio.html` + `js/mapa.js`: la página de cada estudio (`estudio.html?e=nombre-del-archivo`). Con `?vista=1` es la vista previa del panel.
 - `js/estudios.js`: carga los estudios y convierte los bloques en HTML.
@@ -50,6 +51,7 @@ Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea ot
   - `js/panel-lista.js`: la pantalla de la llave y la lista de estudios.
   - `js/panel-editor.js`: el editor de temas, puntos, textos, versículos y subtítulos.
   - `js/panel-foto.js`: el botón “Foto o captura”: lee el texto de una imagen dentro del navegador (Tesseract.js) y lo deja listo para revisar.
+  - `js/panel-imagen.js`: el bloque “+ Imagen”: achica la foto en el aparato y la sube a `imagenes/` al publicar.
   - `js/panel-pegar.js`: “Pegar desde la app Biblia”: lee lo copiado de la app y llena la referencia y los versículos.
   - `js/panel-publicar.js`: publicar y eliminar estudios.
   - `js/panel-vista.js`: la vista previa en vivo.

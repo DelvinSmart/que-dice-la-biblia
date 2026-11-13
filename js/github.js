@@ -54,6 +54,14 @@ const Github = {
     return r.content.sha;
   },
 
+  // Sube una imagen (contenido ya en base64) a la ruta indicada, por ejemplo imagenes/estudio-123.jpg
+  subirArchivo(ruta, base64, mensaje) {
+    return this.pedir(`contents/${ruta.split("/").map(encodeURIComponent).join("/")}`, {
+      method: "PUT",
+      body: JSON.stringify({ message: mensaje, content: base64, branch: RAMA })
+    });
+  },
+
   borrar(slug, sha) {
     return this.pedir(`contents/estudios/${encodeURIComponent(slug)}.json`, {
       method: "DELETE",

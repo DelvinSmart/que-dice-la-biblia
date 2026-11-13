@@ -156,3 +156,8 @@ body{margin:0}
 .modo-vista{padding-block:16px 24px}
 .modo-vista .volver,.modo-vista #pdf{display:none}
 .modo-vista .idiomas a{pointer-events:none}
+
+/* Imagen dentro de un subpunto: mismo recuadro que los versículos, con la raya del color del punto */
+.imagen{margin:0 0 14px;background:var(--verse-bg);border-left:3px solid var(--c);border-radius:4px 10px 10px 4px;padding:12px;break-inside:avoid}
+.imagen img{display:block;width:100%;height:auto;max-width:100%;border-radius:8px}
+.imagen figcaption{margin-top:8px;font-size:13px;color:var(--muted);text-align:center}
