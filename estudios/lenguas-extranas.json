@@ -23,6 +23,16 @@
             {
               "tipo": "texto",
               "texto": "<p>Si vamos a los textos originales, vemos que la palabra <b>\"extrañas\"</b> o <b>\"desconocidas\"</b></p>\n<p>Referente a este término, no existe en las Escrituras; ellas fueron injertadas posteriormente por algunos traductores.</p>\n<p>(En 1 Corintios 14:21, donde la traducción dice \"lenguas extrañas\", el griego usa <i>heteroglōssois</i>, que significa \"de otras lenguas\", o sea, idiomas de otros pueblos; Pablo está citando a Isaías 28:11, donde esas “otras lenguas” eran el idioma de los asirios: un idioma humano.)</p>\n<p>El término griego empleado es <span class=\"g\">glōssa</span>, lo que quiere decir literalmente <b>\"lengua\" o \"idioma humano\"</b>.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Corintios 14:21 LBLA",
+              "versiculos": [
+                {
+                  "numero": "21",
+                  "texto": "En la ley está escrito: POR HOMBRES DE LENGUAS EXTRAÑAS Y POR BOCA DE EXTRAÑOS HABLARÉ A ESTE PUEBLO, Y NI AUN ASÍ ME ESCUCHARÁN, dice el Señor."
+                }
+              ]
             }
           ]
         },
