@@ -213,12 +213,14 @@ function prepararLBLA(boton, caja) {
   const m = medidasLBLA(boton.closest(".pasajes").clientWidth);
   let extra = 0;
   // Todos los versículos del pasaje, uno debajo del otro: cada uno es la página de Lockman de ese versículo,
-  // recortada a su recuadro con el mismo espacio arriba, abajo y a los lados (--lbla-margen)
+  // recortada justo a su recuadro (sin el fondo de alrededor). Una tapa transparente encima no deja moverla
+  // ni tocarla por dentro (Safari la deja mover aunque se le diga que no con CSS).
   caja.innerHTML = `
     <div class="lbla-versos">${versos.map(n => `
       <div class="lbla-recorte" data-versiculo="${n}">
         <p class="ventana-cargando">${T.cargandoLBLA}</p>
         <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org" src="${esc(enlaceLockman(ref, n))}" scrolling="no" tabindex="-1"></iframe>
+        <span class="lbla-tapa" aria-hidden="true"></span>
       </div>`).join("")}
     </div>
     <div class="lbla-pie">
@@ -231,7 +233,7 @@ function prepararLBLA(boton, caja) {
     const marco = recorte.querySelector("iframe");
     const alto = m.tarjeta + m.linea * (lineas.get(recorte.dataset.versiculo) + extra);   // el recuadro del versículo
     recorte.style.width = `${(m.tarjetaAncho + 2 * m.margen) * m.escala}px`;
-    recorte.style.height = `${(m.margen + alto + m.margen) * m.escala}px`;
+    recorte.style.height = `${(alto + 2 * m.margen) * m.escala}px`;
     marco.style.width = `${m.ancho}px`;
     marco.style.height = `${m.encabezado + alto + m.sobra}px`;           // más alto: su botón "Ask" queda abajo, fuera
     marco.style.top = `-${(m.encabezado - m.margen) * m.escala}px`;

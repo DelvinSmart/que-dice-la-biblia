@@ -213,7 +213,8 @@
   --lbla-encabezado:327px;
   --lbla-tarjeta:62px;
   --lbla-linea:33px;
-  --lbla-margen:14px; /* el mismo espacio arriba, abajo y a los lados (encima hay 16px libres antes del buscador) */
+  --lbla-margen:0px;  /* se recorta justo el recuadro del versículo, sin el fondo de alrededor */
+  --lbla-tarjeta-radio:16px; /* las esquinas del recuadro de Lockman */
   /* el recuadro visible del versículo empieza a 26px del borde de la página y mide el ancho − 56px (2 × 26 + 4) */
   --lbla-tarjeta-izquierda:26px;
   --lbla-tarjeta-resta:4px;

@@ -236,10 +236,11 @@ body{margin:0}
   transition:opacity var(--dur-200) ease,transform var(--dur-200) ease,filter var(--dur-200) ease}
 /* El versículo de Lockman con las esquinas redondeadas y un poco separado del borde del recuadro */
 .lbla-versos{display:grid;gap:var(--esp-8);justify-items:center;padding:var(--esp-8) 0}
-.lbla-recorte{position:relative;overflow:hidden;max-width:100%;border-radius:var(--radio-10);transition:height var(--dur-300) var(--curva-1)}
+.lbla-recorte{position:relative;overflow:hidden;max-width:100%;border-radius:calc(var(--lbla-tarjeta-radio) * var(--lbla-escala));transition:height var(--dur-300) var(--curva-1)}
 /* La página de Lockman no se puede mover ni tocar por dentro: al bajar se mueve nuestra página */
 .lbla-marco{position:absolute;left:0;border:0;opacity:0;transform-origin:top left;pointer-events:none;transition:opacity var(--dur-300) ease,height var(--dur-300) var(--curva-1)}
 .lbla-marco.listo{opacity:1}
+.lbla-tapa{position:absolute;inset:0}
 .ventana-cargando{position:absolute;inset:0;display:grid;place-items:center;margin:0;padding:var(--esp-16);text-align:center;font-size:var(--letra-13-5);color:var(--muted)}
 .ventana-cargando[hidden]{display:none}
 .lbla-pie{display:flex;align-items:center;gap:var(--esp-8);padding:var(--esp-6) var(--esp-10);border-top:var(--borde-1) solid var(--line);font-size:var(--letra-11)}
