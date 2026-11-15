@@ -93,6 +93,14 @@ function botonRVR(b) {
   return en ? `<span class="rvr">${esc(en)}</span>` : "";
 }
 
+// Botón "LBLA": abre el pasaje en la Biblia en línea de Lockman (el dueño de la LBLA) en una ventana sobre la
+// página (js/lbla.js). El texto no se copia: es la página de Lockman, con su nombre y su link.
+function botonLBLA(b) {
+  if (typeof enlaceLockman !== "function" || !esLBLA(b.referencia)) return "";
+  const url = enlaceLockman(b.referencia);
+  return url ? `<button type="button" class="boton-lbla" data-lockman="${esc(url)}" data-titulo="${esc(b.referencia)}">LBLA</button>` : "";
+}
+
 // ---------- Texto griego (SBLGNT, licencia CC BY 4.0: se puede publicar con el crédito) ----------
 
 const URL_SBLGNT = "https://sblgnt.com/";
@@ -188,7 +196,7 @@ function puntoHTML(p, completo = false) {
     while (k < bloques.length && bloques[k].tipo === "pasaje") grupo.push(bloques[k++]);
     k--;
     partes.push(`<div class="pasajes">${grupo.map(b =>
-      `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonRVR(b)}</span>`).join("")
+      `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonLBLA(b)}${botonRVR(b)}</span>`).join("")
     }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div>`).join("")}</div>`);
   }
   return partes.join("\n") + botonesFuentesHTML(p);

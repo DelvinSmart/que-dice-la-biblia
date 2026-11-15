@@ -77,3 +77,12 @@ function referenciaEnIngles(ref) {
   const r = leerReferencia(ref);
   return r ? `${r.libro.en} ${r.capitulo}:${r.tramos.map(([a, z]) => (a === z ? `${a}` : `${a}-${z}`)).join(", ")}` : "";
 }
+
+// El pasaje en la Biblia en línea de Lockman, el dueño de la LBLA: bible.lockman.org/lbla1995/<libro>/<cap>/<vers>
+// (el libro es su nombre en inglés en minúsculas con guiones; comprobado para los 66 libros el 15 nov 2026).
+// Lockman muestra un versículo por página: se abre en el primero del pasaje y ahí se pasa a los siguientes.
+function enlaceLockman(ref) {
+  const r = leerReferencia(ref);
+  if (!r || (r.version && r.version !== "LBLA")) return "";
+  return `https://bible.lockman.org/lbla1995/${r.libro.en.toLowerCase().replace(/ /g, "-")}/${r.capitulo}/${r.tramos[0][0]}`;
+}
