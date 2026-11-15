@@ -104,6 +104,9 @@ function show(i, fromMap, animar = true, marcar = true) {
   $("rlabel").textContent = s.fuentes ? T.fuentesTitulo : s.p.titulo;
   $("rbody").innerHTML = s.fuentes ? paginaFuentesHTML(ESTUDIO) : puntoHTML(s.p);
   if (s.p && marcar) marcarVisto(s.p, chips[cur]);
+  // Se adelanta la Reina-Valera de los pasajes de este subpunto, para que al tocar el botón ya esté
+  if (s.p && LANG !== "pt" && typeof adelantarRVR === "function")
+    adelantarRVR((s.p.bloques || []).filter(b => b.tipo === "pasaje").map(b => b.referencia));
   if (animar) {
     revelar([$("rtag"), $("rlabel")], 40);
     revelar($("rbody").children, 50, 60);

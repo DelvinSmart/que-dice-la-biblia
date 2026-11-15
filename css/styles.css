@@ -217,9 +217,6 @@ body{margin:0}
 .passage.griego p.falta{font-family:var(--body);font-size:var(--letra-13);font-style:italic;color:var(--muted)}
 .passage.griego .ref a{color:inherit;text-decoration:none;border-bottom:var(--borde-1) dotted currentColor}
 
-/* El globo de Logos no se ve: su texto se muestra dentro del recuadro del pasaje (js/rvr.js) */
-.rvr-trayendo .rtTooltip{visibility:hidden}
-.rvr-oculto{position:fixed;left:0;bottom:0;opacity:0;pointer-events:none}
 /* Botones pequeños dentro del botoncito del pasaje: "LBLA" y "RVR 1960", iguales. Grises; al tocarlos (o con su
    recuadro abierto) la letra y el borde se ponen del color del texto (blancos en el tema oscuro). */
 .boton-version{font:inherit;font-size:var(--letra-10-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-04);

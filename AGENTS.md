@@ -49,7 +49,7 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 ## Reina-Valera 1960 y LBLA al lado de cada pasaje
 
 - Cada pasaje (en español) tiene, dentro de su botoncito, los botones "LBLA" y "RVR 1960". Los tres (el pasaje, LBLA y RVR 1960) se abren en el **mismo lugar**, debajo de la fila, de a uno: si había otro abierto, primero se va con su efecto y después entra el nuevo (`abrirRecuadro` en `js/mapa.js`).
-- **RVR 1960:** el texto lo entrega Logos (Reftagger) en ese momento, versículo por versículo, y se muestra con el formato de nuestros pasajes y el crédito de Logos (`js/rvr.js`). No se guarda en la página. Logos no tiene la LBLA ni las versiones en portugués.
+- **RVR 1960:** el texto lo entrega el servicio de Reftagger de Logos (reftagger.bibliacdn.com) en ese momento: cada versículo se pide directamente y todos a la vez, y los del subpunto abierto se adelantan; se muestra con el formato de nuestros pasajes y el crédito de Logos (`js/rvr.js`). No se guarda en la página. Logos no tiene la LBLA ni las versiones en portugués.
 - **LBLA:** el versículo en la Biblia en línea de Lockman (bible.lockman.org), reducido y recortado para que se vea solo su recuadro, con flechas para los versículos del pasaje (`abrirLBLA` en `js/mapa.js`, medidas en `css/motor.css`). Tampoco se copia nada.
 - Si un pasaje todavía no tiene el texto de la LBLA, la página avisa que se puede leer en esos dos botones.
 
