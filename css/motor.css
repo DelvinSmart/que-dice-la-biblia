@@ -214,6 +214,7 @@
   --lbla-tarjeta:62px;
   --lbla-linea:33px;
   --lbla-margen:14px;
+  --lbla-margen-arriba:14px; /* encima del versículo hay 16px libres antes del buscador de Lockman */
   --lbla-columna-resta:97px;
   --lbla-ancho-letra:9.15px;
   --lbla-sobra:260px;

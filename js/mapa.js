@@ -193,6 +193,7 @@ function medidasLBLA(anchoReal) {
     tarjeta: px("--lbla-tarjeta"),
     linea: px("--lbla-linea"),
     margen: px("--lbla-margen"),
+    arriba: px("--lbla-margen-arriba"),
     sobra: px("--lbla-sobra"),
     letrasPorLinea: Math.max(10, Math.floor((ancho - px("--lbla-columna-resta")) / px("--lbla-ancho-letra")))
   };
@@ -225,10 +226,10 @@ function prepararLBLA(boton, caja) {
   const medir = () => {
     const alto = m.tarjeta + m.linea * (lineas + extra) + m.margen;   // solo el recuadro del versículo
     recorte.style.width = `${m.ancho * m.escala}px`;
-    recorte.style.height = `${alto * m.escala}px`;
+    recorte.style.height = `${(m.arriba + alto) * m.escala}px`;            // con un espacio arriba, como abajo
     marco.style.width = `${m.ancho}px`;
     marco.style.height = `${m.encabezado + alto + m.sobra}px`;           // más alto: su botón "Ask" queda abajo, fuera
-    marco.style.top = `-${m.encabezado * m.escala}px`;
+    marco.style.top = `-${(m.encabezado - m.arriba) * m.escala}px`;
     marco.style.transform = `scale(${m.escala})`;
   };
   const ir = nuevo => {
