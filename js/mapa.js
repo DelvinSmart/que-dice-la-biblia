@@ -36,6 +36,23 @@ function selectorIdioma() {
   $("lang-" + otro).href = `estudio.html?e=${encodeURIComponent(ESTUDIO.otro_idioma)}`;
 }
 
+// "Nuevo": sale hasta que la persona abre ese subpunto. Lo abierto se recuerda en este aparato
+// (localStorage, por estudio y por título del subpunto); en otro aparato vuelve a salir hasta que lo abra.
+const claveVistos = () => "vistos-" + SLUG;
+function leerVistos() {
+  try { return new Set(JSON.parse(localStorage.getItem(claveVistos()) || "[]")); } catch (e) { return new Set(); }
+}
+const esNuevo = p => p.nuevo && (VISTA || !leerVistos().has(p.titulo));
+function marcarVisto(p, chip) {
+  if (VISTA || !p.nuevo) return;
+  const vistos = leerVistos();
+  if (!vistos.has(p.titulo)) {
+    vistos.add(p.titulo);
+    try { localStorage.setItem(claveVistos(), JSON.stringify([...vistos])); } catch (e) {}
+  }
+  chip?.querySelector(".new")?.remove();
+}
+
 function dibujarMapa() {
   STEPS = []; chips = [];
   $("tree").innerHTML = "";
@@ -50,7 +67,7 @@ function dibujarMapa() {
       const idx = STEPS.findIndex(s => s.bi === bi && s.li === li);
       const c = document.createElement("button");
       c.type = "button"; c.className = "leaf";
-      c.innerHTML = `<span class="n">${bi + 1}.${li + 1}</span>${esc(p.titulo)}${p.nuevo ? `<span class="new">${T.nuevo}</span>` : ""}`;
+      c.innerHTML = `<span class="n">${bi + 1}.${li + 1}</span>${esc(p.titulo)}${esNuevo(p) ? `<span class="new">${T.nuevo}</span>` : ""}`;
       c.addEventListener("click", () => show(idx, true));
       leaves.appendChild(c); chips[idx] = c;
     });
@@ -74,7 +91,7 @@ function dibujarMapa() {
 }
 
 // Muestra el punto i en el panel de lectura. "animar" en false lo cambia sin el efecto de entrada.
-function show(i, fromMap, animar = true) {
+function show(i, fromMap, animar = true, marcar = true) {
   $("reader").hidden = !STEPS.length;
   if (!STEPS.length) return;
   cur = Math.max(0, Math.min(STEPS.length - 1, i));
@@ -83,6 +100,7 @@ function show(i, fromMap, animar = true) {
   $("rtag").textContent = s.fuentes ? `${contarFuentes(ESTUDIO)} ${T.fuentesCuenta}` : `${s.bi + 1} · ${s.tema.titulo}`;
   $("rlabel").textContent = s.fuentes ? T.fuentesTitulo : s.p.titulo;
   $("rbody").innerHTML = s.fuentes ? paginaFuentesHTML(ESTUDIO) : puntoHTML(s.p);
+  if (s.p && marcar) marcarVisto(s.p, chips[cur]);
   if (animar) {
     revelar([$("rtag"), $("rlabel")], 40);
     revelar($("rbody").children, 50, 60);
@@ -168,6 +186,8 @@ if (VISTA) {
     revelar(document.querySelectorAll(".branch"), 70, 160);
     let start = 0;
     try { start = parseInt(localStorage.getItem("paso-" + SLUG) || "0", 10) || 0; } catch (e) {}
-    show(start);
+    // Al entrar se muestra solo el último subpunto leído. En el teléfono queda debajo del mapa y todavía
+    // no se ve, así que no cuenta como abierto; en la computadora sale al lado y sí se ve.
+    show(start, false, true, window.matchMedia("(min-width:921px)").matches);
   })();
 }
