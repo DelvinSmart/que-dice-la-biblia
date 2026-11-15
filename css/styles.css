@@ -177,3 +177,21 @@ body{margin:0}
 .enlace-video{margin:0;text-align:center}
 .enlace-video a{color:var(--c);font-weight:600}
 .solo-pdf{display:none}
+
+/* Fuente: de dónde se sacó la información, dentro del subpunto */
+.fuente{border:1px dashed var(--line);border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:14px;background:var(--surface)}
+.fuente-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.fuente-titulo{font-weight:700;margin-bottom:4px}
+.fuente p{margin:0 0 6px;color:var(--muted)}
+.fuente-link{font-weight:600;color:var(--c,var(--accent));text-decoration:none}
+.fuente-link span{font-weight:400;color:var(--muted)}
+.fuente-link:hover{text-decoration:underline}
+/* Todas las fuentes del estudio, debajo del mapa */
+.fuentes{margin:18px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.fuentes h2{font-family:var(--display);font-size:19px;margin:0 0 10px}
+.fuentes h2 span{font-family:var(--body);font-size:12px;font-weight:700;color:var(--muted);vertical-align:3px}
+.fuentes ol{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.fuentes li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:13.5px}
+.fuentes li > b{font-variant-numeric:tabular-nums;color:var(--accent)}
+.fuentes p{margin:2px 0;color:var(--muted)}
+.fuentes a{color:var(--accent);word-break:break-all;font-size:12.5px}

@@ -1,6 +1,6 @@
 // Panel · medidor de citas bíblicas. Lockman permite citar la LBLA hasta 500 versículos por obra,
 // siempre que los versículos no pasen del 25% del texto (https://www.lockman.org/espanol/permiso-para-citar/).
-// Se mide todo el estudio: los versículos contra todo lo que escribe el autor (títulos, preguntas, textos…).
+// Se mide todo el estudio: los versículos contra todo lo que escribe el autor (títulos, preguntas, textos, fuentes…).
 // Si se pasa, Publicar no publica y dice cuánto texto propio falta.
 
 const LIMITE_VERSICULOS = 500;
@@ -34,7 +34,7 @@ function medir(e) {
           if (!conTexto.length && !b.imagen) sinTexto += n;
           deBiblia += conTexto.reduce((s, v) => s + palabras(v.texto), 0);
         } else {
-          propias += palabras(b.texto) + palabras(b.pie);
+          propias += palabras(b.texto) + palabras(b.pie) + palabras(b.titulo);
         }
       }
     }

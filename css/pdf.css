@@ -51,3 +51,17 @@ h1{font-family:var(--display);font-weight:800;font-size:34pt;margin:0 0 8px}
 .marco-video,.imagen video,.enlace-video{display:none}
 .solo-pdf{display:block;margin:6px 0 0;font-size:9.5pt;color:var(--muted);text-align:center;word-break:break-all}
 img.solo-pdf{width:100%;max-height:90mm;object-fit:cover;border-radius:6px}
+
+.fuente{border:1px dashed #0003;border-radius:6px;padding:6px 10px;margin:0 0 10px;font-family:var(--body);font-size:9pt;break-inside:avoid}
+.fuente-tag{font-size:7pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#666}
+.fuente-titulo{font-weight:700}
+.fuente p{margin:2px 0}
+.fuente-link{display:none}
+.fuente-url{font-size:8pt;color:#555;word-break:break-all;text-align:left}
+.fuentes{break-before:page;font-family:var(--body)}
+.fuentes h2{font-family:var(--display);font-size:18pt;margin:0 0 10px}
+.fuentes h2 span{font-size:9pt;color:#666}
+.fuentes ol{list-style:none;margin:0;padding:0}
+.fuentes li{display:grid;grid-template-columns:30px 1fr;gap:6px;margin:0 0 8px;font-size:9.5pt;break-inside:avoid}
+.fuentes p{margin:1px 0;color:#444}
+.fuentes a{color:#333;word-break:break-all;font-size:8.5pt;text-decoration:none}

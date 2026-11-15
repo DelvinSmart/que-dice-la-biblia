@@ -5,7 +5,7 @@ const COLORES_NOMBRES = {
   morado: "Morado", verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rosado: "Rosado", azul: "Azul",
   rojo: "Rojo", celeste: "Celeste", lima: "Lima", cobre: "Cobre", pizarra: "Pizarra"
 };
-const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo", imagen: "Imagen", video: "Video" };
+const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo", imagen: "Imagen", video: "Video", fuente: "Fuente" };
 
 const nuevoTema = () => ({ titulo: "", subtitulo: "", color: "morado", puntos: [nuevoPunto()] });
 const nuevoPunto = () => ({ titulo: "", nuevo: false, bloques: [] });
@@ -13,6 +13,7 @@ const nuevoBloque = tipo =>
   tipo === "pasaje" ? { tipo, referencia: "", versiculos: [{ numero: "1", texto: "" }] }
   : tipo === "imagen" ? { tipo, src: "", pie: "" }
   : tipo === "video" ? { tipo, url: "", src: "", pie: "" }
+  : tipo === "fuente" ? { tipo, titulo: "", texto: "", url: "" }
   : { tipo, texto: "" };
 
 // ---------- Piezas del formulario ----------
@@ -122,6 +123,7 @@ function dibujarPunto(p, i, j) {
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="subtitulo">+ Subtítulo</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="imagen">+ Imagen</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="video">+ Video</button>
+        <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="fuente">+ Fuente</button>
       </div>
       <details class="vista">
         <summary>Ver cómo queda</summary>
@@ -155,6 +157,14 @@ function dibujarBloque(b, ruta) {
       <label class="btn foto">${b.src ? "Cambiar video" : "O subir un video corto (máx. 25 MB)"}<input type="file" accept="video/*" data-video="${ruta}.src" hidden></label>
       <p class="ayuda-pegar ayuda-imagen" role="status"></p>
       <input data-campo="${ruta}.pie" value="${esc(b.pie)}" placeholder="Pie del video (opcional)">`;
+  } else if (b.tipo === "fuente") {
+    const linkMalo = b.url && !linkSeguro(b.url);
+    cuerpo = `
+      <p class="ayuda-fuente">De dónde sacaste esta información: el nombre del libro, léxico, página o artículo, qué se sacó de ahí y el link para que cualquiera lo pueda revisar.</p>
+      <input data-campo="${ruta}.titulo" value="${esc(b.titulo)}" placeholder="Nombre de la fuente, ej: Léxico Strong · G1100 glōssa">
+      <textarea data-campo="${ruta}.texto" rows="3" placeholder="Qué dice o qué se sacó de ahí, con tus palabras">${esc(b.texto)}</textarea>
+      <input data-campo="${ruta}.url" value="${esc(b.url)}" placeholder="Link, ej: https://…" inputmode="url">
+      ${linkMalo ? `<p class="ayuda-pegar">El link tiene que empezar con https:// para que se pueda abrir.</p>` : ""}`;
   } else if (b.tipo === "subtitulo") {
     cuerpo = `<input data-campo="${ruta}.texto" value="${esc(b.texto)}" placeholder="Subtítulo">`;
   } else if (b.tipo === "pasaje") {

@@ -12,6 +12,7 @@ Lee esto antes de escribir o cambiar un estudio.
 
 ## Los estudios
 
+- **Fuentes:** cada subpunto puede llevar bloques `{"tipo": "fuente", "titulo": "…", "texto": "…", "url": "https://…"}` que explican de dónde se sacó la información (léxico, libro, artículo), con su link. Salen en su subpunto y todas juntas en "Fuentes de este estudio", debajo del mapa y al final del PDF. Cada dato histórico, de idioma original o de fecha debe tener su fuente. No inventes fuentes ni links: si no estás seguro, pregúntale al autor.
 - Un estudio **no es código**. Es un archivo JSON en `estudios/`, y el modelo es `estudios/lenguas-extranas.json`. Para un estudio nuevo no se toca el HTML, el CSS ni el JS.
 - Escribe con las palabras del autor y respeta su forma de hablar. No cambies su texto sin preguntarle.
 - Los versículos van en LBLA. Lockman permite citar hasta 500 versículos por obra, sin un libro completo y sin pasar del 25% del texto, con el aviso completo y un enlace a www.LBLA.com (https://www.lockman.org/espanol/permiso-para-citar/). La página y el PDF ya ponen el aviso solos en todo pasaje cuya referencia termine en "LBLA": escribe siempre la versión al final de la referencia.

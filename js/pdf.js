@@ -23,6 +23,7 @@
     });
     out += "</section>";
   });
+  out += fuentesHTML(e);
   document.getElementById("app").innerHTML = out;
   document.body.dataset.listo = "1";
 })();

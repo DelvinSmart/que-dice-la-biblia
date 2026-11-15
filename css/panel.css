@@ -183,3 +183,5 @@
 .medida.rojo b{color:var(--b7)}
 .medida-aviso{grid-column:1/-1;margin:0;color:var(--b7)}
 @media (max-width:640px){ .medidor{grid-template-columns:1fr} }
+
+.ayuda-fuente{margin:0;font-size:13px;color:var(--muted)}
