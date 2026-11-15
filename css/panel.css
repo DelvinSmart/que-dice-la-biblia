@@ -151,3 +151,35 @@
 .verso-sel .num{text-align:center}
 .acciones-sel{display:flex;flex-wrap:wrap;gap:8px}
 .fila-botones{display:flex;flex-wrap:wrap;gap:8px}
+
+/* Buscador de versículos: libro, capítulo, desde, hasta y versión en una fila que se acomoda */
+.buscador{display:grid;grid-template-columns:minmax(150px,2fr) repeat(3,minmax(64px,1fr)) minmax(96px,1.2fr) auto;gap:8px;align-items:end;
+  background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px}
+.buscador label{display:grid;gap:4px;min-width:0}
+.buscador label span{font-size:12px;font-weight:600;color:var(--muted)}
+.buscador input,.buscador select{width:100%;min-width:0}
+.buscador .b-aviso{grid-column:1/-1;margin:0}
+.buscador .b-aviso:empty{display:none}
+.fila-referencia{display:flex;gap:8px;align-items:center}
+.fila-referencia input{flex:1;min-width:0}
+.abrir-biblia{white-space:nowrap;text-decoration:none}
+@media (max-width:640px){
+  .buscador{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .buscador .b-libro-campo{grid-column:1/-1}
+  .buscador .b-version-campo{grid-column:span 2}
+  .fila-referencia{flex-wrap:wrap}
+  .fila-referencia input{flex-basis:100%}
+  .fila-referencia .btn{flex:1;text-align:center}
+}
+
+/* Medidor de citas: versículos (máx. 500) y porcentaje del texto (máx. 25%) */
+.medidor{flex-basis:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px;font-size:12.5px;color:var(--muted)}
+.medidor:empty{display:none}
+.medida{display:grid;gap:4px}
+.medida b{color:var(--ink)}
+.barrita{display:block;height:5px;border-radius:3px;background:var(--line);overflow:hidden}
+.barrita i{display:block;height:100%;border-radius:3px;background:var(--m);transition:width .3s ease}
+.medida.verde{--m:var(--b3)} .medida.amarillo{--m:var(--b6)} .medida.rojo{--m:var(--b7)}
+.medida.rojo b{color:var(--b7)}
+.medida-aviso{grid-column:1/-1;margin:0;color:var(--b7)}
+@media (max-width:640px){ .medidor{grid-template-columns:1fr} }

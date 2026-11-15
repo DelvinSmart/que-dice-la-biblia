@@ -55,6 +55,7 @@ function marcarCambio() {
   cambios = true;
   $("estado").textContent = "Cambios sin publicar";
   guardarBorrador();
+  actualizarMedidor();
 }
 
 // ---------- Limpieza de lo que se escribe o se pega ----------

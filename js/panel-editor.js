@@ -74,6 +74,7 @@ function dibujar() {
     ${slug ? `<section class="bloque-ed zona-peligro">
       <button type="button" class="btn peligro" data-accion="eliminar-estudio">Eliminar este estudio</button>
     </section>` : ""}`;
+  actualizarMedidor();
 }
 
 function dibujarTema(t, i) {
@@ -159,6 +160,7 @@ function dibujarBloque(b, ruta) {
   } else if (b.tipo === "pasaje") {
     const vacio = !b.referencia && (b.versiculos || []).every(v => !v.texto);
     cuerpo = `
+      ${buscadorHTML(b, ruta)}
       <details class="pegar"${vacio ? " open" : ""}>
         <summary>Pegar desde la app Biblia, o leer una foto</summary>
         <label class="btn foto">Foto o captura<input type="file" accept="image/*" data-foto="${ruta}" hidden></label>
@@ -167,7 +169,11 @@ function dibujarBloque(b, ruta) {
         <p class="ayuda-pegar" role="status"></p>
         <div class="seleccion"></div>
       </details>
-      <input data-campo="${ruta}.referencia" data-limpiar="referencia" value="${esc(b.referencia)}" placeholder="Referencia y versión, ej: Juan 3:16 LBLA">
+      <div class="fila-referencia">
+        <input data-campo="${ruta}.referencia" data-limpiar="referencia" value="${esc(b.referencia)}" placeholder="Referencia y versión, ej: Juan 3:16 LBLA">
+        ${botonAbrirBiblia(b.referencia)}
+        ${pasajeVacio(b) && leerReferencia(b.referencia) ? `<button type="button" class="btn" data-accion="reusar" data-ruta="${ruta}">Buscar en mis estudios</button>` : ""}
+      </div>
       ${b.imagen ? `<img class="pasaje-img" src="${esc(rutaImagen(b.imagen))}" alt="">` : ""}
       <div class="fila-botones">
         <label class="btn foto">${b.imagen ? "Cambiar imagen" : "Imagen en vez de versículos"}<input type="file" accept="image/*" data-imagen="${ruta}.imagen" hidden></label>
@@ -187,6 +193,71 @@ function dibujarBloque(b, ruta) {
     <div class="cab-bloque"><span class="tipo">${TIPOS[b.tipo] || b.tipo}</span>${botonesOrden(ruta)}</div>
     ${cuerpo}
   </div>`;
+}
+
+// ---------- Buscador de versículos (js/biblia.js) ----------
+// Escoges libro, capítulo y versículos; arma la referencia y abre ese pasaje en Bible.com o en la app YouVersion
+// para copiarlo. El texto no se trae solo: YouVersion no ofrece la LBLA para traerla automáticamente.
+
+const versionesDelIdioma = () => (estudio.idioma === "pt" ? ["ARA", "ARC"] : ["LBLA", "RVR1960", "NVI"]);
+
+function buscadorHTML(b, ruta) {
+  const r = leerReferencia(b.referencia);
+  const idioma = estudio.idioma === "pt" ? "pt" : "es";
+  const versiones = versionesDelIdioma();
+  const version = r && versiones.includes(r.version) ? r.version : versiones[0];
+  const num = (clase, etiqueta, valor, max) =>
+    `<label><span>${etiqueta}</span><input class="${clase}" type="number" inputmode="numeric" min="1"${max ? ` max="${max}"` : ""} value="${valor ?? ""}"></label>`;
+  return `
+      <div class="buscador" data-ruta="${ruta}">
+        <label class="b-libro-campo"><span>Libro</span><select class="b-libro">
+          <option value="">— Escoge —</option>
+          ${LIBROS.map(l => `<option value="${l.codigo}"${r && r.libro === l ? " selected" : ""}>${esc(l[idioma])}</option>`).join("")}
+        </select></label>
+        ${num("b-cap", "Capítulo", r?.capitulo, r?.libro.capitulos)}
+        ${num("b-desde", "Desde", r?.tramos[0][0])}
+        ${num("b-hasta", "Hasta", r?.tramos[0][1])}
+        <label class="b-version-campo"><span>Versión</span><select class="b-version">${versiones.map(v => `<option${v === version ? " selected" : ""}>${v}</option>`).join("")}</select></label>
+        <button type="button" class="btn" data-accion="poner-referencia" data-ruta="${ruta}">Poner</button>
+        <p class="ayuda-pegar b-aviso" role="status">${avisosPasaje.get(b) || (r && r.tramos.length > 1 ? "Esta referencia tiene versículos salteados: el buscador muestra el primero. Para cambiarla completa, escríbela abajo." : "")}</p>
+      </div>`;
+}
+
+const botonAbrirBiblia = ref => {
+  const url = enlaceBiblia(ref, estudio.idioma);
+  return `<a class="btn abrir-biblia" href="${esc(url)}" target="_blank" rel="noopener"${url ? "" : " hidden"}>Abrir en la Biblia ↗</a>`;
+};
+
+function ponerReferencia(boton, ruta) {
+  const caja = boton.closest(".buscador");
+  const libro = LIBROS.find(l => l.codigo === caja.querySelector(".b-libro").value);
+  const cap = parseInt(caja.querySelector(".b-cap").value, 10);
+  const desde = parseInt(caja.querySelector(".b-desde").value, 10);
+  const hasta = parseInt(caja.querySelector(".b-hasta").value, 10) || desde;
+  const aviso = caja.querySelector(".b-aviso");
+  const error = !libro ? "Escoge el libro."
+    : !(cap >= 1 && cap <= libro.capitulos) ? `${libro[estudio.idioma === "pt" ? "pt" : "es"]} tiene ${libro.capitulos} capítulo${libro.capitulos > 1 ? "s" : ""}.`
+    : !(desde >= 1) ? "Escribe desde qué versículo."
+    : hasta < desde ? "“Hasta” no puede ser menor que “Desde”." : "";
+  if (error) { aviso.textContent = error; return; }
+  asignar(`${ruta}.referencia`, escribirReferencia(estudio.idioma, libro, cap, desde, hasta, caja.querySelector(".b-version").value));
+  if (pasajeVacio(obtener(ruta))) return reusar(ruta);
+  marcarCambio();
+  dibujar();
+}
+
+// Usa los versículos que ya están copiados en algún estudio (js/panel-reusar.js)
+async function reusar(ruta) {
+  const pasaje = obtener(ruta);
+  avisosPasaje.set(pasaje, "Buscando en tus estudios…");
+  dibujar();
+  try {
+    avisosPasaje.set(pasaje, mensajeReuso(await reusarVersiculos(ruta)));
+  } catch (err) {
+    avisosPasaje.set(pasaje, "No se pudieron revisar los otros estudios. Prueba de nuevo.");
+  }
+  marcarCambio();
+  dibujar();
 }
 
 function actualizarVista(el) {
@@ -213,6 +284,8 @@ $("editor").addEventListener("click", e => {
   if (accion === "borrar" && b.dataset.seguro !== "1") return pedirConfirmacion(b, "¿Borrar?");
   if (accion === "eliminar-estudio") return eliminarEstudio(b);
   if (accion === "llenar-pasaje") return llenarPasaje(b, ruta);
+  if (accion === "poner-referencia") return ponerReferencia(b, ruta);
+  if (accion === "reusar") return reusar(ruta);
   if (accion === "abrir") {
     const obj = obtener(ruta);
     abiertos.has(obj) ? abiertos.delete(obj) : abiertos.add(obj);
@@ -248,6 +321,10 @@ $("editor").addEventListener("input", e => {
   else return;
   marcarCambio();
   actualizarVista(el);
+  if (el.dataset.limpiar === "referencia") {
+    const fila = el.closest(".fila-referencia");
+    fila.querySelector(".abrir-biblia").outerHTML = botonAbrirBiblia(el.value);
+  }
 });
 
 $("editor").addEventListener("change", e => {

@@ -31,3 +31,9 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 3. **La IA los acomoda:** pone cada pasaje en su subpunto como un bloque `{"tipo": "pasaje", "referencia": "Efesios 4:11 LBLA", "versiculos": [{"numero": "11", "texto": "…"}]}`, separa los versículos por número, quita lo que la app agrega (enlaces, "Compartir", etc.) y no cambia ni una palabra del texto.
 4. **La IA comprueba y le dice al autor:** cuántos pasajes recibió, cuáles faltan y si algún texto no coincide con su referencia (por ejemplo, un número de versículo que no está en el rango). Lo que falte queda como referencia sin texto hasta que el autor lo pegue; nunca se rellena.
 5. Otra versión (RVR1960, ARA, etc.) se trata igual, con su sigla al final de la referencia. El aviso de derechos automático de la página es solo para la LBLA; para otra versión, avisa al autor antes de publicar.
+
+## Herramientas del panel para los versículos
+
+- **Buscador:** en cada pasaje se escoge libro, capítulo, desde, hasta y versión. "Poner" escribe la referencia y "Abrir en la Biblia" abre ese pasaje exacto en Bible.com (o en la app YouVersion en el teléfono) para copiarlo. Los libros y los enlaces están en `js/biblia.js`.
+- **Versículos ya copiados:** al poner una referencia, el panel busca si esos versículos ya están en algún estudio, en la misma versión, y los reutiliza (`js/panel-reusar.js`). La IA hace lo mismo: antes de pedirle un versículo al autor, busca si ya está en otro estudio de `estudios/` y lo reutiliza tal cual.
+- **Medidor:** el panel muestra los versículos (máx. 500) y qué porcentaje del estudio es texto bíblico (máx. 25%), y no publica si se pasa (`js/panel-medidor.js`). La IA que haga commit directo tiene que comprobar lo mismo antes: si los versículos pasan del 25% de las palabras del estudio, no publica y le dice al autor cuántas palabras de explicación faltan.
