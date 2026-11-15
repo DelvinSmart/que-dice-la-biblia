@@ -162,5 +162,22 @@ function paginaFuentesHTML(e) {
     `<div class="grupo-fuentes"><h3><b>${g.n}</b> ${esc(g.titulo)}</h3>${g.fuentes.map(fichaFuenteHTML).join("")}</div>`).join("")}</section>`;
 }
 
-const puntoHTML = p => (p.bloques || []).map(bloqueHTML).join("\n") + botonesFuentesHTML(p);
+// Un subpunto. En la página los pasajes salen cerrados, como botoncitos con su referencia: los que van
+// seguidos quedan en una misma fila y, al tocar uno, se abre debajo (js/mapa.js). Con "completo"
+// (PDF y "Ver cómo queda" del panel) salen abiertos.
+function puntoHTML(p, completo = false) {
+  const bloques = p.bloques || [];
+  if (completo) return bloques.map(bloqueHTML).join("\n") + botonesFuentesHTML(p);
+  const partes = [];
+  for (let k = 0; k < bloques.length; k++) {
+    if (bloques[k].tipo !== "pasaje") { partes.push(bloqueHTML(bloques[k])); continue; }
+    const grupo = [];
+    while (k < bloques.length && bloques[k].tipo === "pasaje") grupo.push(bloques[k++]);
+    k--;
+    partes.push(`<div class="pasajes">${grupo.map(b =>
+      `<button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>`).join("")
+    }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div>`).join("")}</div>`);
+  }
+  return partes.join("\n") + botonesFuentesHTML(p);
+}
 const colorDe = tema => COLORES[tema.color] || "--b1";

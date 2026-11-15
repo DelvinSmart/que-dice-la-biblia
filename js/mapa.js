@@ -128,10 +128,28 @@ function abrirFuente(chip) {
   pop.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
+// Pasajes: al tocar un botoncito se abre su pasaje debajo de la fila, con efecto. Al tocarlo otra vez se
+// cierra; al tocar otro pasaje del subpunto, el anterior se cierra.
+function abrirPasaje(chip) {
+  const fila = chip.closest(".pasajes");
+  const k = [...fila.querySelectorAll(".chip-pasaje")].indexOf(chip);
+  const caja = fila.querySelectorAll(".pasaje-abierto")[k];
+  const abierto = chip.getAttribute("aria-expanded") === "true";
+  $("rbody").querySelectorAll(".chip-pasaje").forEach(c => c.setAttribute("aria-expanded", "false"));
+  $("rbody").querySelectorAll(".pasaje-abierto").forEach(c => { c.hidden = true; });
+  if (abierto) return;
+  chip.setAttribute("aria-expanded", "true");
+  caja.hidden = false;
+  revelar([caja], 0);
+  caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
 function controles() {
   $("rbody").addEventListener("click", e => {
     const chip = e.target.closest(".chip-fuente");
     if (chip && STEPS[cur]?.p) abrirFuente(chip);
+    const pasaje = e.target.closest(".chip-pasaje");
+    if (pasaje) abrirPasaje(pasaje);
   });
   $("prev").addEventListener("click", () => show(cur - 1));
   $("next").addEventListener("click", () => show(cur + 1));

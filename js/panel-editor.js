@@ -174,7 +174,7 @@ function dibujarPunto(p, i, j) {
       </div>
       <details class="vista">
         <summary>Ver cómo queda</summary>
-        <div class="rbody vista-previa" data-vista="${ruta}">${puntoHTML(p)}</div>
+        <div class="rbody vista-previa" data-vista="${ruta}">${puntoHTML(p, true)}</div>
       </details>
     </div>` : ""}
   </div>`;
@@ -380,7 +380,7 @@ async function reusar(ruta) {
 function actualizarVista(el) {
   const punto = el.closest(".punto-ed");
   const vista = punto && punto.querySelector("[data-vista]");
-  if (vista) vista.innerHTML = puntoHTML(obtener(vista.dataset.vista));
+  if (vista) vista.innerHTML = puntoHTML(obtener(vista.dataset.vista), true);
 }
 
 // ---------- Botones ----------

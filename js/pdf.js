@@ -19,7 +19,7 @@
   temas.forEach((t, bi) => {
     out += `<section class="sec" style="--c:var(${colorDe(t)})"><div class="sh"><span class="num">${bi + 1}</span><div class="t"><small>${esc(t.subtitulo)}</small>${esc(t.titulo)}</div></div>`;
     (t.puntos || []).forEach((p, li) => {
-      out += `<div class="pt"><div class="pl"><span class="n">${bi + 1}.${li + 1}</span>${esc(p.titulo)}${p.nuevo ? `<span class="new">${T.nuevo}</span>` : ""}</div>${puntoHTML(p)}</div>`;
+      out += `<div class="pt"><div class="pl"><span class="n">${bi + 1}.${li + 1}</span>${esc(p.titulo)}${p.nuevo ? `<span class="new">${T.nuevo}</span>` : ""}</div>${puntoHTML(p, true)}</div>`;
     });
     out += "</section>";
   });
