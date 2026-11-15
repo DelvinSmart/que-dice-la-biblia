@@ -64,18 +64,16 @@ button:focus-visible{outline:var(--borde-3) solid var(--accent);outline-offset:v
   border:var(--borde-1-5) solid transparent;border-left:var(--borde-3) solid var(--c);border-radius:var(--radio-4) var(--radio-pildora) var(--radio-pildora) var(--radio-4);padding-right:var(--esp-6);
   transition:border-color var(--dur-150) ease}
 .pasaje-y-rvr:hover,.pasaje-y-rvr:has(.chip-pasaje[aria-expanded="true"]){border-color:var(--c);border-left-color:var(--c)}
-.pasaje-y-rvr:not(:has(.rvr-listo)){padding-right:0}
+.pasaje-y-rvr:not(:has(.boton-version)){padding-right:0}
 .chip-pasaje{font:inherit;font-size:var(--letra-12-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-05);text-transform:uppercase;color:var(--c);
   background:transparent;border:0;padding:var(--esp-6) var(--esp-6) var(--esp-6) var(--esp-12);margin:0;cursor:pointer;transition:transform var(--dur-150) ease}
-.pasaje-y-rvr:not(:has(.rvr-listo)) .chip-pasaje{padding-right:var(--esp-12)}
+.pasaje-y-rvr:not(:has(.boton-version)) .chip-pasaje{padding-right:var(--esp-12)}
 .chip-pasaje:active{transform:scale(.97)}
 .pasaje-abierto[hidden]{display:none}
 .pasaje-abierto.cerrando{opacity:0;transform:translateY(var(--esp-n6)) scale(.98);filter:blur(var(--desenfoque-4));
   transition:opacity var(--dur-200) ease,transform var(--dur-200) ease,filter var(--dur-200) ease}
 
 /* Botoncito "RVR 1960" en la referencia del pasaje (js/rvr.js); escondido hasta que Logos lo activa */
-.rvr{display:none}
-.rvr.rvr-listo{display:inline-flex;gap:var(--esp-4);white-space:nowrap}
 .pasaje-pendiente{font-family:var(--body);font-size:var(--letra-13);font-style:italic;color:var(--muted);margin:0 0 var(--esp-4)}
 .pasaje-abierto .passage{margin:var(--esp-2) 0 0}
 .passage p b{font-family:var(--body);font-size:var(--letra-12);color:var(--c);margin-right:var(--esp-4);vertical-align:var(--esp-1)}
@@ -219,33 +217,25 @@ body{margin:0}
 .passage.griego p.falta{font-family:var(--body);font-size:var(--letra-13);font-style:italic;color:var(--muted)}
 .passage.griego .ref a{color:inherit;text-decoration:none;border-bottom:var(--borde-1) dotted currentColor}
 
-/* El recuadro de Logos (Reftagger) con los colores de la página: claro u oscuro según el tema */
-.rtTooltip .rtContainer{background:var(--surface);border:var(--borde-1) solid var(--line);border-left:var(--borde-3) solid var(--accent);
-  border-radius:var(--radio-4) var(--radio-12) var(--radio-12) var(--radio-4);overflow:hidden}
-.rtTooltip.rtTooltipDropShadow .rtContainer{box-shadow:var(--sombra-2)}
-.rtTooltip .rtTooltipHeader{background:var(--verse-bg);color:var(--accent);font-family:var(--body);font-size:var(--letra-12);
-  font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-06);text-transform:uppercase;height:auto;line-height:var(--interlinea-1-4);padding:var(--esp-10) var(--esp-14) var(--esp-8)}
-.rtTooltip .rtTooltipBody,.rtTooltip .rtTooltipBody *{color:var(--ink);font-family:var(--display);font-size:var(--letra-16);line-height:var(--interlinea-1-55);font-weight:var(--peso-regular)}
-.rtTooltip .rtTooltipBody p{margin:0 0 var(--esp-6)}
-.rtTooltip .rtTooltipBrandLink a:link,.rtTooltip .rtTooltipBrandLink a:visited{color:var(--muted)}
-.rtTooltip .rtTooltipBrandLink .rtTooltipLogosIcon path{fill:var(--muted)}
-.rtTooltip .rtTooltipMoreLink:link,.rtTooltip .rtTooltipMoreLink:visited{color:var(--accent);font-family:var(--body);font-weight:var(--peso-semi)}
-
+/* El globo de Logos no se ve: su texto se muestra dentro del recuadro del pasaje (js/rvr.js) */
+.rvr-trayendo .rtTooltip{visibility:hidden}
+.rvr-oculto{position:fixed;left:0;bottom:0;opacity:0;pointer-events:none}
 /* Botones pequeños dentro del botoncito del pasaje: "LBLA" y "RVR 1960", iguales. Grises; al tocarlos (o con su
    recuadro abierto) la letra y el borde se ponen del color del texto (blancos en el tema oscuro). */
-.boton-lbla,.rvr a.boton-rvr{font:inherit;font-size:var(--letra-10-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-04);
+.boton-version{font:inherit;font-size:var(--letra-10-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-04);
   color:var(--muted);text-decoration:none;background:var(--surface);border:var(--borde-1) solid var(--line);border-radius:var(--radio-pildora);
   padding:var(--esp-1) var(--esp-7);cursor:pointer;white-space:nowrap;transition:color var(--dur-150) ease,border-color var(--dur-150) ease}
-.boton-lbla:hover,.boton-lbla[aria-expanded="true"],.boton-lbla:active,
-.rvr a.boton-rvr:hover,.rvr a.boton-rvr:active,.rvr a.boton-rvr.activo{color:var(--ink);border-color:var(--ink)}
-.pasaje-y-rvr:has(.boton-lbla){padding-right:var(--esp-6)}
-.pasaje-y-rvr:has(.boton-lbla) .chip-pasaje{padding-right:var(--esp-6)}
-.pasaje-y-rvr:has(.boton-lbla[aria-expanded="true"]){border-color:var(--c);border-left-color:var(--c)}
+.boton-version:hover,.boton-version[aria-expanded="true"],.boton-version:active{color:var(--ink);border-color:var(--ink)}
+.pasaje-y-rvr:has(.boton-version){padding-right:var(--esp-6)}
+.pasaje-y-rvr:has(.boton-version) .chip-pasaje{padding-right:var(--esp-6)}
+.pasaje-y-rvr:has(.boton-version[aria-expanded="true"]){border-color:var(--c);border-left-color:var(--c)}
 
 /* LBLA abierto: el recuadro del versículo de Lockman, en el mismo lugar y del mismo estilo que el pasaje */
 .lbla-abierto{margin:var(--esp-2) 0 0;background:var(--verse-bg);border-left:var(--borde-3) solid var(--c);border-radius:var(--radio-4) var(--radio-10) var(--radio-10) var(--radio-4);overflow:hidden}
-.lbla-abierto[hidden]{display:none}
-.lbla-abierto.cerrando{opacity:0;transform:translateY(calc(var(--esp-6) * -1)) scale(.98);filter:blur(var(--desenfoque-4));
+.lbla-abierto[hidden],.rvr-abierto[hidden]{display:none}
+.rvr-abierto .passage{margin:var(--esp-2) 0 0}
+.rvr-cargando{font-family:var(--body);font-size:var(--letra-13-5);font-style:italic;color:var(--muted)}
+.lbla-abierto.cerrando,.rvr-abierto.cerrando{opacity:0;transform:translateY(calc(var(--esp-6) * -1)) scale(.98);filter:blur(var(--desenfoque-4));
   transition:opacity var(--dur-200) ease,transform var(--dur-200) ease,filter var(--dur-200) ease}
 .lbla-recorte{position:relative;overflow:hidden;transition:height var(--dur-300) var(--curva-1)}
 .lbla-marco{position:absolute;left:0;border:0;opacity:0;transform-origin:top left;transition:opacity var(--dur-300) ease,height var(--dur-300) var(--curva-1)}

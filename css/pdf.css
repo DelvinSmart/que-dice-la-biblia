@@ -66,4 +66,4 @@ img.solo-pdf{width:100%;max-height:var(--pdf-esp-90-mm);object-fit:cover;border-
 .portada{background:var(--surface);border:var(--pdf-borde-1) solid var(--line);border-radius:var(--pdf-radio-12);padding:var(--pdf-esp-16) var(--pdf-esp-18);margin:0 0 var(--pdf-esp-16)}
 .portada .yb{margin-bottom:0}
 
-.rvr,.pasaje-pendiente{display:none}
+.boton-version,.pasaje-pendiente{display:none}

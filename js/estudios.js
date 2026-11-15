@@ -82,15 +82,14 @@ const refHTML = ref => esLBLA(ref) ? esc(ref).replace(/\bLBLA\b/, enlaceLBLA("LB
 const usaLBLA = e => (e.temas || []).some(t => (t.puntos || []).some(p => (p.bloques || []).some(b => b.tipo === "pasaje" && esLBLA(b.referencia))));
 const avisoLBLA = e => usaLBLA(e) ? `<p class="aviso-lbla">${AVISO_LBLA}</p>` : "";
 
-// ---------- Reina-Valera 1960 al lado de cada pasaje (Reftagger de Logos) ----------
-// Un botoncito "RVR 1960" en la referencia: al pasar el mouse (o tocarlo en el teléfono) Logos muestra el
-// pasaje en esa versión en un recuadro. El texto NO se guarda en la página: lo trae Logos en ese momento,
-// con su licencia. Lo activa js/rvr.js en la página del estudio; en el PDF y en el panel queda escondido.
-// Solo en español: Logos no tiene las versiones en portugués que usamos.
+// ---------- Reina-Valera 1960 al lado de cada pasaje (texto de Logos) ----------
+// Un botón "RVR 1960" dentro del botoncito del pasaje: abre el pasaje en la Reina-Valera 1960 en el mismo lugar
+// donde se abre el pasaje (js/mapa.js → abrirRVR, js/rvr.js). El texto NO se guarda en la página: lo entrega
+// Logos en ese momento, con su licencia. Solo en la página del estudio y solo en español (Logos no tiene las
+// versiones en portugués que usamos).
 function botonRVR(b) {
-  if ((document.documentElement.lang || "").startsWith("pt") || typeof referenciaEnIngles !== "function") return "";
-  const en = referenciaEnIngles(b.referencia);
-  return en ? `<span class="rvr">${esc(en)}</span>` : "";
+  if ((document.documentElement.lang || "").startsWith("pt") || typeof pasajeRVR !== "function" || !leerReferencia(b.referencia)) return "";
+  return `<button type="button" class="boton-version boton-rvr" data-referencia="${esc(b.referencia)}" aria-expanded="false">RVR 1960</button>`;
 }
 
 // Botón "LBLA": abre debajo, en el mismo lugar donde se abre el pasaje, el versículo en la Biblia en línea de
@@ -99,7 +98,7 @@ function botonRVR(b) {
 function botonLBLA(b) {
   if (typeof enlaceLockman !== "function" || !esLBLA(b.referencia)) return "";
   const url = enlaceLockman(b.referencia);
-  return url ? `<button type="button" class="boton-lbla" data-referencia="${esc(b.referencia)}" aria-expanded="false">LBLA</button>` : "";
+  return url ? `<button type="button" class="boton-version boton-lbla" data-referencia="${esc(b.referencia)}" aria-expanded="false">LBLA</button>` : "";
 }
 
 // ---------- Texto griego (SBLGNT, licencia CC BY 4.0: se puede publicar con el crédito) ----------
@@ -198,7 +197,7 @@ function puntoHTML(p, completo = false) {
     k--;
     partes.push(`<div class="pasajes">${grupo.map(b =>
       `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonLBLA(b)}${botonRVR(b)}</span>`).join("")
-    }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div><div class="lbla-abierto" hidden></div>`).join("")}</div>`);
+    }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div><div class="lbla-abierto" hidden></div><div class="rvr-abierto" hidden></div>`).join("")}</div>`);
   }
   return partes.join("\n") + botonesFuentesHTML(p);
 }

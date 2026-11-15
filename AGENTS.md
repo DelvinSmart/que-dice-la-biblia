@@ -46,18 +46,18 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 - No cuenta en el medidor de la LBLA. La página pone sola el crédito del SBLGNT.
 - El Antiguo Testamento (hebreo) todavía no está: su licencia hay que revisarla aparte.
 
-## Reina-Valera 1960 al lado de cada pasaje
+## Reina-Valera 1960 y LBLA al lado de cada pasaje
 
-- Cada pasaje (en español) tiene un botoncito "RVR 1960": al pasar el mouse, o al tocarlo en el teléfono, Reftagger de Logos muestra ese pasaje en la Reina-Valera 1960 en un recuadro. El texto **no** se guarda en la página: lo trae Logos en ese momento, con su licencia (`js/rvr.js`).
-- Si un pasaje todavía no tiene el texto de la LBLA, la página dice que se puede leer mientras tanto en la RVR 1960.
-- Logos no tiene la LBLA ni las versiones en portugués, por eso el botón es solo de la RVR 1960 y solo en español. Para Reftagger las referencias van en inglés (`referenciaEnIngles` en `js/biblia.js`).
+- Cada pasaje (en español) tiene, dentro de su botoncito, los botones "LBLA" y "RVR 1960". Los tres (el pasaje, LBLA y RVR 1960) se abren en el **mismo lugar**, debajo de la fila, de a uno: si había otro abierto, primero se va con su efecto y después entra el nuevo (`abrirRecuadro` en `js/mapa.js`).
+- **RVR 1960:** el texto lo entrega Logos (Reftagger) en ese momento, versículo por versículo, y se muestra con el formato de nuestros pasajes y el crédito de Logos (`js/rvr.js`). No se guarda en la página. Logos no tiene la LBLA ni las versiones en portugués.
+- **LBLA:** el versículo en la Biblia en línea de Lockman (bible.lockman.org), reducido y recortado para que se vea solo su recuadro, con flechas para los versículos del pasaje (`abrirLBLA` en `js/mapa.js`, medidas en `css/motor.css`). Tampoco se copia nada.
+- Si un pasaje todavía no tiene el texto de la LBLA, la página avisa que se puede leer en esos dos botones.
 
 ## El motor de diseño (obligatorio)
 
 - **Todos** los valores de diseño salen de `css/motor.css`: colores (claro y oscuro), tamaños de letra, pesos, interlineado, espacios, bordes, esquinas, separación de letras, duraciones, curvas, desenfoques y sombras. Las demás hojas (`styles.css`, `panel.css`, `pdf.css`) solo usan `var(--…)`.
 - **Candado:** `scripts/revisar-diseno.mjs` corre antes de armar el sitio (`scripts/construir.mjs`) y en la publicación. Si alguna hoja (fuera del motor) o algún JS escribe un color, una curva o un número con unidad (px, pt, mm, em, rem, s, ms), no se publica. Excepción: los `@media` y `@page`, porque CSS no deja usar variables ahí.
 - Si hace falta un valor nuevo, se agrega al motor con su nombre y se usa con `var(--nombre)`.
-- Además, cada pasaje con "LBLA" tiene un botón "LBLA" que abre debajo, en el lugar del pasaje, el primer versículo en la Biblia en línea de Lockman (bible.lockman.org, el dueño de la LBLA), recortado para que se vea solo su recuadro (`abrirLBLA` en `js/mapa.js`, `enlaceLockman` en `js/biblia.js`, medidas en `css/motor.css`). Tampoco se copia nada: es la página de Lockman dentro de la nuestra.
 
 ## "Leer capturas" en el panel
 

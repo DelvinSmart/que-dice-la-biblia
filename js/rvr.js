@@ -1,58 +1,65 @@
-// Reina-Valera 1960 en un recuadro, sin guardar el texto en la página: Reftagger de Logos (gratis, con licencia).
-// Cada pasaje trae un <span class="rvr">Acts 20:17, 28</span> (js/estudios.js → botonRVR). Aquí Reftagger lo
-// convierte en botoncitos: en la computadora el recuadro sale al pasar el mouse; en el teléfono y el iPad,
-// al tocarlo, y se cierra al tocar fuera. El texto lo trae Logos en ese momento.
+// Reina-Valera 1960 dentro del recuadro del pasaje, sin guardar el texto en la página: el texto lo entrega en ese
+// momento Reftagger de Logos (gratis, con su licencia), versículo por versículo. Reftagger normalmente lo muestra en
+// un globo flotante; aquí se le pide a un botón suyo invisible, se toma el texto y se esconde su globo, para
+// mostrarlo con el formato de nuestros pasajes y el crédito de Logos (js/mapa.js → abrirRVR).
 var refTagger = {
   settings: {
     bibleVersion: "RVR60",
     language: "es",
-    roundCorners: true,
     socialSharing: [],
-    noSearchTagNames: ["body"], // no busca referencias solo: solo en los botoncitos que le damos
-    tooltipStyle: (typeof temaActual === "function" && temaActual() === "dark") ? "dark" : "light"
+    noSearchTagNames: ["body"] // no busca referencias en la página: solo en lo que le pasamos
   }
 };
 (() => {
   const s = document.createElement("script");
   s.src = "https://api.reftagger.com/v2/RefTagger.js";
   s.async = true;
-  s.onload = () => etiquetarRVR(document);
   document.head.appendChild(s);
 })();
 
-// Convierte los <span class="rvr"> todavía sin convertir en botoncitos "RVR 1960"
-function etiquetarRVR(dentro) {
-  if (!window.refTagger || typeof refTagger.tag !== "function") return;
-  (dentro || document).querySelectorAll(".rvr:not(.rvr-listo)").forEach(span => {
+const esperar = ms => new Promise(r => setTimeout(r, ms));
+const textosRVR = new Map(); // "1TI.3.2" → texto (no se vuelve a pedir en la misma visita)
+
+// El texto de UN versículo en la RVR 1960 (en inglés para Reftagger: "1 Timothy 3:2")
+async function versiculoRVR(libro, capitulo, numero) {
+  const clave = `${libro.codigo}.${capitulo}.${numero}`;
+  if (textosRVR.has(clave)) return textosRVR.get(clave);
+  for (let i = 0; i < 40 && !(window.refTagger && typeof refTagger.tag === "function"); i++) await esperar(150);
+  if (typeof refTagger.tag !== "function") throw new Error("Logos no cargó");
+  const span = document.createElement("span");
+  span.className = "rvr-oculto";
+  span.textContent = `${libro.en} ${capitulo}:${numero}`;
+  document.body.appendChild(span);
+  document.documentElement.classList.add("rvr-trayendo"); // su globo no se ve mientras tanto
+  try {
     refTagger.tag(span);
-    const botones = span.querySelectorAll("a.rtBibleRef");
-    if (!botones.length) return;
-    botones.forEach((a, k) => {
-      // Varios tramos ("17, 28"): el primero dice "RVR 1960" y los otros solo su versículo
-      a.textContent = k === 0 ? "RVR 1960" : (a.dataset.reference || "").split(".").pop();
-      a.classList.add("boton-rvr");
-      a.removeAttribute("target");
-    });
-    [...span.childNodes].forEach(n => { if (n.nodeType === Node.TEXT_NODE) n.textContent = " "; });
-    span.classList.add("rvr-listo");
-  });
+    const a = span.querySelector("a");
+    if (!a) throw new Error("sin referencia");
+    a.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }));
+    let cuerpo = null;
+    for (let i = 0; i < 50 && !cuerpo; i++) {
+      await esperar(150);
+      const globo = [...document.querySelectorAll(".rtTooltip")].find(t => getComputedStyle(t).display !== "none"
+        && new RegExp(`:${numero}\\b`).test(t.querySelector(".rtTooltipHeader")?.textContent || ""));
+      const texto = globo?.querySelector(".rtTooltipBody")?.textContent.replace(/\s+/g, " ").trim();
+      if (texto && texto.length > 3) cuerpo = texto;
+    }
+    a.dispatchEvent(new MouseEvent("mouseout", { bubbles: true }));
+    if (!cuerpo) throw new Error("sin texto");
+    // Viene "3 1Palabra fiel…" (capítulo y número pegados): se quitan para dejar solo el texto
+    const limpio = cuerpo.replace(new RegExp(`^(?:${capitulo}\\s+)?${numero}\\s*`), "").trim();
+    textosRVR.set(clave, limpio);
+    return limpio;
+  } finally {
+    span.remove();
+    await esperar(200);
+    document.documentElement.classList.remove("rvr-trayendo");
+  }
 }
 
-// El botoncito no abre otra página: solo muestra el recuadro (en el recuadro está "more »" para ir a Logos).
-// Se escucha en "window", que recibe el toque al final, para que Reftagger (que escucha en el documento)
-// lo reciba primero y abra su recuadro.
-// En el teléfono y el iPad no hay mouse: el toque abre el recuadro (como si pasara el mouse) y al tocar
-// fuera se cierra.
-const sinMouse = () => window.matchMedia("(hover: none)").matches;
-let botonAbierto = null;
-window.addEventListener("click", e => {
-  const boton = e.target.closest(".rvr a.rtBibleRef");
-  if (boton) e.preventDefault();
-  if (!sinMouse() || e.target.closest(".rtTooltip")) return;
-  if (botonAbierto && botonAbierto !== boton) {
-    botonAbierto.dispatchEvent(new MouseEvent("mouseout", { bubbles: true }));
-    botonAbierto.classList.remove("activo");
-  }
-  botonAbierto = boton;
-  if (boton) { boton.dispatchEvent(new MouseEvent("mouseover", { bubbles: true })); boton.classList.add("activo"); }
-});
+// Todos los versículos de una referencia, uno detrás de otro; "alLlegar" recibe cada uno apenas llega
+async function pasajeRVR(ref, alLlegar) {
+  const r = leerReferencia(ref);
+  if (!r) throw new Error("referencia");
+  for (const n of versiculosDeReferencia(ref)) alLlegar({ numero: String(n), texto: await versiculoRVR(r.libro, r.capitulo, n) });
+}

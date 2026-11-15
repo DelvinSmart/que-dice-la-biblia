@@ -104,7 +104,6 @@ function show(i, fromMap, animar = true, marcar = true) {
   $("rlabel").textContent = s.fuentes ? T.fuentesTitulo : s.p.titulo;
   $("rbody").innerHTML = s.fuentes ? paginaFuentesHTML(ESTUDIO) : puntoHTML(s.p);
   if (s.p && marcar) marcarVisto(s.p, chips[cur]);
-  if (typeof etiquetarRVR === "function") etiquetarRVR($("rbody"));
   if (animar) {
     revelar([$("rtag"), $("rlabel")], 40);
     revelar($("rbody").children, 50, 60);
@@ -134,27 +133,37 @@ function abrirFuente(chip) {
 
 // Pasajes: al tocar un botoncito se abre su pasaje debajo de la fila, con efecto. Al tocarlo otra vez se
 // cierra; al tocar otro pasaje del subpunto, el anterior se cierra.
+// Lo que dura el efecto de cierre, de css/motor.css (--dur-200)
+const duracionCierre = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--dur-200")) * 1000 || 0;
+
 // Cerrar con efecto: se desvanece y sube un poquito; después se esconde
 function cerrarPasaje(caja) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { caja.hidden = true; return; }
   caja.classList.add("cerrando");
-  // Espera lo mismo que dura el efecto en css/motor.css (--dur-200)
-  const ms = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--dur-200")) * 1000 || 0;
-  setTimeout(() => { caja.hidden = true; caja.classList.remove("cerrando"); }, ms);
+  setTimeout(() => { caja.hidden = true; caja.classList.remove("cerrando"); }, duracionCierre());
 }
 
 // Abre un recuadro (el pasaje o su LBLA) debajo de la fila; cierra lo que estuviera abierto en el subpunto.
 // Si ese botón ya estaba abierto, solo lo cierra.
-function abrirRecuadro(boton, caja) {
+// Todo en orden: si había otro recuadro abierto, primero se va con su efecto y recién después entra el nuevo,
+// así nunca hay dos a la vez ni saltos. "preparar" llena el recuadro la primera vez (antes de que se vea).
+const RECUADROS = ".pasaje-abierto, .lbla-abierto, .rvr-abierto";
+let relojRecuadro = null;
+function abrirRecuadro(boton, caja, preparar) {
   const abierto = boton.getAttribute("aria-expanded") === "true";
-  $("rbody").querySelectorAll(".chip-pasaje, .boton-lbla").forEach(c => c.setAttribute("aria-expanded", "false"));
-  $("rbody").querySelectorAll(".pasaje-abierto:not([hidden]), .lbla-abierto:not([hidden])").forEach(cerrarPasaje);
-  if (abierto) return false;
+  clearTimeout(relojRecuadro);
+  $("rbody").querySelectorAll(".chip-pasaje, .boton-version").forEach(c => c.setAttribute("aria-expanded", "false"));
+  const abiertos = [...$("rbody").querySelectorAll(RECUADROS)].filter(c => !c.hidden && !c.classList.contains("cerrando"));
+  abiertos.forEach(cerrarPasaje);
+  if (abierto) return;
   boton.setAttribute("aria-expanded", "true");
-  caja.hidden = false;
-  revelar([caja], 0);
-  caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  return true;
+  if (preparar && !caja.firstChild) preparar();
+  const mostrar = () => {
+    caja.hidden = false;
+    revelar([caja], 0);
+    caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
+  if (abiertos.length) relojRecuadro = setTimeout(mostrar, duracionCierre()); else mostrar();
 }
 
 const posicionDe = boton => [...boton.closest(".pasajes").querySelectorAll(".pasaje-y-rvr")].indexOf(boton.closest(".pasaje-y-rvr"));
@@ -186,10 +195,13 @@ function medidasLBLA(anchoReal) {
 
 function abrirLBLA(boton) {
   const caja = boton.closest(".pasajes").querySelectorAll(".lbla-abierto")[posicionDe(boton)];
-  if (!abrirRecuadro(boton, caja) || caja.firstChild) return;
+  abrirRecuadro(boton, caja, () => prepararLBLA(boton, caja));
+}
+
+function prepararLBLA(boton, caja) {
   const ref = boton.dataset.referencia;
   const versos = versiculosDeReferencia(ref);
-  const m = medidasLBLA(caja.clientWidth);
+  const m = medidasLBLA(boton.closest(".pasajes").clientWidth);
   let alto = m.alto, k = 0;
   caja.innerHTML = `
     <div class="lbla-recorte">
@@ -232,6 +244,28 @@ function abrirLBLA(boton) {
   ir(0);
 }
 
+// RVR 1960: el pasaje en la Reina-Valera, en el mismo lugar y con el mismo formato de nuestros pasajes. El texto
+// lo entrega Logos versículo por versículo (js/rvr.js); se va mostrando a medida que llega.
+function abrirRVR(boton) {
+  const caja = boton.closest(".pasajes").querySelectorAll(".rvr-abierto")[posicionDe(boton)];
+  abrirRecuadro(boton, caja, () => {
+    const ref = boton.dataset.referencia;
+    const r = leerReferencia(ref);
+    const titulo = r ? `${r.libro.es} ${r.capitulo}:${ref.replace(/^.*?:\s*/, "").replace(/\s+[A-Z]{2,6}\d*$/, "")} · RVR 1960` : "RVR 1960";
+    caja.innerHTML = `<div class="passage rvr-texto"><div class="ref">${esc(titulo)}</div>
+      <div class="rvr-versos"><p class="rvr-cargando">${T.cargandoRVR}</p></div>
+      <div class="credito">Reina-Valera 1960 · texto de <a href="https://www.logos.com/" target="_blank" rel="noopener">Logos</a></div></div>`;
+    const versos = caja.querySelector(".rvr-versos");
+    pasajeRVR(ref, v => {
+      versos.querySelector(".rvr-cargando")?.remove();
+      const p = document.createElement("p");
+      p.innerHTML = `<b>${esc(v.numero)}</b>${esc(v.texto)}`;
+      versos.appendChild(p);
+      revelar([p], 0);
+    }).catch(() => { versos.innerHTML = `<p class="rvr-cargando">${T.sinRVR}</p>`; });
+  });
+}
+
 function controles() {
   $("rbody").addEventListener("click", e => {
     const chip = e.target.closest(".chip-fuente");
@@ -240,6 +274,8 @@ function controles() {
     if (pasaje) abrirPasaje(pasaje);
     const lbla = e.target.closest(".boton-lbla");
     if (lbla) abrirLBLA(lbla);
+    const rvr = e.target.closest(".boton-rvr");
+    if (rvr) abrirRVR(rvr);
   });
   $("prev").addEventListener("click", () => show(cur - 1));
   $("next").addEventListener("click", () => show(cur + 1));

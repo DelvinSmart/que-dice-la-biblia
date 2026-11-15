@@ -211,7 +211,7 @@
 .punto-ed .titulo-fijo{font-family:var(--body);font-weight:var(--peso-semi);font-size:var(--letra-15)}
 .cuenta-fuentes{font-size:var(--letra-12);font-weight:var(--peso-negrita);color:var(--muted);min-width:var(--esp-14);text-align:right}
 
-.rvr{display:none}
+.boton-version{display:none}
 
 /* "Leer capturas": varias capturas de la app de la Biblia a la vez */
 .capturas-cab{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--esp-10)}
