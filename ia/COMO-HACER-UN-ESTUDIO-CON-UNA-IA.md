@@ -22,20 +22,24 @@ Las reglas que tiene que seguir la IA están en **[instrucciones.md](instruccion
 
 ## Hacer un estudio nuevo
 
-1. Abre tu Gem o tu proyecto y dile el tema y tu punto de partida, con tus palabras. Por ejemplo: "Quiero un estudio sobre el diezmo. Yo creo que…".
-2. **Conversen.** La IA te hace preguntas. Responde con calma.
-3. **Investigación.** La IA te muestra lo que dice la Biblia, el hebreo y el griego, los que piensan distinto y la historia, con sus links. Si la Biblia te corrige, eso es lo que vale.
-4. **El mapa.** La IA te propone los puntos y subpuntos. Lo apruebas o lo cambias.
-5. **El estudio.** Dile "escríbelo". Revisa que hable como tú.
-6. **Entrega.** Dile "dame el JSON". La IA te da un bloque de código. Cópialo completo (en Gemini y ChatGPT hay un botón de copiar arriba del bloque).
-7. En el **panel** de tu página, toca **"Pegar estudio de la IA"**, deja "Estudio nuevo", pega y toca **Revisar**.
-8. El panel te dice qué está bien y qué no (ver abajo). Si todo está bien, toca **Abrir en el editor**.
-9. En el editor: pega los versículos que falten ("Leer capturas" o "Pegar desde la app"), revisa todo y toca **Publicar**.
+1. **Solo cambias el tema.**
+   - En tu Gem o tu proyecto: escribe solo el tema, por ejemplo `Tema: La salvación`. La IA ya tiene las instrucciones.
+   - En un chat normal (sin Gem): en el panel toca "copiar las instrucciones", pégalas, cambia la primera línea (`TEMA DEL ESTUDIO: La salvación`) y envía.
+   - Mañana, para otro estudio, haces lo mismo con otro tema (`La justificación`). No hace falta armar otro prompt.
+2. **La IA arma su lista de control** con todos los pasos y los detalles del tema, y los va tachando uno por uno. Hasta que no esté todo tachado, no está listo. Si ves que se saltó algo, dile: "vuelve a la lista".
+3. **Conversen.** La IA te pregunta tu punto de partida y lo que quieres responder. Responde con calma.
+4. **Investigación.** La IA te muestra lo que dice la Biblia, el hebreo y el griego, los que piensan distinto y la historia, con sus links. Si la Biblia te corrige, eso es lo que vale.
+5. **El mapa.** La IA te propone los puntos y subpuntos. Lo apruebas o lo cambias.
+6. **El estudio.** Dile "escríbelo". Revisa que hable como tú.
+7. **Entrega.** Dile "dame el JSON". La IA te da un bloque de código. Cópialo completo (en Gemini y ChatGPT hay un botón de copiar arriba del bloque).
+8. En el **panel** de tu página, toca **"Pegar estudio de la IA"**, deja "Estudio nuevo", pega y toca **Revisar**.
+9. El panel te dice qué está bien y qué no (ver abajo). Si todo está bien, toca **Abrir en el editor**.
+10. En el editor: pega los versículos que falten ("Leer capturas" o "Pegar desde la app"), revisa todo y toca **Publicar**.
 
 ## Revisar un estudio que ya existe (una IA revisa el trabajo)
 
 1. Abre el estudio en GitHub o en la carpeta (`estudios/pastoras.json`) y súbeselo a la IA, o pégale el texto.
-2. Dile: "Revisa este estudio con la parte 8 de las instrucciones". Te da una lista de lo que encontró, con pruebas.
+2. Dile: "Revisa este estudio con la parte 9 de las instrucciones". Te da una lista de lo que encontró, con pruebas.
 3. **Compruébalo tú** (o pídeselo a otra IA, por ejemplo a Claude): abre los links y los versículos de la lista. Una IA también se equivoca.
 4. Aprueba lo que esté bien y pídele el JSON corregido.
 5. En el panel, toca **"Pegar estudio de la IA"**, escoge **el estudio que se reemplaza** (por ejemplo "¿Pastoras?"), pega y toca **Revisar**.
