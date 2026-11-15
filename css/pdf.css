@@ -1,8 +1,5 @@
 @page{size:A4;margin:0}
 html{background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-:root{--bg:#000000;--ink:#FFFFFF;--muted:#B8BDCC;--line:#3A3F50;--accent:#9DAEFF;
---b1:#9DAEFF;--b2:#CDA2EC;--b3:#5FD3C1;--b4:#FF9E6B;--b5:#F08DBF;--b6:#E5C25A;--b7:#FF8A80;--b8:#6CC7F0;--b9:#A3D96B;--b10:#E0A87A;--b11:#B8C1D1;--verse-bg:#15171F;
---display:"Alegreya",Georgia,serif;--body:"Archivo",-apple-system,"Segoe UI",sans-serif}
 *{box-sizing:border-box}
 body{margin:0;color:var(--ink);background:var(--bg);font-family:var(--body);font-size:11pt;line-height:1.5}
 h1{font-family:var(--display);font-weight:800;font-size:34pt;margin:0 0 8px}
@@ -31,9 +28,9 @@ h1{font-family:var(--display);font-weight:800;font-size:34pt;margin:0 0 8px}
 .passage{background:var(--verse-bg);border-left:3px solid var(--c);border-radius:3px 8px 8px 3px;padding:10px 14px;margin:0 0 10px;font-family:var(--display);font-size:12pt;line-height:1.5}
 .passage .ref{font-family:var(--body);font-weight:700;font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-bottom:5px}
 .passage .ref a,.passage .credito a,.aviso-lbla a{color:inherit;text-decoration:none}
-.passage .credito{margin-top:6px;padding-top:4px;border-top:1px solid #0001;font-family:var(--body);font-size:7pt;color:#666;text-align:right}
+.passage .credito{margin-top:6px;padding-top:4px;border-top:1px solid var(--line);font-family:var(--body);font-size:7pt;color:var(--muted);text-align:right}
 .passage .credito a{color:var(--c);font-weight:600}
-.aviso-lbla{margin:14px 0 0;padding:8px 10px;border:1px solid #0002;border-radius:6px;font-family:var(--body);font-size:8pt;line-height:1.45;color:#555}
+.aviso-lbla{margin:14px 0 0;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:var(--body);font-size:8pt;line-height:1.45;color:var(--muted)}
 .passage p{margin:0 0 4px;break-inside:avoid}.passage p b{font-family:var(--body);font-size:8.5pt;color:var(--c);margin-right:3px}
 
 /* Repeated empty header/footer rows give every page its top and bottom margin on the black background */
@@ -56,11 +53,15 @@ img.solo-pdf{width:100%;max-height:90mm;object-fit:cover;border-radius:6px}
 .fuentes{break-before:page;font-family:var(--body)}
 .fuentes h2{font-family:var(--display);font-size:18pt;margin:0 0 10px;text-align:left}
 .grupo-fuentes{margin:0 0 10px;break-inside:avoid}
-.grupo-fuentes h3{font-size:9pt;color:#555;margin:0 0 4px}
-.ficha-fuente{border-left:2px solid #0003;padding:2px 0 2px 8px;margin:0 0 6px;font-size:9pt}
+.grupo-fuentes h3{font-size:9pt;color:var(--muted);margin:0 0 4px}
+.ficha-fuente{border-left:2px solid var(--line);padding:2px 0 2px 8px;margin:0 0 6px;font-size:9pt}
 .ficha-titulo{font-weight:700}
-.ficha-fuente p{margin:1px 0;color:#444}
+.ficha-fuente p{margin:1px 0;color:var(--muted)}
 .ficha-fuente .passage{background:none;border:0;padding:0;margin:0}
 .fuente-link{display:none}
-.fuente-url{font-size:8pt;color:#555;word-break:break-all;text-align:left;margin:0}
-.passage.griego p.falta{font-family:var(--body);font-size:9pt;font-style:italic;color:#666}
+.fuente-url{font-size:8pt;color:var(--muted);word-break:break-all;text-align:left;margin:0}
+.passage.griego p.falta{font-family:var(--body);font-size:9pt;font-style:italic;color:var(--muted)}
+
+/* La portada en un recuadro, como en la página */
+.portada{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 16px}
+.portada .yb{margin-bottom:0}

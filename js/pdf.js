@@ -8,9 +8,9 @@
   document.documentElement.lang = e.idioma === "pt" ? "pt-BR" : "es";
   const temas = e.temas || [];
 
-  let out = `<h1>${esc(e.titulo)}</h1>
+  let out = `<div class="portada"><h1>${esc(e.titulo)}</h1>
 <ul class="q">${(e.preguntas || []).map(q => `<li>${esc(q)}</li>`).join("")}</ul>
-<div class="yb">${esc(e.cierre)}</div><div class="ov">`;
+<div class="yb">${esc(e.cierre)}</div></div><div class="ov">`;
   temas.forEach((t, bi) => {
     out += `<div class="ob" style="--c:var(${colorDe(t)})"><div class="oh"><span class="num">${bi + 1}</span>${esc(t.titulo)}</div>
 <div class="ol">${(t.puntos || []).map((p, li) => `<span><b>${bi + 1}.${li + 1}</b>${esc(p.titulo)}</span>`).join("")}</div></div>`;
