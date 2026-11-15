@@ -57,19 +57,22 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
   font-family:var(--display);font-size:17px;line-height:1.55}
 .passage .ref{font-family:var(--body);font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
 .passage p{margin:0 0 7px}
-/* Pasajes cerrados: botoncitos con la referencia, en el color del punto; al tocar uno se abre debajo */
+/* Pasajes cerrados: un botoncito con la referencia, en el color del punto; al tocarlo se abre debajo.
+   Dentro del mismo botoncito, a la derecha, va el botón pequeño "RVR 1960" (js/rvr.js). */
 .pasajes{margin:0 0 14px}
+.pasaje-y-rvr{display:inline-flex;align-items:center;gap:4px;margin:0 6px 6px 0;background:var(--verse-bg);
+  border:1.5px solid transparent;border-left:3px solid var(--c);border-radius:4px 999px 999px 4px;padding-right:6px;
+  transition:border-color .15s ease}
+.pasaje-y-rvr:hover,.pasaje-y-rvr:has(.chip-pasaje[aria-expanded="true"]){border-color:var(--c);border-left-color:var(--c)}
+.pasaje-y-rvr:not(:has(.rvr-listo)){padding-right:0}
 .chip-pasaje{font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--c);
-  background:var(--verse-bg);border:1.5px solid transparent;border-left:3px solid var(--c);border-radius:4px 999px 999px 4px;
-  padding:6px 12px;margin:0 6px 6px 0;cursor:pointer;transition:border-color .15s ease,transform .15s ease,filter .15s ease}
-.chip-pasaje:hover{border-color:var(--c);border-left-color:var(--c)}
+  background:transparent;border:0;padding:6px 6px 6px 12px;margin:0;cursor:pointer;transition:transform .15s ease}
+.pasaje-y-rvr:not(:has(.rvr-listo)) .chip-pasaje{padding-right:12px}
 .chip-pasaje:active{transform:scale(.97)}
-.chip-pasaje[aria-expanded="true"]{border-color:var(--c)}
 .pasaje-abierto[hidden]{display:none}
 .pasaje-abierto.cerrando{opacity:0;transform:translateY(-6px) scale(.98);filter:blur(4px);
   transition:opacity .2s ease,transform .2s ease,filter .2s ease}
-.pasaje-y-rvr{display:inline-flex;align-items:center;gap:6px;margin:0 10px 6px 0}
-.pasaje-y-rvr .chip-pasaje{margin:0}
+
 /* Botoncito "RVR 1960" en la referencia del pasaje (js/rvr.js); escondido hasta que Logos lo activa */
 .rvr{display:none}
 .rvr.rvr-listo{display:inline-flex;gap:4px}
@@ -218,3 +221,15 @@ body{margin:0}
 .passage.griego p[lang="grc"]{font-family:"Gentium Plus","Alegreya",Georgia,serif;font-size:18px;line-height:1.6}
 .passage.griego p.falta{font-family:var(--body);font-size:13px;font-style:italic;color:var(--muted)}
 .passage.griego .ref a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+
+/* El recuadro de Logos (Reftagger) con los colores de la página: claro u oscuro según el tema */
+.rtTooltip .rtContainer{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px 12px 12px 4px;overflow:hidden}
+.rtTooltip.rtTooltipDropShadow .rtContainer{box-shadow:0 10px 30px #0005}
+.rtTooltip .rtTooltipHeader{background:var(--verse-bg);color:var(--accent);font-family:var(--body);font-size:12px;
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;height:auto;line-height:1.4;padding:10px 14px 8px}
+.rtTooltip .rtTooltipBody,.rtTooltip .rtTooltipBody *{color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.55;font-weight:400}
+.rtTooltip .rtTooltipBody p{margin:0 0 6px}
+.rtTooltip .rtTooltipBrandLink a:link,.rtTooltip .rtTooltipBrandLink a:visited{color:var(--muted)}
+.rtTooltip .rtTooltipBrandLink .rtTooltipLogosIcon path{fill:var(--muted)}
+.rtTooltip .rtTooltipMoreLink:link,.rtTooltip .rtTooltipMoreLink:visited{color:var(--accent);font-family:var(--body);font-weight:600}
