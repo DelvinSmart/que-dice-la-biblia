@@ -1,0 +1,1037 @@
+{
+  "titulo": "¿Pastoras?",
+  "idioma": "es",
+  "otro_idioma": "",
+  "descripcion": "Qué dice la Biblia sobre la mujer como pastora: el cargo, la creación, los textos de Pablo y la historia.",
+  "preguntas": [
+    "¿Qué es un pastor según la Biblia?",
+    "¿De dónde viene la práctica de las pastoras?",
+    "Y la pregunta más importante, ¿qué dice la Biblia?"
+  ],
+  "cierre": "¡Y bien!",
+  "temas": [
+    {
+      "titulo": "¿Qué es un pastor?",
+      "subtitulo": "La palabra y el cargo",
+      "color": "morado",
+      "puntos": [
+        {
+          "titulo": "poimēn · pastor",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Antes de preguntar si una mujer puede ser pastora, tenemos que saber qué es un pastor. Pero no lo que hoy se entiende por pastor. Lo que dice la Biblia.</p>\n<p>La palabra griega es <span class=\"g\">poimēn</span>, que quiere decir <b>“pastor”</b>, el que cuida las ovejas. Como cargo en la iglesia aparece una sola vez en el Nuevo Testamento: Efesios 4:11, “pastores y maestros”.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Efesios 4:11 LBLA",
+              "versiculos": [
+                {
+                  "numero": "11",
+                  "texto": "Y Él dio a algunos el ser apóstoles, a otros profetas, a otros evangelistas, a otros pastores y maestros,"
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Pero el verbo <span class=\"g\">poimainō</span>, <b>“pastorear”</b>, sí aparece varias veces. Y fíjense a quién se le dice que pastoree.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G4166 poimēn",
+              "texto": "Poimēn: pastor, el que cuida las ovejas. Ahí se ven todos los versículos donde aparece.",
+              "url": "https://biblehub.com/greek/4166.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G4165 poimainō",
+              "texto": "Poimainō: pastorear, cuidar y alimentar el rebaño.",
+              "url": "https://biblehub.com/greek/4165.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Pastor, anciano y obispo",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>En Hechos 20, Pablo manda a llamar a los <b>ancianos</b> (<span class=\"g\">presbyteroi</span>) de la iglesia de Éfeso. Y les dice que el Espíritu Santo los puso como <b>obispos</b> (<span class=\"g\">episkopoi</span>) para <b>pastorear</b> la iglesia de Dios.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Hechos 20:17, 28 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Pedro dice lo mismo. Él se llama a sí mismo anciano, y les dice a los ancianos que pastoreen la grey de Dios.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Pedro 5:1-2 LBLA",
+              "versiculos": [
+                {
+                  "numero": "1",
+                  "texto": "Por tanto, a los ancianos entre vosotros, exhorto yo, anciano como ellos y testigo de los padecimientos de Cristo, y también participante de la gloria que ha de ser revelada:"
+                },
+                {
+                  "numero": "2",
+                  "texto": "pastoread el rebaño de Dios entre vosotros, velando por él, no por obligación, sino voluntariamente, como quiere Dios; no por la avaricia del dinero, sino con sincero deseo;"
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Y en Tito, Pablo dice “ancianos” en el versículo 5 y “obispo” en el versículo 7, hablando de las mismas personas.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Tito 1:5, 7 LBLA",
+              "versiculos": [
+                {
+                  "numero": "5",
+                  "texto": "Por esta causa te dejé en Creta, para que pusieras en orden lo que queda, y designaras ancianos en cada ciudad como te mandé,"
+                },
+                {
+                  "numero": "7",
+                  "texto": "Porque el obispo debe ser irreprensible como administrador de Dios, no obstinado, no iracundo, no dado a la bebida, no pendenciero, no amante de ganancias deshonestas,"
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>O sea, en la Biblia pastor, anciano y obispo son el mismo cargo.</b> Son tres palabras para la misma persona: el que dirige la iglesia, la cuida y la enseña.</p>\n<p>Y esto es muy importante, porque entonces los requisitos que da Pablo para el anciano y el obispo son los requisitos del pastor. Ya vamos a llegar ahí.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G4245 presbyteros",
+              "texto": "Presbyteros: anciano. La palabra de Hechos 20:17, 1 Pedro 5:1 y Tito 1:5.",
+              "url": "https://biblehub.com/greek/4245.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1985 episkopos",
+              "texto": "Episkopos: obispo, el que supervisa. La palabra de Hechos 20:28 y Tito 1:7.",
+              "url": "https://biblehub.com/greek/1985.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G4165 poimainō",
+              "texto": "El verbo pastorear de Hechos 20:28 y 1 Pedro 5:2.",
+              "url": "https://biblehub.com/greek/4165.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Cristo, el Príncipe de los pastores",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Y antes de todo, no olvidemos quién es el verdadero pastor. Jesús es el buen pastor que da su vida por las ovejas. Y Pedro lo llama el Príncipe de los pastores.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Juan 10:11 LBLA",
+              "versiculos": [
+                {
+                  "numero": "11",
+                  "texto": "Yo soy el buen pastor; el buen pastor da su vida por las ovejas."
+                }
+              ]
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Pedro 5:4 LBLA",
+              "versiculos": [
+                {
+                  "numero": "4",
+                  "texto": "Y cuando aparezca el Príncipe de los pastores, recibiréis la corona inmarcesible de gloria."
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Los pastores de la iglesia no son dueños de las ovejas. Las ovejas son de Cristo. Entonces quién puede ser pastor no lo decide la iglesia, ni la cultura, ni lo que nosotros pensamos. Lo decide el dueño de las ovejas, en su Palabra.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "En el principio",
+      "subtitulo": "El orden de la creación",
+      "color": "verde",
+      "puntos": [
+        {
+          "titulo": "Varón y hembra los creó · igual valor",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Vamos al principio, al Génesis. Lo primero que dice la Biblia es que Dios creó al ser humano a su imagen, varón y hembra.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Génesis 1:27 LBLA",
+              "versiculos": [
+                {
+                  "numero": "27",
+                  "texto": "Creó, pues, Dios al hombre a imagen suya, a imagen de Dios lo creó; varón y hembra los creó."
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Los dos son imagen de Dios. Los dos tienen el mismo valor delante de Dios. La mujer no vale menos que el hombre. <b>Esto hay que dejarlo claro desde el principio</b>, porque lo que vamos a ver no tiene nada que ver con quién vale más.</p>"
+            }
+          ]
+        },
+        {
+          "titulo": "ʿēzer kenegdô · ayuda idónea",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Cuando Dios crea a la mujer, dice que no es bueno que el hombre esté solo, y que le hará una ayuda idónea.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Génesis 2:18 LBLA",
+              "versiculos": [
+                {
+                  "numero": "18",
+                  "texto": "Y el SEÑOR Dios dijo: No es bueno que el hombre esté solo; le haré una ayuda idónea."
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>En hebreo es <span class=\"g\">ʿēzer kenegdô</span>.</p>\n<ul>\n<li><span class=\"g\">ʿēzer</span> quiere decir <b>“ayuda”</b>.</li>\n<li><span class=\"g\">kenegdô</span> quiere decir <b>“delante de él”, “frente a él”, “que le corresponde”</b>. O sea, una ayuda como él, a su altura.</li>\n</ul>\n<p>Por eso ningún animal le servía de ayuda (Génesis 2:20). Ninguno era como él. La mujer sí.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong H5828 ʿēzer",
+              "texto": "ʿĒzer: ayuda. La palabra de Génesis 2:18.",
+              "url": "https://biblehub.com/hebrew/5828.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong H5048 neged",
+              "texto": "Neged: delante, frente a. De esta palabra viene kenegdô, “que le corresponde”.",
+              "url": "https://biblehub.com/hebrew/5048.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Dios también es ʿēzer",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Y aquí hay algo que tenemos que saber. La palabra <span class=\"g\">ʿēzer</span> aparece unas 21 veces en el Antiguo Testamento, y la mayoría de las veces el que ayuda es <b>Dios</b>.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Salmo 33:20 LBLA",
+              "versiculos": [
+                {
+                  "numero": "20",
+                  "texto": "Nuestra alma espera al SEÑOR; Él es nuestra ayuda y nuestro escudo;"
+                }
+              ]
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Salmo 121:1-2 LBLA",
+              "versiculos": [
+                {
+                  "numero": "1",
+                  "texto": "Levantaré mis ojos a los montes; ¿de dónde vendrá mi socorro?"
+                },
+                {
+                  "numero": "2",
+                  "texto": "Mi socorro viene del SEÑOR, que hizo los cielos y la tierra."
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>También en Éxodo 18:4, Deuteronomio 33:26 y 29, Salmo 115:9-11 y Oseas 13:9.</p>\n<p>Entonces “ayuda” no quiere decir alguien menor, ni una sirvienta. Dios es nuestra ayuda, y Dios no es menos que nosotros.</p>\n<p><b>Por eso no podemos decir que la mujer es menos porque es ayuda.</b> La palabra “ayuda” sola no nos da la respuesta. La respuesta la da el orden en que Dios hizo las cosas, y eso nos lo explica el mismo Nuevo Testamento.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong H5828 ʿēzer",
+              "texto": "Ahí se ven las 21 veces que aparece ʿēzer, y en la mayoría el que ayuda es Dios.",
+              "url": "https://biblehub.com/hebrew/5828.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Adán fue formado primero",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Fíjense en el orden de Génesis 2:</p>\n<ol>\n<li>Dios forma primero al hombre (2:7).</li>\n<li>Le da el mandamiento a él, antes de que exista la mujer (2:16-17).</li>\n<li>Después forma a la mujer, del hombre y para el hombre (2:21-22).</li>\n</ol>\n<p>Y esto no lo digo yo. Pablo usa este mismo orden para explicar la relación entre el hombre y la mujer. Dice que la mujer procede del hombre, y que fue creada por causa del hombre, no el hombre por causa de la mujer.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Corintios 11:8-9 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Y en 1 Timoteo, cuando habla de la iglesia, Pablo da como razón que Adán fue creado primero, y después Eva.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Timoteo 2:13 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>O sea, el orden no empezó con la caída, ni con la cultura de Israel, ni con la cultura de los griegos. Empezó en el Edén, antes del pecado.</b> Igual valor, distinta función.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "La cabeza",
+      "subtitulo": "Cristo, el hombre y la mujer",
+      "color": "amarillo",
+      "puntos": [
+        {
+          "titulo": "1 Corintios 11:3 · Dios es la cabeza de Cristo",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Pablo dice que la cabeza de todo varón es Cristo, la cabeza de la mujer es el hombre, y la cabeza de Cristo es Dios.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Corintios 11:3 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>La palabra “cabeza” es <span class=\"g\">kephalē</span>. Y la palabra para hombre aquí es <span class=\"g\">anēr</span>, que puede querer decir <b>“varón”</b> o <b>“marido”</b>.</p>\n<p>Fíjense: dice que Cristo es cabeza de <b>todo</b> varón. Ahí no puede ser solo el marido, porque Cristo es cabeza de todos los hombres, casados o no. Y el contexto es la reunión de la iglesia, cuando oran y profetizan (11:4-5).</p>\n<p>Y miren el final del versículo: <b>Dios es la cabeza de Cristo.</b> ¿Cristo es menos que el Padre? No. Cristo es Dios. Y aun así hay un orden. Esa es la mejor respuesta a quien dice que esto hace menos a la mujer. Tener cabeza no te hace menos. Cristo tiene cabeza.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G2776 kephalē",
+              "texto": "Kephalē: cabeza. La palabra de 1 Corintios 11:3 y Efesios 5:23.",
+              "url": "https://biblehub.com/greek/2776.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G435 anēr",
+              "texto": "Anēr: varón o marido, según el contexto.",
+              "url": "https://biblehub.com/greek/435.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Efesios 5:23 · el marido",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>En Efesios 5 sí se habla del matrimonio. El marido es cabeza de la mujer, así como Cristo es cabeza de la iglesia.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Efesios 5:22-25 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Y fíjense cómo es esa cabeza: el marido tiene que amar a su mujer como Cristo amó a la iglesia y se entregó por ella. No es una cabeza que manda por mandar. Es una cabeza que da la vida.</p>\n<p>Entonces la Biblia habla de dos lugares donde hay orden:</p>\n<ul>\n<li><b>En la casa:</b> el marido es la cabeza de su mujer (Efesios 5).</li>\n<li><b>En la iglesia:</b> el que dirige y enseña con autoridad es el hombre (1 Corintios 11, 1 Timoteo 2 y 3). Esto lo vemos en el próximo punto.</li>\n</ul>"
+            }
+          ]
+        },
+        {
+          "titulo": "kephalē: ¿fuente o autoridad?",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Hay quienes dicen que <span class=\"g\">kephalē</span> no quiere decir autoridad, sino <b>“fuente”</b> u <b>“origen”</b>, como la cabecera de un río. Es un debate real entre estudiosos del griego.</p>\n<p>Pero en Efesios 5 el mismo texto lo aclara. Dice que así como la iglesia está sujeta a Cristo, así las mujeres a sus maridos (5:24). Ahí “cabeza” va junto con “estar sujeta”. Es autoridad.</p>\n<p>Y aunque fuera “fuente”, Pablo dice en 1 Corintios 11:8 que la mujer procede del hombre. O sea, volvemos al orden de la creación.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G2776 kephalē",
+              "texto": "Los sentidos de kephalē y los versículos donde aparece.",
+              "url": "https://biblehub.com/greek/2776.htm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Las directrices de Pablo",
+      "subtitulo": "1 Timoteo 2 y 1 Corintios 14",
+      "color": "naranja",
+      "puntos": [
+        {
+          "titulo": "1 Timoteo 2:11-12 · enseñar y ejercer autoridad",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Este es el texto más directo sobre el tema.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Timoteo 2:11-14 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Pablo dice que no permite a la mujer dos cosas:</p>\n<ol>\n<li><b>Enseñar</b> (<span class=\"g\">didaskein</span>).</li>\n<li><b>Ejercer autoridad</b> (<span class=\"g\">authentein</span>) sobre el hombre (<span class=\"g\">andros</span>).</li>\n</ol>\n<p>¿Y dónde? En la iglesia. En el versículo 8 habla de los hombres que oran en todo lugar, y en el capítulo 3:15 dice que escribe para que sepamos cómo portarnos en la casa de Dios, que es la iglesia.</p>\n<p><b>Entonces esta regla no depende de si la mujer está casada o no.</b> Vale en la iglesia para todas: la casada, la soltera, la viuda, y la casada con un marido que no es cristiano.</p>\n<p>Hay que ser honestos: <span class=\"g\">authentein</span> aparece una sola vez en toda la Biblia. Algunos dicen que quiere decir “dominar” o “imponerse”, y que Pablo solo prohibía a una mujer mandona. Es un debate real. Pero Pablo no se queda ahí. Él mismo nos dice por qué.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1321 didaskō",
+              "texto": "Didaskō: enseñar. De aquí viene didaskein, de 1 Timoteo 2:12.",
+              "url": "https://biblehub.com/greek/1321.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G831 authenteō",
+              "texto": "Authenteō: ejercer autoridad. Aparece una sola vez en la Biblia, en 1 Timoteo 2:12.",
+              "url": "https://biblehub.com/greek/831.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G435 anēr",
+              "texto": "Andros, “del hombre”, es una forma de anēr.",
+              "url": "https://biblehub.com/greek/435.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "La razón es la creación, no Éfeso",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Muchos dicen que esto era solo para Éfeso, porque allí había falsos maestros (1 Timoteo 1:3) y mujeres que andaban de casa en casa hablando lo que no debían (1 Timoteo 5:13).</p>\n<p>Pero fíjense en la razón que da Pablo en los versículos 13 y 14. No dice “porque en Éfeso pasa esto”. Dice:</p>\n<ol>\n<li>Porque Adán fue creado primero, después Eva.</li>\n<li>Y Adán no fue el engañado, sino la mujer.</li>\n</ol>\n<p>Las dos razones son de <b>Génesis</b>. Y Génesis no es de Éfeso. Es para toda la humanidad. <b>Si la razón es la creación, la regla vale para toda iglesia, en todo lugar y en todo tiempo.</b></p>"
+            }
+          ]
+        },
+        {
+          "titulo": "1 Corintios 14:34-35 · sigaō, callar",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Pablo dice que las mujeres callen en las congregaciones.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Corintios 14:34-35 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>El verbo es <span class=\"g\">sigaō</span>, “callar”. Pero fíjense: en el mismo capítulo, Pablo usa el mismo verbo para el que habla en lenguas si no hay intérprete (14:28), y para el profeta cuando a otro le es revelado algo (14:30). O sea, no es silencio total siempre. Es callar en algo.</p>\n<p>Y en el capítulo 11:5, la mujer ora y profetiza en la reunión. Entonces no está muda en la iglesia.</p>\n<p>Por eso, lo más probable es que aquí se refiera a cuando se juzgan las profecías (14:29), o sea, cuando se enseña y se decide con autoridad delante de la iglesia. Y dice “como también la ley dice”, probablemente pensando en Génesis 2 y 3. Esto último no es seguro.</p>\n<p>Un dato que te pueden sacar: en algunos manuscritos estos dos versículos aparecen después del versículo 40, y algunos estudiosos dicen que no los escribió Pablo. Pero <b>todos los manuscritos que tenemos los traen.</b> No hay ni uno solo sin ellos.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G4601 sigaō",
+              "texto": "Sigaō: callar. Ahí se ve que se usa también en 1 Corintios 14:28 y 14:30.",
+              "url": "https://biblehub.com/greek/4601.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Primera epístola a los Corintios (Wikipedia, inglés)",
+              "texto": "Los versículos 34-35 están en todos los manuscritos griegos que existen; algunos manuscritos occidentales los ponen después del versículo 40.",
+              "url": "https://en.wikipedia.org/wiki/First_Epistle_to_the_Corinthians"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Los requisitos",
+      "subtitulo": "1 Timoteo 3 y Tito 1",
+      "color": "rosado",
+      "puntos": [
+        {
+          "titulo": "“Marido de una sola mujer”",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Ya vimos que pastor, anciano y obispo son lo mismo. Ahora veamos qué pide la Biblia para ese cargo.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Timoteo 3:1-7 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Tito 1:5-9 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>En los dos textos aparece el mismo requisito: <b>marido de una sola mujer</b>. En griego, <span class=\"g\">mias gynaikos anēr</span>, literalmente “hombre de una sola mujer”.</p>\n<p>Algunos dicen que en 3:1, “si alguno desea obispado”, la palabra <span class=\"g\">tis</span> (“alguno”) vale para hombre o mujer. Es verdad. Pero justo en el versículo siguiente pide que sea marido de una sola mujer. <b>La lista describe a un hombre.</b></p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1135 gynē",
+              "texto": "Gynē: mujer o esposa. Mias gynaikos es “de una sola mujer”.",
+              "url": "https://biblehub.com/greek/1135.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G435 anēr",
+              "texto": "Anēr: varón o marido.",
+              "url": "https://biblehub.com/greek/435.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G5100 tis",
+              "texto": "Tis: alguno, cualquiera. La palabra de 1 Timoteo 3:1.",
+              "url": "https://biblehub.com/greek/5100.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Que gobierne bien su casa",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Pablo dice que el obispo tiene que gobernar bien su casa, y tener a sus hijos sujetos. Porque si uno no sabe gobernar su propia casa, ¿cómo va a cuidar de la iglesia de Dios? (1 Timoteo 3:4-5).</p>\n<p>Fíjense cómo se conecta todo: el hombre es la cabeza en su casa (Efesios 5), y por eso la iglesia, que es la casa de Dios (1 Timoteo 3:15), se dirige con el mismo orden.</p>"
+            }
+          ]
+        },
+        {
+          "titulo": "Los diáconos y “las mujeres” (3:11)",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Después Pablo habla de los diáconos (3:8-13). Y en medio dice “las mujeres asimismo”.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Timoteo 3:11 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>La palabra es <span class=\"g\">gynaikas</span>, que puede ser “mujeres” o “esposas”. No se sabe con seguridad si habla de las esposas de los diáconos o de mujeres diaconisas. Es un debate abierto, y hay que decirlo así.</p>\n<p>Pero hay algo que sí es seguro: <b>diácono no es pastor.</b> Al obispo se le pide que sea apto para enseñar (3:2). Al diácono no. El diácono sirve; el obispo enseña y dirige.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1135 gynē",
+              "texto": "Gynaikas, de 1 Timoteo 3:11, es una forma de gynē: mujeres o esposas.",
+              "url": "https://biblehub.com/greek/1135.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1249 diakonos",
+              "texto": "Diakonos: servidor, ministro, diácono.",
+              "url": "https://biblehub.com/greek/1249.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "¿Y la que no tiene marido?",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Hoy hay pastoras solteras, y pastoras casadas con un marido que no es cristiano, que dirigen solas.</p>\n<p>Ya vimos que 1 Timoteo 2:12 vale en la iglesia para toda mujer, casada o no. Entonces el no tener marido no le abre la puerta al pastorado.</p>\n<p>Y a la mujer que tiene un marido que no obedece a la Palabra, la Biblia le dice cómo ganarlo: con su conducta, no tomando el lugar de cabeza.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "1 Pedro 3:1-2 LBLA",
+              "versiculos": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Fundamento histórico",
+      "subtitulo": "De dónde proviene",
+      "color": "azul",
+      "puntos": [
+        {
+          "titulo": "Siglo II: el montanismo",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Ahora, igual que hicimos con las lenguas, vamos a ver de dónde viene esta práctica. Porque en la iglesia del Nuevo Testamento no hay ni un solo caso de una mujer que fuera pastora, anciana u obispa.</p>\n<p>En el siglo II apareció el <b>montanismo</b>, un movimiento con dos profetisas, Priscila y Maximila, que hablaban como si el Espíritu hablara por ellas. La iglesia lo rechazó.</p>\n<p>En ese mismo tiempo, Tertuliano escribió en su obra <i>Sobre el bautismo</i> que a la mujer no se le permite enseñar ni bautizar en la iglesia.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Montanismo (Wikipedia)",
+              "texto": "El movimiento de Montano en el siglo II, con las profetisas Prisca (Priscila) y Maximila.",
+              "url": "https://es.wikipedia.org/wiki/Montanismo"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Tertuliano · Sobre el bautismo, capítulo 17 (inglés)",
+              "texto": "Tertuliano dice que Pablo no le dio a la mujer el poder de enseñar ni de bautizar.",
+              "url": "https://www.newadvent.org/fathers/0321.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Siglo XVII: los cuáqueros",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Por muchos siglos no se ve la práctica en la iglesia. En el siglo XVII, los <b>cuáqueros</b>, en Inglaterra, dejaban predicar a las mujeres. Margaret Fell escribió un libro en 1666 defendiendo que las mujeres hablaran en la iglesia.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Margaret Fell (Wikipedia, inglés)",
+              "texto": "Cuáquera; en 1666 publicó Womens Speaking Justified, defendiendo que las mujeres prediquen.",
+              "url": "https://en.wikipedia.org/wiki/Margaret_Fell"
+            }
+          ]
+        },
+        {
+          "titulo": "Siglo XIX: Hechos 2 como bandera",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<ul>\n<li><b>1853:</b> Antoinette Brown fue ordenada por una iglesia congregacional en Nueva York. Se suele decir que fue la primera mujer ordenada pastora en una denominación protestante de Estados Unidos.</li>\n<li><b>1859:</b> Phoebe Palmer, del movimiento de santidad metodista, y Catherine Booth, del Ejército de Salvación, escribieron defendiendo que las mujeres prediquen.</li>\n</ul>\n<p>¿Y saben qué texto usaron? <b>Hechos 2:17-18</b>, “vuestras hijas profetizarán”.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Antoinette Brown Blackwell (Winning the Vote, inglés)",
+              "texto": "El 15 de septiembre de 1853, una iglesia congregacional de Butler y Savannah, Nueva York, la ordenó como pastora.",
+              "url": "https://winningthevote.org/biographies/antoinette-brown-blackwell/"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Phoebe Palmer (CBE International, inglés)",
+              "texto": "Su libro The Promise of the Father, de 1859, defendía a las mujeres en el ministerio público.",
+              "url": "https://www.cbeinternational.org/resource/phoebe-palmer/"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Catherine Booth (Wikipedia, inglés)",
+              "texto": "En 1859 escribió Female Ministry, defendiendo el derecho de la mujer a predicar.",
+              "url": "https://en.wikipedia.org/wiki/Catherine_Booth"
+            }
+          ]
+        },
+        {
+          "titulo": "Topeka y el pentecostalismo",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Y aquí se junta con lo que vimos en Lenguas extrañas. En 1901, en Topeka, la primera persona que habló en lenguas fue una mujer, Agnes Ozman. El pentecostalismo dio mucho lugar a las mujeres como predicadoras, usando el mismo texto de Hechos 2.</p>\n<ul>\n<li><b>1914:</b> las Asambleas de Dios ordenaban mujeres como evangelistas y misioneras, pero no como ancianas.</li>\n<li><b>Años 1920:</b> Aimee Semple McPherson, evangelista pentecostal, fundó en Los Ángeles la Iglesia Cuadrangular.</li>\n<li><b>1935:</b> las Asambleas de Dios dieron a las mujeres la ordenación completa como pastoras.</li>\n</ul>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Agnes Ozman (Wikipedia, inglés)",
+              "texto": "El 1 de enero de 1901, en la escuela bíblica de Topeka, pidió hablar en lenguas.",
+              "url": "https://en.wikipedia.org/wiki/Agnes_Ozman"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Christian History Institute · “Loose the Women” (inglés)",
+              "texto": "Las Asambleas de Dios: en 1914, mujeres evangelistas y misioneras pero no ancianas; en 1935, la ordenación completa.",
+              "url": "https://christianhistoryinstitute.org/magazine/article/loose-the-women"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Aimee Semple McPherson (Wikipedia, inglés)",
+              "texto": "Fundó la Iglesia Cuadrangular; su templo, el Angelus Temple de Los Ángeles, se terminó en 1923.",
+              "url": "https://en.wikipedia.org/wiki/Aimee_Semple_McPherson"
+            }
+          ]
+        },
+        {
+          "titulo": "Siglo XX: se hace común",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<ul>\n<li><b>1956:</b> la Iglesia Metodista de Estados Unidos dio a las mujeres los mismos derechos que a los pastores. Ese mismo año, Margaret Towner fue la primera mujer ordenada pastora en la Iglesia Presbiteriana de Estados Unidos.</li>\n<li><b>1994:</b> la Iglesia de Inglaterra ordenó a sus primeras 32 sacerdotisas.</li>\n<li><b>2015:</b> la Iglesia de Inglaterra consagró a su primera obispa, Libby Lane.</li>\n</ul>\n<p><b>O sea, igual que con las lenguas: esta práctica no viene de los apóstoles.</b> Aparece en grupos aislados, crece en el siglo XIX, se hace fuerte con el pentecostalismo y se hace común en el siglo XX. Casi 1900 años después de que se escribió el Nuevo Testamento.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "UM News · el voto de 1956 (inglés)",
+              "texto": "En 1956 la Iglesia Metodista de Estados Unidos dio a las mujeres los derechos plenos de pastora.",
+              "url": "https://www.umnews.org/en/news/why-the-1956-women-clergy-vote-matters"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "EBSCO · presbiterianos y metodistas aprueban la ordenación de mujeres (inglés)",
+              "texto": "El voto presbiteriano de 1955 y Margaret Towner, ordenada en 1956.",
+              "url": "https://www.ebsco.com/research-starters/womens-studies-and-feminism/presbyterian-and-methodist-churches-approve"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Religion Media Centre · mujeres sacerdotes en la Iglesia de Inglaterra (inglés)",
+              "texto": "Las primeras 32 mujeres ordenadas sacerdotes, el 12 de marzo de 1994.",
+              "url": "https://religionmediacentre.org.uk/factsheets/25-years-of-women-as-priests-in-the-church-of-england/"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Libby Lane (Wikipedia, inglés)",
+              "texto": "Consagrada en enero de 2015, la primera obispa de la Iglesia de Inglaterra.",
+              "url": "https://en.wikipedia.org/wiki/Libby_Lane"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Lo que sí hace la mujer",
+      "subtitulo": "Su lugar en la iglesia",
+      "color": "celeste",
+      "puntos": [
+        {
+          "titulo": "Enseña a las más jóvenes · Tito 2",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Ahora, no todo es un “no”. La Biblia le da a la mujer un lugar muy importante. Pablo les dice a las mujeres mayores que enseñen lo bueno a las más jóvenes.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Tito 2:3-5 LBLA",
+              "versiculos": []
+            }
+          ]
+        },
+        {
+          "titulo": "Loida y Eunice",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Timoteo, el pastor a quien Pablo le escribió estas cartas, aprendió la fe de su abuela Loida y de su madre Eunice. Desde niño conoció las Escrituras.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "2 Timoteo 1:5 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "2 Timoteo 3:14-15 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>O sea, detrás de un pastor como Timoteo hubo dos mujeres que le enseñaron la Palabra.</p>"
+            }
+          ]
+        },
+        {
+          "titulo": "Profetiza",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>La mujer ora y profetiza (1 Corintios 11:5). Felipe el evangelista tenía cuatro hijas que profetizaban.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Hechos 21:9 LBLA",
+              "versiculos": []
+            }
+          ]
+        },
+        {
+          "titulo": "Sirve · las mujeres de Lucas 8",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p>Había mujeres que seguían a Jesús y le servían con sus bienes.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Lucas 8:1-3 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p>Y en Romanos 16 Pablo saluda a muchas mujeres que trabajaban en el Señor. La Biblia honra a la mujer que sirve. Lo que no le da es el cargo de pastor.</p>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Lo que dirán",
+      "subtitulo": "Los textos usados a favor de las pastoras",
+      "color": "rojo",
+      "puntos": [
+        {
+          "titulo": "Gálatas 3:28",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento:</b> en Cristo no hay varón ni mujer, entonces la mujer puede ser pastora.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Gálatas 3:26-29 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta:</b> el contexto es la salvación. Todos somos hijos de Dios por la fe (v. 26), revestidos de Cristo (v. 27) y herederos de la promesa (v. 29). Pablo habla de quién es salvo, no de quién dirige la iglesia.</p>\n<p>“Varón y mujer” en griego es <span class=\"g\">arsen kai thēly</span>, las mismas palabras de Génesis 1:27 en la traducción griega del Antiguo Testamento. Pablo no borra la creación.</p>\n<p>Y el mismo Pablo que escribió Gálatas 3:28 escribió 1 Timoteo 2 y 3. Pablo no se contradice. <b>Igual en la salvación, distinto en la función.</b></p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G730 arsēn",
+              "texto": "Arsēn: varón. La palabra de Gálatas 3:28.",
+              "url": "https://biblehub.com/greek/730.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G2338 thēlys",
+              "texto": "Thēlys: mujer, hembra. La palabra de Gálatas 3:28.",
+              "url": "https://biblehub.com/greek/2338.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Débora",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento:</b> Débora dirigió a Israel, entonces una mujer puede dirigir al pueblo de Dios.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Jueces 4:4-9 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta:</b> Débora era profetisa (<span class=\"g\">nəbîʾâ</span>) y juzgaba a Israel debajo de una palmera. La gente subía a ella.</p>\n<ul>\n<li>No tomó el mando de la guerra. Llamó a Barac y le dio la orden de Dios.</li>\n<li>Barac no quiso ir sin ella, y ella le dijo que la honra no sería para él, porque Dios entregaría a Sísara en mano de una mujer. Muchos lo leen como un reproche a Barac, porque no tomó su lugar.</li>\n<li>Era el tiempo de los Jueces, cuando cada uno hacía lo que bien le parecía (Jueces 21:25).</li>\n<li>En Israel los sacerdotes eran solo hombres. Débora no era sacerdotisa. Y un juez de Israel no es un pastor de la iglesia.</li>\n</ul>\n<p>La Biblia no critica a Débora. Dios la usó de verdad. Pero su caso no borra lo que dice 1 Timoteo 2 y 3.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong H5031 nəbîʾâ",
+              "texto": "Nəbîʾâ: profetisa. Así se llama a Débora en Jueces 4:4.",
+              "url": "https://biblehub.com/hebrew/5031.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Febe",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento:</b> Febe era diaconisa, o hasta ministra de la iglesia.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Romanos 16:1-2 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta:</b> Pablo la llama <span class=\"g\">diakonos</span>, que quiere decir “servidor”, “ministro” o “diácono”. Esa misma palabra se usa para Pablo (1 Corintios 3:5), para Cristo (Romanos 15:8) y hasta para el gobierno (Romanos 13:4). No siempre es un cargo.</p>\n<p>Y la llama <span class=\"g\">prostatis</span>, “ayudadora” o “benefactora”: ayudó a muchos y al mismo Pablo. Es muy probable que ella llevó la carta a Roma, aunque el texto no lo dice directamente.</p>\n<p>Y aunque fuera diaconisa, ya vimos que <b>diácono no es pastor</b>.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1249 diakonos",
+              "texto": "Diakonos: servidor, ministro, diácono. Ahí se ve que se usa para Pablo, para Cristo y para el gobierno.",
+              "url": "https://biblehub.com/greek/1249.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G4368 prostatis",
+              "texto": "Prostatis: protectora, ayudadora, benefactora. Aparece solo en Romanos 16:2.",
+              "url": "https://biblehub.com/greek/4368.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Priscila",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento:</b> Priscila le enseñó a un hombre, Apolos.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Hechos 18:24-26 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta:</b> lo hizo junto con su marido, Aquila, no sola. Y el texto dice <span class=\"g\">proselabonto auton</span>, “lo tomaron aparte”. Fue en privado, no en la congregación ni desde el púlpito. Apolos ya sabía; ellos le explicaron con más exactitud.</p>\n<p>A veces el nombre de ella aparece antes que el de Aquila (Hechos 18:18, Romanos 16:3). Puede ser que era muy conocida. La Biblia la honra, y la iglesia se reunía en su casa (Romanos 16:5). Pero nunca la llama pastora ni anciana.</p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G4355 proslambanō",
+              "texto": "Proslambanō: recibir, tomar aparte. La palabra de Hechos 18:26.",
+              "url": "https://biblehub.com/greek/4355.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Junias",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento:</b> Junia era mujer y era apóstol. Si una mujer fue apóstol, puede ser pastora.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Romanos 16:7 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta:</b> este versículo tiene tres preguntas.</p>\n<ol>\n<li><b>¿Hombre o mujer?</b> En griego, <span class=\"g\">Iounian</span> puede ser Junia (mujer) o Junias (hombre). Hoy la mayoría dice que era mujer, y Juan Crisóstomo, en el siglo IV, la leyó como mujer. Lo más probable es que sí era mujer.</li>\n<li><b>¿“Destacados entre los apóstoles” o “estimados por los apóstoles”?</b> El griego <span class=\"g\">episēmoi en tois apostolois</span> se puede leer de las dos formas. No está resuelto.</li>\n<li><b>¿Qué es apóstol aquí?</b> <span class=\"g\">apostolos</span> también quiere decir “enviado” o “mensajero”. Así se llama a Epafrodito (Filipenses 2:25) y a los hermanos de 2 Corintios 8:23. No eran de los doce.</li>\n</ol>\n<p>Aun si era mujer y “apóstol”, lo más seguro es que fue una enviada, una misionera. Y el texto no dice que fue pastora. <b>Un versículo con tres dudas no puede borrar un mandamiento claro.</b></p>"
+            }
+          ],
+          "fuentes": [
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G2458 Iounias",
+              "texto": "El nombre de Romanos 16:7.",
+              "url": "https://biblehub.com/greek/2458.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1978 episēmos",
+              "texto": "Episēmos: notable, destacado.",
+              "url": "https://biblehub.com/greek/1978.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G652 apostolos",
+              "texto": "Apostolos: apóstol, enviado, mensajero.",
+              "url": "https://biblehub.com/greek/652.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Junia (Wikipedia, inglés)",
+              "texto": "El acento del nombre, Juan Crisóstomo, y el estudio de Burer y Wallace (2001): “conocidos por los apóstoles”.",
+              "url": "https://en.wikipedia.org/wiki/Junia_(New_Testament_person)"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Juan Crisóstomo · Homilía 31 sobre Romanos (inglés)",
+              "texto": "Crisóstomo comenta Romanos 16:7 y habla de Junia como mujer.",
+              "url": "https://www.newadvent.org/fathers/210231.htm"
+            }
+          ]
+        },
+        {
+          "titulo": "Hechos 2:17-18",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento:</b> Dios derramó su Espíritu sobre las mujeres, y dice que nuestras hijas profetizarán.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Hechos 2:17-18 LBLA",
+              "versiculos": [
+                {
+                  "numero": "17",
+                  "texto": "Y SUCEDERÁ EN LOS ÚLTIMOS DÍAS —dice Dios— QUE DERRAMARÉ DE MI ESPÍRITU SOBRE TODA CARNE; Y VUESTROS HIJOS Y VUESTRAS HIJAS PROFETIZARÁN, VUESTROS JÓVENES VERÁN VISIONES, Y VUESTROS ANCIANOS SOÑARÁN SUEÑOS;"
+                }
+              ]
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta:</b> sí, las mujeres profetizan. Eso es bíblico (Joel 2:28-29, Hechos 21:9, 1 Corintios 11:5).</p>\n<p>Pero <b>profetizar no es lo mismo que ser pastor.</b> En 1 Corintios 12:28 Pablo pone por separado apóstoles, profetas y maestros. Son dones distintos. Lo que 1 Timoteo 2:12 no permite es enseñar y ejercer autoridad sobre el hombre en la iglesia, no profetizar.</p>\n<p>Y recordemos: este es el mismo texto que usaron en el siglo XIX y en Topeka. El problema no es el texto, es hacerle decir lo que no dice.</p>"
+            }
+          ]
+        },
+        {
+          "titulo": "Las mujeres de la resurrección",
+          "nuevo": false,
+          "bloques": [
+            {
+              "tipo": "texto",
+              "texto": "<p><b>El argumento:</b> las primeras que anunciaron que Jesús resucitó fueron mujeres. Jesús las mandó a predicar.</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Juan 20:17-18 LBLA",
+              "versiculos": []
+            },
+            {
+              "tipo": "texto",
+              "texto": "<p><b>La respuesta:</b> es verdad, y es un honor muy grande. Fueron las primeras testigos de la resurrección. Pero lo que hicieron fue llevarles la noticia a los discípulos. Eso no es el cargo de pastor.</p>\n<p>Jesús tenía mujeres que lo seguían y le servían (Lucas 8:1-3), y aun así escogió a doce hombres como apóstoles (Lucas 6:13). Y no fue por la cultura: Jesús rompía la cultura cuando quería. Los discípulos se maravillaron de que hablara con una mujer samaritana (Juan 4:27).</p>"
+            },
+            {
+              "tipo": "pasaje",
+              "referencia": "Lucas 6:13 LBLA",
+              "versiculos": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
