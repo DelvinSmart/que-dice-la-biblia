@@ -197,6 +197,7 @@
 .barrita i{display:block;height:100%;border-radius:var(--radio-3);background:var(--m);transition:width var(--dur-300) ease}
 .medida.rojo b{color:var(--b7)}
 .medida-aviso{margin:0;color:var(--b7)}
+.medida-nota{margin:0;color:var(--muted)}
 
 .griego-lista{display:grid;gap:var(--esp-6);background:var(--surface);border:var(--borde-1-5) solid var(--line);border-radius:var(--radio-10);padding:var(--esp-10) var(--esp-12)}
 .griego-lista p{margin:0;font-size:var(--letra-16);line-height:var(--interlinea-1-55)}
@@ -222,3 +223,10 @@
 .lista-capturas li.listo{border-left-color:var(--b3)}
 .lista-capturas li.parcial{border-left-color:var(--b6)}
 .lista-capturas li.falta{border-left-color:var(--b7);color:var(--muted)}
+
+/* "Pegar estudio de la IA" (js/panel-ia.js) */
+#cajaIA{margin-top:var(--esp-14)}
+.ia-ed{display:grid;gap:var(--esp-10)}
+.lista-capturas li.error{color:var(--b7)}
+.mini-link{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+#btnIA{margin-top:var(--esp-10)}

@@ -10,6 +10,15 @@ Lee esto antes de escribir o cambiar un estudio.
 - La página es https://delvinsmart.github.io/que-dice-la-biblia/ y el repositorio es `DelvinSmart/que-dice-la-biblia` (antes `estudios-biblicos`). Todo está en este único repositorio. No crees repositorios aparte, ni siquiera para redirigir.
 - En el panel, las claves guardadas en el aparato (`estudios-biblicos-llave` y `estudios-biblicos-borrador-…`) se quedan con el nombre viejo a propósito: si se cambian, el autor pierde la llave y los borradores guardados.
 
+## Reglas del autor para estudiar (obligatorias)
+
+Están completas en **`ia/instrucciones.md`** (las mismas que usan su Gem de Gemini y su proyecto de ChatGPT; CLAUDE.md y GEMINI.md las cargan). Lo esencial:
+- **Manda la Biblia, no lo que piensa el autor.** Si la Biblia lo corrige, se le dice con el versículo.
+- **Nunca se propone quitar, acortar ni cambiar un versículo.** Tampoco para el 25%: se agrega explicación real, nunca relleno ni nada inventado.
+- Todo dato que no sea la Biblia lleva fuente con link comprobado. Nada de memoria.
+- Con el mapa aprobado no se crean puntos nuevos, y el estudio no se contradice.
+- La guía para el autor es `ia/COMO-HACER-UN-ESTUDIO-CON-UNA-IA.md`. En el panel, "Pegar estudio de la IA" (`js/panel-ia.js`) revisa el JSON de una IA con estas reglas antes de abrirlo en el editor: borra los versículos que escribió la IA, pone los que ya están copiados, trae el griego del SBLGNT y no deja seguir si se quitó Biblia de un estudio que ya existía.
+
 ## Los estudios
 
 - **Fuentes:** no van en el texto del estudio. Cada subpunto las guarda en su lista `"fuentes": [...]` (al lado de `"bloques"`): `{"tipo": "fuente", "titulo": "…", "texto": "resumen corto", "url": "https://…"}` o `{"tipo": "griego", …}`. En la página salen como botoncitos al final del subpunto (al tocar uno se abre un recuadro con el resumen y el link) y todas juntas en el último paso del mapa, "Fuentes del estudio". En el panel se editan en la sección "Fuentes del estudio", debajo de "+ Punto". Cada dato histórico, de idioma original o de fecha debe tener su fuente. No inventes fuentes ni links: si no estás seguro, pregúntale al autor.
@@ -37,7 +46,7 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 
 - **Buscador:** en cada pasaje se escoge libro, capítulo, desde, hasta y versión. "Poner" escribe la referencia y "Abrir en la Biblia" abre ese pasaje exacto en Bible.com (o en la app YouVersion en el teléfono) para copiarlo. Los libros y los enlaces están en `js/biblia.js`.
 - **Versículos ya copiados:** al poner una referencia, el panel busca si esos versículos ya están en algún estudio, en la misma versión, y los reutiliza (`js/panel-reusar.js`). La IA hace lo mismo: antes de pedirle un versículo al autor, busca si ya está en otro estudio de `estudios/` y lo reutiliza tal cual.
-- **Medidor:** el panel muestra los versículos (máx. 500) y qué porcentaje del estudio es texto bíblico (máx. 25%), y no publica si se pasa (`js/panel-medidor.js`). La IA que haga commit directo tiene que comprobar lo mismo antes: si los versículos pasan del 25% de las palabras del estudio, no publica y le dice al autor cuántas palabras de explicación faltan.
+- **Medidor:** el panel muestra los versículos de la LBLA (máx. 500) y qué porcentaje del estudio son (máx. 25%). Solo cuenta la LBLA, porque la regla es de Lockman; los pasajes de otras versiones se muestran aparte y no entran en el porcentaje (sus reglas no están revisadas: la ARA es de la Sociedade Bíblica do Brasil), y no publica si se pasa (`js/panel-medidor.js`). La IA que haga commit directo tiene que comprobar lo mismo antes: si los versículos de la LBLA pasan del 25% de las palabras del estudio, no publica y le dice al autor cuántas palabras de explicación faltan (nunca le propone quitar versículos).
 
 ## Texto griego (SBLGNT)
 

@@ -6,7 +6,7 @@ import "./revisar-diseno.mjs"; // el candado de diseño: si hay valores escritos
 
 const raiz = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const salida = path.join(raiz, "_site");
-const copiar = ["index.html", "estudio.html", "panel.html", "pdf.html", "css", "js", "estudios", "griego"];
+const copiar = ["index.html", "estudio.html", "panel.html", "pdf.html", "css", "js", "estudios", "griego", "ia"];
 
 fs.rmSync(salida, { recursive: true, force: true });
 fs.mkdirSync(salida);

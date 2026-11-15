@@ -1,7 +1,9 @@
 // Panel · medidor de citas bíblicas. Lockman permite citar la LBLA hasta 500 versículos por obra,
 // siempre que los versículos no pasen del 25% del texto (https://www.lockman.org/espanol/permiso-para-citar/).
-// Se mide todo el estudio: los versículos contra todo lo que escribe el autor (títulos, preguntas, textos, fuentes…).
-// Si se pasa, Publicar no publica y dice cuánto texto propio falta.
+// Se mide todo el estudio: los versículos de la LBLA contra todo lo que escribe el autor (títulos, preguntas, textos,
+// fuentes…). Si se pasa, Publicar no publica y dice cuánto texto propio falta. Nunca se propone quitar versículos.
+// Esta regla es de Lockman y vale solo para la LBLA: los pasajes de otras versiones (RVR1960, ARA…) se cuentan aparte,
+// porque sus reglas son de otros dueños y todavía no están revisadas (en el % no suman ni como Biblia ni como texto propio).
 
 const LIMITE_VERSICULOS = 500;
 const LIMITE_PORCENTAJE = 25;
@@ -18,8 +20,15 @@ function versiculosDe(b) {
   }, 0);
 }
 
+// ¿El pasaje es de la LBLA? Por la sigla al final de la referencia; sin sigla, la versión del idioma (español → LBLA)
+function pasajeLBLA(b, idioma) {
+  const r = leerReferencia(b.referencia);
+  const version = (r && r.version) || (/\b([A-Z]{2,6}\d*)\s*$/.exec(b.referencia || "") || [])[1] || VERSION_POR_IDIOMA[idioma] || "LBLA";
+  return version === "LBLA";
+}
+
 function medir(e) {
-  let versiculos = 0, sinTexto = 0, deBiblia = 0;
+  let versiculos = 0, sinTexto = 0, deBiblia = 0, otras = 0;
   let propias = palabras(e.titulo) + palabras(e.descripcion) + palabras(e.cierre)
     + (e.preguntas || []).reduce((n, q) => n + palabras(q), 0);
   for (const t of e.temas || []) {
@@ -28,7 +37,9 @@ function medir(e) {
       propias += palabras(p.titulo);
       for (const f of p.fuentes || []) propias += palabras(f.titulo) + palabras(f.texto);
       for (const b of p.bloques || []) {
-        if (b.tipo === "pasaje") {
+        if (b.tipo === "pasaje" && !pasajeLBLA(b, e.idioma)) {
+          otras += versiculosDe(b);
+        } else if (b.tipo === "pasaje") {
           const n = versiculosDe(b);
           versiculos += n;
           const conTexto = (b.versiculos || []).filter(v => v.texto);
@@ -45,7 +56,7 @@ function medir(e) {
   const porcentaje = total ? Math.round((deBiblia / total) * 1000) / 10 : 0;
   // Para que la Biblia sea como máximo el 25%, lo propio tiene que ser al menos 3 veces lo bíblico
   const faltan = Math.max(0, Math.ceil(deBiblia * (100 - LIMITE_PORCENTAJE) / LIMITE_PORCENTAJE) - propias);
-  return { versiculos, sinTexto, porcentaje, faltan };
+  return { versiculos, sinTexto, porcentaje, faltan, otras };
 }
 
 const nivel = (valor, limite) => (valor > limite ? "rojo" : valor > limite * 0.8 ? "amarillo" : "verde");
@@ -65,7 +76,7 @@ function actualizarMedidor() {
   const mini = $("medidorMini");
   mini.className = `medidor-mini ${peor}`;
   mini.innerHTML = `<i></i>${m.versiculos}/${LIMITE_VERSICULOS} · ${pct}%${m.faltan ? " ⚠" : ""}`;
-  mini.title = `Versículos ${m.versiculos} de ${LIMITE_VERSICULOS} · texto bíblico ${pct}% del estudio (máx. ${LIMITE_PORCENTAJE}%)`;
+  mini.title = `Versículos de la LBLA ${m.versiculos} de ${LIMITE_VERSICULOS} · texto bíblico ${pct}% del estudio (máx. ${LIMITE_PORCENTAJE}%)`;
   $("medidorPop").innerHTML = detalleMedidor(m);
 }
 
@@ -92,23 +103,24 @@ function detalleMedidor(m) {
   const pendientes = m.sinTexto ? ` · ${m.sinTexto} sin texto todavía` : "";
   return `
     <div class="medida ${nivel(m.versiculos, LIMITE_VERSICULOS)}">
-      <span>Versículos <b>${m.versiculos}</b> de ${LIMITE_VERSICULOS}${pendientes}</span>
+      <span>Versículos de la LBLA <b>${m.versiculos}</b> de ${LIMITE_VERSICULOS}${pendientes}</span>
       <span class="barrita"><i style="width:${Math.min(100, (m.versiculos / LIMITE_VERSICULOS) * 100)}%"></i></span>
     </div>
     <div class="medida ${m.faltan ? "rojo" : nivel(m.porcentaje, LIMITE_PORCENTAJE)}">
-      <span>Texto bíblico <b>${String(m.porcentaje).replace(".", ",")}%</b> del estudio (máx. ${LIMITE_PORCENTAJE}%)</span>
+      <span>LBLA <b>${String(m.porcentaje).replace(".", ",")}%</b> del estudio (máx. ${LIMITE_PORCENTAJE}%)</span>
       <span class="barrita"><i style="width:${Math.min(100, (m.porcentaje / LIMITE_PORCENTAJE) * 100)}%"></i></span>
     </div>
-    ${m.faltan ? `<p class="medida-aviso">Te faltan unas <b>${m.faltan} palabras</b> de explicación para poder usar estos versículos.</p>` : ""}`;
+    ${m.faltan ? `<p class="medida-aviso">Te faltan unas <b>${m.faltan} palabras</b> de explicación para poder usar estos versículos.</p>` : ""}
+    ${m.otras ? `<p class="medida-nota">Además hay <b>${m.otras}</b> versículo${m.otras > 1 ? "s" : ""} de otras versiones. No entran en esta cuenta: el límite de Lockman es solo para la LBLA, y las reglas de las otras versiones todavía no están revisadas.</p>` : ""}`;
 }
 
 // Antes de publicar: si se pasa de los límites, no publica y explica qué falta
 function motivoParaNoPublicar() {
   const m = medir(estudio);
   if (m.versiculos > LIMITE_VERSICULOS)
-    return `No se publicó: el estudio tiene ${m.versiculos} versículos y el máximo es ${LIMITE_VERSICULOS}. Quita ${m.versiculos - LIMITE_VERSICULOS}.`;
+    return `No se publicó: el estudio tiene ${m.versiculos} versículos de la LBLA y Lockman permite ${LIMITE_VERSICULOS} por obra. Se puede dividir en dos estudios o pedirle un permiso especial a Lockman.`;
   if (m.faltan)
-    return `No se publicó: los versículos son el ${String(m.porcentaje).replace(".", ",")}% del estudio (máx. ${LIMITE_PORCENTAJE}%). Escribe unas ${m.faltan} palabras más de explicación, o quita versículos.`;
+    return `No se publicó: los versículos de la LBLA son el ${String(m.porcentaje).replace(".", ",")}% del estudio (máx. ${LIMITE_PORCENTAJE}%). Escribe unas ${m.faltan} palabras más de explicación.`;
   return "";
 }
 
