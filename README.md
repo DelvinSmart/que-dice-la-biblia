@@ -1,4 +1,4 @@
-# Estudios Bíblicos
+# ¿Qué dice la Biblia? · O que diz a Bíblia?
 
 Estudios de la Biblia organizados como un mapa: cada estudio es un tema, el tema tiene puntos (1, 2, 3…), cada punto tiene subpuntos (1.1, 1.2…), y cada subpunto tiene su contenido: textos, pasajes bíblicos y subtítulos. Se leen en la página y se descargan en PDF.
 
