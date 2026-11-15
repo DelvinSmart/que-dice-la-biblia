@@ -7,10 +7,10 @@
   <title>Panel · ¿Qué dice la Biblia?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;0,800;1,400&family=Archivo:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="css/motor.css?v=lbla12">
+  <link rel="stylesheet" href="css/motor.css?v=lbla13">
   <script src="js/tema.js?v=1"></script>
-  <link rel="stylesheet" href="css/styles.css?v=lbla12">
-  <link rel="stylesheet" href="css/panel.css?v=ia1">
+  <link rel="stylesheet" href="css/styles.css?v=lbla13">
+  <link rel="stylesheet" href="css/panel.css?v=ia2">
 </head>
 <body>
 <main class="panel">
@@ -39,9 +39,23 @@
         <button class="btn" type="button" id="btnSalir">Salir</button>
       </div>
     </header>
-    <button class="btn principal grande" type="button" id="btnNuevo">+ Nuevo estudio</button>
-    <button class="btn grande" type="button" id="btnIA">Pegar estudio de la IA</button>
+    <div class="herramientas">
+      <button class="btn principal grande" type="button" id="btnNuevo">+ Nuevo estudio</button>
+      <button class="btn grande" type="button" id="btnIA">Pegar estudio de la IA</button>
+    </div>
     <div id="cajaIA" hidden></div>
+    <section class="bloque-ed reglas-ia" aria-labelledby="tReglas">
+      <div>
+        <h2 id="tReglas">Reglas para la IA</h2>
+        <p class="ayuda-fuente">Dale estas reglas a Gemini o ChatGPT y escríbele solo el tema: hará el estudio como tú lo pides.</p>
+      </div>
+      <div class="reglas-botones">
+        <button class="btn principal" type="button" id="btnCopiarReglas">Copiar instrucciones</button>
+        <a class="btn" href="ia/instrucciones.md" download="instrucciones.md">Descargar instrucciones.md</a>
+        <a class="btn" href="https://github.com/DelvinSmart/que-dice-la-biblia/blob/main/ia/COMO-HACER-UN-ESTUDIO-CON-UNA-IA.md" target="_blank" rel="noopener">Guía paso a paso</a>
+      </div>
+      <p class="ayuda-pegar" id="avisoReglas" role="status"></p>
+    </section>
     <div class="lista" id="listaEstudios"></div>
     <p class="aviso" id="avisoLista" role="alert"></p>
   </section>
@@ -87,6 +101,6 @@
 <script src="js/panel-foto.js?v=cap1"></script>
 <script src="js/panel-capturas.js?v=1"></script>
 <script src="js/panel-imagen.js?v=vid1"></script>
-<script src="js/panel-ia.js?v=2"></script>
+<script src="js/panel-ia.js?v=3"></script>
 </body>
 </html>

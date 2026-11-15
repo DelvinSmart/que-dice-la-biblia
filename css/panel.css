@@ -230,3 +230,16 @@
 .lista-capturas li.error{color:var(--b7)}
 .mini-link{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
 #btnIA{margin-top:var(--esp-10)}
+
+/* Lista de estudios: usa el ancho en computadora y deja las herramientas a la vista */
+.panel:has(#pLista:not([hidden])){max-width:var(--esp-1500)}
+.herramientas{display:grid;grid-template-columns:var(--medida-fluida-6);gap:var(--esp-14)}
+.herramientas .btn.grande{height:100%;padding-block:var(--esp-20);font-size:var(--letra-16)}
+.reglas-ia{gap:var(--esp-14);border-left:var(--borde-4) solid var(--accent)}
+.reglas-ia h2{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--letra-20);margin:0 0 var(--esp-6)}
+.reglas-ia .ayuda-fuente{margin:0}
+.reglas-botones{display:flex;flex-wrap:wrap;gap:var(--esp-14)}
+@media (min-width:900px){
+  .reglas-ia{grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:var(--esp-28)}
+  .reglas-ia .ayuda-pegar{grid-column:1 / -1}
+}

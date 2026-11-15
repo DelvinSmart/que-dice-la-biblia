@@ -89,6 +89,7 @@
   --esp-1100:1100px;
   --esp-12:12px;
   --esp-1240:1240px;
+  --esp-1600:1600px;
   --esp-13:13px;
   --esp-130:130px;
   --esp-14:14px;
@@ -137,6 +138,8 @@
   --medida-fluida-7:minmax(0,1fr) minmax(0,1.1fr);
   --medida-fluida-8:minmax(150px,2fr) repeat(3,minmax(64px,1fr)) minmax(96px,1.2fr) auto;
   --medida-fluida-9:repeat(3,minmax(0,1fr));
+  --medida-fluida-11:minmax(280px,0.8fr) minmax(0,2.2fr);
+  --medida-fluida-12:repeat(auto-fit,minmax(min(100%,360px),1fr));
   --pdf-esp-0-6-em:.6em;
   --pdf-esp-1:1px;
   --pdf-esp-10:10px;

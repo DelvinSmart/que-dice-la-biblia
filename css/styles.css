@@ -119,10 +119,17 @@ body{margin:0}
 .root:has(.idiomas:not([hidden])) h1{padding-right:var(--esp-96)}
 
 /* Página de inicio: lista de estudios */
-.inicio{max-width:var(--esp-1100);margin:0 auto;display:grid;gap:var(--esp-24)}
+.inicio{max-width:var(--esp-1600);margin:0 auto;display:grid;gap:var(--esp-24)}
 .inicio-head h1{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--letra-fluida-2);line-height:var(--interlinea-1-05);margin:var(--esp-8) 0 var(--esp-10);text-wrap:balance}
 .inicio-head p{margin:0;color:var(--muted);max-width:62ch;font-size:var(--letra-16)}
 .lista{display:grid;grid-template-columns:var(--medida-fluida-5);gap:var(--esp-16)}
+/* Computadora: el texto de presentación queda a la izquierda y los estudios usan todo el ancho que sobra */
+@media (min-width:1000px){
+  .inicio{grid-template-columns:var(--medida-fluida-11);gap:var(--esp-32);align-items:start}
+  .inicio-head{position:sticky;top:var(--esp-28)}
+  .inicio .lista{grid-template-columns:var(--medida-fluida-12);gap:var(--esp-20)}
+  .inicio .pie{grid-column:1 / -1}
+}
 .tarjeta{display:flex;flex-direction:column;gap:var(--esp-8);color:var(--ink);background:var(--surface);border:var(--borde-1) solid var(--line);border-left:var(--borde-4) solid var(--c);border-radius:var(--radio-14);padding:var(--esp-18) var(--esp-20);transition:border-color var(--dur-150)}
 .tarjeta h2{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--letra-24);line-height:var(--interlinea-1-15);margin:0}
 .tarjeta p{margin:0;color:var(--muted);font-size:var(--letra-14)}

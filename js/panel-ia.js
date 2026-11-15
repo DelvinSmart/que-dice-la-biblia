@@ -227,3 +227,10 @@ $("cajaIA").addEventListener("click", async e => {
     $("borrador").hidden = true;
   }
 });
+
+$("btnCopiarReglas").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(await (await fetch("ia/instrucciones.md", { cache: "no-store" })).text());
+    aviso("avisoReglas", "✓ Instrucciones copiadas. Pégalas en Gemini o ChatGPT y escribe el tema.");
+  } catch (err) { aviso("avisoReglas", "No se pudieron copiar. Usa “Descargar instrucciones.md”."); }
+});
