@@ -99,7 +99,7 @@ function botonRVR(b) {
 function botonLBLA(b) {
   if (typeof enlaceLockman !== "function" || !esLBLA(b.referencia)) return "";
   const url = enlaceLockman(b.referencia);
-  return url ? `<button type="button" class="boton-lbla" data-lockman="${esc(url)}" aria-expanded="false">LBLA</button>` : "";
+  return url ? `<button type="button" class="boton-lbla" data-referencia="${esc(b.referencia)}" aria-expanded="false">LBLA</button>` : "";
 }
 
 // ---------- Texto griego (SBLGNT, licencia CC BY 4.0: se puede publicar con el crédito) ----------

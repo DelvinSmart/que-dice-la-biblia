@@ -81,8 +81,14 @@ function referenciaEnIngles(ref) {
 // El pasaje en la Biblia en línea de Lockman, el dueño de la LBLA: bible.lockman.org/lbla1995/<libro>/<cap>/<vers>
 // (el libro es su nombre en inglés en minúsculas con guiones; comprobado para los 66 libros el 15 nov 2026).
 // Lockman muestra un versículo por página: se abre en el primero del pasaje y ahí se pasa a los siguientes.
-function enlaceLockman(ref) {
+function enlaceLockman(ref, versiculo) {
   const r = leerReferencia(ref);
   if (!r || (r.version && r.version !== "LBLA")) return "";
-  return `https://bible.lockman.org/lbla1995/${r.libro.en.toLowerCase().replace(/ /g, "-")}/${r.capitulo}/${r.tramos[0][0]}`;
+  return `https://bible.lockman.org/lbla1995/${r.libro.en.toLowerCase().replace(/ /g, "-")}/${r.capitulo}/${versiculo || r.tramos[0][0]}`;
+}
+
+// Todos los versículos de una referencia, en orden: "Hechos 20:17, 28" → [17, 28]; "Efesios 5:22-25" → [22, 23, 24, 25]
+function versiculosDeReferencia(ref) {
+  const r = leerReferencia(ref);
+  return r ? r.tramos.flatMap(([a, z]) => Array.from({ length: z - a + 1 }, (_, k) => a + k)) : [];
 }

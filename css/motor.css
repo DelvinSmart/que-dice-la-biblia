@@ -69,6 +69,7 @@
   --peso-regular:400;
   --peso-semi:600;
   /* Interlineado */
+  --interlinea-1:1;
   --interlinea-1-05:1.05;
   --interlinea-1-1:1.1;
   --interlinea-1-15:1.15;
@@ -206,7 +207,13 @@
   --sombra-3:0 10px 30px #0004;
   /* LBLA abierto (el versículo de bible.lockman.org en el lugar del pasaje). Medido el 15 nov 2026: el encabezado de
      Lockman mide 327px en pantallas de hasta 640px de ancho y 275px en las más anchas */
-  --lbla-alto:230px;
+  /* alto del recuadro según el ancho (para que quepa un versículo largo) y cuánto agranda "Ver más" */
+  --lbla-ancho-1:380px;  --lbla-alto-1:300px;
+  --lbla-ancho-2:440px;  --lbla-alto-2:265px;
+  --lbla-ancho-3:520px;  --lbla-alto-3:235px;
+  --lbla-ancho-4:645px;  --lbla-alto-4:205px;
+                         --lbla-alto-5:190px;
+  --lbla-mas:140px;
   --lbla-corte:645px;
   --lbla-encabezado-angosto:327px;
   --lbla-encabezado-ancho:275px;

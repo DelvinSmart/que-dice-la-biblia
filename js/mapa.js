@@ -164,24 +164,65 @@ function abrirPasaje(chip) {
 }
 
 // LBLA: el versículo en la página de Lockman, en el mismo espacio que el pasaje. Se muestra solo su recuadro:
-// la página se corre hacia arriba lo que mide su encabezado (en css/motor.css: --lbla-encabezado-angosto en
-// pantallas de hasta --lbla-corte de ancho, y --lbla-encabezado-ancho en las más anchas; medido el 15 nov 2026).
+// la página se corre hacia arriba lo que mide su encabezado. El navegador no deja medir la página de Lockman, así
+// que el alto se calcula por el ancho (en un teléfono el versículo ocupa más líneas) para que quepa un versículo
+// largo; si no cabe, "Ver más" lo agranda. Con varios versículos, las flechas ‹ › pasan de uno a otro.
+// Todas las medidas están en css/motor.css (medidas en bible.lockman.org el 15 nov 2026).
+function medidasLBLA(ancho) {
+  const motor = getComputedStyle(document.documentElement);
+  const px = nombre => parseFloat(motor.getPropertyValue(nombre)) || 0;
+  const banda = [1, 2, 3, 4].find(n => ancho <= px(`--lbla-ancho-${n}`)) || 5;
+  return {
+    encabezado: ancho <= px("--lbla-corte") ? px("--lbla-encabezado-angosto") : px("--lbla-encabezado-ancho"),
+    alto: px(`--lbla-alto-${banda}`),
+    mas: px("--lbla-mas")
+  };
+}
+
 function abrirLBLA(boton) {
   const caja = boton.closest(".pasajes").querySelectorAll(".lbla-abierto")[posicionDe(boton)];
   if (!abrirRecuadro(boton, caja) || caja.firstChild) return;
-  const motor = getComputedStyle(document.documentElement);
-  const px = nombre => parseFloat(motor.getPropertyValue(nombre)) || 0;
-  const ancho = caja.clientWidth;
-  const encabezado = ancho <= px("--lbla-corte") ? px("--lbla-encabezado-angosto") : px("--lbla-encabezado-ancho");
+  const ref = boton.dataset.referencia;
+  const versos = versiculosDeReferencia(ref);
+  const m = medidasLBLA(caja.clientWidth);
+  let alto = m.alto, k = 0;
   caja.innerHTML = `
     <div class="lbla-recorte">
       <p class="ventana-cargando">${T.cargandoLBLA}</p>
-      <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org" src="${esc(boton.dataset.lockman)}"
-        style="top:-${encabezado}px;height:calc(var(--lbla-alto) + ${encabezado}px)"></iframe>
+      <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org"></iframe>
     </div>
-    <a class="lbla-pie" href="${esc(boton.dataset.lockman)}" target="_blank" rel="noopener">La Biblia de las Américas · The Lockman Foundation · bible.lockman.org ↗</a>`;
-  const marco = caja.querySelector("iframe");
-  marco.addEventListener("load", () => { marco.classList.add("listo"); caja.querySelector(".ventana-cargando").hidden = true; });
+    <div class="lbla-pie">
+      ${versos.length > 1 ? `<button type="button" class="lbla-flecha" data-paso="-1" aria-label="Versículo anterior">‹</button>` : ""}
+      <a class="lbla-link" target="_blank" rel="noopener"></a>
+      <button type="button" class="lbla-mas">${T.verMas}</button>
+      ${versos.length > 1 ? `<button type="button" class="lbla-flecha" data-paso="1" aria-label="Versículo siguiente">›</button>` : ""}
+    </div>`;
+  const recorte = caja.querySelector(".lbla-recorte"), marco = caja.querySelector("iframe");
+  const cargando = caja.querySelector(".ventana-cargando"), link = caja.querySelector(".lbla-link");
+  const medir = () => {
+    recorte.style.height = `${alto}px`;
+    marco.style.top = `-${m.encabezado}px`;
+    marco.style.height = `${alto + m.encabezado}px`;
+  };
+  const ir = nuevo => {
+    k = Math.max(0, Math.min(versos.length - 1, nuevo));
+    const url = enlaceLockman(ref, versos[k]);
+    cargando.hidden = false;
+    marco.classList.remove("listo");
+    marco.src = url;
+    link.href = url;
+    const r = leerReferencia(ref);
+    link.textContent = `${r ? `${r.libro[LANG === "pt" ? "pt" : "es"]} ${r.capitulo}:${versos[k]}` : ""}${versos.length > 1 ? ` · ${k + 1}/${versos.length}` : ""} · bible.lockman.org ↗`;
+    caja.querySelectorAll(".lbla-flecha").forEach(f => { f.disabled = (f.dataset.paso === "-1" && k === 0) || (f.dataset.paso === "1" && k === versos.length - 1); });
+  };
+  marco.addEventListener("load", () => { if (marco.src) { marco.classList.add("listo"); cargando.hidden = true; } });
+  caja.querySelector(".lbla-pie").addEventListener("click", e => {
+    const flecha = e.target.closest(".lbla-flecha");
+    if (flecha) ir(k + Number(flecha.dataset.paso));
+    if (e.target.closest(".lbla-mas")) { alto += m.mas; medir(); }
+  });
+  medir();
+  ir(0);
 }
 
 function controles() {

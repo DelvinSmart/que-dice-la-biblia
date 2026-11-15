@@ -10,7 +10,7 @@ const TEXTOS = {
     ayuda: "Toca cualquier punto del mapa, o usa ← → en el teclado para avanzar en orden.",
     pdf: "Descargar PDF:", pdfClaro: "Claro", pdfOscuro: "Oscuro",
     fuentesTitulo: "Fuentes del estudio", fuentesCuenta: "fuentes",
-    cargandoLBLA: "Cargando la Biblia de las Américas desde bible.lockman.org…"
+    cargandoLBLA: "Cargando la Biblia de las Américas desde bible.lockman.org…", verMas: "Ver más ↓"
   },
   pt: {
     intro: "Estudos da Bíblia organizados como um mapa: cada ponto com seus subpontos, seus textos e seus versículos. Dá para ler e baixar em PDF.",
@@ -21,6 +21,6 @@ const TEXTOS = {
     ayuda: "Toque em qualquer ponto do mapa, ou use ← → no teclado para avançar em ordem.",
     pdf: "Baixar PDF:", pdfClaro: "Claro", pdfOscuro: "Escuro",
     fuentesTitulo: "Fontes do estudo", fuentesCuenta: "fontes",
-    cargandoLBLA: "Carregando a Biblia de las Américas de bible.lockman.org…"
+    cargandoLBLA: "Carregando a Biblia de las Américas de bible.lockman.org…", verMas: "Ver mais ↓"
   }
 };

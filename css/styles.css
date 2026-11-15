@@ -247,10 +247,16 @@ body{margin:0}
 .lbla-abierto[hidden]{display:none}
 .lbla-abierto.cerrando{opacity:0;transform:translateY(calc(var(--esp-6) * -1)) scale(.98);filter:blur(var(--desenfoque-4));
   transition:opacity var(--dur-200) ease,transform var(--dur-200) ease,filter var(--dur-200) ease}
-.lbla-recorte{position:relative;height:var(--lbla-alto);overflow:hidden}
-.lbla-marco{position:absolute;left:0;width:100%;border:0;opacity:0;transition:opacity var(--dur-300) ease}
+.lbla-recorte{position:relative;overflow:hidden;transition:height var(--dur-300) var(--curva-1)}
+.lbla-marco{position:absolute;left:0;width:100%;border:0;opacity:0;transition:opacity var(--dur-300) ease,height var(--dur-300) var(--curva-1)}
 .lbla-marco.listo{opacity:1}
 .ventana-cargando{position:absolute;inset:0;display:grid;place-items:center;margin:0;padding:var(--esp-16);text-align:center;font-size:var(--letra-13-5);color:var(--muted)}
 .ventana-cargando[hidden]{display:none}
-.lbla-pie{display:block;padding:var(--esp-6) var(--esp-14);font-size:var(--letra-11);color:var(--muted);text-decoration:none;text-align:right;border-top:var(--borde-1) solid var(--line)}
-.lbla-pie:hover{color:var(--ink)}
+.lbla-pie{display:flex;align-items:center;gap:var(--esp-8);padding:var(--esp-6) var(--esp-10);border-top:var(--borde-1) solid var(--line);font-size:var(--letra-11)}
+.lbla-link{flex:1;min-width:0;color:var(--muted);text-decoration:none;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lbla-link:hover{color:var(--ink)}
+.lbla-mas,.lbla-flecha{font:inherit;font-weight:var(--peso-semi);color:var(--muted);background:var(--surface);border:var(--borde-1) solid var(--line);
+  border-radius:var(--radio-pildora);padding:var(--esp-2) var(--esp-8);cursor:pointer;white-space:nowrap}
+.lbla-flecha{font-size:var(--letra-16);line-height:var(--interlinea-1);padding:var(--esp-2) var(--esp-10)}
+.lbla-mas:hover,.lbla-flecha:hover:not(:disabled){color:var(--ink);border-color:var(--ink)}
+.lbla-flecha:disabled{opacity:.4;cursor:default}
