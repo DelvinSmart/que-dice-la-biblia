@@ -26,7 +26,7 @@ Las reglas que tiene que seguir la IA están en **[instrucciones.md](instruccion
    - En tu Gem o tu proyecto: escribe solo el tema, por ejemplo `Tema: La salvación`. La IA ya tiene las instrucciones.
    - En un chat normal (sin Gem): en el panel toca "copiar las instrucciones", pégalas, cambia la primera línea (`TEMA DEL ESTUDIO: La salvación`) y envía.
    - Mañana, para otro estudio, haces lo mismo con otro tema (`La justificación`). No hace falta armar otro prompt.
-2. **La IA arma su lista de control** con todos los pasos y los detalles del tema, y los va tachando uno por uno. Hasta que no esté todo tachado, no está listo. Si ves que se saltó algo, dile: "vuelve a la lista".
+2. **La IA lleva su lista de control por dentro** y no te la recita. Si quieres ver cómo van, pregúntale "¿cómo vamos?". Si ves que se saltó algo, dile: "vuelve a la lista".
 3. **Conversen.** La IA te pregunta tu punto de partida y lo que quieres responder. Responde con calma.
 4. **Investigación.** La IA te muestra lo que dice la Biblia, el hebreo y el griego, los que piensan distinto y la historia, con sus links. Si la Biblia te corrige, eso es lo que vale.
 5. **El mapa.** La IA te propone los puntos y subpuntos. Lo apruebas o lo cambias.
