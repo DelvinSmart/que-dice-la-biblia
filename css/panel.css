@@ -172,16 +172,24 @@
   .fila-referencia .btn{flex:1;text-align:center}
 }
 
-/* Medidor de citas: versículos (máx. 500) y porcentaje del texto (máx. 25%) */
-.medidor{flex-basis:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 16px;font-size:12.5px;color:var(--muted)}
+/* Medidor de citas: versículos (máx. 500) y porcentaje del texto (máx. 25%).
+   En la barra solo un resumen pequeño; el detalle va en un recuadro arriba de la vista previa
+   o se abre debajo de la barra al tocar el resumen. */
+.medidor-mini{font:inherit;font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);background:var(--surface);
+  border:1.5px solid var(--line);border-radius:999px;padding:5px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.medidor-mini:empty{display:none}
+.medidor-mini i{width:8px;height:8px;border-radius:50%;background:var(--m)}
+.medidor-mini.verde,.medida.verde{--m:var(--b3)} .medidor-mini.amarillo,.medida.amarillo{--m:var(--b6)} .medidor-mini.rojo,.medida.rojo{--m:var(--b7)}
+.medidor-mini.rojo{border-color:var(--b7);color:var(--b7)}
+.medidor{display:grid;gap:8px;font-size:12.5px;color:var(--muted)}
 .medidor:empty{display:none}
+.medidor-caja{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.medidor-pop{position:absolute;right:0;top:100%;margin-top:6px;width:min(340px,calc(100vw - 32px));background:var(--surface);
+  border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 10px 30px #0004;z-index:6}
+.medidor-pop[hidden]{display:none}
 .medida{display:grid;gap:4px}
 .medida b{color:var(--ink)}
 .barrita{display:block;height:5px;border-radius:3px;background:var(--line);overflow:hidden}
 .barrita i{display:block;height:100%;border-radius:3px;background:var(--m);transition:width .3s ease}
-.medida.verde{--m:var(--b3)} .medida.amarillo{--m:var(--b6)} .medida.rojo{--m:var(--b7)}
 .medida.rojo b{color:var(--b7)}
-.medida-aviso{grid-column:1/-1;margin:0;color:var(--b7)}
-@media (max-width:640px){ .medidor{grid-template-columns:1fr} }
-
-.ayuda-fuente{margin:0;font-size:13px;color:var(--muted)}
+.medida-aviso{margin:0;color:var(--b7)}

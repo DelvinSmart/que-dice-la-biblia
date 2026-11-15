@@ -49,12 +49,24 @@ function medir(e) {
 
 const nivel = (valor, limite) => (valor > limite ? "rojo" : valor > limite * 0.8 ? "amarillo" : "verde");
 
+// El medidor completo va en un recuadro arriba de la vista previa (computadora) y, al tocar el resumen
+// pequeño de la barra ("86/500 · 23,4%"), se abre debajo de la barra (teléfono y iPad).
 function actualizarMedidor() {
-  const caja = $("medidor");
-  if (!caja || !estudio) return;
+  if (!estudio || !$("medidor")) return;
   const m = medir(estudio);
+  const pct = String(m.porcentaje).replace(".", ",");
+  const peor = m.faltan || m.versiculos > LIMITE_VERSICULOS ? "rojo"
+    : [nivel(m.versiculos, LIMITE_VERSICULOS), nivel(m.porcentaje, LIMITE_PORCENTAJE)].includes("amarillo") ? "amarillo" : "verde";
+  const mini = $("medidorMini");
+  mini.className = `medidor-mini ${peor}`;
+  mini.innerHTML = `<i></i>${m.versiculos}/${LIMITE_VERSICULOS} · ${pct}%${m.faltan ? " ⚠" : ""}`;
+  mini.title = `Versículos ${m.versiculos} de ${LIMITE_VERSICULOS} · texto bíblico ${pct}% del estudio (máx. ${LIMITE_PORCENTAJE}%)`;
+  $("medidor").innerHTML = $("medidorPop").innerHTML = detalleMedidor(m);
+}
+
+function detalleMedidor(m) {
   const pendientes = m.sinTexto ? ` · ${m.sinTexto} sin texto todavía` : "";
-  caja.innerHTML = `
+  return `
     <div class="medida ${nivel(m.versiculos, LIMITE_VERSICULOS)}">
       <span>Versículos <b>${m.versiculos}</b> de ${LIMITE_VERSICULOS}${pendientes}</span>
       <span class="barrita"><i style="width:${Math.min(100, (m.versiculos / LIMITE_VERSICULOS) * 100)}%"></i></span>
@@ -75,3 +87,17 @@ function motivoParaNoPublicar() {
     return `No se publicó: los versículos son el ${String(m.porcentaje).replace(".", ",")}% del estudio (máx. ${LIMITE_PORCENTAJE}%). Escribe unas ${m.faltan} palabras más de explicación, o quita versículos.`;
   return "";
 }
+
+$("medidorMini").addEventListener("click", () => {
+  const pop = $("medidorPop");
+  pop.hidden = !pop.hidden;
+  $("medidorMini").setAttribute("aria-expanded", String(!pop.hidden));
+});
+// Se cierra al tocar fuera
+document.addEventListener("click", e => {
+  const pop = $("medidorPop");
+  if (!pop.hidden && !e.target.closest("#medidorPop, #medidorMini")) {
+    pop.hidden = true;
+    $("medidorMini").setAttribute("aria-expanded", "false");
+  }
+});
