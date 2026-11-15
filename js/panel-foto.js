@@ -36,9 +36,16 @@ const SUPERINDICES = { "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", 
 function limpiarTextoFoto(texto) {
   const lineas = texto.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, c => SUPERINDICES[c]).split("\n").map(l => l.trim());
   const primerVersiculo = lineas.findIndex(l => /^\d{1,3}\s?[A-Za-zÀ-ÿ¿¡“"]/.test(l));
-  return lineas.slice(Math.max(primerVersiculo, 0))
-    .filter(l => l.split(/\s+/).length > 2 || /^\d/.test(l))   // líneas muy cortas: menús de la app
-    .filter(l => !/^\d{1,2}:\d{2}\b/.test(l))                  // la hora de la barra de estado
+  // Una línea muy corta es un menú de la app, salvo que siga una frase que no terminó (la línea de arriba
+  // no acaba en punto): entonces es el final de un versículo que no cupo en una línea.
+  const utiles = [];
+  for (const l of lineas.slice(Math.max(primerVersiculo, 0))) {
+    if (!l || /^\d{1,2}:\d{2}\b/.test(l)) continue;                // vacía o la hora de la barra de estado
+    const corta = l.split(/\s+/).length <= 2 && !/^\d/.test(l);
+    const sigueFrase = utiles.length && !/[.;:!?»”"]$/.test(utiles[utiles.length - 1]);
+    if (!corta || sigueFrase) utiles.push(l);
+  }
+  return utiles
     .join("\n")
     .replace(/(^|\s)(\d{1,3})(?=[A-Za-zÀ-ÿ¿¡“"])/g, "$1$2 ");
 }

@@ -68,6 +68,8 @@ function dibujar() {
       ${campo("cierre", "Frase después de las preguntas", { ayuda: "Ej: ¡Y bien!" })}
     </section>
 
+    ${typeof dibujarCapturas === "function" ? dibujarCapturas() : ""}
+
     <section class="temas-ed">
       ${(e.temas || []).map(dibujarTema).join("")}
       <button type="button" class="btn agregar grande" data-accion="agregar-tema">+ Punto</button>

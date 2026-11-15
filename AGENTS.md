@@ -58,3 +58,7 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 - **Candado:** `scripts/revisar-diseno.mjs` corre antes de armar el sitio (`scripts/construir.mjs`) y en la publicación. Si alguna hoja (fuera del motor) o algún JS escribe un color, una curva o un número con unidad (px, pt, mm, em, rem, s, ms), no se publica. Excepción: los `@media` y `@page`, porque CSS no deja usar variables ahí.
 - Si hace falta un valor nuevo, se agrega al motor con su nombre y se usa con `var(--nombre)`.
 - Además, cada pasaje con "LBLA" tiene un botón "LBLA" que abre una ventana con la Biblia en línea de Lockman (bible.lockman.org, el dueño de la LBLA) en el primer versículo del pasaje (`js/lbla.js`, `enlaceLockman` en `js/biblia.js`). Tampoco se copia nada: es la página de Lockman dentro de la nuestra.
+
+## "Leer capturas" en el panel
+
+- Arriba de los puntos, "Pasajes sin texto" con el botón "Leer capturas": el autor escoge varias capturas de su app de la Biblia a la vez; el panel las lee en el navegador (Tesseract.js), reconoce el libro y el capítulo del encabezado de cada una y pone los versículos en los pasajes vacíos que corresponden. Muestra qué se llenó, qué quedó a medias y qué falta (`js/panel-capturas.js`). El texto lo trae el autor en sus capturas; el panel no entra a ninguna página a buscarlo (Lockman prohíbe el scraping).
