@@ -31,7 +31,11 @@ Están completas en **`ia/instrucciones.md`** (las mismas que usan su Gem de Gem
 
 ## Cómo se consiguen los versículos (siempre igual)
 
-La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet, ni con un modelo local. Solo el autor lo copia de su app de la Biblia. Así:
+La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet, ni con un modelo local. Solo el autor lo copia de su app de la Biblia.
+
+**Desde el 15 de noviembre de 2026 la IA ya no le pide al autor que pegue versículos en el chat.** Deja en el estudio la referencia con `"versiculos": []` y el panel se encarga: pone solos los que ya están en otros estudios ("Buscar en mis estudios"), muestra los que faltan en "Pasajes sin texto" y los llena con "Leer capturas". En la página, cada pasaje ya se lee con los botones LBLA y RVR 1960 aunque no tenga el texto pegado (el texto pegado hace falta para el PDF).
+
+Solo si el autor decide pegarlos él mismo en el chat, se hace así:
 
 1. **La IA le da al autor UNA sola lista** con todas las referencias del estudio, en orden y por subpunto, con la versión al final:
    `1.1 Efesios 4:11 LBLA`
