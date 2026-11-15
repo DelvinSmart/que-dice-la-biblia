@@ -218,7 +218,7 @@ function prepararLBLA(boton, caja) {
     <div class="lbla-versos">${versos.map(n => `
       <div class="lbla-recorte" data-versiculo="${n}">
         <p class="ventana-cargando">${T.cargandoLBLA}</p>
-        <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org" src="${esc(enlaceLockman(ref, n))}"></iframe>
+        <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org" src="${esc(enlaceLockman(ref, n))}" scrolling="no" tabindex="-1"></iframe>
       </div>`).join("")}
     </div>
     <div class="lbla-pie">
