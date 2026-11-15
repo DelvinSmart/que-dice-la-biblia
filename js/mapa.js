@@ -22,7 +22,10 @@ function textosFijos() {
   $("tomap").textContent = T.mapa;
   $("ayuda").textContent = T.ayuda;
   $("pdf").textContent = T.pdf;
-  $("pdf").href = `descargas/${SLUG}.pdf`;
+  $("pdfClaro").textContent = T.pdfClaro;
+  $("pdfClaro").href = `descargas/${SLUG}-claro.pdf`;
+  $("pdfOscuro").textContent = T.pdfOscuro;
+  $("pdfOscuro").href = `descargas/${SLUG}.pdf`;
 }
 
 // Botones ES | PT: aparecen si el estudio tiene su versión en el otro idioma

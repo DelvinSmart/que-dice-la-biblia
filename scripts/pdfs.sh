@@ -1,5 +1,5 @@
 #!/bin/sh
-# Genera un PDF por estudio con los colores de la página (css/colores.css, el mismo tema oscuro que se ve en la página) en _site/descargas/<estudio>.pdf.
+# Genera un PDF por estudio con los colores de la página (css/colores.css): uno oscuro y uno claro en _site/descargas/<estudio>.pdf.
 # Se ejecuta después de scripts/construir.mjs. Usa Chrome (en GitHub) o Brave (en la Mac).
 set -e
 cd "$(dirname "$0")/../_site"
@@ -13,7 +13,11 @@ mkdir -p descargas
 for archivo in estudios/*.json; do
   slug=$(basename "$archivo" .json)
   [ "$slug" = "indice" ] && continue
-  "$CHROME" --headless=new --disable-gpu --no-sandbox --no-pdf-header-footer --virtual-time-budget=15000 \
-    --print-to-pdf="$(pwd)/descargas/$slug.pdf" "http://127.0.0.1:$PUERTO/pdf.html?e=$slug" 2>/dev/null
-  echo "PDF listo: descargas/$slug.pdf"
+  # Dos PDF por estudio: <slug>.pdf (oscuro) y <slug>-claro.pdf (claro)
+  for tema in oscuro claro; do
+    salida="descargas/$slug.pdf"; [ "$tema" = claro ] && salida="descargas/$slug-claro.pdf"
+    "$CHROME" --headless=new --disable-gpu --no-sandbox --no-pdf-header-footer --virtual-time-budget=15000 \
+      --print-to-pdf="$(pwd)/$salida" "http://127.0.0.1:$PUERTO/pdf.html?e=$slug&tema=$tema" 2>/dev/null
+    echo "PDF listo: $salida"
+  done
 done

@@ -8,7 +8,7 @@ const TEXTOS = {
     anterior: "← Anterior", siguiente: "Siguiente →", mapa: "Mapa ↑",
     nuevo: "nuevo",
     ayuda: "Toca cualquier punto del mapa, o usa ← → en el teclado para avanzar en orden.",
-    pdf: "Descargar PDF",
+    pdf: "Descargar PDF:", pdfClaro: "Claro", pdfOscuro: "Oscuro",
     fuentesTitulo: "Fuentes del estudio", fuentesCuenta: "fuentes"
   },
   pt: {
@@ -18,7 +18,7 @@ const TEXTOS = {
     anterior: "← Anterior", siguiente: "Próximo →", mapa: "Mapa ↑",
     nuevo: "novo",
     ayuda: "Toque em qualquer ponto do mapa, ou use ← → no teclado para avançar em ordem.",
-    pdf: "Baixar PDF",
+    pdf: "Baixar PDF:", pdfClaro: "Claro", pdfOscuro: "Escuro",
     fuentesTitulo: "Fontes do estudo", fuentesCuenta: "fontes"
   }
 };

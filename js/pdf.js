@@ -1,5 +1,7 @@
-// Versión para imprimir de un estudio (pdf.html?e=<slug>): el mapa en la primera página
-// y cada tema en su propia página. scripts/pdfs.sh la convierte en PDF.
+// Versión para imprimir de un estudio (pdf.html?e=<slug>&tema=claro|oscuro): el mapa en la primera página
+// y cada tema en su propia página. scripts/pdfs.sh la convierte en dos PDF: oscuro y claro.
+// Los colores son los de la página (css/colores.css): claro = fondo gris suave, oscuro = azul muy oscuro.
+document.documentElement.dataset.theme = new URLSearchParams(location.search).get("tema") === "claro" ? "light" : "dark";
 (async () => {
   const slug = new URLSearchParams(location.search).get("e") || "";
   const e = await cargarEstudio(slug);
