@@ -134,13 +134,20 @@ function abrirFuente(chip) {
 
 // Pasajes: al tocar un botoncito se abre su pasaje debajo de la fila, con efecto. Al tocarlo otra vez se
 // cierra; al tocar otro pasaje del subpunto, el anterior se cierra.
+// Cerrar con efecto: se desvanece y sube un poquito; después se esconde
+function cerrarPasaje(caja) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { caja.hidden = true; return; }
+  caja.classList.add("cerrando");
+  setTimeout(() => { caja.hidden = true; caja.classList.remove("cerrando"); }, 220);
+}
+
 function abrirPasaje(chip) {
   const fila = chip.closest(".pasajes");
   const k = [...fila.querySelectorAll(".chip-pasaje")].indexOf(chip);
   const caja = fila.querySelectorAll(".pasaje-abierto")[k];
   const abierto = chip.getAttribute("aria-expanded") === "true";
   $("rbody").querySelectorAll(".chip-pasaje").forEach(c => c.setAttribute("aria-expanded", "false"));
-  $("rbody").querySelectorAll(".pasaje-abierto").forEach(c => { c.hidden = true; });
+  $("rbody").querySelectorAll(".pasaje-abierto:not([hidden])").forEach(cerrarPasaje);
   if (abierto) return;
   chip.setAttribute("aria-expanded", "true");
   caja.hidden = false;

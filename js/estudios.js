@@ -31,7 +31,7 @@ function bloqueHTML(b) {
     case "subtitulo":
       return `<h3>${esc(b.texto)}</h3>`;
     case "pasaje":
-      return `<div class="passage"><div class="ref">${refHTML(b.referencia)}${botonRVR(b)}</div>${
+      return `<div class="passage"><div class="ref">${refHTML(b.referencia)}</div>${
         !(b.versiculos || []).some(v => v.texto) && !b.imagen && botonRVR(b) ? `<p class="pasaje-pendiente">${etiquetasFuente().pendiente}</p>` : ""}${
         b.imagen ? `<img class="pasaje-img" src="${esc(rutaImagen(b.imagen))}" alt="${esc(b.referencia)}" loading="lazy">` : ""}${
         (b.versiculos || []).filter(v => v.texto).map(v => `<p>${v.numero ? `<b>${esc(v.numero)}</b>` : ""}${v.texto}</p>`).join("")
@@ -127,7 +127,7 @@ const avisosDerechos = e => avisoLBLA(e) + (usaGriego(e) ? `<p class="aviso-lbla
 
 const ETIQUETAS_FUENTE = {
   es: { fuentes: "Fuentes", ver: "Ver la fuente ↗", todas: "Fuentes del estudio", griego: "Griego", cerrar: "Cerrar",
-        pendiente: "El texto de este pasaje todavía no se copió. Mientras tanto puedes leerlo en la Reina-Valera 1960 (botón de arriba)." },
+        pendiente: "El texto de este pasaje todavía no se copió. Mientras tanto puedes leerlo en la Reina-Valera 1960 (botón “RVR 1960”)." },
   pt: { fuentes: "Fontes", ver: "Ver a fonte ↗", todas: "Fontes do estudo", griego: "Grego", cerrar: "Fechar", pendiente: "" }
 };
 const etiquetasFuente = () => ETIQUETAS_FUENTE[(document.documentElement.lang || "").startsWith("pt") ? "pt" : "es"];
@@ -188,7 +188,7 @@ function puntoHTML(p, completo = false) {
     while (k < bloques.length && bloques[k].tipo === "pasaje") grupo.push(bloques[k++]);
     k--;
     partes.push(`<div class="pasajes">${grupo.map(b =>
-      `<button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>`).join("")
+      `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonRVR(b)}</span>`).join("")
     }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div>`).join("")}</div>`);
   }
   return partes.join("\n") + botonesFuentesHTML(p);

@@ -66,12 +66,16 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .chip-pasaje:active{transform:scale(.97)}
 .chip-pasaje[aria-expanded="true"]{border-color:var(--c)}
 .pasaje-abierto[hidden]{display:none}
+.pasaje-abierto.cerrando{opacity:0;transform:translateY(-6px) scale(.98);filter:blur(4px);
+  transition:opacity .2s ease,transform .2s ease,filter .2s ease}
+.pasaje-y-rvr{display:inline-flex;align-items:center;gap:6px;margin:0 10px 6px 0}
+.pasaje-y-rvr .chip-pasaje{margin:0}
 /* Botoncito "RVR 1960" en la referencia del pasaje (js/rvr.js); escondido hasta que Logos lo activa */
 .rvr{display:none}
-.rvr.rvr-listo{display:inline-flex;gap:4px;margin-left:8px;vertical-align:1px}
-.passage .ref .rvr a.boton-rvr{font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-decoration:none;
+.rvr.rvr-listo{display:inline-flex;gap:4px}
+.rvr a.boton-rvr{font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);text-decoration:none;
   border:1px solid var(--line);border-radius:999px;padding:1px 7px;background:var(--surface);cursor:help;border-bottom-style:solid}
-.passage .ref .rvr a.boton-rvr:hover{color:var(--ink);border-color:var(--c)}
+.rvr a.boton-rvr:hover{color:var(--ink);border-color:var(--c)}
 .pasaje-pendiente{font-family:var(--body);font-size:13px;font-style:italic;color:var(--muted);margin:0 0 4px}
 .pasaje-abierto .passage{margin:2px 0 0}
 .passage p b{font-family:var(--body);font-size:12px;color:var(--c);margin-right:4px;vertical-align:1px}
