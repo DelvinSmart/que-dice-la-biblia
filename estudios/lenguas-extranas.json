@@ -43,6 +43,18 @@
                   "texto": "En verdad, con tartamudez de labios y en lengua extranjera, Él hablará a este pueblo,"
                 }
               ]
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1100 glōssa",
+              "texto": "Glōssa: la lengua del cuerpo, un idioma o una forma de lengua. Ahí se ven todos los versículos donde aparece.",
+              "url": "https://biblehub.com/greek/1100.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G2084 heteroglōssos",
+              "texto": "La palabra de 1 Corintios 14:21: “de otras lenguas”, o sea, de otro idioma.",
+              "url": "https://biblehub.com/greek/2084.htm"
             }
           ]
         },
@@ -53,6 +65,18 @@
             {
               "tipo": "texto",
               "texto": "<p>Y aquí está la clave de todo: la etimología, o sea, el origen de la palabra. Cuando buscamos la etimología de un término, sabemos su verdadero significado, y no lo que le fueron añadiendo con el tiempo.</p>\n<p>La misma palabra <span class=\"g\">glōssa</span> se usa en la Biblia con más de un sentido:</p>\n<ol>\n<li><b>La lengua del cuerpo</b>, el órgano con el que hablamos (Santiago 3:5-6).</li>\n<li><b>Un idioma humano</b>, como en Hechos 2:4 y 2:11.</li>\n<li><b>Una forma o apariencia</b>, como las “lenguas como de fuego” de Hechos 2:3.</li>\n</ol>\n<p>Y fíjense en algo: en Hechos 2:4 dice que hablaron en otras lenguas (<span class=\"g\">glōssa</span>), y en los versículos 6 y 8 la gente dice que los oía hablar en su propia lengua, y ahí el griego usa <span class=\"g\">diálektos</span>, de donde viene nuestra palabra “dialecto”. O sea, Lucas usa las dos palabras para lo mismo: las lenguas de Pentecostés eran idiomas y dialectos reales.</p>\n<p>Algunos léxicos, como el BDAG, añaden también un sentido de “habla extática”, pero ese sentido sale de cómo se interpreta 1 Corintios 14, no del uso normal de la palabra. El uso normal de <span class=\"g\">glōssa</span> es lengua o idioma.</p>\n<p><b>Por eso, cuando la palabra se usa correctamente, en su contexto, el texto se entiende solo. El problema empieza cuando a una palabra que tiene dos o tres sentidos le escogemos el que no es.</b></p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1258 diálektos",
+              "texto": "La palabra de Hechos 2:6 y 2:8: el idioma o dialecto propio de cada pueblo.",
+              "url": "https://biblehub.com/greek/1258.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "BDAG · Léxico griego-inglés de Bauer y Danker",
+              "texto": "Qué es el BDAG: el léxico de referencia del griego del Nuevo Testamento.",
+              "url": "https://en.wikipedia.org/wiki/Bauer_lexicon"
             }
           ]
         }
@@ -80,6 +104,42 @@
             {
               "tipo": "texto",
               "texto": "<p>Durante muchos siglos, el acceso a los textos estuvo extremadamente limitado y custodiado por estructuras de poder que impedían que la gente común pudiera leerlos directamente. Por ejemplo, el Concilio de Toulouse, en 1229, prohibió a los laicos tener los libros de la Biblia en su propio idioma.</p>\n<p>Esto comenzó a cambiar gracias a hombres como <b>Martín Lutero</b>, quien, en el <b>siglo XVI</b>, realizó la histórica traducción de la Biblia al alemán (el Nuevo Testamento en 1522 y la Biblia completa en 1534), impulsando nuevas traducciones al inglés (como la de William Tyndale, en 1526) y a otros idiomas modernos, permitiendo que hoy cada uno de nosotros pueda tener la Biblia en sus manos.</p>\n<p>Antes de Lutero ya existían algunas traducciones, como la de Wycliffe al inglés (hacia 1380) y, en español, la Biblia Alfonsina (siglo XIII) y la Biblia de Alba (hacia 1430). Pero eran copias hechas a mano que muy poca gente podía tener; con la imprenta, la traducción de Lutero llegó al pueblo. Y la Biblia en español que usamos hoy, la Reina-Valera (1569, revisada en 1602), se tradujo directamente del hebreo y del griego.</p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Concilio de Toulouse (1229)",
+              "texto": "El concilio que prohibió a los laicos tener los libros de la Biblia en su idioma.",
+              "url": "https://es.wikipedia.org/wiki/Concilio_de_Toulouse"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Biblia de Lutero",
+              "texto": "El Nuevo Testamento en alemán en 1522 y la Biblia completa en 1534.",
+              "url": "https://es.wikipedia.org/wiki/Biblia_de_Lutero"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Biblia de Tyndale",
+              "texto": "El Nuevo Testamento de William Tyndale en inglés, de 1526.",
+              "url": "https://es.wikipedia.org/wiki/Biblia_de_Tyndale"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Biblia de Wycliffe",
+              "texto": "La traducción al inglés de John Wycliffe, hacia 1380.",
+              "url": "https://es.wikipedia.org/wiki/Biblia_de_Wycliffe"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Biblia alfonsina",
+              "texto": "La traducción al español del siglo XIII.",
+              "url": "https://es.wikipedia.org/wiki/Biblia_alfonsina"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Biblia de Alba",
+              "texto": "La traducción al español hacia 1430.",
+              "url": "https://es.wikipedia.org/wiki/Biblia_de_Alba"
             }
           ]
         },
@@ -117,6 +177,12 @@
             {
               "tipo": "texto",
               "texto": "<p>Ahora, ya sabiendo cómo nos llegó la Biblia, vamos a ver cuándo apareció esto de las lenguas que nadie entiende. Y aquí viene algo muy importante: la doctrina de que hay que hablar en lenguas para demostrar que se recibió el Espíritu Santo no nació con los apóstoles, ni con la Reforma. Apareció casi 400 años después que Martín Lutero tradujo la Biblia.</p>\n<p>Veamos cómo encajan las fechas:</p>\n<ol>\n<li><b>1522, la traducción de Martín Lutero:</b> Lutero tradujo el Nuevo Testamento al alemán, y después vinieron otras traducciones importantes, como la King James en inglés, en 1611. Su gran objetivo era que la gente común pudiera leer la Biblia por sí misma, en su propio idioma, sin depender del latín.</li>\n<li><b>Del siglo XVI al XIX, los siglos intermedios:</b> Durante todos esos años, las grandes iglesias históricas (luteranos, reformados, bautistas, presbiterianos, católicos) leían esas traducciones y entendían que el don de lenguas eran idiomas humanos reales, como pasó en Pentecostés. Hubo algunos grupos aislados con experiencias de éxtasis, como los montanistas en el siglo II, los camisardos en Francia hacia 1700 y los seguidores de Edward Irving en Escocia y Londres hacia 1830, pero ninguna de las iglesias históricas enseñaba el balbuceo ininteligible como doctrina.</li>\n<li><b>1901, Topeka, Kansas:</b> 379 años después de la traducción de Lutero, en la escuela de Charles Parham, se enseñó por primera vez que hablar en lenguas era la prueba obligatoria de haber recibido el Espíritu Santo. De ahí saltó en 1906 a la Calle Azusa y se regó por todo el mundo.</li>\n</ol>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Versión King James",
+              "texto": "La traducción al inglés de 1611.",
+              "url": "https://es.wikipedia.org/wiki/Versi%C3%B3n_King_James"
             }
           ]
         },
@@ -131,6 +197,18 @@
             {
               "tipo": "texto",
               "texto": "<p>Este es un hecho histórico ampliamente documentado tanto por historiadores seculares como por historiadores del movimiento pentecostal:</p>\n<ul><li><b>Charles Parham y Topeka (1901):</b> El evento fundacional está registrado en los archivos históricos del movimiento pentecostal. Parham, fundador del Bethel Bible College en Topeka, Kansas, llegó a la conclusión de que hablar en lenguas era la evidencia bíblica del bautismo en el Espíritu Santo tras estudiar el libro de Hechos con sus estudiantes. El 1 de enero de 1901, una estudiante llamada Agnes Ozman fue la primera en experimentar este hablar bajo su enseñanza (ellos decían que ella habló en chino).</li></ul>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Charles Fox Parham",
+              "texto": "Parham, el Bethel Bible College de Topeka y su enseñanza de las lenguas como evidencia del Espíritu Santo.",
+              "url": "https://en.wikipedia.org/wiki/Charles_Fox_Parham"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Agnes Ozman",
+              "texto": "El 1 de enero de 1901, la primera estudiante que habló en lenguas en Topeka.",
+              "url": "https://en.wikipedia.org/wiki/Agnes_Ozman"
             }
           ]
         },
@@ -141,6 +219,30 @@
             {
               "tipo": "texto",
               "texto": "<ul><li><b>El Avivamiento de la Calle Azusa (1906–1909):</b> Dirigido por el pastor afroamericano William J. Seymour en Los Ángeles, California. Este avivamiento fue el trampolín global que propagó la doctrina pentecostal moderna por todo el mundo. Las actas, periódicos de la época (como el boletín The Apostolic Faith) y los historiadores modernos del cristianismo (como Vinson Synan y Allan Anderson) documentan cómo desde este lugar se institucionalizó el concepto de las \"lenguas ininteligibles\" como señal espiritual.</li></ul>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Avivamiento de la Calle Azusa",
+              "texto": "El avivamiento de Los Ángeles (1906–1909) y el periódico The Apostolic Faith.",
+              "url": "https://en.wikipedia.org/wiki/Azusa_Street_Revival"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "William J. Seymour",
+              "texto": "El pastor que dirigió el avivamiento de la Calle Azusa.",
+              "url": "https://es.wikipedia.org/wiki/William_J._Seymour"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Vinson Synan",
+              "texto": "Historiador del movimiento pentecostal, autor de The Holiness-Pentecostal Tradition.",
+              "url": "https://en.wikipedia.org/wiki/Vinson_Synan"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Allan Anderson",
+              "texto": "Historiador del pentecostalismo, autor de An Introduction to Pentecostalism.",
+              "url": "https://en.wikipedia.org/wiki/Allan_Anderson_(theologian)"
             }
           ]
         },
@@ -151,6 +253,18 @@
             {
               "tipo": "texto",
               "texto": "<p>Pasaron los siglos, y a principios del siglo XX algunos intérpretes leyeron las traducciones, sobre todo las que decían \"lengua desconocida\" (como la King James, que dice <i>unknown tongue</i>, y esa palabra <i>unknown</i> no está en el griego). Sacaron esos textos de su contexto del siglo I y concluyeron que el don era emitir sonidos espirituales místicos, y no hablar idiomas extranjeros reales.</p>\n<p>Y fíjense en algo: el mismo Parham creía al comienzo que eran idiomas humanos reales, para mandar misioneros a otros países sin tener que estudiar el idioma. Cuando esos misioneros llegaron al campo y nadie les entendía, el movimiento lo terminó reinterpretando como un lenguaje de oración que nadie entiende.</p>\n<p>Piénsenlo así: desde Pentecostés, hacia el año 30, hasta Topeka en 1901, pasaron unos 1.870 años. Casi 1.900 años en que el Espíritu Santo salvaba y obraba en la iglesia sin que ninguna iglesia enseñara esto como doctrina. Algo que comenzó hace unos 120 años no se puede volver una ley; puede ser una distorsión que se tomó como ley.</p>\n<p><b>Por eso es tan importante volver a los textos originales y al contexto histórico, porque ahí vemos lo que los creyentes de los siglos pasados entendían perfectamente antes de que naciera esta corriente moderna del siglo XX.</b></p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "1 Corintios 14:2 en la King James (inglés)",
+              "texto": "Ahí se ve “unknown tongue”: la palabra “unknown” está en cursiva porque no está en el griego.",
+              "url": "https://www.biblegateway.com/passage/?search=1%20Corinthians%2014%3A2&version=KJV"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Charles Fox Parham · las lenguas y los misioneros",
+              "texto": "Parham creía que eran idiomas reales para los misioneros; al no funcionar, muchos de sus seguidores se desilusionaron.",
+              "url": "https://en.wikipedia.org/wiki/Charles_Fox_Parham"
             }
           ]
         },
@@ -165,6 +279,24 @@
             {
               "tipo": "texto",
               "texto": "<ul><li><b>Fuentes históricas grecorromanas:</b> Los historiadores de las religiones y los exégetas del Nuevo Testamento (como E. R. Dodds en <i>Los griegos y lo irracional</i>, o Gordon Fee en su comentario sobre 1 Corintios) documentan que el mundo helenístico estaba lleno de prácticas de éxtasis, como los cultos de Dionisio y de Cibeles. Fee era pentecostal y no llega a nuestra misma conclusión, pero reconoce ese trasfondo.</li>\n<li><b>El Oráculo de Delfos:</b> La Pitia, sacerdotisa de Apolo, entraba en trance y los sacerdotes interpretaban sus respuestas. Ojo: no está claro que hablara de forma ininteligible; Plutarco y estudiosos modernos dan a entender que hablaba con palabras comprensibles. Por eso lo usamos solo como ejemplo de la religión de éxtasis de esa época, no como prueba.</li></ul>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "E. R. Dodds · Los griegos y lo irracional",
+              "texto": "El historiador que estudió el éxtasis religioso en el mundo griego.",
+              "url": "https://en.wikipedia.org/wiki/E._R._Dodds"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Gordon Fee",
+              "texto": "Erudito pentecostal (Asambleas de Dios), autor del comentario a 1 Corintios.",
+              "url": "https://en.wikipedia.org/wiki/Gordon_Fee"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "La Pitia, el Oráculo de Delfos",
+              "texto": "La sacerdotisa de Apolo y lo que dicen Plutarco y los estudiosos sobre cómo hablaba.",
+              "url": "https://es.wikipedia.org/wiki/Pitia"
             }
           ]
         },
@@ -189,6 +321,30 @@
             {
               "tipo": "texto",
               "texto": "<ul><li><b>Léxicos del griego del Nuevo Testamento:</b> Esta definición exegética no es una opinión, sino el resultado del análisis filológico formal de los textos originales recopilados en obras de referencia estándar a nivel mundial:\n<ul>\n<li>El Léxico Griego-Inglés del Nuevo Testamento de Walter Bauer y Frederick Danker (conocido como BDAG), donde se define diermēneuō como traducir de un idioma a otro o explicar con claridad el significado de algo.</li>\n<li>El Diccionario Teológico del Nuevo Testamento (TDNT), editado por Gerhard Kittel, que analiza cómo en el mundo clásico helenístico esta familia de palabras se usaba principalmente para traducir entre diferentes pueblos e idiomas (por ejemplo, pasar del arameo al griego) o para explicar con claridad. Por ejemplo, en Lucas 24:27 Jesús les “explicaba” (<i>diermēneuō</i>) las Escrituras.</li>\n</ul></li></ul>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1329 diermēneuō",
+              "texto": "Traducir o explicar con claridad; la misma palabra de Lucas 24:27.",
+              "url": "https://biblehub.com/greek/1329.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1328 diermēneutēs",
+              "texto": "El intérprete o traductor de 1 Corintios 14:28.",
+              "url": "https://biblehub.com/greek/1328.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "BDAG · Léxico griego-inglés de Bauer y Danker",
+              "texto": "El léxico citado para diermēneuō.",
+              "url": "https://en.wikipedia.org/wiki/Bauer_lexicon"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Diccionario Teológico del Nuevo Testamento (Kittel)",
+              "texto": "Qué es el TDNT, editado por Gerhard Kittel.",
+              "url": "https://en.wikipedia.org/wiki/Theological_Dictionary_of_the_New_Testament"
             }
           ]
         }
@@ -394,6 +550,12 @@
             {
               "tipo": "texto",
               "texto": "<p>Allí toda la tierra hablaba un mismo idioma, y el pueblo se unió para construir una ciudad y una torre que llegara hasta el cielo, para hacerse un nombre y no ser dispersados por toda la tierra (Génesis 11:1-4). O sea, estaban unidos, sí, pero unidos para edificar algo que no edificaba a Dios, sino a ellos mismos. Y eso después que Dios les había mandado a llenar la tierra (Génesis 9:1).</p>\n<p>Entonces Dios descendió, confundió su lengua para que no se entendieran unos a otros, y los dispersó por toda la tierra (Génesis 11:5-9). Fue por causa de su maldad, para que no siguieran creciendo en ella.</p>\n<p>Las tradiciones judías antiguas cuentan cosas impresionantes de esa torre. Una de ellas, el <i>Pirkei de-Rabbi Eliezer</i>, dice que era tan alta que tardaban un año en subir, y que si se caía un ladrillo lloraban, pero si se caía un hombre no les importaba. Eso no está en la Biblia, es tradición, pero nos deja imaginar la locura de un pueblo unido en una misma lengua para edificar algo que no edifica al Señor.</p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Pirkei de-Rabbi Eliezer, capítulo 24",
+              "texto": "La tradición judía de la torre: si caía un hombre no les importaba, pero si caía un ladrillo lloraban.",
+              "url": "https://www.sefaria.org/Pirkei_DeRabbi_Eliezer.24"
             }
           ]
         },
@@ -414,6 +576,12 @@
                   "texto": "En ese tiempo daré a los pueblos labios puros, para que todos ellos invoquen el nombre del <span class='sc'>Señor</span>, para que le sirvan de común acuerdo."
                 }
               ]
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Chris Harrison y Christoph Römhild · referencias cruzadas",
+              "texto": "La visualización de las 63.779 referencias cruzadas de la Biblia.",
+              "url": "https://www.chrisharrison.net/index.php/Visualizations/BibleViz"
             }
           ]
         }
@@ -599,6 +767,12 @@
             {
               "tipo": "texto",
               "texto": "<ul><li><b>Segundo, v9:</b> Así también vosotros, a menos que con la boca pronunciéis palabras inteligibles, ¿cómo se sabrá lo que decís? Pues hablaréis al aire.</li></ul>\n<p><b>Inteligible</b> es lo opuesto a <b>ininteligible</b>, algo que es comprensible, claro, que se entiende o de lo contrario no se podría traducir.</p>\n<p>En el griego original la palabra usada es <span class=\"g\">eúsēmon</span> (de <i>eu</i>, \"bien\", y <i>sēma</i>, \"señal\"), o sea, una palabra con un significado claro<br>(en el texto se usa la idea de dar un mensaje \"fácil de entender\" o \"bien articulado\").</p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G2154 eúsēmos",
+              "texto": "La palabra de 1 Corintios 14:9: claro, fácil de entender.",
+              "url": "https://biblehub.com/greek/2154.htm"
             }
           ]
         },
@@ -664,6 +838,12 @@
             {
               "tipo": "texto",
               "texto": "<p>Y aquí Pablo hace una pregunta. En el griego, la forma de la pregunta (con la palabra <span class=\"g\">mē</span>) espera que la respuesta sea “no”. O sea: ¿hablan todos en lenguas? No. ¿Todos tienen dones de sanidad? No. Cada uno recibe el don que el Espíritu quiere darle (1 Corintios 12:11).</p>\n<p><b>Entonces, si todos fueron bautizados por el Espíritu (v13), pero no todos hablan en lenguas (v30), las lenguas no pueden ser la prueba obligatoria del bautismo del Espíritu Santo.</b></p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G3361 mē",
+              "texto": "Cuando una pregunta empieza con mē, la respuesta que se espera es “no” (1 Corintios 12:30).",
+              "url": "https://biblehub.com/greek/3361.htm"
             }
           ]
         },
@@ -732,6 +912,12 @@
             {
               "tipo": "texto",
               "texto": "<p>Fíjense: el eunuco creyó, fue bautizado y continuó su camino gozoso. Gozo, que es fruto del Espíritu. Pero el texto no dice en ninguna parte que habló en lenguas. Y el mismo Espíritu que obraba en su vida fue el que llevó a Felipe hasta ese camino y después lo arrebató de allí.</p>\n<p>Un detalle importante para el debate: el versículo 37 la LBLA lo pone entre corchetes, porque no aparece en los manuscritos griegos más antiguos. Por eso no basamos nada en ese versículo; el punto se sostiene con los versículos 35, 36, 38 y 39.</p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Hechos 8 · el versículo 37",
+              "texto": "El versículo 37 falta en manuscritos griegos antiguos.",
+              "url": "https://es.wikipedia.org/wiki/Hechos_8"
             }
           ]
         },
@@ -790,6 +976,12 @@
             {
               "tipo": "texto",
               "texto": "<p>Y aquí está la prueba más fuerte: cuando Jesús, ya resucitado, les repite esa promesa a sus discípulos, dice “seréis bautizados con el Espíritu Santo”, y no menciona el fuego. ¿Por qué? Porque sus discípulos no iban a recibir el juicio; iban a recibir el Espíritu.</p>\n<p>Para ser honestos en el debate: algunos intérpretes ven ese fuego como una purificación del creyente. Pero el contexto muestra juicio, y en ningún lugar el texto dice que ese fuego sea hablar en lenguas. Las “lenguas como de fuego” de Hechos 2:3 eran una apariencia, como ya vimos: <i>como</i> de fuego.</p>\n<p>Y esta idea del “bautismo de fuego” como una experiencia aparte tampoco viene de los apóstoles. Se enseñó a finales del siglo XIX en algunos grupos de santidad, como la Asociación de Santidad Bautizada con Fuego, que Benjamin Irwin fundó en 1895, y de ahí pasó al movimiento que comenzó en Topeka en 1901 y en la Calle Azusa en 1906.</p>\n<p><b>Por eso, usar “Espíritu Santo y fuego” para enseñar que hay que hablar en lenguas o sentir un fuego en el culto es sacar el texto de su contexto.</b></p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Fire-Baptized Holiness Church (Benjamin Irwin, 1895)",
+              "texto": "El grupo de santidad que enseñó el “bautismo de fuego” como una experiencia aparte.",
+              "url": "https://en.wikipedia.org/wiki/Fire-Baptized_Holiness_Church"
             }
           ]
         }
@@ -861,6 +1053,12 @@
             {
               "tipo": "texto",
               "texto": "<p><b>La respuesta exegética:</b> Pablo no está prohibiendo el don legítimo, la capacidad otorgada por el Espíritu de hablar en idiomas extranjeros reales para la misión, pero lo está regulando estrictamente. En los versículos 27 y 28 pone el candado definitivo: si se habla en un idioma extranjero, debe haber un intérprete (<i>diermēneutēs</i>), y si no hay intérprete, el mandato es absoluto: «que guarde silencio en la iglesia». Su postura es clara: en la iglesia prefiere hablar cinco palabras con su entendimiento, para instruir a otros, antes que diez mil palabras en lenguas (v. 19).</p>\n<p>En el v18, la palabra que usa Pablo es <span class=\"g\">glōssais</span>, el plural de <span class=\"g\">glōssa</span>: la misma palabra de Hechos 2, donde las lenguas eran idiomas reales que los extranjeros entendían (Lucas incluso usa <i>diálektos</i> en Hechos 2:6 y 8). Nada en el texto indica que Pablo hable de otra cosa distinta a lo que pasó en Pentecostés.</p>\n<p><b>O sea, nosotros no estamos en contra del don de lenguas de la Biblia. Estamos en contra de cambiarlo por un balbuceo que nadie entiende y de convertirlo en la prueba obligatoria del Espíritu Santo.</b></p>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Hub · Strong G1100 glōssa",
+              "texto": "Glōssais (v18) es el plural de glōssa, la misma palabra de Hechos 2.",
+              "url": "https://biblehub.com/greek/1100.htm"
             }
           ]
         },
@@ -971,6 +1169,12 @@
             {
               "tipo": "texto",
               "texto": "<p><b>La respuesta exegética:</b> tres cosas para tener en cuenta:</p>\n<ol>\n<li><b>Está en el final largo de Marcos (16:9-20)</b>, que no aparece en los manuscritos griegos más antiguos. Muchas Biblias lo señalan con una nota o entre corchetes. Por eso, como con Hechos 8:37, no conviene basar una doctrina en ese pasaje.</li>\n<li><b>“Nuevas” quiere decir nuevas para ellos</b>: idiomas que no habían aprendido, como pasó en Pentecostés.</li>\n<li><b>En la misma lista dice que tomarán serpientes y que, si beben algo mortífero, no les hará daño</b> (16:18). Nadie usa eso como prueba obligatoria de tener el Espíritu Santo. Entonces no se puede tomar solo una parte de la lista y volverla ley.</li>\n</ol>"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Marcos 16 · el final largo",
+              "texto": "El final largo de Marcos (16:9-20) no aparece en los manuscritos griegos más antiguos.",
+              "url": "https://es.wikipedia.org/wiki/Marcos_16"
             }
           ]
         }
