@@ -9,7 +9,7 @@ function slugDe(titulo) {
 $("btnPublicar").addEventListener("click", async () => {
   if (!estudio.titulo.trim()) { $("estado").textContent = "Ponle un título al estudio"; return; }
   const motivo = motivoParaNoPublicar();
-  if (motivo) { $("estado").textContent = motivo; $("medidorPop").hidden = false; return; }
+  if (motivo) { $("estado").textContent = motivo; mostrarMedidor(); return; }
   const boton = $("btnPublicar");
   boton.disabled = true;
   $("estado").textContent = "Publicando…";

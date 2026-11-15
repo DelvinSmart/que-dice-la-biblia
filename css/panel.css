@@ -183,10 +183,14 @@
 .medidor-mini.rojo{border-color:var(--b7);color:var(--b7)}
 .medidor{display:grid;gap:8px;font-size:12.5px;color:var(--muted)}
 .medidor:empty{display:none}
-.medidor-caja{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .medidor-pop{position:absolute;right:0;top:100%;margin-top:6px;width:min(340px,calc(100vw - 32px));background:var(--surface);
-  border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 10px 30px #0004;z-index:6}
-.medidor-pop[hidden]{display:none}
+  border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 10px 30px #0004;z-index:6;
+  /* Entrada como el resto de la página: sube un poco, de borroso a nítido y de 97% a su tamaño */
+  opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px) scale(.97);filter:blur(4px);transform-origin:top right;
+  transition:opacity .25s ease,transform .3s cubic-bezier(.2,.8,.2,1),filter .25s ease,visibility 0s linear .3s}
+.medidor-pop.abierto{opacity:1;visibility:visible;pointer-events:auto;transform:none;filter:none;
+  transition:opacity .25s ease,transform .3s cubic-bezier(.2,.8,.2,1),filter .25s ease,visibility 0s}
+@media (prefers-reduced-motion:reduce){ .medidor-pop,.medidor-pop.abierto{transition:none;transform:none;filter:none} }
 .medida{display:grid;gap:4px}
 .medida b{color:var(--ink)}
 .barrita{display:block;height:5px;border-radius:3px;background:var(--line);overflow:hidden}

@@ -50,10 +50,14 @@ function medir(e) {
 
 const nivel = (valor, limite) => (valor > limite ? "rojo" : valor > limite * 0.8 ? "amarillo" : "verde");
 
-// El medidor completo va en un recuadro arriba de la vista previa (computadora) y, al tocar el resumen
-// pequeño de la barra ("86/500 · 23,4%"), se abre debajo de la barra (teléfono y iPad).
+// En la barra solo va el resumen ("86/500 · 23,4%"). El detalle sale en un recuadro al tocar el resumen
+// (o al Publicar si se pasa del límite), con efecto de entrada, y se esconde solo: al tocar fuera,
+// al escribir, al bajar la página o a los 8 segundos (no se esconde mientras el mouse está encima).
+const SEGUNDOS_MEDIDOR = 8;
+let relojMedidor = null;
+
 function actualizarMedidor() {
-  if (!estudio || !$("medidor")) return;
+  if (!estudio || !$("medidorMini")) return;
   const m = medir(estudio);
   const pct = String(m.porcentaje).replace(".", ",");
   const peor = m.faltan || m.versiculos > LIMITE_VERSICULOS ? "rojo"
@@ -62,7 +66,26 @@ function actualizarMedidor() {
   mini.className = `medidor-mini ${peor}`;
   mini.innerHTML = `<i></i>${m.versiculos}/${LIMITE_VERSICULOS} · ${pct}%${m.faltan ? " ⚠" : ""}`;
   mini.title = `Versículos ${m.versiculos} de ${LIMITE_VERSICULOS} · texto bíblico ${pct}% del estudio (máx. ${LIMITE_PORCENTAJE}%)`;
-  $("medidor").innerHTML = $("medidorPop").innerHTML = detalleMedidor(m);
+  $("medidorPop").innerHTML = detalleMedidor(m);
+}
+
+const medidorAbierto = () => $("medidorPop").classList.contains("abierto");
+
+function mostrarMedidor() {
+  $("medidorPop").classList.add("abierto");
+  $("medidorMini").setAttribute("aria-expanded", "true");
+  esconderMedidorLuego();
+}
+
+function esconderMedidor() {
+  clearTimeout(relojMedidor);
+  $("medidorPop").classList.remove("abierto");
+  $("medidorMini").setAttribute("aria-expanded", "false");
+}
+
+function esconderMedidorLuego() {
+  clearTimeout(relojMedidor);
+  relojMedidor = setTimeout(() => ($("medidorPop").matches(":hover") ? esconderMedidorLuego() : esconderMedidor()), SEGUNDOS_MEDIDOR * 1000);
 }
 
 function detalleMedidor(m) {
@@ -89,16 +112,11 @@ function motivoParaNoPublicar() {
   return "";
 }
 
-$("medidorMini").addEventListener("click", () => {
-  const pop = $("medidorPop");
-  pop.hidden = !pop.hidden;
-  $("medidorMini").setAttribute("aria-expanded", String(!pop.hidden));
-});
-// Se cierra al tocar fuera
+$("medidorMini").addEventListener("click", () => (medidorAbierto() ? esconderMedidor() : mostrarMedidor()));
+
+// Se esconde al tocar fuera, al escribir o al bajar la página
 document.addEventListener("click", e => {
-  const pop = $("medidorPop");
-  if (!pop.hidden && !e.target.closest("#medidorPop, #medidorMini")) {
-    pop.hidden = true;
-    $("medidorMini").setAttribute("aria-expanded", "false");
-  }
+  if (medidorAbierto() && !e.target.closest("#medidorPop, #medidorMini, #btnPublicar")) esconderMedidor();
 });
+document.addEventListener("input", () => { if (medidorAbierto()) esconderMedidor(); });
+window.addEventListener("scroll", () => { if (medidorAbierto()) esconderMedidor(); }, { passive: true });
