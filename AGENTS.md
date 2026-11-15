@@ -7,7 +7,7 @@ Lee esto antes de escribir o cambiar un estudio.
 - El proyecto se llama **¿Qué dice la Biblia?** en español y **O que diz a Bíblia?** en portugués (desde el 15 de noviembre de 2026). Antes se llamaba "Estudios Bíblicos"; ese nombre ya no se usa.
 - El nombre del autor **no** va en el nombre del proyecto. Si un día se pone, va en una sección aparte ("Quién enseña"), no en el título.
 - Redes: el usuario será **@quedicelabiblia.oficial**. En TikTok se cambia el 27 de noviembre de 2026; en YouTube, cuando el autor lo reserve.
-- La página es https://delvinsmart.github.io/que-dice-la-biblia/ y el repositorio es `DelvinSmart/que-dice-la-biblia` (antes `estudios-biblicos`). La dirección vieja es otro repositorio, `DelvinSmart/estudios-biblicos`, que solo redirige los enlaces viejos a la nueva. No lo borres.
+- La página es https://delvinsmart.github.io/que-dice-la-biblia/ y el repositorio es `DelvinSmart/que-dice-la-biblia` (antes `estudios-biblicos`). Todo está en este único repositorio. No crees repositorios aparte, ni siquiera para redirigir.
 - En el panel, las claves guardadas en el aparato (`estudios-biblicos-llave` y `estudios-biblicos-borrador-…`) se quedan con el nombre viejo a propósito: si se cambian, el autor pierde la llave y los borradores guardados.
 
 ## Los estudios
