@@ -51,3 +51,9 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 - Cada pasaje (en español) tiene un botoncito "RVR 1960": al pasar el mouse, o al tocarlo en el teléfono, Reftagger de Logos muestra ese pasaje en la Reina-Valera 1960 en un recuadro. El texto **no** se guarda en la página: lo trae Logos en ese momento, con su licencia (`js/rvr.js`).
 - Si un pasaje todavía no tiene el texto de la LBLA, la página dice que se puede leer mientras tanto en la RVR 1960.
 - Logos no tiene la LBLA ni las versiones en portugués, por eso el botón es solo de la RVR 1960 y solo en español. Para Reftagger las referencias van en inglés (`referenciaEnIngles` en `js/biblia.js`).
+
+## El motor de diseño (obligatorio)
+
+- **Todos** los valores de diseño salen de `css/motor.css`: colores (claro y oscuro), tamaños de letra, pesos, interlineado, espacios, bordes, esquinas, separación de letras, duraciones, curvas, desenfoques y sombras. Las demás hojas (`styles.css`, `panel.css`, `pdf.css`) solo usan `var(--…)`.
+- **Candado:** `scripts/revisar-diseno.mjs` corre antes de armar el sitio (`scripts/construir.mjs`) y en la publicación. Si alguna hoja (fuera del motor) o algún JS escribe un color, una curva o un número con unidad (px, pt, mm, em, rem, s, ms), no se publica. Excepción: los `@media` y `@page`, porque CSS no deja usar variables ahí.
+- Si hace falta un valor nuevo, se agrega al motor con su nombre y se usa con `var(--nombre)`.

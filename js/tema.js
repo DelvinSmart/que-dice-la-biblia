@@ -1,4 +1,4 @@
-// Tema claro u oscuro. Por defecto, el del aparato de la persona (css/colores.css lo sigue solo).
+// Tema claro u oscuro. Por defecto, el del aparato de la persona (css/motor.css lo sigue solo).
 // Si la persona escoge uno en el pie de la página de inicio, se recuerda en su aparato y se usa en todas
 // las páginas. Este archivo va en el <head>, antes de dibujar, para que no parpadee el color.
 (() => {

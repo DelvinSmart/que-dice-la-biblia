@@ -2,6 +2,7 @@
 // con la lista de todos los estudios (la usa la página de inicio).
 import fs from "node:fs";
 import path from "node:path";
+import "./revisar-diseno.mjs"; // el candado de diseño: si hay valores escritos a mano, no se arma el sitio
 
 const raiz = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const salida = path.join(raiz, "_site");

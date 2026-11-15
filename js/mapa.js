@@ -138,7 +138,9 @@ function abrirFuente(chip) {
 function cerrarPasaje(caja) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { caja.hidden = true; return; }
   caja.classList.add("cerrando");
-  setTimeout(() => { caja.hidden = true; caja.classList.remove("cerrando"); }, 220);
+  // Espera lo mismo que dura el efecto en css/motor.css (--dur-200)
+  const ms = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--dur-200")) * 1000 || 0;
+  setTimeout(() => { caja.hidden = true; caja.classList.remove("cerrando"); }, ms);
 }
 
 function abrirPasaje(chip) {

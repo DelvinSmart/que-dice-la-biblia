@@ -1,69 +1,69 @@
 @page{size:A4;margin:0}
 html{background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 *{box-sizing:border-box}
-body{margin:0;color:var(--ink);background:var(--bg);font-family:var(--body);font-size:11pt;line-height:1.5}
-h1{font-family:var(--display);font-weight:800;font-size:34pt;margin:0 0 8px}
-.q{margin:0 0 6px;padding:0;list-style:none}.q li{font-family:var(--display);font-size:13pt;padding-left:14px;position:relative;margin-bottom:3px}
-.q li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.yb{font-family:var(--display);font-weight:800;font-size:13pt;margin:6px 0 18px}
-.ov{border-left:2px solid var(--line);padding-left:16px;position:relative}
-.ov::after{content:"";position:absolute;left:-5px;bottom:-4px;width:8px;height:8px;border-radius:50%;background:var(--line)}
-.ob{margin:0 0 12px;break-inside:avoid}
-.oh{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;font-size:15pt}
-.num{width:24px;height:24px;border-radius:50%;background:var(--c);color:var(--bg);display:inline-grid;place-items:center;font-family:var(--body);font-size:10pt;font-weight:700}
-.ol{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 0 32px}
-.ol span{font-size:9.5pt;border:1.2px solid var(--c);border-radius:999px;padding:2px 9px}
-.ol b{color:var(--c);margin-right:4px}
+body{margin:0;color:var(--ink);background:var(--bg);font-family:var(--body);font-size:var(--pdf-letra-11-pt);line-height:var(--pdf-interlinea-1-5)}
+h1{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--pdf-letra-34-pt);margin:0 0 var(--pdf-esp-8)}
+.q{margin:0 0 var(--pdf-esp-6);padding:0;list-style:none}.q li{font-family:var(--display);font-size:var(--pdf-letra-13-pt);padding-left:var(--pdf-esp-14);position:relative;margin-bottom:var(--pdf-esp-3)}
+.q li::before{content:"";position:absolute;left:0;top:var(--pdf-esp-0-6-em);width:var(--pdf-esp-6);height:var(--pdf-esp-6);border-radius:50%;background:var(--accent)}
+.yb{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--pdf-letra-13-pt);margin:var(--pdf-esp-6) 0 var(--pdf-esp-18)}
+.ov{border-left:var(--pdf-borde-2) solid var(--line);padding-left:var(--pdf-esp-16);position:relative}
+.ov::after{content:"";position:absolute;left:var(--pdf-esp-n5);bottom:var(--pdf-esp-n4);width:var(--pdf-esp-8);height:var(--pdf-esp-8);border-radius:50%;background:var(--line)}
+.ob{margin:0 0 var(--pdf-esp-12);break-inside:avoid}
+.oh{display:flex;align-items:center;gap:var(--pdf-esp-8);font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--pdf-letra-15-pt)}
+.num{width:var(--pdf-esp-24);height:var(--pdf-esp-24);border-radius:50%;background:var(--c);color:var(--bg);display:inline-grid;place-items:center;font-family:var(--body);font-size:var(--pdf-letra-10-pt);font-weight:var(--peso-negrita)}
+.ol{display:flex;flex-wrap:wrap;gap:var(--pdf-esp-5);margin:var(--pdf-esp-6) 0 0 var(--pdf-esp-32)}
+.ol span{font-size:var(--pdf-letra-9-5-pt);border:var(--pdf-borde-1-2) solid var(--c);border-radius:var(--radio-pildora);padding:var(--pdf-esp-2) var(--pdf-esp-9)}
+.ol b{color:var(--c);margin-right:var(--pdf-esp-4)}
 .sec{break-before:page}
-.sh{display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--c);padding-bottom:6px;margin-bottom:12px}
-.sh .t{font-family:var(--display);font-weight:800;font-size:20pt;line-height:1.1}
-.sh small{display:block;font-family:var(--body);font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.pt{margin:0 0 16px}
-.pl{font-family:var(--display);font-weight:800;font-size:13.5pt;color:var(--c);margin:0 0 6px;break-after:avoid}
-.pl .n{font-family:var(--body);font-size:10pt;margin-right:6px}
-.new{font-family:var(--body);font-size:7.5pt;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border:1px solid currentColor;border-radius:999px;padding:0 6px;margin-left:6px;vertical-align:2px}
-.pt p{margin:0 0 8px}.pt ul,.pt ol{margin:0 0 8px;padding-left:20px}.pt li{margin-bottom:5px}
-.pt h3{font-family:var(--display);font-size:12.5pt;margin:8px 0 5px}
-.g{font-style:italic;font-weight:700}
-.passage{background:var(--verse-bg);border-left:3px solid var(--c);border-radius:3px 8px 8px 3px;padding:10px 14px;margin:0 0 10px;font-family:var(--display);font-size:12pt;line-height:1.5}
-.passage .ref{font-family:var(--body);font-weight:700;font-size:8.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--c);margin-bottom:5px}
+.sh{display:flex;align-items:center;gap:var(--pdf-esp-10);border-bottom:var(--pdf-borde-2) solid var(--c);padding-bottom:var(--pdf-esp-6);margin-bottom:var(--pdf-esp-12)}
+.sh .t{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--pdf-letra-20-pt);line-height:var(--pdf-interlinea-1-1)}
+.sh small{display:block;font-family:var(--body);font-size:var(--pdf-letra-8-5-pt);letter-spacing:var(--tracking-0-06);text-transform:uppercase;color:var(--muted);font-weight:var(--peso-semi)}
+.pt{margin:0 0 var(--pdf-esp-16)}
+.pl{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--pdf-letra-13-5-pt);color:var(--c);margin:0 0 var(--pdf-esp-6);break-after:avoid}
+.pl .n{font-family:var(--body);font-size:var(--pdf-letra-10-pt);margin-right:var(--pdf-esp-6)}
+.new{font-family:var(--body);font-size:var(--pdf-letra-7-5-pt);font-weight:var(--peso-negrita);text-transform:uppercase;letter-spacing:var(--tracking-0-06);border:var(--pdf-borde-1) solid currentColor;border-radius:var(--radio-pildora);padding:0 var(--pdf-esp-6);margin-left:var(--pdf-esp-6);vertical-align:var(--pdf-esp-2)}
+.pt p{margin:0 0 var(--pdf-esp-8)}.pt ul,.pt ol{margin:0 0 var(--pdf-esp-8);padding-left:var(--pdf-esp-20)}.pt li{margin-bottom:var(--pdf-esp-5)}
+.pt h3{font-family:var(--display);font-size:var(--pdf-letra-12-5-pt);margin:var(--pdf-esp-8) 0 var(--pdf-esp-5)}
+.g{font-style:italic;font-weight:var(--peso-negrita)}
+.passage{background:var(--verse-bg);border-left:var(--pdf-borde-3) solid var(--c);border-radius:var(--pdf-radio-3) var(--pdf-radio-8) var(--pdf-radio-8) var(--pdf-radio-3);padding:var(--pdf-esp-10) var(--pdf-esp-14);margin:0 0 var(--pdf-esp-10);font-family:var(--display);font-size:var(--pdf-letra-12-pt);line-height:var(--pdf-interlinea-1-5)}
+.passage .ref{font-family:var(--body);font-weight:var(--peso-negrita);font-size:var(--pdf-letra-8-5-pt);letter-spacing:var(--tracking-0-06);text-transform:uppercase;color:var(--c);margin-bottom:var(--pdf-esp-5)}
 .passage .ref a,.passage .credito a,.aviso-lbla a{color:inherit;text-decoration:none}
-.passage .credito{margin-top:6px;padding-top:4px;border-top:1px solid var(--line);font-family:var(--body);font-size:7pt;color:var(--muted);text-align:right}
-.passage .credito a{color:var(--c);font-weight:600}
-.aviso-lbla{margin:14px 0 0;padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-family:var(--body);font-size:8pt;line-height:1.45;color:var(--muted)}
-.passage p{margin:0 0 4px;break-inside:avoid}.passage p b{font-family:var(--body);font-size:8.5pt;color:var(--c);margin-right:3px}
+.passage .credito{margin-top:var(--pdf-esp-6);padding-top:var(--pdf-esp-4);border-top:var(--pdf-borde-1) solid var(--line);font-family:var(--body);font-size:var(--pdf-letra-7-pt);color:var(--muted);text-align:right}
+.passage .credito a{color:var(--c);font-weight:var(--peso-semi)}
+.aviso-lbla{margin:var(--pdf-esp-14) 0 0;padding:var(--pdf-esp-8) var(--pdf-esp-10);border:var(--pdf-borde-1) solid var(--line);border-radius:var(--pdf-radio-6);font-family:var(--body);font-size:var(--pdf-letra-8-pt);line-height:var(--pdf-interlinea-1-45);color:var(--muted)}
+.passage p{margin:0 0 var(--pdf-esp-4);break-inside:avoid}.passage p b{font-family:var(--body);font-size:var(--pdf-letra-8-5-pt);color:var(--c);margin-right:var(--pdf-esp-3)}
 
 /* Repeated empty header/footer rows give every page its top and bottom margin on the black background */
 .page{width:100%;border-collapse:collapse}
-.page td{padding:0 15mm}
-.page thead td,.page tfoot td{height:14mm}
+.page td{padding:0 var(--pdf-esp-15-mm)}
+.page thead td,.page tfoot td{height:var(--pdf-esp-14-mm)}
 .sc{font-variant:small-caps}
 
 /* Imagen dentro de un subpunto: mismo recuadro que los versículos, con la raya del color del punto */
-.imagen{margin:0 0 14px;background:var(--verse-bg);border-left:3px solid var(--c);border-radius:4px 10px 10px 4px;padding:12px;break-inside:avoid}
-.imagen img{max-height:150mm;object-fit:contain;display:block;width:100%;height:auto;max-width:100%;border-radius:8px}
-.imagen figcaption{margin-top:8px;font-size:9.5pt;color:var(--muted);text-align:center}
+.imagen{margin:0 0 var(--pdf-esp-14);background:var(--verse-bg);border-left:var(--pdf-borde-3) solid var(--c);border-radius:var(--pdf-radio-4) var(--pdf-radio-10) var(--pdf-radio-10) var(--pdf-radio-4);padding:var(--pdf-esp-12);break-inside:avoid}
+.imagen img{max-height:var(--pdf-esp-150-mm);object-fit:contain;display:block;width:100%;height:auto;max-width:100%;border-radius:var(--pdf-radio-8)}
+.imagen figcaption{margin-top:var(--pdf-esp-8);font-size:var(--pdf-letra-9-5-pt);color:var(--muted);text-align:center}
 
-.pasaje-img{display:block;width:100%;max-height:150mm;object-fit:contain;border-radius:6px;margin:2px 0 6px}
+.pasaje-img{display:block;width:100%;max-height:var(--pdf-esp-150-mm);object-fit:contain;border-radius:var(--pdf-radio-6);margin:var(--pdf-esp-2) 0 var(--pdf-esp-6)}
 .marco-video,.imagen video,.enlace-video{display:none}
-.solo-pdf{display:block;margin:6px 0 0;font-size:9.5pt;color:var(--muted);text-align:center;word-break:break-all}
-img.solo-pdf{width:100%;max-height:90mm;object-fit:cover;border-radius:6px}
+.solo-pdf{display:block;margin:var(--pdf-esp-6) 0 0;font-size:var(--pdf-letra-9-5-pt);color:var(--muted);text-align:center;word-break:break-all}
+img.solo-pdf{width:100%;max-height:var(--pdf-esp-90-mm);object-fit:cover;border-radius:var(--pdf-radio-6)}
 
 .fuentes-punto{display:none}
 .fuentes{break-before:page;font-family:var(--body)}
-.fuentes h2{font-family:var(--display);font-size:18pt;margin:0 0 10px;text-align:left}
-.grupo-fuentes{margin:0 0 10px;break-inside:avoid}
-.grupo-fuentes h3{font-size:9pt;color:var(--muted);margin:0 0 4px}
-.ficha-fuente{border-left:2px solid var(--line);padding:2px 0 2px 8px;margin:0 0 6px;font-size:9pt}
-.ficha-titulo{font-weight:700}
-.ficha-fuente p{margin:1px 0;color:var(--muted)}
+.fuentes h2{font-family:var(--display);font-size:var(--pdf-letra-18-pt);margin:0 0 var(--pdf-esp-10);text-align:left}
+.grupo-fuentes{margin:0 0 var(--pdf-esp-10);break-inside:avoid}
+.grupo-fuentes h3{font-size:var(--pdf-letra-9-pt);color:var(--muted);margin:0 0 var(--pdf-esp-4)}
+.ficha-fuente{border-left:var(--pdf-borde-2) solid var(--line);padding:var(--pdf-esp-2) 0 var(--pdf-esp-2) var(--pdf-esp-8);margin:0 0 var(--pdf-esp-6);font-size:var(--pdf-letra-9-pt)}
+.ficha-titulo{font-weight:var(--peso-negrita)}
+.ficha-fuente p{margin:var(--pdf-esp-1) 0;color:var(--muted)}
 .ficha-fuente .passage{background:none;border:0;padding:0;margin:0}
 .fuente-link{display:none}
-.fuente-url{font-size:8pt;color:var(--muted);word-break:break-all;text-align:left;margin:0}
-.passage.griego p.falta{font-family:var(--body);font-size:9pt;font-style:italic;color:var(--muted)}
+.fuente-url{font-size:var(--pdf-letra-8-pt);color:var(--muted);word-break:break-all;text-align:left;margin:0}
+.passage.griego p.falta{font-family:var(--body);font-size:var(--pdf-letra-9-pt);font-style:italic;color:var(--muted)}
 
 /* La portada en un recuadro, como en la página */
-.portada{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 16px}
+.portada{background:var(--surface);border:var(--pdf-borde-1) solid var(--line);border-radius:var(--pdf-radio-12);padding:var(--pdf-esp-16) var(--pdf-esp-18);margin:0 0 var(--pdf-esp-16)}
 .portada .yb{margin-bottom:0}
 
 .rvr,.pasaje-pendiente{display:none}

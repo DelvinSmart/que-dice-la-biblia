@@ -1,5 +1,5 @@
 #!/bin/sh
-# Genera un PDF por estudio con los colores de la página (css/colores.css): uno oscuro y uno claro en _site/descargas/<estudio>.pdf.
+# Genera un PDF por estudio con los colores de la página (css/motor.css): uno oscuro y uno claro en _site/descargas/<estudio>.pdf.
 # Se ejecuta después de scripts/construir.mjs. Usa Chrome (en GitHub) o Brave (en la Mac).
 set -e
 cd "$(dirname "$0")/../_site"

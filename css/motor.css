@@ -1,0 +1,212 @@
+/* EL MOTOR de ¿Qué dice la Biblia?: TODOS los valores (colores, letras, espacios, bordes, esquinas, movimiento,
+   sombras) salen de aquí, para la página, el panel y el PDF. Ninguna otra hoja de estilos escribe un valor a mano:
+   scripts/revisar-diseno.mjs no deja publicar si alguien lo hace. Los @media sí llevan números (CSS no deja usar
+   variables ahí): son 480, 600, 640, 920 y 1100 px.
+   Claro por defecto; oscuro si el aparato lo pide o con data-theme="dark" (el PDF usa el oscuro: fondo azul muy oscuro, no negro ni blanco). */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --ink:#1B1F2E; --muted:#5B6275; --line:#D5D9E3; --accent:#2B3A8F;
+  --b1:#2B3A8F; --b2:#7A3FA0; --b3:#0F7A6C; --b4:#C2410C; --b5:#A1336B; --b6:#8A6A00;
+  --b7:#B42318; --b8:#0B6E99; --b9:#4D7C0F; --b10:#8C4A1E; --b11:#475467;
+  --verse-bg:#F6F4EE;
+  --display:"Alegreya", Georgia, "Times New Roman", serif;
+  --body:"Archivo", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12141C; --surface:#1B1E29; --ink:#E9EBF2; --muted:#A2A8BA; --line:#323748; --accent:#9DAEFF;
+  --b1:#9DAEFF; --b2:#CDA2EC; --b3:#5FD3C1; --b4:#FF9E6B; --b5:#F08DBF; --b6:#E5C25A;
+  --b7:#FF8A80; --b8:#6CC7F0; --b9:#A3D96B; --b10:#E0A87A; --b11:#B8C1D1;
+  --verse-bg:#232633; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#12141C; --surface:#1B1E29; --ink:#E9EBF2; --muted:#A2A8BA; --line:#323748; --accent:#9DAEFF;
+  --b1:#9DAEFF; --b2:#CDA2EC; --b3:#5FD3C1; --b4:#FF9E6B; --b5:#F08DBF; --b6:#E5C25A;
+  --b7:#FF8A80; --b8:#6CC7F0; --b9:#A3D96B; --b10:#E0A87A; --b11:#B8C1D1;
+  --verse-bg:#232633; color-scheme:dark }
+
+/* Valores que no cambian con el tema */
+:root{
+  /* Letras (tamaños) */
+  --letra-10-5:10.5px;
+  --letra-11:11px;
+  --letra-12:12px;
+  --letra-12-5:12.5px;
+  --letra-13:13px;
+  --letra-13-5:13.5px;
+  --letra-14:14px;
+  --letra-15:15px;
+  --letra-16:16px;
+  --letra-17:17px;
+  --letra-18:18px;
+  --letra-19:19px;
+  --letra-20:20px;
+  --letra-21:21px;
+  --letra-22:22px;
+  --letra-24:24px;
+  --letra-26:26px;
+  --letra-30:30px;
+  --letra-32:32px;
+  --letra-fluida-1:clamp(30px,4.4vw,44px);
+  --letra-fluida-2:clamp(34px,5vw,52px);
+  --pdf-letra-10-pt:10pt;
+  --pdf-letra-11-pt:11pt;
+  --pdf-letra-12-5-pt:12.5pt;
+  --pdf-letra-12-pt:12pt;
+  --pdf-letra-13-5-pt:13.5pt;
+  --pdf-letra-13-pt:13pt;
+  --pdf-letra-15-pt:15pt;
+  --pdf-letra-18-pt:18pt;
+  --pdf-letra-20-pt:20pt;
+  --pdf-letra-34-pt:34pt;
+  --pdf-letra-7-5-pt:7.5pt;
+  --pdf-letra-7-pt:7pt;
+  --pdf-letra-8-5-pt:8.5pt;
+  --pdf-letra-8-pt:8pt;
+  --pdf-letra-9-5-pt:9.5pt;
+  --pdf-letra-9-pt:9pt;
+  /* Pesos */
+  --peso-extra:800;
+  --peso-medio:500;
+  --peso-negrita:700;
+  --peso-regular:400;
+  --peso-semi:600;
+  /* Interlineado */
+  --interlinea-1-05:1.05;
+  --interlinea-1-1:1.1;
+  --interlinea-1-15:1.15;
+  --interlinea-1-2:1.2;
+  --interlinea-1-3:1.3;
+  --interlinea-1-4:1.4;
+  --interlinea-1-5:1.5;
+  --interlinea-1-55:1.55;
+  --interlinea-1-6:1.6;
+  --pdf-interlinea-1-1:1.1;
+  --pdf-interlinea-1-45:1.45;
+  --pdf-interlinea-1-5:1.5;
+  /* Espacios y medidas */
+  --esp-0-62-em:.62em;
+  --esp-1:1px;
+  --esp-10:10px;
+  --esp-1100:1100px;
+  --esp-12:12px;
+  --esp-1240:1240px;
+  --esp-13:13px;
+  --esp-130:130px;
+  --esp-14:14px;
+  --esp-150:150px;
+  --esp-1500:1500px;
+  --esp-16:16px;
+  --esp-18:18px;
+  --esp-2:2px;
+  --esp-20:20px;
+  --esp-22:22px;
+  --esp-24:24px;
+  --esp-26:26px;
+  --esp-28:28px;
+  --esp-31:31px;
+  --esp-32:32px;
+  --esp-33:33px;
+  --esp-34:34px;
+  --esp-4:4px;
+  --esp-44:44px;
+  --esp-440:440px;
+  --esp-48:48px;
+  --esp-5:5px;
+  --esp-50:50px;
+  --esp-52:52px;
+  --esp-56:56px;
+  --esp-6:6px;
+  --esp-7:7px;
+  --esp-76:76px;
+  --esp-8:8px;
+  --esp-860:860px;
+  --esp-9:9px;
+  --esp-90:90px;
+  --esp-96:96px;
+  --esp-n14:-14px;
+  --esp-n15:-15px;
+  --esp-n4:-4px;
+  --esp-n40:-40px;
+  --esp-n6:-6px;
+  --medida-fluida-1:max(16px, env(safe-area-inset-left, 0px));
+  --medida-fluida-10:min(340px,calc(100vw - 32px));
+  --medida-fluida-2:max(16px, env(safe-area-inset-right, 0px));
+  --medida-fluida-3:minmax(0,1fr) minmax(0,1.05fr);
+  --medida-fluida-4:minmax(0,1fr);
+  --medida-fluida-5:repeat(auto-fill,minmax(min(100%,320px),1fr));
+  --medida-fluida-6:repeat(auto-fit,minmax(min(100%,240px),1fr));
+  --medida-fluida-7:minmax(0,1fr) minmax(0,1.1fr);
+  --medida-fluida-8:minmax(150px,2fr) repeat(3,minmax(64px,1fr)) minmax(96px,1.2fr) auto;
+  --medida-fluida-9:repeat(3,minmax(0,1fr));
+  --pdf-esp-0-6-em:.6em;
+  --pdf-esp-1:1px;
+  --pdf-esp-10:10px;
+  --pdf-esp-12:12px;
+  --pdf-esp-14:14px;
+  --pdf-esp-14-mm:14mm;
+  --pdf-esp-15-mm:15mm;
+  --pdf-esp-150-mm:150mm;
+  --pdf-esp-16:16px;
+  --pdf-esp-18:18px;
+  --pdf-esp-2:2px;
+  --pdf-esp-20:20px;
+  --pdf-esp-24:24px;
+  --pdf-esp-3:3px;
+  --pdf-esp-32:32px;
+  --pdf-esp-4:4px;
+  --pdf-esp-5:5px;
+  --pdf-esp-6:6px;
+  --pdf-esp-8:8px;
+  --pdf-esp-9:9px;
+  --pdf-esp-90-mm:90mm;
+  --pdf-esp-n4:-4px;
+  --pdf-esp-n5:-5px;
+  /* Bordes */
+  --borde-1:1px;
+  --borde-1-5:1.5px;
+  --borde-2:2px;
+  --borde-3:3px;
+  --borde-4:4px;
+  --pdf-borde-1:1px;
+  --pdf-borde-1-2:1.2px;
+  --pdf-borde-2:2px;
+  --pdf-borde-3:3px;
+  /* Esquinas */
+  --pdf-radio-10:10px;
+  --pdf-radio-12:12px;
+  --pdf-radio-3:3px;
+  --pdf-radio-4:4px;
+  --pdf-radio-6:6px;
+  --pdf-radio-8:8px;
+  --radio-10:10px;
+  --radio-12:12px;
+  --radio-14:14px;
+  --radio-16:16px;
+  --radio-3:3px;
+  --radio-4:4px;
+  --radio-8:8px;
+  --radio-pildora:999px;
+  /* Separación de letras */
+  --tracking-0-02:.02em;
+  --tracking-0-04:.04em;
+  --tracking-0-05:.05em;
+  --tracking-0-06:.06em;
+  --tracking-0-08:.08em;
+  /* Movimiento */
+  --curva-1:cubic-bezier(.22,1,.36,1);
+  --curva-2:cubic-bezier(.2,.8,.2,1);
+  --dur-150:.15s;
+  --dur-200:.2s;
+  --dur-250:.25s;
+  --dur-300:.3s;
+  --dur-700:.7s;
+  /* Efectos */
+  --desenfoque-4:4px;
+  --desenfoque-8:8px;
+  --sombra-1:0 0 0 1px var(--line);
+  --sombra-2:0 10px 30px #0005;
+  --sombra-3:0 10px 30px #0004;
+  /* Colores de avisos */
+  --aviso:#ffb36b;
+  --fondo-video:#000;
+  --peligro:#ff8a8a;
+  --peligro-borde:#ff8a8a55;
+}
