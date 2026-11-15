@@ -31,7 +31,8 @@ function bloqueHTML(b) {
     case "subtitulo":
       return `<h3>${esc(b.texto)}</h3>`;
     case "pasaje":
-      return `<div class="passage"><div class="ref">${refHTML(b.referencia)}</div>${
+      return `<div class="passage"><div class="ref">${refHTML(b.referencia)}${botonRVR(b)}</div>${
+        !(b.versiculos || []).some(v => v.texto) && !b.imagen && botonRVR(b) ? `<p class="pasaje-pendiente">${etiquetasFuente().pendiente}</p>` : ""}${
         b.imagen ? `<img class="pasaje-img" src="${esc(rutaImagen(b.imagen))}" alt="${esc(b.referencia)}" loading="lazy">` : ""}${
         (b.versiculos || []).filter(v => v.texto).map(v => `<p>${v.numero ? `<b>${esc(v.numero)}</b>` : ""}${v.texto}</p>`).join("")
       }${esLBLA(b.referencia) ? CREDITO_LBLA : ""}</div>`;
@@ -81,6 +82,17 @@ const refHTML = ref => esLBLA(ref) ? esc(ref).replace(/\bLBLA\b/, enlaceLBLA("LB
 const usaLBLA = e => (e.temas || []).some(t => (t.puntos || []).some(p => (p.bloques || []).some(b => b.tipo === "pasaje" && esLBLA(b.referencia))));
 const avisoLBLA = e => usaLBLA(e) ? `<p class="aviso-lbla">${AVISO_LBLA}</p>` : "";
 
+// ---------- Reina-Valera 1960 al lado de cada pasaje (Reftagger de Logos) ----------
+// Un botoncito "RVR 1960" en la referencia: al pasar el mouse (o tocarlo en el teléfono) Logos muestra el
+// pasaje en esa versión en un recuadro. El texto NO se guarda en la página: lo trae Logos en ese momento,
+// con su licencia. Lo activa js/rvr.js en la página del estudio; en el PDF y en el panel queda escondido.
+// Solo en español: Logos no tiene las versiones en portugués que usamos.
+function botonRVR(b) {
+  if ((document.documentElement.lang || "").startsWith("pt") || typeof referenciaEnIngles !== "function") return "";
+  const en = referenciaEnIngles(b.referencia);
+  return en ? `<span class="rvr">${esc(en)}</span>` : "";
+}
+
 // ---------- Texto griego (SBLGNT, licencia CC BY 4.0: se puede publicar con el crédito) ----------
 
 const URL_SBLGNT = "https://sblgnt.com/";
@@ -114,8 +126,9 @@ const avisosDerechos = e => avisoLBLA(e) + (usaGriego(e) ? `<p class="aviso-lbla
 // y al final del PDF. (Los estudios viejos podían tenerlas como bloques: también se leen.)
 
 const ETIQUETAS_FUENTE = {
-  es: { fuentes: "Fuentes", ver: "Ver la fuente ↗", todas: "Fuentes del estudio", griego: "Griego", cerrar: "Cerrar" },
-  pt: { fuentes: "Fontes", ver: "Ver a fonte ↗", todas: "Fontes do estudo", griego: "Grego", cerrar: "Fechar" }
+  es: { fuentes: "Fuentes", ver: "Ver la fuente ↗", todas: "Fuentes del estudio", griego: "Griego", cerrar: "Cerrar",
+        pendiente: "El texto de este pasaje todavía no se copió. Mientras tanto puedes leerlo en la Reina-Valera 1960 (botón de arriba)." },
+  pt: { fuentes: "Fontes", ver: "Ver a fonte ↗", todas: "Fontes do estudo", griego: "Grego", cerrar: "Fechar", pendiente: "" }
 };
 const etiquetasFuente = () => ETIQUETAS_FUENTE[(document.documentElement.lang || "").startsWith("pt") ? "pt" : "es"];
 // Solo links web (http o https): nunca otro tipo de link que pudiera ejecutar algo

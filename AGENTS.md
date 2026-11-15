@@ -45,3 +45,9 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 - El griego va en las **fuentes** del subpunto, no en el texto: `{"tipo": "griego", "referencia": "1 Timoteo 1:5-7", "versiculos": [{"numero": "5", "texto": "…"}]}`. En el panel, "+ Griego" (en "Fuentes del estudio") lo llena solo con "Traer el griego". La IA copia el texto **solo** de esos archivos, nunca de memoria.
 - No cuenta en el medidor de la LBLA. La página pone sola el crédito del SBLGNT.
 - El Antiguo Testamento (hebreo) todavía no está: su licencia hay que revisarla aparte.
+
+## Reina-Valera 1960 al lado de cada pasaje
+
+- Cada pasaje (en español) tiene un botoncito "RVR 1960": al pasar el mouse, o al tocarlo en el teléfono, Reftagger de Logos muestra ese pasaje en la Reina-Valera 1960 en un recuadro. El texto **no** se guarda en la página: lo trae Logos en ese momento, con su licencia (`js/rvr.js`).
+- Si un pasaje todavía no tiene el texto de la LBLA, la página dice que se puede leer mientras tanto en la RVR 1960.
+- Logos no tiene la LBLA ni las versiones en portugués, por eso el botón es solo de la RVR 1960 y solo en español. Para Reftagger las referencias van en inglés (`referenciaEnIngles` en `js/biblia.js`).

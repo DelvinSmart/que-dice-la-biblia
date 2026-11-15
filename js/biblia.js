@@ -2,6 +2,9 @@
 // y armar el enlace que abre ese pasaje exacto en Bible.com (o en la app YouVersion, en el teléfono).
 // Aquí no se guarda ningún texto bíblico: solo los nombres de los libros y cuántos capítulos tienen.
 
+// Nombres en inglés: los usa el recuadro de la Reina-Valera 1960 (Reftagger de Logos solo entiende referencias en inglés)
+const NOMBRES_EN = ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi", "Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"];
+
 // [nombre en español, nombre en portugués, código de Bible.com, capítulos, otros nombres]
 const LIBROS = [
   ["Génesis", "Gênesis", "GEN", 50], ["Éxodo", "Êxodo", "EXO", 40], ["Levítico", "Levítico", "LEV", 27],
@@ -28,7 +31,7 @@ const LIBROS = [
   ["1 Pedro", "1 Pedro", "1PE", 5], ["2 Pedro", "2 Pedro", "2PE", 3], ["1 Juan", "1 João", "1JN", 5],
   ["2 Juan", "2 João", "2JN", 1], ["3 Juan", "3 João", "3JN", 1], ["Judas", "Judas", "JUD", 1],
   ["Apocalipsis", "Apocalipse", "REV", 22]
-].map(([es, pt, codigo, capitulos, otros = []]) => ({ es, pt, codigo, capitulos, otros }));
+].map(([es, pt, codigo, capitulos, otros = []], i) => ({ es, pt, codigo, capitulos, otros, en: NOMBRES_EN[i] }));
 
 // Versiones que se pueden abrir en Bible.com (número de la versión en Bible.com, comprobado el 15 nov 2026)
 const VERSIONES = { LBLA: 89, RVR1960: 149, NVI: 128, ARA: 1608, ARC: 212 };
@@ -68,3 +71,9 @@ function enlaceBiblia(ref, idioma = "es") {
 // Arma la referencia escrita: ("es", libro, 2, 18, 20, "LBLA") → "Génesis 2:18-20 LBLA"
 const escribirReferencia = (idioma, libro, capitulo, desde, hasta, version) =>
   `${idioma === "pt" ? libro.pt : libro.es} ${capitulo}:${hasta > desde ? `${desde}-${hasta}` : desde} ${version}`.trim();
+
+// La referencia en inglés para Reftagger: "Hechos 20:17, 28 LBLA" → "Acts 20:17, 28"
+function referenciaEnIngles(ref) {
+  const r = leerReferencia(ref);
+  return r ? `${r.libro.en} ${r.capitulo}:${r.tramos.map(([a, z]) => (a === z ? `${a}` : `${a}-${z}`)).join(", ")}` : "";
+}
