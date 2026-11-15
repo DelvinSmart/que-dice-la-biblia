@@ -204,11 +204,12 @@
   --sombra-1:0 0 0 1px var(--line);
   --sombra-2:0 10px 30px #0005;
   --sombra-3:0 10px 30px #0004;
-  /* Ventana LBLA (bible.lockman.org dentro de la página) */
-  --ventana-ancho:760px;
-  --ventana-alto:82vh;
-  --velo:#000a;
-  --capa-ventana:50;
+  /* LBLA abierto (el versículo de bible.lockman.org en el lugar del pasaje). Medido el 15 nov 2026: el encabezado de
+     Lockman mide 327px en pantallas de hasta 640px de ancho y 275px en las más anchas */
+  --lbla-alto:230px;
+  --lbla-corte:645px;
+  --lbla-encabezado-angosto:327px;
+  --lbla-encabezado-ancho:275px;
   /* Colores de avisos */
   --aviso:#ffb36b;
   --fondo-video:#000;

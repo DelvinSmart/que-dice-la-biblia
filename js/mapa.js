@@ -143,18 +143,45 @@ function cerrarPasaje(caja) {
   setTimeout(() => { caja.hidden = true; caja.classList.remove("cerrando"); }, ms);
 }
 
-function abrirPasaje(chip) {
-  const fila = chip.closest(".pasajes");
-  const k = [...fila.querySelectorAll(".chip-pasaje")].indexOf(chip);
-  const caja = fila.querySelectorAll(".pasaje-abierto")[k];
-  const abierto = chip.getAttribute("aria-expanded") === "true";
-  $("rbody").querySelectorAll(".chip-pasaje").forEach(c => c.setAttribute("aria-expanded", "false"));
-  $("rbody").querySelectorAll(".pasaje-abierto:not([hidden])").forEach(cerrarPasaje);
-  if (abierto) return;
-  chip.setAttribute("aria-expanded", "true");
+// Abre un recuadro (el pasaje o su LBLA) debajo de la fila; cierra lo que estuviera abierto en el subpunto.
+// Si ese botón ya estaba abierto, solo lo cierra.
+function abrirRecuadro(boton, caja) {
+  const abierto = boton.getAttribute("aria-expanded") === "true";
+  $("rbody").querySelectorAll(".chip-pasaje, .boton-lbla").forEach(c => c.setAttribute("aria-expanded", "false"));
+  $("rbody").querySelectorAll(".pasaje-abierto:not([hidden]), .lbla-abierto:not([hidden])").forEach(cerrarPasaje);
+  if (abierto) return false;
+  boton.setAttribute("aria-expanded", "true");
   caja.hidden = false;
   revelar([caja], 0);
   caja.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  return true;
+}
+
+const posicionDe = boton => [...boton.closest(".pasajes").querySelectorAll(".pasaje-y-rvr")].indexOf(boton.closest(".pasaje-y-rvr"));
+
+function abrirPasaje(chip) {
+  abrirRecuadro(chip, chip.closest(".pasajes").querySelectorAll(".pasaje-abierto")[posicionDe(chip)]);
+}
+
+// LBLA: el versículo en la página de Lockman, en el mismo espacio que el pasaje. Se muestra solo su recuadro:
+// la página se corre hacia arriba lo que mide su encabezado (en css/motor.css: --lbla-encabezado-angosto en
+// pantallas de hasta --lbla-corte de ancho, y --lbla-encabezado-ancho en las más anchas; medido el 15 nov 2026).
+function abrirLBLA(boton) {
+  const caja = boton.closest(".pasajes").querySelectorAll(".lbla-abierto")[posicionDe(boton)];
+  if (!abrirRecuadro(boton, caja) || caja.firstChild) return;
+  const motor = getComputedStyle(document.documentElement);
+  const px = nombre => parseFloat(motor.getPropertyValue(nombre)) || 0;
+  const ancho = caja.clientWidth;
+  const encabezado = ancho <= px("--lbla-corte") ? px("--lbla-encabezado-angosto") : px("--lbla-encabezado-ancho");
+  caja.innerHTML = `
+    <div class="lbla-recorte">
+      <p class="ventana-cargando">${T.cargandoLBLA}</p>
+      <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org" src="${esc(boton.dataset.lockman)}"
+        style="top:-${encabezado}px;height:calc(var(--lbla-alto) + ${encabezado}px)"></iframe>
+    </div>
+    <a class="lbla-pie" href="${esc(boton.dataset.lockman)}" target="_blank" rel="noopener">La Biblia de las Américas · The Lockman Foundation · bible.lockman.org ↗</a>`;
+  const marco = caja.querySelector("iframe");
+  marco.addEventListener("load", () => { marco.classList.add("listo"); caja.querySelector(".ventana-cargando").hidden = true; });
 }
 
 function controles() {
@@ -163,6 +190,8 @@ function controles() {
     if (chip && STEPS[cur]?.p) abrirFuente(chip);
     const pasaje = e.target.closest(".chip-pasaje");
     if (pasaje) abrirPasaje(pasaje);
+    const lbla = e.target.closest(".boton-lbla");
+    if (lbla) abrirLBLA(lbla);
   });
   $("prev").addEventListener("click", () => show(cur - 1));
   $("next").addEventListener("click", () => show(cur + 1));

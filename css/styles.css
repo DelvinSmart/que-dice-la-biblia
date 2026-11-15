@@ -75,10 +75,7 @@ button:focus-visible{outline:var(--borde-3) solid var(--accent);outline-offset:v
 
 /* Botoncito "RVR 1960" en la referencia del pasaje (js/rvr.js); escondido hasta que Logos lo activa */
 .rvr{display:none}
-.rvr.rvr-listo{display:inline-flex;gap:var(--esp-4)}
-.rvr a.boton-rvr{font-size:var(--letra-10-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-04);color:var(--muted);text-decoration:none;
-  border:var(--borde-1) solid var(--line);border-radius:var(--radio-pildora);padding:var(--esp-1) var(--esp-7);background:var(--surface);cursor:help;border-bottom-style:solid}
-.rvr a.boton-rvr:hover{color:var(--ink);border-color:var(--c)}
+.rvr.rvr-listo{display:inline-flex;gap:var(--esp-4);white-space:nowrap}
 .pasaje-pendiente{font-family:var(--body);font-size:var(--letra-13);font-style:italic;color:var(--muted);margin:0 0 var(--esp-4)}
 .pasaje-abierto .passage{margin:var(--esp-2) 0 0}
 .passage p b{font-family:var(--body);font-size:var(--letra-12);color:var(--c);margin-right:var(--esp-4);vertical-align:var(--esp-1)}
@@ -234,33 +231,26 @@ body{margin:0}
 .rtTooltip .rtTooltipBrandLink .rtTooltipLogosIcon path{fill:var(--muted)}
 .rtTooltip .rtTooltipMoreLink:link,.rtTooltip .rtTooltipMoreLink:visited{color:var(--accent);font-family:var(--body);font-weight:var(--peso-semi)}
 
-/* Botón "LBLA" dentro del botoncito del pasaje (como "RVR 1960") */
-.boton-lbla{font:inherit;font-size:var(--letra-10-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-04);color:var(--c);
-  background:var(--surface);border:var(--borde-1) solid var(--line);border-radius:var(--radio-pildora);padding:var(--esp-1) var(--esp-7);cursor:pointer}
-.boton-lbla:hover{border-color:var(--c)}
+/* Botones pequeños dentro del botoncito del pasaje: "LBLA" y "RVR 1960", iguales. Grises; al tocarlos (o con su
+   recuadro abierto) la letra y el borde se ponen del color del texto (blancos en el tema oscuro). */
+.boton-lbla,.rvr a.boton-rvr{font:inherit;font-size:var(--letra-10-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-04);
+  color:var(--muted);text-decoration:none;background:var(--surface);border:var(--borde-1) solid var(--line);border-radius:var(--radio-pildora);
+  padding:var(--esp-1) var(--esp-7);cursor:pointer;white-space:nowrap;transition:color var(--dur-150) ease,border-color var(--dur-150) ease}
+.boton-lbla:hover,.boton-lbla[aria-expanded="true"],.boton-lbla:active,
+.rvr a.boton-rvr:hover,.rvr a.boton-rvr:active,.rvr a.boton-rvr.activo{color:var(--ink);border-color:var(--ink)}
 .pasaje-y-rvr:has(.boton-lbla){padding-right:var(--esp-6)}
 .pasaje-y-rvr:has(.boton-lbla) .chip-pasaje{padding-right:var(--esp-6)}
+.pasaje-y-rvr:has(.boton-lbla[aria-expanded="true"]){border-color:var(--c);border-left-color:var(--c)}
 
-/* Ventana con la Biblia en línea de Lockman: entra y sale con efecto */
-.ventana-lbla{position:fixed;inset:0;z-index:var(--capa-ventana);display:grid;place-items:center;padding:var(--esp-16);background:var(--velo);
-  opacity:0;visibility:hidden;transition:opacity var(--dur-250) ease,visibility 0s linear var(--dur-300)}
-.ventana-lbla.abierta{opacity:1;visibility:visible;transition:opacity var(--dur-250) ease,visibility 0s}
-.ventana-caja{width:min(var(--ventana-ancho),100%);height:min(var(--ventana-alto),100%);display:flex;flex-direction:column;background:var(--surface);
-  border:var(--borde-1) solid var(--line);border-left:var(--borde-3) solid var(--accent);border-radius:var(--radio-4) var(--radio-14) var(--radio-14) var(--radio-4);
-  overflow:hidden;box-shadow:var(--sombra-2);transform:translateY(var(--esp-14)) scale(.97);filter:blur(var(--desenfoque-4));
-  transition:transform var(--dur-300) var(--curva-1),filter var(--dur-250) ease}
-.ventana-lbla.abierta .ventana-caja{transform:none;filter:none}
-.ventana-cab{display:flex;align-items:center;gap:var(--esp-10);padding:var(--esp-10) var(--esp-14);background:var(--verse-bg);border-bottom:var(--borde-1) solid var(--line)}
-.ventana-titulo{flex:1;min-width:0;font-size:var(--letra-12-5);font-weight:var(--peso-negrita);letter-spacing:var(--tracking-0-06);text-transform:uppercase;color:var(--accent)}
-.ventana-abrir{font-size:var(--letra-12-5);font-weight:var(--peso-semi);color:var(--muted);text-decoration:none;white-space:nowrap}
-.ventana-abrir:hover{color:var(--ink)}
-.ventana-cerrar{font:inherit;font-size:var(--letra-16);color:var(--muted);background:transparent;border:0;cursor:pointer;padding:var(--esp-2) var(--esp-6)}
-.ventana-cerrar:hover{color:var(--ink)}
-.ventana-cuerpo{flex:1;position:relative;min-height:0}
-.ventana-cargando{position:absolute;inset:0;display:grid;place-items:center;margin:0;padding:var(--esp-16);text-align:center;
-  font-size:var(--letra-13-5);color:var(--muted)}
+/* LBLA abierto: el recuadro del versículo de Lockman, en el mismo lugar y del mismo estilo que el pasaje */
+.lbla-abierto{margin:var(--esp-2) 0 0;background:var(--verse-bg);border-left:var(--borde-3) solid var(--c);border-radius:var(--radio-4) var(--radio-10) var(--radio-10) var(--radio-4);overflow:hidden}
+.lbla-abierto[hidden]{display:none}
+.lbla-abierto.cerrando{opacity:0;transform:translateY(calc(var(--esp-6) * -1)) scale(.98);filter:blur(var(--desenfoque-4));
+  transition:opacity var(--dur-200) ease,transform var(--dur-200) ease,filter var(--dur-200) ease}
+.lbla-recorte{position:relative;height:var(--lbla-alto);overflow:hidden}
+.lbla-marco{position:absolute;left:0;width:100%;border:0;opacity:0;transition:opacity var(--dur-300) ease}
+.lbla-marco.listo{opacity:1}
+.ventana-cargando{position:absolute;inset:0;display:grid;place-items:center;margin:0;padding:var(--esp-16);text-align:center;font-size:var(--letra-13-5);color:var(--muted)}
 .ventana-cargando[hidden]{display:none}
-.ventana-marco{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;opacity:0;transition:opacity var(--dur-300) ease}
-.ventana-marco.listo{opacity:1}
-.ventana-pie{margin:0;padding:var(--esp-6) var(--esp-14);font-size:var(--letra-11);color:var(--muted);border-top:var(--borde-1) solid var(--line)}
-@media (prefers-reduced-motion:reduce){ .ventana-lbla,.ventana-caja{transition:none;transform:none;filter:none} }
+.lbla-pie{display:block;padding:var(--esp-6) var(--esp-14);font-size:var(--letra-11);color:var(--muted);text-decoration:none;text-align:right;border-top:var(--borde-1) solid var(--line)}
+.lbla-pie:hover{color:var(--ink)}

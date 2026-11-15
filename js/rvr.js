@@ -49,7 +49,10 @@ window.addEventListener("click", e => {
   const boton = e.target.closest(".rvr a.rtBibleRef");
   if (boton) e.preventDefault();
   if (!sinMouse() || e.target.closest(".rtTooltip")) return;
-  if (botonAbierto && botonAbierto !== boton) botonAbierto.dispatchEvent(new MouseEvent("mouseout", { bubbles: true }));
+  if (botonAbierto && botonAbierto !== boton) {
+    botonAbierto.dispatchEvent(new MouseEvent("mouseout", { bubbles: true }));
+    botonAbierto.classList.remove("activo");
+  }
   botonAbierto = boton;
-  if (boton) boton.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }));
+  if (boton) { boton.dispatchEvent(new MouseEvent("mouseover", { bubbles: true })); boton.classList.add("activo"); }
 });

@@ -93,12 +93,13 @@ function botonRVR(b) {
   return en ? `<span class="rvr">${esc(en)}</span>` : "";
 }
 
-// Botón "LBLA": abre el pasaje en la Biblia en línea de Lockman (el dueño de la LBLA) en una ventana sobre la
-// página (js/lbla.js). El texto no se copia: es la página de Lockman, con su nombre y su link.
+// Botón "LBLA": abre debajo, en el mismo lugar donde se abre el pasaje, el versículo en la Biblia en línea de
+// Lockman (el dueño de la LBLA), recortado para que se vea solo su recuadro (js/mapa.js → abrirLBLA). El texto
+// no se copia: es la página de Lockman, con su nombre y su link.
 function botonLBLA(b) {
   if (typeof enlaceLockman !== "function" || !esLBLA(b.referencia)) return "";
   const url = enlaceLockman(b.referencia);
-  return url ? `<button type="button" class="boton-lbla" data-lockman="${esc(url)}" data-titulo="${esc(b.referencia)}">LBLA</button>` : "";
+  return url ? `<button type="button" class="boton-lbla" data-lockman="${esc(url)}" aria-expanded="false">LBLA</button>` : "";
 }
 
 // ---------- Texto griego (SBLGNT, licencia CC BY 4.0: se puede publicar con el crédito) ----------
@@ -135,7 +136,7 @@ const avisosDerechos = e => avisoLBLA(e) + (usaGriego(e) ? `<p class="aviso-lbla
 
 const ETIQUETAS_FUENTE = {
   es: { fuentes: "Fuentes", ver: "Ver la fuente ↗", todas: "Fuentes del estudio", griego: "Griego", cerrar: "Cerrar",
-        pendiente: "El texto de este pasaje todavía no se copió. Mientras tanto puedes leerlo en la Reina-Valera 1960 (botón “RVR 1960”)." },
+        pendiente: "El texto de este pasaje todavía no se copió. Mientras tanto puedes leerlo en la LBLA (botón “LBLA”) o en la Reina-Valera 1960 (botón “RVR 1960”)." },
   pt: { fuentes: "Fontes", ver: "Ver a fonte ↗", todas: "Fontes do estudo", griego: "Grego", cerrar: "Fechar", pendiente: "" }
 };
 const etiquetasFuente = () => ETIQUETAS_FUENTE[(document.documentElement.lang || "").startsWith("pt") ? "pt" : "es"];
@@ -197,7 +198,7 @@ function puntoHTML(p, completo = false) {
     k--;
     partes.push(`<div class="pasajes">${grupo.map(b =>
       `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonLBLA(b)}${botonRVR(b)}</span>`).join("")
-    }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div>`).join("")}</div>`);
+    }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div><div class="lbla-abierto" hidden></div>`).join("")}</div>`);
   }
   return partes.join("\n") + botonesFuentesHTML(p);
 }
