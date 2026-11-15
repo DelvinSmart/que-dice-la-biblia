@@ -549,13 +549,19 @@
             },
             {
               "tipo": "texto",
-              "texto": "<p>Allí toda la tierra hablaba un mismo idioma, y el pueblo se unió para construir una ciudad y una torre que llegara hasta el cielo, para hacerse un nombre y no ser dispersados por toda la tierra (Génesis 11:1-4). O sea, estaban unidos, sí, pero unidos para edificar algo que no edificaba a Dios, sino a ellos mismos. Y eso después que Dios les había mandado a llenar la tierra (Génesis 9:1).</p>\n<p>Entonces Dios descendió, confundió su lengua para que no se entendieran unos a otros, y los dispersó por toda la tierra (Génesis 11:5-9). Fue por causa de su maldad, para que no siguieran creciendo en ella.</p>\n<p>Las tradiciones judías antiguas cuentan cosas impresionantes de esa torre. Una de ellas, el <i>Pirkei de-Rabbi Eliezer</i>, dice que era tan alta que tardaban un año en subir, y que si se caía un ladrillo lloraban, pero si se caía un hombre no les importaba. Eso no está en la Biblia, es tradición, pero nos deja imaginar la locura de un pueblo unido en una misma lengua para edificar algo que no edifica al Señor.</p>"
+              "texto": "<p>Allí toda la tierra hablaba un mismo idioma, y el pueblo se unió para construir una ciudad y una torre que llegara hasta el cielo, para hacerse un nombre y no ser dispersados por toda la tierra (Génesis 11:1-4). O sea, estaban unidos, sí, pero unidos para edificar algo que no edificaba a Dios, sino a ellos mismos. Y eso después que Dios les había mandado a llenar la tierra (Génesis 9:1).</p>\n<p>Entonces Dios descendió, confundió su lengua para que no se entendieran unos a otros, y los dispersó por toda la tierra (Génesis 11:5-9). Fue por causa de su maldad, para que no siguieran creciendo en ella.</p>\n<p>Las tradiciones judías antiguas cuentan cosas impresionantes de esa torre. Una de ellas, el <i>Pirkei de-Rabbi Eliezer</i>, dice que si se caía un ladrillo lloraban, pero si se caía un hombre no les importaba. Y otro libro antiguo, el <i>Sefer HaYashar</i>, dice que era tan alta que tardaban un año en subir los ladrillos. Eso no está en la Biblia, es tradición, pero nos deja imaginar la locura de un pueblo unido en una misma lengua para edificar algo que no edifica al Señor.</p>"
             },
             {
               "tipo": "fuente",
               "titulo": "Pirkei de-Rabbi Eliezer, capítulo 24",
               "texto": "La tradición judía de la torre: si caía un hombre no les importaba, pero si caía un ladrillo lloraban.",
               "url": "https://www.sefaria.org/Pirkei_DeRabbi_Eliezer.24"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Sefer HaYashar · Noé, capítulo 14",
+              "texto": "Otro libro judío antiguo: por la gran altura de la torre, tardaban un año entero en subir las piedras y los ladrillos hasta los constructores.",
+              "url": "https://www.sefaria.org/Sefer_HaYashar_(midrash)%2C_Book_of_Genesis%2C_Noach.14"
             }
           ]
         },

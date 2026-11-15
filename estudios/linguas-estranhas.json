@@ -529,13 +529,19 @@
             },
             {
               "tipo": "texto",
-              "texto": "<p>Ali a terra inteira falava um só idioma, e o povo se uniu para construir uma cidade e uma torre que chegasse até o céu, para tornar o seu nome célebre e não ser espalhado por toda a terra (Gênesis 11:1-4). Ou seja, estavam unidos, sim, mas unidos para edificar algo que não edificava a Deus, e sim a eles mesmos. E isso depois que Deus tinha mandado que enchessem a terra (Gênesis 9:1).</p>\n<p>Então Deus desceu, confundiu a linguagem deles para que não se entendessem uns aos outros, e os espalhou por toda a terra (Gênesis 11:5-9). Foi por causa da maldade deles, para que não continuassem crescendo nela.</p>\n<p>As tradições judaicas antigas contam coisas impressionantes sobre essa torre. Uma delas, o <i>Pirkei de-Rabbi Eliezer</i>, diz que era tão alta que levavam um ano para subir, e que se caía um tijolo eles choravam, mas se caía um homem não se importavam. Isso não está na Bíblia, é tradição, mas nos deixa imaginar a loucura de um povo unido numa mesma língua para edificar algo que não edifica o Senhor.</p>"
+              "texto": "<p>Ali a terra inteira falava um só idioma, e o povo se uniu para construir uma cidade e uma torre que chegasse até o céu, para tornar o seu nome célebre e não ser espalhado por toda a terra (Gênesis 11:1-4). Ou seja, estavam unidos, sim, mas unidos para edificar algo que não edificava a Deus, e sim a eles mesmos. E isso depois que Deus tinha mandado que enchessem a terra (Gênesis 9:1).</p>\n<p>Então Deus desceu, confundiu a linguagem deles para que não se entendessem uns aos outros, e os espalhou por toda a terra (Gênesis 11:5-9). Foi por causa da maldade deles, para que não continuassem crescendo nela.</p>\n<p>As tradições judaicas antigas contam coisas impressionantes sobre essa torre. Uma delas, o <i>Pirkei de-Rabbi Eliezer</i>, diz que se caía um tijolo eles choravam, mas se caía um homem não se importavam. E outro livro antigo, o <i>Sefer HaYashar</i>, diz que era tão alta que levavam um ano para subir os tijolos. Isso não está na Bíblia, é tradição, mas nos deixa imaginar a loucura de um povo unido numa mesma língua para edificar algo que não edifica o Senhor.</p>"
             },
             {
               "tipo": "fuente",
               "titulo": "Pirkei de-Rabbi Eliezer, capítulo 24",
               "texto": "A tradição judaica da torre: se um homem caía não se importavam, mas se caía um tijolo choravam.",
               "url": "https://www.sefaria.org/Pirkei_DeRabbi_Eliezer.24"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Sefer HaYashar · Noé, capítulo 14",
+              "texto": "Outro livro judaico antigo: pela grande altura da torre, levavam um ano inteiro para subir as pedras e os tijolos até os construtores.",
+              "url": "https://www.sefaria.org/Sefer_HaYashar_(midrash)%2C_Book_of_Genesis%2C_Noach.14"
             }
           ]
         },
