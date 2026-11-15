@@ -58,6 +58,19 @@ function dibujarMapa() {
     if (primero >= 0) el.querySelector(".bhead").addEventListener("click", () => show(primero, true));
     $("tree").appendChild(el);
   });
+  // Al final del mapa, el último paso: todas las fuentes del estudio
+  const total = contarFuentes(ESTUDIO);
+  if (total) {
+    const idx = STEPS.push({ fuentes: true }) - 1;
+    const el = document.createElement("div");
+    el.className = "branch rama-fuentes";
+    el.style.setProperty("--c", "var(--b11)");
+    el.innerHTML = `<button class="bhead" type="button"><span class="bnum">≡</span><span class="btitle"><small>${total} ${T.fuentesCuenta}</small>${T.fuentesTitulo}</span></button>`;
+    const boton = el.querySelector(".bhead");
+    boton.addEventListener("click", () => show(idx, true));
+    chips[idx] = boton;
+    $("tree").appendChild(el);
+  }
 }
 
 // Muestra el punto i en el panel de lectura. "animar" en false lo cambia sin el efecto de entrada.
@@ -66,10 +79,10 @@ function show(i, fromMap, animar = true) {
   if (!STEPS.length) return;
   cur = Math.max(0, Math.min(STEPS.length - 1, i));
   const s = STEPS[cur];
-  $("reader").style.setProperty("--c", `var(${colorDe(s.tema)})`);
-  $("rtag").textContent = `${s.bi + 1} · ${s.tema.titulo}`;
-  $("rlabel").textContent = s.p.titulo;
-  $("rbody").innerHTML = puntoHTML(s.p);
+  $("reader").style.setProperty("--c", s.fuentes ? "var(--b11)" : `var(${colorDe(s.tema)})`);
+  $("rtag").textContent = s.fuentes ? `${contarFuentes(ESTUDIO)} ${T.fuentesCuenta}` : `${s.bi + 1} · ${s.tema.titulo}`;
+  $("rlabel").textContent = s.fuentes ? T.fuentesTitulo : s.p.titulo;
+  $("rbody").innerHTML = s.fuentes ? paginaFuentesHTML(ESTUDIO) : puntoHTML(s.p);
   if (animar) {
     revelar([$("rtag"), $("rlabel")], 40);
     revelar($("rbody").children, 50, 60);
@@ -83,7 +96,25 @@ function show(i, fromMap, animar = true) {
   if (!VISTA) { try { localStorage.setItem("paso-" + SLUG, String(cur)); } catch (e) {} }
 }
 
+// Botoncitos de fuentes: al tocar uno se abre su recuadro debajo; al tocarlo otra vez se cierra
+function abrirFuente(chip) {
+  const caja = chip.closest(".fuentes-punto");
+  const pop = caja.querySelector(".pop-fuente");
+  const abierto = chip.getAttribute("aria-expanded") === "true";
+  caja.querySelectorAll(".chip-fuente").forEach(c => c.setAttribute("aria-expanded", "false"));
+  if (abierto) { pop.hidden = true; return; }
+  pop.innerHTML = fichaFuenteHTML(fuentesDePunto(STEPS[cur].p)[Number(chip.dataset.fuente)]);
+  pop.hidden = false;
+  chip.setAttribute("aria-expanded", "true");
+  revelar([pop], 0);
+  pop.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
 function controles() {
+  $("rbody").addEventListener("click", e => {
+    const chip = e.target.closest(".chip-fuente");
+    if (chip && STEPS[cur]?.p) abrirFuente(chip);
+  });
   $("prev").addEventListener("click", () => show(cur - 1));
   $("next").addEventListener("click", () => show(cur + 1));
   $("tomap").addEventListener("click", () => {
@@ -105,7 +136,6 @@ function pintar(datos) {
   textosFijos();
   selectorIdioma();
   dibujarMapa();
-  $("fuentes").innerHTML = fuentesHTML(ESTUDIO);
   $("aviso").innerHTML = avisosDerechos(ESTUDIO);
 }
 

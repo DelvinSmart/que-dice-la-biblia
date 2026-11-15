@@ -12,7 +12,7 @@ Lee esto antes de escribir o cambiar un estudio.
 
 ## Los estudios
 
-- **Fuentes:** cada subpunto puede llevar bloques `{"tipo": "fuente", "titulo": "…", "texto": "…", "url": "https://…"}` que explican de dónde se sacó la información (léxico, libro, artículo), con su link. Salen en su subpunto y todas juntas en "Fuentes de este estudio", debajo del mapa y al final del PDF. Cada dato histórico, de idioma original o de fecha debe tener su fuente. No inventes fuentes ni links: si no estás seguro, pregúntale al autor.
+- **Fuentes:** no van en el texto del estudio. Cada subpunto las guarda en su lista `"fuentes": [...]` (al lado de `"bloques"`): `{"tipo": "fuente", "titulo": "…", "texto": "resumen corto", "url": "https://…"}` o `{"tipo": "griego", …}`. En la página salen como botoncitos al final del subpunto (al tocar uno se abre un recuadro con el resumen y el link) y todas juntas en el último paso del mapa, "Fuentes del estudio". En el panel se editan en la sección "Fuentes del estudio", debajo de "+ Punto". Cada dato histórico, de idioma original o de fecha debe tener su fuente. No inventes fuentes ni links: si no estás seguro, pregúntale al autor.
 - Un estudio **no es código**. Es un archivo JSON en `estudios/`, y el modelo es `estudios/lenguas-extranas.json`. Para un estudio nuevo no se toca el HTML, el CSS ni el JS.
 - Escribe con las palabras del autor y respeta su forma de hablar. No cambies su texto sin preguntarle.
 - Los versículos van en LBLA. Lockman permite citar hasta 500 versículos por obra, sin un libro completo y sin pasar del 25% del texto, con el aviso completo y un enlace a www.LBLA.com (https://www.lockman.org/espanol/permiso-para-citar/). La página y el PDF ya ponen el aviso solos en todo pasaje cuya referencia termine en "LBLA": escribe siempre la versión al final de la referencia.
@@ -42,6 +42,6 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 ## Texto griego (SBLGNT)
 
 - El Nuevo Testamento griego del SBLGNT está en `griego/sblgnt/` (un JSON por libro, licencia CC BY 4.0: se puede publicar con el crédito, sin límite de versículos). Ver `griego/sblgnt/README.md`.
-- En un estudio va como bloque `{"tipo": "griego", "referencia": "1 Timoteo 1:5-7", "versiculos": [{"numero": "5", "texto": "…"}]}`. En el panel, "+ Griego" lo llena solo con "Traer el griego". La IA copia el texto **solo** de esos archivos, nunca de memoria.
+- El griego va en las **fuentes** del subpunto, no en el texto: `{"tipo": "griego", "referencia": "1 Timoteo 1:5-7", "versiculos": [{"numero": "5", "texto": "…"}]}`. En el panel, "+ Griego" (en "Fuentes del estudio") lo llena solo con "Traer el griego". La IA copia el texto **solo** de esos archivos, nunca de memoria.
 - No cuenta en el medidor de la LBLA. La página pone sola el crédito del SBLGNT.
 - El Antiguo Testamento (hebreo) todavía no está: su licencia hay que revisarla aparte.

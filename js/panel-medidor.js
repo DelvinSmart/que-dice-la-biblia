@@ -26,6 +26,7 @@ function medir(e) {
     propias += palabras(t.titulo) + palabras(t.subtitulo);
     for (const p of t.puntos || []) {
       propias += palabras(p.titulo);
+      for (const f of p.fuentes || []) propias += palabras(f.titulo) + palabras(f.texto);
       for (const b of p.bloques || []) {
         if (b.tipo === "pasaje") {
           const n = versiculosDe(b);

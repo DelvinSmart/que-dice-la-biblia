@@ -178,24 +178,30 @@ body{margin:0}
 .enlace-video a{color:var(--c);font-weight:600}
 .solo-pdf{display:none}
 
-/* Fuente: de dónde se sacó la información, dentro del subpunto */
-.fuente{border:1px dashed var(--line);border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:14px;background:var(--surface)}
-.fuente-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.fuente-titulo{font-weight:700;margin-bottom:4px}
-.fuente p{margin:0 0 6px;color:var(--muted)}
+/* Fuentes de un subpunto: botoncitos al final y un recuadro que se abre al tocar uno */
+.fuentes-punto{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:18px 0 0;padding-top:12px;border-top:1px dashed var(--line)}
+.fuentes-tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.chip-fuente{font:inherit;font-size:12.5px;font-weight:600;color:var(--muted);background:transparent;border:1.5px solid var(--line);
+  border-radius:999px;padding:4px 10px;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  transition:border-color .15s ease,color .15s ease}
+.chip-fuente:hover{color:var(--ink);border-color:var(--c,var(--accent))}
+.chip-fuente[aria-expanded="true"]{color:var(--ink);border-color:var(--c,var(--accent));background:var(--verse-bg)}
+.pop-fuente{flex-basis:100%;margin-top:4px}
+.pop-fuente[hidden]{display:none}
+.ficha-fuente{background:var(--verse-bg);border:1px solid var(--line);border-left:3px solid var(--c,var(--accent));border-radius:4px 10px 10px 4px;
+  padding:10px 14px;font-size:14px}
+.ficha-titulo{font-weight:700;margin-bottom:4px}
+.ficha-fuente p{margin:0 0 6px;color:var(--muted);max-width:none}
+.ficha-fuente .passage{margin:0;background:transparent;border:0;padding:0}
 .fuente-link{font-weight:600;color:var(--c,var(--accent));text-decoration:none}
 .fuente-link span{font-weight:400;color:var(--muted)}
 .fuente-link:hover{text-decoration:underline}
-/* Todas las fuentes del estudio, debajo del mapa */
-.fuentes{margin:18px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
-.fuentes h2{font-family:var(--display);font-size:19px;margin:0 0 10px}
-.fuentes h2 span{font-family:var(--body);font-size:12px;font-weight:700;color:var(--muted);vertical-align:3px}
-.fuentes ol{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.fuentes li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:13.5px}
-.fuentes li > b{font-variant-numeric:tabular-nums;color:var(--accent)}
-.fuentes p{margin:2px 0;color:var(--muted)}
-.fuentes a{color:var(--accent);word-break:break-all;font-size:12.5px}
-
+/* El último paso del mapa: todas las fuentes, por subpunto */
+.rama-fuentes .bnum{font-size:15px}
+.grupo-fuentes{margin:0 0 18px}
+.grupo-fuentes h3{font-family:var(--body);font-size:13px;font-weight:600;color:var(--muted);margin:0 0 8px}
+.grupo-fuentes h3 b{color:var(--c,var(--accent));margin-right:4px}
+.grupo-fuentes .ficha-fuente{margin:0 0 8px}
 /* Texto griego (SBLGNT) */
 .passage.griego p[lang="grc"]{font-family:"Gentium Plus","Alegreya",Georgia,serif;font-size:18px;line-height:1.6}
 .passage.griego p.falta{font-family:var(--body);font-size:13px;font-style:italic;color:var(--muted)}

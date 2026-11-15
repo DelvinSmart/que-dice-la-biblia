@@ -8,7 +8,8 @@ const TEXTOS = {
     anterior: "← Anterior", siguiente: "Siguiente →", mapa: "Mapa ↑",
     nuevo: "nuevo",
     ayuda: "Toca cualquier punto del mapa, o usa ← → en el teclado para avanzar en orden.",
-    pdf: "Descargar PDF"
+    pdf: "Descargar PDF",
+    fuentesTitulo: "Fuentes del estudio", fuentesCuenta: "fuentes"
   },
   pt: {
     intro: "Estudos da Bíblia organizados como um mapa: cada ponto com seus subpontos, seus textos e seus versículos. Dá para ler e baixar em PDF.",
@@ -17,6 +18,7 @@ const TEXTOS = {
     anterior: "← Anterior", siguiente: "Próximo →", mapa: "Mapa ↑",
     nuevo: "novo",
     ayuda: "Toque em qualquer ponto do mapa, ou use ← → no teclado para avançar em ordem.",
-    pdf: "Baixar PDF"
+    pdf: "Baixar PDF",
+    fuentesTitulo: "Fontes do estudo", fuentesCuenta: "fontes"
   }
 };

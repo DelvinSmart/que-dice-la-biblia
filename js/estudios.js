@@ -38,9 +38,8 @@ function bloqueHTML(b) {
     case "video":
       return videoHTML(b);
     case "fuente":
-      return fuenteHTML(b);
     case "griego":
-      return griegoHTML(b);
+      return ""; // las fuentes no van en el texto: salen como botoncitos al final del subpunto
     case "imagen":
       return b.src ? `<figure class="imagen"><img src="${esc(rutaImagen(b.src))}" alt="${esc(b.pie)}" loading="lazy">${
         b.pie ? `<figcaption>${esc(b.pie)}</figcaption>` : ""}</figure>` : "";
@@ -109,45 +108,59 @@ const AVISO_SBLGNT = `Texto griego: SBL Greek New Testament (SBLGNT), Copyright 
 const avisosDerechos = e => avisoLBLA(e) + (usaGriego(e) ? `<p class="aviso-lbla">${AVISO_SBLGNT}</p>` : "");
 
 // ---------- Fuentes: de dónde se sacó la información ----------
-// Cada fuente sale en su subpunto, y todas juntas en una lista debajo del mapa y en el PDF (fuentesHTML).
+// Cada subpunto guarda sus fuentes en "fuentes" (fuera del texto del estudio): {tipo: "fuente", titulo, texto, url}
+// o {tipo: "griego", referencia, versiculos}. Al leer el subpunto salen como botoncitos; al tocar uno se abre
+// un recuadro con el resumen y el link. Todas juntas están en el último paso del mapa, "Fuentes del estudio",
+// y al final del PDF. (Los estudios viejos podían tenerlas como bloques: también se leen.)
 
 const ETIQUETAS_FUENTE = {
-  es: { fuente: "Fuente", ver: "Ver la fuente ↗", todas: "Fuentes de este estudio", sinLink: "Sin link" },
-  pt: { fuente: "Fonte", ver: "Ver a fonte ↗", todas: "Fontes deste estudo", sinLink: "Sem link" }
+  es: { fuentes: "Fuentes", ver: "Ver la fuente ↗", todas: "Fuentes del estudio", griego: "Griego", cerrar: "Cerrar" },
+  pt: { fuentes: "Fontes", ver: "Ver a fonte ↗", todas: "Fontes do estudo", griego: "Grego", cerrar: "Fechar" }
 };
 const etiquetasFuente = () => ETIQUETAS_FUENTE[(document.documentElement.lang || "").startsWith("pt") ? "pt" : "es"];
 // Solo links web (http o https): nunca otro tipo de link que pudiera ejecutar algo
 const linkSeguro = url => (/^https?:\/\//i.test(String(url || "").trim()) ? String(url).trim() : "");
 const dominio = url => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch (e) { return ""; } };
 
-function fuenteHTML(b) {
-  if (!b.titulo && !b.texto && !b.url) return "";
+const esFuente = b => (b.tipo === "fuente" && (b.titulo || b.texto || b.url)) || (b.tipo === "griego" && (b.referencia || (b.versiculos || []).length));
+const fuentesDePunto = p => [...(p.fuentes || []), ...(p.bloques || [])].filter(esFuente);
+const nombreFuente = f => (f.tipo === "griego" ? `${etiquetasFuente().griego} · ${f.referencia}` : f.titulo || dominio(f.url) || "—");
+
+// El recuadro de una fuente: nombre, resumen, el griego (si es griego) y el link
+function fichaFuenteHTML(f) {
   const E = etiquetasFuente();
-  const url = linkSeguro(b.url);
-  return `<aside class="fuente"><div class="fuente-tag">${E.fuente}</div>${b.titulo ? `<div class="fuente-titulo">${esc(b.titulo)}</div>` : ""}${
-    b.texto ? `<p>${esc(b.texto)}</p>` : ""}${
-    url ? `<a class="fuente-link" href="${esc(url)}" target="_blank" rel="noopener">${E.ver} <span>${esc(dominio(url))}</span></a><p class="solo-pdf fuente-url">${esc(url)}</p>` : ""}</aside>`;
+  if (f.tipo === "griego") return `<div class="ficha-fuente">${griegoHTML(f)}</div>`;
+  const url = linkSeguro(f.url);
+  return `<div class="ficha-fuente"><div class="ficha-titulo">${esc(nombreFuente(f))}</div>${f.texto ? `<p>${esc(f.texto)}</p>` : ""}${
+    url ? `<a class="fuente-link" href="${esc(url)}" target="_blank" rel="noopener">${E.ver} <span>${esc(dominio(url))}</span></a><p class="solo-pdf fuente-url">${esc(url)}</p>` : ""}</div>`;
 }
 
-// Todas las fuentes del estudio, con el número del subpunto donde están ("3.2")
+// Al final de cada subpunto: los botoncitos de sus fuentes y el lugar del recuadro
+function botonesFuentesHTML(p) {
+  const lista = fuentesDePunto(p);
+  if (!lista.length) return "";
+  return `<div class="fuentes-punto"><span class="fuentes-tag">${etiquetasFuente().fuentes}</span>${
+    lista.map((f, k) => `<button type="button" class="chip-fuente" data-fuente="${k}" aria-expanded="false">${esc(nombreFuente(f))}</button>`).join("")
+  }<div class="pop-fuente" hidden></div></div>`;
+}
+
+// Todas las fuentes del estudio, por subpunto ("3.2")
 function fuentesDe(e) {
   const lista = [];
-  (e.temas || []).forEach((t, i) => (t.puntos || []).forEach((p, j) => (p.bloques || []).forEach(b => {
-    if (b.tipo === "fuente" && (b.titulo || b.texto || b.url)) lista.push({ n: `${i + 1}.${j + 1}`, ...b });
-  })));
+  (e.temas || []).forEach((t, i) => (t.puntos || []).forEach((p, j) => {
+    const f = fuentesDePunto(p);
+    if (f.length) lista.push({ n: `${i + 1}.${j + 1}`, titulo: p.titulo, fuentes: f });
+  }));
   return lista;
 }
+const contarFuentes = e => fuentesDe(e).reduce((n, g) => n + g.fuentes.length, 0);
 
-function fuentesHTML(e) {
-  const lista = fuentesDe(e);
-  if (!lista.length) return "";
-  const E = etiquetasFuente();
-  return `<section class="fuentes"><h2>${E.todas} <span>${lista.length}</span></h2><ol>${lista.map(f => {
-    const url = linkSeguro(f.url);
-    return `<li><b>${f.n}</b><div>${f.titulo ? `<strong>${esc(f.titulo)}</strong>` : ""}${f.texto ? `<p>${esc(f.texto)}</p>` : ""}${
-      url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(url)}</a>` : ""}</div></li>`;
-  }).join("")}</ol></section>`;
+function paginaFuentesHTML(e) {
+  const grupos = fuentesDe(e);
+  if (!grupos.length) return "";
+  return `<section class="fuentes"><h2 class="solo-pdf">${etiquetasFuente().todas}</h2>${grupos.map(g =>
+    `<div class="grupo-fuentes"><h3><b>${g.n}</b> ${esc(g.titulo)}</h3>${g.fuentes.map(fichaFuenteHTML).join("")}</div>`).join("")}</section>`;
 }
 
-const puntoHTML = p => (p.bloques || []).map(bloqueHTML).join("\n");
+const puntoHTML = p => (p.bloques || []).map(bloqueHTML).join("\n") + botonesFuentesHTML(p);
 const colorDe = tema => COLORES[tema.color] || "--b1";

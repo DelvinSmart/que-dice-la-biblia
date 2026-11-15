@@ -73,10 +73,57 @@ function dibujar() {
       <button type="button" class="btn agregar grande" data-accion="agregar-tema">+ Punto</button>
     </section>
 
+    ${dibujarFuentes()}
+
     ${slug ? `<section class="bloque-ed zona-peligro">
       <button type="button" class="btn peligro" data-accion="eliminar-estudio">Eliminar este estudio</button>
     </section>` : ""}`;
   actualizarMedidor();
+}
+
+// ---------- Fuentes del estudio: aparte del texto, cada subpunto con las suyas ----------
+// Se guardan en cada subpunto ("fuentes"), así no se pierden si se cambia el orden de los puntos.
+let fuentesAbiertas = false;
+const subpuntosConFuentesAbiertos = new WeakSet();
+
+function dibujarFuentes() {
+  const total = (estudio.temas || []).reduce((n, t) => n + (t.puntos || []).reduce((m, p) => m + fuentesDePunto(p).length, 0), 0);
+  return `
+  <article class="tema-ed fuentes-ed${fuentesAbiertas ? " abierto" : ""}" style="--c:var(--b11)">
+    <header class="cab">
+      <span class="bnum">≡</span>
+      <span class="titulo-fijo">Fuentes del estudio <small>${total}</small></span>
+      <button type="button" class="mini" data-accion="abrir-fuentes" aria-label="${fuentesAbiertas ? "Cerrar" : "Abrir"}">${fuentesAbiertas ? "▾" : "▸"}</button>
+    </header>
+    ${fuentesAbiertas ? `
+    <div class="cuerpo">
+      <p class="ayuda-fuente">De dónde sacaste la información de cada subpunto: el nombre, un resumen corto y el link. En la página salen como botoncitos al final del subpunto, y todas juntas en el último paso del mapa. El griego también va aquí.</p>
+      ${(estudio.temas || []).map((t, i) => (t.puntos || []).map((p, j) => dibujarFuentesDe(p, i, j)).join("")).join("")}
+    </div>` : ""}
+  </article>`;
+}
+
+function dibujarFuentesDe(p, i, j) {
+  const ruta = `temas.${i}.puntos.${j}`;
+  const abierto = subpuntosConFuentesAbiertos.has(p);
+  const n = (p.fuentes || []).length;
+  return `
+  <div class="punto-ed${abierto ? " abierto" : ""}">
+    <header class="cab">
+      <span class="n">${i + 1}.${j + 1}</span>
+      <span class="titulo-fijo">${esc(p.titulo || "Sin título")}</span>
+      <span class="cuenta-fuentes">${n || ""}</span>
+      <button type="button" class="mini" data-accion="abrir-fuentes-de" data-ruta="${ruta}" aria-label="${abierto ? "Cerrar" : "Abrir"}">${abierto ? "▾" : "▸"}</button>
+    </header>
+    ${abierto ? `
+    <div class="cuerpo">
+      ${(p.fuentes || []).map((f, k) => dibujarBloque(f, `${ruta}.fuentes.${k}`)).join("")}
+      <div class="agregar-bloques">
+        <button type="button" class="btn agregar" data-accion="agregar-fuente" data-ruta="${ruta}" data-valor="fuente">+ Fuente</button>
+        <button type="button" class="btn agregar" data-accion="agregar-fuente" data-ruta="${ruta}" data-valor="griego">+ Griego</button>
+      </div>
+    </div>` : ""}
+  </div>`;
 }
 
 function dibujarTema(t, i) {
@@ -124,8 +171,6 @@ function dibujarPunto(p, i, j) {
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="subtitulo">+ Subtítulo</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="imagen">+ Imagen</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="video">+ Video</button>
-        <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="griego">+ Griego</button>
-        <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="fuente">+ Fuente</button>
       </div>
       <details class="vista">
         <summary>Ver cómo queda</summary>
@@ -162,13 +207,12 @@ function dibujarBloque(b, ruta) {
   } else if (b.tipo === "griego") {
     cuerpo = `
       ${buscadorHTML(b, ruta, true)}
-      <p class="ayuda-fuente">El texto griego se llena solo desde el SBLGNT (Nuevo Testamento). No se escribe ni se copia, y no cuenta en el límite de la LBLA.</p>
+      <p class="ayuda-fuente">El griego se llena solo desde el SBLGNT (Nuevo Testamento). No cuenta en el límite de la LBLA.</p>
       ${(b.versiculos || []).length ? `<div class="griego-lista">${b.versiculos.map(v =>
         `<p${v.texto ? ' lang="grc"' : ' class="falta"'}><b>${esc(v.numero)}</b> ${v.texto ? esc(v.texto) : "No está en el texto griego crítico."}</p>`).join("")}</div>` : ""}`;
   } else if (b.tipo === "fuente") {
     const linkMalo = b.url && !linkSeguro(b.url);
     cuerpo = `
-      <p class="ayuda-fuente">De dónde sacaste esta información: el nombre del libro, léxico, página o artículo, qué se sacó de ahí y el link para que cualquiera lo pueda revisar.</p>
       <input data-campo="${ruta}.titulo" value="${esc(b.titulo)}" placeholder="Nombre de la fuente, ej: Léxico Strong · G1100 glōssa">
       <textarea data-campo="${ruta}.texto" rows="3" placeholder="Qué dice o qué se sacó de ahí, con tus palabras">${esc(b.texto)}</textarea>
       <input data-campo="${ruta}.url" value="${esc(b.url)}" placeholder="Link, ej: https://…" inputmode="url">
@@ -336,6 +380,12 @@ $("editor").addEventListener("click", e => {
   if (accion === "poner-referencia") return ponerReferencia(b, ruta);
   if (accion === "reusar") return reusar(ruta);
   if (accion === "traer-griego") return traerGriego(b, ruta);
+  if (accion === "abrir-fuentes") { fuentesAbiertas = !fuentesAbiertas; return dibujar(); }
+  if (accion === "abrir-fuentes-de") {
+    const p = obtener(ruta);
+    subpuntosConFuentesAbiertos.has(p) ? subpuntosConFuentesAbiertos.delete(p) : subpuntosConFuentesAbiertos.add(p);
+    return dibujar();
+  }
   if (accion === "abrir") {
     const obj = obtener(ruta);
     abiertos.has(obj) ? abiertos.delete(obj) : abiertos.add(obj);
@@ -347,6 +397,7 @@ $("editor").addEventListener("click", e => {
   if (accion === "agregar-tema") { const t = nuevoTema(); abiertos.add(t); estudio.temas.push(t); }
   if (accion === "agregar-punto") { const p = nuevoPunto(); abiertos.add(p); obtener(ruta).puntos.push(p); }
   if (accion === "agregar-bloque") (obtener(ruta).bloques ||= []).push(nuevoBloque(valor));
+  if (accion === "agregar-fuente") (obtener(ruta).fuentes ||= []).push(nuevoBloque(valor));
   if (accion === "agregar-versiculo") {
     const vs = obtener(ruta).versiculos;
     const ultimo = parseInt(vs[vs.length - 1]?.numero, 10);

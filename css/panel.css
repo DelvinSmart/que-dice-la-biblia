@@ -199,3 +199,10 @@
 .griego-lista p[lang="grc"]{font-family:"Gentium Plus","Alegreya",Georgia,serif;font-size:17px}
 .griego-lista p.falta{font-style:italic;color:var(--muted);font-size:14px}
 .griego-lista b{color:var(--c,var(--accent));font-size:12px;margin-right:2px}
+
+/* Fuentes del estudio, aparte de los puntos */
+.fuentes-ed{margin-top:4px}
+.titulo-fijo{flex:1;min-width:0;font-family:var(--display);font-weight:800;font-size:19px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.titulo-fijo small{font-family:var(--body);font-size:12px;font-weight:700;color:var(--muted);margin-left:4px}
+.punto-ed .titulo-fijo{font-family:var(--body);font-weight:600;font-size:15px}
+.cuenta-fuentes{font-size:12px;font-weight:700;color:var(--muted);min-width:14px;text-align:right}
