@@ -40,7 +40,9 @@ const LIBRO_POR_NOMBRE = new Map(LIBROS.flatMap(l => [l.es, l.pt, ...l.otros].ma
 
 // "Hechos 20:17, 28 LBLA" → { libro, capitulo: 20, tramos: [[17,17],[28,28]], version: "LBLA" }
 function leerReferencia(ref) {
-  const m = /^\s*((?:[1-3]\s*)?[^\d:]+?)\s+(\d+)\s*:\s*([\d\s,\-–]+?)\s*(?:\b([A-Z]{2,6}\d*))?\s*$/.exec(String(ref || ""));
+  // "1 Corintios 14:5, 18 y 39" (o "e" en portugués) es lo mismo que "14:5, 18, 39"
+  ref = String(ref || "").replace(/\s+(?:y|e)\s+(?=\d)/g, ", ");
+  const m = /^\s*((?:[1-3]\s*)?[^\d:]+?)\s+(\d+)\s*:\s*([\d\s,\-–]+?)\s*(?:\b([A-Z]{2,6}\d*))?\s*$/.exec(ref);
   if (!m) return null;
   const libro = LIBRO_POR_NOMBRE.get(sinTildes(m[1].replace(/^([1-3])(?=\S)/, "$1 ")));
   if (!libro) return null;

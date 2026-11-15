@@ -315,27 +315,51 @@ function ponerReferencia(boton, ruta) {
 }
 
 // Griego: trae los versículos del SBLGNT (griego/sblgnt/<libro>.json, licencia CC BY 4.0)
-async function traerGriego(boton, ruta) {
-  const r = leerBuscador(boton);
-  if (!r) return;
-  const { libro, cap, desde, hasta } = r;
-  const bloque = obtener(ruta);
-  if (LIBROS.indexOf(libro) < LIBROS.findIndex(l => l.codigo === "MAT")) {
+const esNuevoTestamento = libro => LIBROS.indexOf(libro) >= LIBROS.findIndex(l => l.codigo === "MAT");
+
+async function llenarGriego(bloque, libro, cap, tramos) {
+  if (!esNuevoTestamento(libro)) {
     avisosPasaje.set(bloque, "El griego es solo del Nuevo Testamento. El Antiguo Testamento se escribió en hebreo.");
-    return dibujar();
+    return;
   }
   try {
     const capitulo = (await cargarJSON(`griego/sblgnt/${libro.codigo}.json`))[cap];
     if (!capitulo) throw new Error("capítulo");
-    bloque.referencia = escribirReferencia(estudio.idioma, libro, cap, desde, hasta, "");
+    const versos = tramos.map(([a, z]) => (a === z ? `${a}` : `${a}-${z}`)).join(", ");
+    bloque.referencia = `${libro[estudio.idioma === "pt" ? "pt" : "es"]} ${cap}:${versos}`;
     bloque.versiculos = [];
-    for (let n = desde; n <= hasta; n++) bloque.versiculos.push({ numero: String(n), texto: capitulo[n] || "" });
+    for (const [a, z] of tramos) for (let n = a; n <= z; n++) bloque.versiculos.push({ numero: String(n), texto: capitulo[n] || "" });
     const faltan = bloque.versiculos.filter(v => !v.texto).map(v => v.numero);
     avisosPasaje.set(bloque, faltan.length ? `No están en el texto griego crítico: ${faltan.join(", ")}.` : "");
     marcarCambio();
   } catch (err) {
     avisosPasaje.set(bloque, "No se encontró ese capítulo en el griego.");
   }
+}
+
+// "Traer el griego" con lo que se escogió en el buscador
+async function traerGriego(boton, ruta) {
+  const r = leerBuscador(boton);
+  if (!r) return;
+  await llenarGriego(obtener(ruta), r.libro, r.cap, [[r.desde, r.hasta]]);
+  dibujar();
+}
+
+// "+ Griego" en un subpunto: busca los pasajes del Nuevo Testamento que ya están en ese subpunto y trae
+// el griego del primero que todavía no lo tiene. Si no hay ninguno, queda el buscador para escogerlo.
+async function agregarGriego(rutaPunto) {
+  const p = obtener(rutaPunto);
+  const bloque = nuevoBloque("griego");
+  (p.fuentes ||= []).push(bloque);
+  const yaTienen = new Set((p.fuentes || []).filter(f => f.tipo === "griego" && f.referencia).map(f => {
+    const r = leerReferencia(f.referencia);
+    return r ? `${r.libro.codigo}.${r.capitulo}.${JSON.stringify(r.tramos)}` : "";
+  }));
+  const pasaje = (p.bloques || []).map(b => b.tipo === "pasaje" && leerReferencia(b.referencia))
+    .find(r => r && esNuevoTestamento(r.libro) && !yaTienen.has(`${r.libro.codigo}.${r.capitulo}.${JSON.stringify(r.tramos)}`));
+  if (pasaje) await llenarGriego(bloque, pasaje.libro, pasaje.capitulo, pasaje.tramos);
+  else avisosPasaje.set(bloque, "Este subpunto no tiene un pasaje del Nuevo Testamento sin griego: escoge el versículo aquí.");
+  marcarCambio();
   dibujar();
 }
 
@@ -397,6 +421,7 @@ $("editor").addEventListener("click", e => {
   if (accion === "agregar-tema") { const t = nuevoTema(); abiertos.add(t); estudio.temas.push(t); }
   if (accion === "agregar-punto") { const p = nuevoPunto(); abiertos.add(p); obtener(ruta).puntos.push(p); }
   if (accion === "agregar-bloque") (obtener(ruta).bloques ||= []).push(nuevoBloque(valor));
+  if (accion === "agregar-fuente" && valor === "griego") return agregarGriego(ruta);
   if (accion === "agregar-fuente") (obtener(ruta).fuentes ||= []).push(nuevoBloque(valor));
   if (accion === "agregar-versiculo") {
     const vs = obtener(ruta).versiculos;
@@ -428,7 +453,18 @@ $("editor").addEventListener("input", e => {
   }
 });
 
+// Un link escrito o pegado sin "https://" (ej. "es.wikipedia.org/wiki/…") se completa solo al salir del campo
+const completarLink = texto => {
+  const t = texto.trim();
+  return !t || /^[a-z][a-z0-9+.-]*:/i.test(t) ? t : `https://${t.replace(/^\/+/, "")}`;
+};
+
 $("editor").addEventListener("change", e => {
+  if (e.target.matches("input[data-campo$='.url']")) {
+    e.target.value = completarLink(e.target.value);
+    asignar(e.target.dataset.campo, e.target.value);
+    marcarCambio();
+  }
   if (e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo], input[data-campo$='.url']")) dibujar();
 });
 
