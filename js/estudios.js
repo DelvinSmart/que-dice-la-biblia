@@ -29,10 +29,10 @@ function bloqueHTML(b) {
     case "subtitulo":
       return `<h3>${esc(b.texto)}</h3>`;
     case "pasaje":
-      return `<div class="passage"><div class="ref">${esc(b.referencia)}</div>${
+      return `<div class="passage"><div class="ref">${refHTML(b.referencia)}</div>${
         b.imagen ? `<img class="pasaje-img" src="${esc(rutaImagen(b.imagen))}" alt="${esc(b.referencia)}" loading="lazy">` : ""}${
         (b.versiculos || []).filter(v => v.texto).map(v => `<p>${v.numero ? `<b>${esc(v.numero)}</b>` : ""}${v.texto}</p>`).join("")
-      }</div>`;
+      }${esLBLA(b.referencia) ? CREDITO_LBLA : ""}</div>`;
     case "video":
       return videoHTML(b);
     case "imagen":
@@ -58,6 +58,23 @@ function videoHTML(b) {
   if (b.url) return `<figure class="imagen video"><p class="enlace-video"><a href="${esc(b.url)}" target="_blank" rel="noopener">Ver el video</a></p><p class="solo-pdf">Video: ${esc(b.url)}</p>${pie}</figure>`;
   return "";
 }
+
+// La LBLA (The Lockman Foundation) permite citar hasta 500 versículos, sin un libro completo y sin pasar
+// del 25% de la obra, si la página muestra el aviso completo con un enlace a www.LBLA.com
+// (https://www.lockman.org/espanol/permiso-para-citar/). Cada pasaje LBLA lleva un crédito corto
+// y la página del estudio y el PDF llevan el aviso completo (avisoLBLA).
+const URL_LBLA = "https://www.lbla.com/";
+const esLBLA = ref => /\bLBLA\b/.test(ref || "");
+const enlaceLBLA = texto => `<a href="${URL_LBLA}" target="_blank" rel="noopener">${texto}</a>`;
+const CREDITO_LBLA = `<div class="credito">La Biblia de las Américas · © The Lockman Foundation · ${enlaceLBLA("LBLA.com")}</div>`;
+const AVISO_LBLA = `Escrituras tomadas de La Biblia de las Américas (LBLA), Copyright © 1986, 1995, 1997 por The Lockman Foundation. Usadas con permiso. ${enlaceLBLA("www.LBLA.com")}`;
+
+// La referencia con la versión LBLA como enlace: "Génesis 2:18 LBLA"
+const refHTML = ref => esLBLA(ref) ? esc(ref).replace(/\bLBLA\b/, enlaceLBLA("LBLA")) : esc(ref);
+
+// ¿El estudio cita la LBLA? Entonces lleva el aviso completo
+const usaLBLA = e => (e.temas || []).some(t => (t.puntos || []).some(p => (p.bloques || []).some(b => b.tipo === "pasaje" && esLBLA(b.referencia))));
+const avisoLBLA = e => usaLBLA(e) ? `<p class="aviso-lbla">${AVISO_LBLA}</p>` : "";
 
 const puntoHTML = p => (p.bloques || []).map(bloqueHTML).join("\n");
 const colorDe = tema => COLORES[tema.color] || "--b1";

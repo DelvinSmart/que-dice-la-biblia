@@ -105,6 +105,7 @@ function pintar(datos) {
   textosFijos();
   selectorIdioma();
   dibujarMapa();
+  $("aviso").innerHTML = avisoLBLA(ESTUDIO);
 }
 
 controles();

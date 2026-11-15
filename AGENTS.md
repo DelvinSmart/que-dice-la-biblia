@@ -14,6 +14,7 @@ Lee esto antes de escribir o cambiar un estudio.
 
 - Un estudio **no es código**. Es un archivo JSON en `estudios/`, y el modelo es `estudios/lenguas-extranas.json`. Para un estudio nuevo no se toca el HTML, el CSS ni el JS.
 - Escribe con las palabras del autor y respeta su forma de hablar. No cambies su texto sin preguntarle.
-- Los versículos van en LBLA, y la LBLA tiene derechos de autor. No copies su texto de memoria ni de internet: deja la referencia y el autor lo pega desde su app de la Biblia.
+- Los versículos van en LBLA. Lockman permite citar hasta 500 versículos por obra, sin un libro completo y sin pasar del 25% del texto, con el aviso completo y un enlace a www.LBLA.com (https://www.lockman.org/espanol/permiso-para-citar/). La página y el PDF ya ponen el aviso solos en todo pasaje cuya referencia termine en "LBLA": escribe siempre la versión al final de la referencia.
+- Aun así, no copies el texto de memoria ni de internet: deja la referencia y el autor lo pega desde su app de la Biblia. Una IA o un modelo local no sirve para sacar versículos, porque cambia palabras.
 - No inventes citas, autores ni fechas. Si algo no es seguro, dilo.
 - Publica (push a `main`) solo cuando el autor lo diga. Haz commit solo de tus archivos, con sus nombres.

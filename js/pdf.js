@@ -15,7 +15,7 @@
     out += `<div class="ob" style="--c:var(${colorDe(t)})"><div class="oh"><span class="num">${bi + 1}</span>${esc(t.titulo)}</div>
 <div class="ol">${(t.puntos || []).map((p, li) => `<span><b>${bi + 1}.${li + 1}</b>${esc(p.titulo)}</span>`).join("")}</div></div>`;
   });
-  out += "</div>";
+  out += "</div>" + avisoLBLA(e);
   temas.forEach((t, bi) => {
     out += `<section class="sec" style="--c:var(${colorDe(t)})"><div class="sh"><span class="num">${bi + 1}</span><div class="t"><small>${esc(t.subtitulo)}</small>${esc(t.titulo)}</div></div>`;
     (t.puntos || []).forEach((p, li) => {
