@@ -18,3 +18,16 @@ Lee esto antes de escribir o cambiar un estudio.
 - Aun así, no copies el texto de memoria ni de internet: deja la referencia y el autor lo pega desde su app de la Biblia. Una IA o un modelo local no sirve para sacar versículos, porque cambia palabras.
 - No inventes citas, autores ni fechas. Si algo no es seguro, dilo.
 - Publica (push a `main`) solo cuando el autor lo diga. Haz commit solo de tus archivos, con sus nombres.
+
+## Cómo se consiguen los versículos (siempre igual)
+
+La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet, ni con un modelo local. Solo el autor lo copia de su app de la Biblia. Así:
+
+1. **La IA le da al autor UNA sola lista** con todas las referencias del estudio, en orden y por subpunto, con la versión al final:
+   `1.1 Efesios 4:11 LBLA`
+   `1.2 Hechos 20:17, 28 LBLA · 1 Pedro 5:1-2 LBLA`
+   Antes de darla, la IA cuenta los versículos (máximo 500 por estudio, sin un libro completo) y avisa si una referencia se repite en dos subpuntos.
+2. **El autor copia todo de una vez:** en la app selecciona los versículos de cada referencia, toca Copiar y los pega uno detrás de otro en UN solo mensaje del chat, en el mismo orden de la lista. Puede pegarlos tal como salen de la app, con los números de versículo y la referencia que la app pone.
+3. **La IA los acomoda:** pone cada pasaje en su subpunto como un bloque `{"tipo": "pasaje", "referencia": "Efesios 4:11 LBLA", "versiculos": [{"numero": "11", "texto": "…"}]}`, separa los versículos por número, quita lo que la app agrega (enlaces, "Compartir", etc.) y no cambia ni una palabra del texto.
+4. **La IA comprueba y le dice al autor:** cuántos pasajes recibió, cuáles faltan y si algún texto no coincide con su referencia (por ejemplo, un número de versículo que no está en el rango). Lo que falte queda como referencia sin texto hasta que el autor lo pegue; nunca se rellena.
+5. Otra versión (RVR1960, ARA, etc.) se trata igual, con su sigla al final de la referencia. El aviso de derechos automático de la página es solo para la LBLA; para otra versión, avisa al autor antes de publicar.
