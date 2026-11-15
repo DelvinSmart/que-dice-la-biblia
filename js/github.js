@@ -1,6 +1,6 @@
 // Conexión del panel con GitHub: lee, guarda y borra los archivos de estudios/ usando la llave (token)
 // del autor. La llave se guarda solo en este aparato (localStorage). Sin llave válida, GitHub rechaza todo.
-const REPO = "DelvinSmart/estudios-biblicos";
+const REPO = "DelvinSmart/que-dice-la-biblia";
 const RAMA = "main";
 const CLAVE_LLAVE = "estudios-biblicos-llave";
 

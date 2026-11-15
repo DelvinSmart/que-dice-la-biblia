@@ -2,11 +2,11 @@
 
 Estudios de la Biblia organizados como un mapa: cada estudio es un tema, el tema tiene puntos (1, 2, 3…), cada punto tiene subpuntos (1.1, 1.2…), y cada subpunto tiene su contenido: textos, pasajes bíblicos y subtítulos. Se leen en la página y se descargan en PDF.
 
-Página: https://delvinsmart.github.io/estudios-biblicos/
+Página: https://delvinsmart.github.io/que-dice-la-biblia/
 
 ## Cómo añadir o editar un estudio
 
-Todo se hace en el panel: https://delvinsmart.github.io/estudios-biblicos/panel.html
+Todo se hace en el panel: https://delvinsmart.github.io/que-dice-la-biblia/panel.html
 (también está el enlace "Editar estudios" al final de la página de inicio).
 
 1. La primera vez en cada aparato, pega tu llave de GitHub (ver abajo). Se guarda solo en ese aparato.
@@ -30,7 +30,7 @@ Para tener un estudio en dos idiomas, crea uno en español y otro en portugués,
 El panel lo puede abrir cualquiera, pero sin la llave solo ve la pantalla de entrada: GitHub rechaza cualquier cambio que no venga con la llave del autor.
 
 Para crearla: GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → **Generate new token**.
-- Repository access: **Only select repositories** → `estudios-biblicos`.
+- Repository access: **Only select repositories** → `que-dice-la-biblia`.
 - Permissions → Repository permissions → **Contents: Read and write**.
 
 Si se pierde un aparato, borra la llave en esa misma página de GitHub y crea otra.

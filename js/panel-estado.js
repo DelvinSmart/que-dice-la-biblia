@@ -20,7 +20,7 @@ function aviso(id, texto) { $(id).textContent = texto || ""; }
 
 function mensajeError(e) {
   if (e.status === 401) return "La llave no es válida o ya venció. Sal y pega una llave nueva.";
-  if (e.status === 403 || e.status === 404) return "La llave no tiene permiso para editar estudios-biblicos. Revisa que tenga “Contents: Read and write”.";
+  if (e.status === 403 || e.status === 404) return "La llave no tiene permiso para editar que-dice-la-biblia. Revisa que tenga “Contents: Read and write”.";
   if (e.status === 409 || e.status === 422) return "El estudio cambió en GitHub mientras lo editabas. Vuelve a la lista y ábrelo de nuevo.";
   return "No se pudo conectar con GitHub. Revisa tu internet e inténtalo otra vez.";
 }
