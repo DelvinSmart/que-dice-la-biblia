@@ -214,6 +214,8 @@
   --lbla-ancho-4:645px;  --lbla-alto-4:205px;
                          --lbla-alto-5:190px;
   --lbla-mas:140px;
+  /* la página de Lockman reducida: su letra de 20px queda en 16px, como la nuestra */
+  --lbla-escala:.8;
   --lbla-corte:645px;
   --lbla-encabezado-angosto:327px;
   --lbla-encabezado-ancho:275px;

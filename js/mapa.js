@@ -168,11 +168,16 @@ function abrirPasaje(chip) {
 // que el alto se calcula por el ancho (en un teléfono el versículo ocupa más líneas) para que quepa un versículo
 // largo; si no cabe, "Ver más" lo agranda. Con varios versículos, las flechas ‹ › pasan de uno a otro.
 // Todas las medidas están en css/motor.css (medidas en bible.lockman.org el 15 nov 2026).
-function medidasLBLA(ancho) {
+// La página de Lockman se muestra reducida (--lbla-escala) para que su letra (20px) quede del tamaño de la
+// nuestra: se arma como si tuviera el ancho del recuadro dividido por la escala, y se achica.
+function medidasLBLA(anchoReal) {
   const motor = getComputedStyle(document.documentElement);
   const px = nombre => parseFloat(motor.getPropertyValue(nombre)) || 0;
+  const escala = px("--lbla-escala") || 1;
+  const ancho = anchoReal / escala; // el ancho con que Lockman arma su página
   const banda = [1, 2, 3, 4].find(n => ancho <= px(`--lbla-ancho-${n}`)) || 5;
   return {
+    escala, ancho,
     encabezado: ancho <= px("--lbla-corte") ? px("--lbla-encabezado-angosto") : px("--lbla-encabezado-ancho"),
     alto: px(`--lbla-alto-${banda}`),
     mas: px("--lbla-mas")
@@ -200,9 +205,11 @@ function abrirLBLA(boton) {
   const recorte = caja.querySelector(".lbla-recorte"), marco = caja.querySelector("iframe");
   const cargando = caja.querySelector(".ventana-cargando"), link = caja.querySelector(".lbla-link");
   const medir = () => {
-    recorte.style.height = `${alto}px`;
-    marco.style.top = `-${m.encabezado}px`;
+    recorte.style.height = `${alto * m.escala}px`;
+    marco.style.width = `${m.ancho}px`;
     marco.style.height = `${alto + m.encabezado}px`;
+    marco.style.top = `-${m.encabezado * m.escala}px`;
+    marco.style.transform = `scale(${m.escala})`;
   };
   const ir = nuevo => {
     k = Math.max(0, Math.min(versos.length - 1, nuevo));
