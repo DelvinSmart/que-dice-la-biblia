@@ -213,10 +213,13 @@
   --lbla-encabezado:327px;
   --lbla-tarjeta:62px;
   --lbla-linea:33px;
-  --lbla-margen:14px;
-  --lbla-margen-arriba:14px; /* encima del versículo hay 16px libres antes del buscador de Lockman */
+  --lbla-margen:14px; /* el mismo espacio arriba, abajo y a los lados (encima hay 16px libres antes del buscador) */
+  /* el recuadro visible del versículo empieza a 26px del borde de la página y mide el ancho − 56px (2 × 26 + 4) */
+  --lbla-tarjeta-izquierda:26px;
+  --lbla-tarjeta-resta:4px;
   --lbla-columna-resta:97px;
-  --lbla-ancho-letra:9.15px;
+  --lbla-ancho-letra:8.1px;   /* medido con 16 versículos reales en 375px y 600px de ancho */
+  --lbla-letras-notas:12;     /* letras de más por las notas de Lockman (a, b, c…): con 12, de 32 versículos medidos solo 1 queda corto */
   --lbla-sobra:260px;
   /* Colores de avisos */
   --aviso:#ffb36b;

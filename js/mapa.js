@@ -193,9 +193,11 @@ function medidasLBLA(anchoReal) {
     tarjeta: px("--lbla-tarjeta"),
     linea: px("--lbla-linea"),
     margen: px("--lbla-margen"),
-    arriba: px("--lbla-margen-arriba"),
+    tarjetaIzquierda: px("--lbla-tarjeta-izquierda"),
+    tarjetaAncho: ancho - 2 * px("--lbla-tarjeta-izquierda") - px("--lbla-tarjeta-resta"),
     sobra: px("--lbla-sobra"),
-    letrasPorLinea: Math.max(10, Math.floor((ancho - px("--lbla-columna-resta")) / px("--lbla-ancho-letra")))
+    letrasPorLinea: Math.max(10, Math.floor((ancho - px("--lbla-columna-resta")) / px("--lbla-ancho-letra"))),
+    letrasNotas: px("--lbla-letras-notas")
   };
 }
 
@@ -209,54 +211,44 @@ function prepararLBLA(boton, caja) {
   const r = leerReferencia(ref);
   const versos = versiculosDeReferencia(ref);
   const m = medidasLBLA(boton.closest(".pasajes").clientWidth);
-  let lineas = 2, extra = 0, k = 0;
+  let extra = 0;
+  // Todos los versículos del pasaje, uno debajo del otro: cada uno es la página de Lockman de ese versículo,
+  // recortada a su recuadro con el mismo espacio arriba, abajo y a los lados (--lbla-margen)
   caja.innerHTML = `
-    <div class="lbla-recorte">
-      <p class="ventana-cargando">${T.cargandoLBLA}</p>
-      <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org"></iframe>
+    <div class="lbla-versos">${versos.map(n => `
+      <div class="lbla-recorte" data-versiculo="${n}">
+        <p class="ventana-cargando">${T.cargandoLBLA}</p>
+        <iframe class="lbla-marco" title="La Biblia de las Américas en bible.lockman.org" src="${esc(enlaceLockman(ref, n))}"></iframe>
+      </div>`).join("")}
     </div>
     <div class="lbla-pie">
-      ${versos.length > 1 ? `<button type="button" class="lbla-flecha" data-paso="-1" aria-label="Versículo anterior">‹</button>` : ""}
-      <a class="lbla-link" target="_blank" rel="noopener"></a>
+      <a class="lbla-link" href="${esc(enlaceLockman(ref, versos[0]))}" target="_blank" rel="noopener">${esc(r ? `${r.libro[LANG === "pt" ? "pt" : "es"]} ${ref.replace(/^.*?(\d+:)/, "$1").replace(/\s+[A-Z]{2,6}\d*$/, "")}` : "")} · bible.lockman.org ↗</a>
       <button type="button" class="lbla-mas">${T.verMas}</button>
-      ${versos.length > 1 ? `<button type="button" class="lbla-flecha" data-paso="1" aria-label="Versículo siguiente">›</button>` : ""}
     </div>`;
-  const recorte = caja.querySelector(".lbla-recorte"), marco = caja.querySelector("iframe");
-  const cargando = caja.querySelector(".ventana-cargando"), link = caja.querySelector(".lbla-link");
-  const medir = () => {
-    const alto = m.tarjeta + m.linea * (lineas + extra) + m.margen;   // solo el recuadro del versículo
-    recorte.style.width = `${m.ancho * m.escala}px`;
-    recorte.style.height = `${(m.arriba + alto) * m.escala}px`;            // con un espacio arriba, como abajo
+  const recortes = [...caja.querySelectorAll(".lbla-recorte")];
+  const lineas = new Map(versos.map(n => [String(n), 2]));
+  const medir = recorte => {
+    const marco = recorte.querySelector("iframe");
+    const alto = m.tarjeta + m.linea * (lineas.get(recorte.dataset.versiculo) + extra);   // el recuadro del versículo
+    recorte.style.width = `${(m.tarjetaAncho + 2 * m.margen) * m.escala}px`;
+    recorte.style.height = `${(m.margen + alto + m.margen) * m.escala}px`;
     marco.style.width = `${m.ancho}px`;
     marco.style.height = `${m.encabezado + alto + m.sobra}px`;           // más alto: su botón "Ask" queda abajo, fuera
-    marco.style.top = `-${(m.encabezado - m.arriba) * m.escala}px`;
+    marco.style.top = `-${(m.encabezado - m.margen) * m.escala}px`;
+    marco.style.left = `-${(m.tarjetaIzquierda - m.margen) * m.escala}px`;
     marco.style.transform = `scale(${m.escala})`;
   };
-  const ir = nuevo => {
-    k = Math.max(0, Math.min(versos.length - 1, nuevo));
-    const n = versos[k], url = enlaceLockman(ref, n);
-    cargando.hidden = false;
-    marco.classList.remove("listo");
-    marco.src = url;
-    link.href = url;
-    link.textContent = `${r ? `${r.libro[LANG === "pt" ? "pt" : "es"]} ${r.capitulo}:${n}` : ""}${versos.length > 1 ? ` · ${k + 1}/${versos.length}` : ""} · bible.lockman.org ↗`;
-    caja.querySelectorAll(".lbla-flecha").forEach(f => { f.disabled = (f.dataset.paso === "-1" && k === 0) || (f.dataset.paso === "1" && k === versos.length - 1); });
-    extra = 0;
+  recortes.forEach(recorte => {
+    const marco = recorte.querySelector("iframe"), n = recorte.dataset.versiculo;
+    marco.addEventListener("load", () => { marco.classList.add("listo"); recorte.querySelector(".ventana-cargando").hidden = true; });
+    medir(recorte);
     // El largo del versículo: el mismo en la Reina-Valera 1960
     if (r && typeof versiculoRVR === "function") versiculoRVR(r.libro, r.capitulo, n).then(texto => {
-      if (versos[k] !== n) return;
-      lineas = Math.max(1, Math.ceil(texto.length / m.letrasPorLinea));
-      medir();
+      lineas.set(n, Math.max(1, Math.ceil((texto.length + m.letrasNotas) / m.letrasPorLinea)));
+      medir(recorte);
     }).catch(() => {});
-    medir();
-  };
-  marco.addEventListener("load", () => { if (marco.src) { marco.classList.add("listo"); cargando.hidden = true; } });
-  caja.querySelector(".lbla-pie").addEventListener("click", e => {
-    const flecha = e.target.closest(".lbla-flecha");
-    if (flecha) ir(k + Number(flecha.dataset.paso));
-    if (e.target.closest(".lbla-mas")) { extra += 1; medir(); }
   });
-  ir(0);
+  caja.querySelector(".lbla-mas").addEventListener("click", () => { extra += 1; recortes.forEach(medir); });
 }
 
 // RVR 1960: el pasaje en la Reina-Valera, en el mismo lugar y con el mismo formato de nuestros pasajes. El texto
