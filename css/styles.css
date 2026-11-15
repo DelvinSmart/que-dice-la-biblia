@@ -132,6 +132,12 @@ body{margin:0}
 .pie{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--muted)}
 .pie a{color:var(--muted);font-weight:600}
 .pie a:hover{color:var(--ink)}
+/* Tema claro u oscuro: por defecto el del aparato; se puede cambiar aquí */
+.tema{margin-left:auto;display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:2px;gap:2px}
+.tema button{font:inherit;font-size:12.5px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:999px;
+  padding:4px 10px;cursor:pointer;transition:background .15s ease,color .15s ease}
+.tema button:hover{color:var(--ink)}
+.tema button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
 
 /* Efecto de entrada (igual que Copiloto Driver): opacidad 0→1, desenfoque 8px→0,
    escala 0.97→1 y subida de 22px, con retraso escalonado. Lo activa js/efectos.js. */
