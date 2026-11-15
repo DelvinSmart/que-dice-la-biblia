@@ -198,6 +198,9 @@ body{margin:0}
 .fuente-link:hover{text-decoration:underline}
 /* El último paso del mapa: todas las fuentes, por subpunto */
 .rama-fuentes .bnum{font-size:15px}
+/* Con "Fuentes del estudio" al final, ese es el cierre del mapa: sin el puntico y sin línea debajo de él */
+.tree:has(.rama-fuentes)::after{display:none}
+.rama-fuentes::after{content:"";position:absolute;left:-15px;top:33px;bottom:-40px;width:4px;background:var(--bg)}
 .grupo-fuentes{margin:0 0 18px}
 .grupo-fuentes h3{font-family:var(--body);font-size:13px;font-weight:600;color:var(--muted);margin:0 0 8px}
 .grupo-fuentes h3 b{color:var(--c,var(--accent));margin-right:4px}
