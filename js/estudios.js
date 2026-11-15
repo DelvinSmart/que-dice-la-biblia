@@ -4,7 +4,8 @@
 // Cada elemento de puntos[] es un SUBPUNTO (1.1, 1.2…): titulo, nuevo, bloques[].
 // Cada bloque tiene "tipo": texto (HTML), subtitulo, pasaje (referencia + versiculos[{numero, texto}])
 // imagen (src = ruta en imagenes/, pie), video (url de YouTube u otra página, o src = archivo en videos/, pie)
-// o fuente (titulo, texto y url): de dónde se sacó la información, con su explicación y su link.
+// fuente (titulo, texto y url): de dónde se sacó la información, con su explicación y su link,
+// o griego (referencia + versiculos[{numero, texto}]): el texto griego del SBLGNT, que el panel llena solo.
 // Un pasaje puede llevar además "imagen": una foto de los versículos en lugar del texto.
 
 const COLORES = {
@@ -38,6 +39,8 @@ function bloqueHTML(b) {
       return videoHTML(b);
     case "fuente":
       return fuenteHTML(b);
+    case "griego":
+      return griegoHTML(b);
     case "imagen":
       return b.src ? `<figure class="imagen"><img src="${esc(rutaImagen(b.src))}" alt="${esc(b.pie)}" loading="lazy">${
         b.pie ? `<figcaption>${esc(b.pie)}</figcaption>` : ""}</figure>` : "";
@@ -78,6 +81,32 @@ const refHTML = ref => esLBLA(ref) ? esc(ref).replace(/\bLBLA\b/, enlaceLBLA("LB
 // ¿El estudio cita la LBLA? Entonces lleva el aviso completo
 const usaLBLA = e => (e.temas || []).some(t => (t.puntos || []).some(p => (p.bloques || []).some(b => b.tipo === "pasaje" && esLBLA(b.referencia))));
 const avisoLBLA = e => usaLBLA(e) ? `<p class="aviso-lbla">${AVISO_LBLA}</p>` : "";
+
+// ---------- Texto griego (SBLGNT, licencia CC BY 4.0: se puede publicar con el crédito) ----------
+
+const URL_SBLGNT = "https://sblgnt.com/";
+const LICENCIA_SBLGNT = "https://creativecommons.org/licenses/by/4.0/deed.es";
+const ETIQUETAS_GRIEGO = {
+  es: { falta: "Este versículo no está en el texto griego crítico." },
+  pt: { falta: "Este versículo não está no texto grego crítico." }
+};
+const CREDITO_SBLGNT = `<div class="credito">SBL Greek New Testament · © 2010 SBL y Logos Bible Software · <a href="${LICENCIA_SBLGNT}" target="_blank" rel="noopener">CC BY 4.0</a></div>`;
+
+function griegoHTML(b) {
+  if (!b.referencia && !(b.versiculos || []).length) return "";
+  const falta = ETIQUETAS_GRIEGO[(document.documentElement.lang || "").startsWith("pt") ? "pt" : "es"].falta;
+  return `<div class="passage griego"><div class="ref">${esc(b.referencia)} · <a href="${URL_SBLGNT}" target="_blank" rel="noopener">SBLGNT</a></div>${
+    (b.versiculos || []).map(v => `<p${v.texto ? ' lang="grc"' : ' class="falta"'}><b>${esc(v.numero)}</b>${v.texto ? esc(v.texto) : falta}</p>`).join("")
+  }${CREDITO_SBLGNT}</div>`;
+}
+
+const usaGriego = e => (e.temas || []).some(t => (t.puntos || []).some(p => (p.bloques || []).some(b => b.tipo === "griego")));
+const AVISO_SBLGNT = `Texto griego: SBL Greek New Testament (SBLGNT), Copyright © 2010 Society of Biblical Literature y Logos Bible Software, con licencia ${
+  ""}<a href="${LICENCIA_SBLGNT}" target="_blank" rel="noopener">Creative Commons Atribución 4.0</a>. Sin los signos del aparato crítico. ${
+  ""}<a href="${URL_SBLGNT}" target="_blank" rel="noopener">sblgnt.com</a>`;
+
+// Los avisos de derechos que el estudio necesita: LBLA y/o SBLGNT
+const avisosDerechos = e => avisoLBLA(e) + (usaGriego(e) ? `<p class="aviso-lbla">${AVISO_SBLGNT}</p>` : "");
 
 // ---------- Fuentes: de dónde se sacó la información ----------
 // Cada fuente sale en su subpunto, y todas juntas en una lista debajo del mapa y en el PDF (fuentesHTML).

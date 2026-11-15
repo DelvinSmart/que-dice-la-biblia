@@ -106,7 +106,7 @@ function pintar(datos) {
   selectorIdioma();
   dibujarMapa();
   $("fuentes").innerHTML = fuentesHTML(ESTUDIO);
-  $("aviso").innerHTML = avisoLBLA(ESTUDIO);
+  $("aviso").innerHTML = avisosDerechos(ESTUDIO);
 }
 
 controles();

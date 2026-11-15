@@ -193,3 +193,9 @@
 .barrita i{display:block;height:100%;border-radius:3px;background:var(--m);transition:width .3s ease}
 .medida.rojo b{color:var(--b7)}
 .medida-aviso{margin:0;color:var(--b7)}
+
+.griego-lista{display:grid;gap:6px;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.griego-lista p{margin:0;font-size:16px;line-height:1.55}
+.griego-lista p[lang="grc"]{font-family:"Gentium Plus","Alegreya",Georgia,serif;font-size:17px}
+.griego-lista p.falta{font-style:italic;color:var(--muted);font-size:14px}
+.griego-lista b{color:var(--c,var(--accent));font-size:12px;margin-right:2px}

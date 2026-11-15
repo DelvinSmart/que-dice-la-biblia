@@ -5,7 +5,7 @@ const COLORES_NOMBRES = {
   morado: "Morado", verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rosado: "Rosado", azul: "Azul",
   rojo: "Rojo", celeste: "Celeste", lima: "Lima", cobre: "Cobre", pizarra: "Pizarra"
 };
-const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo", imagen: "Imagen", video: "Video", fuente: "Fuente" };
+const TIPOS = { texto: "Texto", pasaje: "Pasaje bíblico", subtitulo: "Subtítulo", imagen: "Imagen", video: "Video", fuente: "Fuente", griego: "Griego (SBLGNT)" };
 
 const nuevoTema = () => ({ titulo: "", subtitulo: "", color: "morado", puntos: [nuevoPunto()] });
 const nuevoPunto = () => ({ titulo: "", nuevo: false, bloques: [] });
@@ -14,6 +14,7 @@ const nuevoBloque = tipo =>
   : tipo === "imagen" ? { tipo, src: "", pie: "" }
   : tipo === "video" ? { tipo, url: "", src: "", pie: "" }
   : tipo === "fuente" ? { tipo, titulo: "", texto: "", url: "" }
+  : tipo === "griego" ? { tipo, referencia: "", versiculos: [] }
   : { tipo, texto: "" };
 
 // ---------- Piezas del formulario ----------
@@ -123,6 +124,7 @@ function dibujarPunto(p, i, j) {
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="subtitulo">+ Subtítulo</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="imagen">+ Imagen</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="video">+ Video</button>
+        <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="griego">+ Griego</button>
         <button type="button" class="btn agregar" data-accion="agregar-bloque" data-ruta="${ruta}" data-valor="fuente">+ Fuente</button>
       </div>
       <details class="vista">
@@ -157,6 +159,12 @@ function dibujarBloque(b, ruta) {
       <label class="btn foto">${b.src ? "Cambiar video" : "O subir un video corto (máx. 25 MB)"}<input type="file" accept="video/*" data-video="${ruta}.src" hidden></label>
       <p class="ayuda-pegar ayuda-imagen" role="status"></p>
       <input data-campo="${ruta}.pie" value="${esc(b.pie)}" placeholder="Pie del video (opcional)">`;
+  } else if (b.tipo === "griego") {
+    cuerpo = `
+      ${buscadorHTML(b, ruta, true)}
+      <p class="ayuda-fuente">El texto griego se llena solo desde el SBLGNT (Nuevo Testamento). No se escribe ni se copia, y no cuenta en el límite de la LBLA.</p>
+      ${(b.versiculos || []).length ? `<div class="griego-lista">${b.versiculos.map(v =>
+        `<p${v.texto ? ' lang="grc"' : ' class="falta"'}><b>${esc(v.numero)}</b> ${v.texto ? esc(v.texto) : "No está en el texto griego crítico."}</p>`).join("")}</div>` : ""}`;
   } else if (b.tipo === "fuente") {
     const linkMalo = b.url && !linkSeguro(b.url);
     cuerpo = `
@@ -211,7 +219,7 @@ function dibujarBloque(b, ruta) {
 
 const versionesDelIdioma = () => (estudio.idioma === "pt" ? ["ARA", "ARC"] : ["LBLA", "RVR1960", "NVI"]);
 
-function buscadorHTML(b, ruta) {
+function buscadorHTML(b, ruta, griego = false) {
   const r = leerReferencia(b.referencia);
   const idioma = estudio.idioma === "pt" ? "pt" : "es";
   const versiones = versionesDelIdioma();
@@ -227,8 +235,8 @@ function buscadorHTML(b, ruta) {
         ${num("b-cap", "Capítulo", r?.capitulo, r?.libro.capitulos)}
         ${num("b-desde", "Desde", r?.tramos[0][0])}
         ${num("b-hasta", "Hasta", r?.tramos[0][1])}
-        <label class="b-version-campo"><span>Versión</span><select class="b-version">${versiones.map(v => `<option${v === version ? " selected" : ""}>${v}</option>`).join("")}</select></label>
-        <button type="button" class="btn" data-accion="poner-referencia" data-ruta="${ruta}">Poner</button>
+        ${griego ? "" : `<label class="b-version-campo"><span>Versión</span><select class="b-version">${versiones.map(v => `<option${v === version ? " selected" : ""}>${v}</option>`).join("")}</select></label>`}
+        <button type="button" class="btn${griego ? " principal" : ""}" data-accion="${griego ? "traer-griego" : "poner-referencia"}" data-ruta="${ruta}">${griego ? "Traer el griego" : "Poner"}</button>
         <p class="ayuda-pegar b-aviso" role="status">${avisosPasaje.get(b) || (r && r.tramos.length > 1 ? "Esta referencia tiene versículos salteados: el buscador muestra el primero. Para cambiarla completa, escríbela abajo." : "")}</p>
       </div>`;
 }
@@ -238,21 +246,52 @@ const botonAbrirBiblia = ref => {
   return `<a class="btn abrir-biblia" href="${esc(url)}" target="_blank" rel="noopener"${url ? "" : " hidden"}>Abrir en la Biblia ↗</a>`;
 };
 
-function ponerReferencia(boton, ruta) {
+function leerBuscador(boton) {
   const caja = boton.closest(".buscador");
   const libro = LIBROS.find(l => l.codigo === caja.querySelector(".b-libro").value);
   const cap = parseInt(caja.querySelector(".b-cap").value, 10);
   const desde = parseInt(caja.querySelector(".b-desde").value, 10);
   const hasta = parseInt(caja.querySelector(".b-hasta").value, 10) || desde;
-  const aviso = caja.querySelector(".b-aviso");
   const error = !libro ? "Escoge el libro."
     : !(cap >= 1 && cap <= libro.capitulos) ? `${libro[estudio.idioma === "pt" ? "pt" : "es"]} tiene ${libro.capitulos} capítulo${libro.capitulos > 1 ? "s" : ""}.`
     : !(desde >= 1) ? "Escribe desde qué versículo."
     : hasta < desde ? "“Hasta” no puede ser menor que “Desde”." : "";
-  if (error) { aviso.textContent = error; return; }
+  if (error) caja.querySelector(".b-aviso").textContent = error;
+  return error ? null : { caja, libro, cap, desde, hasta };
+}
+
+function ponerReferencia(boton, ruta) {
+  const r = leerBuscador(boton);
+  if (!r) return;
+  const { caja, libro, cap, desde, hasta } = r;
   asignar(`${ruta}.referencia`, escribirReferencia(estudio.idioma, libro, cap, desde, hasta, caja.querySelector(".b-version").value));
   if (pasajeVacio(obtener(ruta))) return reusar(ruta);
   marcarCambio();
+  dibujar();
+}
+
+// Griego: trae los versículos del SBLGNT (griego/sblgnt/<libro>.json, licencia CC BY 4.0)
+async function traerGriego(boton, ruta) {
+  const r = leerBuscador(boton);
+  if (!r) return;
+  const { libro, cap, desde, hasta } = r;
+  const bloque = obtener(ruta);
+  if (LIBROS.indexOf(libro) < LIBROS.findIndex(l => l.codigo === "MAT")) {
+    avisosPasaje.set(bloque, "El griego es solo del Nuevo Testamento. El Antiguo Testamento se escribió en hebreo.");
+    return dibujar();
+  }
+  try {
+    const capitulo = (await cargarJSON(`griego/sblgnt/${libro.codigo}.json`))[cap];
+    if (!capitulo) throw new Error("capítulo");
+    bloque.referencia = escribirReferencia(estudio.idioma, libro, cap, desde, hasta, "");
+    bloque.versiculos = [];
+    for (let n = desde; n <= hasta; n++) bloque.versiculos.push({ numero: String(n), texto: capitulo[n] || "" });
+    const faltan = bloque.versiculos.filter(v => !v.texto).map(v => v.numero);
+    avisosPasaje.set(bloque, faltan.length ? `No están en el texto griego crítico: ${faltan.join(", ")}.` : "");
+    marcarCambio();
+  } catch (err) {
+    avisosPasaje.set(bloque, "No se encontró ese capítulo en el griego.");
+  }
   dibujar();
 }
 
@@ -296,6 +335,7 @@ $("editor").addEventListener("click", e => {
   if (accion === "llenar-pasaje") return llenarPasaje(b, ruta);
   if (accion === "poner-referencia") return ponerReferencia(b, ruta);
   if (accion === "reusar") return reusar(ruta);
+  if (accion === "traer-griego") return traerGriego(b, ruta);
   if (accion === "abrir") {
     const obj = obtener(ruta);
     abiertos.has(obj) ? abiertos.delete(obj) : abiertos.add(obj);

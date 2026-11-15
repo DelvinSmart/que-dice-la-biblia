@@ -38,3 +38,10 @@ La IA **nunca** escribe el texto de un versículo: ni de memoria, ni de internet
 - **Buscador:** en cada pasaje se escoge libro, capítulo, desde, hasta y versión. "Poner" escribe la referencia y "Abrir en la Biblia" abre ese pasaje exacto en Bible.com (o en la app YouVersion en el teléfono) para copiarlo. Los libros y los enlaces están en `js/biblia.js`.
 - **Versículos ya copiados:** al poner una referencia, el panel busca si esos versículos ya están en algún estudio, en la misma versión, y los reutiliza (`js/panel-reusar.js`). La IA hace lo mismo: antes de pedirle un versículo al autor, busca si ya está en otro estudio de `estudios/` y lo reutiliza tal cual.
 - **Medidor:** el panel muestra los versículos (máx. 500) y qué porcentaje del estudio es texto bíblico (máx. 25%), y no publica si se pasa (`js/panel-medidor.js`). La IA que haga commit directo tiene que comprobar lo mismo antes: si los versículos pasan del 25% de las palabras del estudio, no publica y le dice al autor cuántas palabras de explicación faltan.
+
+## Texto griego (SBLGNT)
+
+- El Nuevo Testamento griego del SBLGNT está en `griego/sblgnt/` (un JSON por libro, licencia CC BY 4.0: se puede publicar con el crédito, sin límite de versículos). Ver `griego/sblgnt/README.md`.
+- En un estudio va como bloque `{"tipo": "griego", "referencia": "1 Timoteo 1:5-7", "versiculos": [{"numero": "5", "texto": "…"}]}`. En el panel, "+ Griego" lo llena solo con "Traer el griego". La IA copia el texto **solo** de esos archivos, nunca de memoria.
+- No cuenta en el medidor de la LBLA. La página pone sola el crédito del SBLGNT.
+- El Antiguo Testamento (hebreo) todavía no está: su licencia hay que revisarla aparte.
