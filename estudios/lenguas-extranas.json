@@ -22,6 +22,10 @@
           "bloques": [
             {
               "tipo": "texto",
+              "texto": "<p>Cuando la Biblia habla de “lenguas”, el término griego empleado es <span class=\"g\">glōssa</span>, lo que quiere decir literalmente <b>\"lengua\" o \"idioma humano\"</b>.</p>\n<p>Esta palabra aparece <b>50 veces en 47 versículos</b> del Nuevo Testamento. Son estos:</p>\n<ul>\n<li><b>Marcos:</b> 7:33, 7:35, 16:17</li>\n<li><b>Lucas:</b> 1:64, 16:24</li>\n<li><b>Hechos:</b> 2:3, 2:4, 2:11, 2:26, 10:46, 19:6</li>\n<li><b>Romanos:</b> 3:13, 14:11</li>\n<li><b>1 Corintios:</b> 12:10, 12:28, 12:30, 13:1, 13:8, 14:2, 14:4, 14:5, 14:6, 14:9, 14:13, 14:14, 14:18, 14:19, 14:22, 14:23, 14:26, 14:27, 14:39</li>\n<li><b>Filipenses:</b> 2:11</li>\n<li><b>Santiago:</b> 1:26, 3:5, 3:6, 3:8</li>\n<li><b>1 Pedro:</b> 3:10</li>\n<li><b>1 Juan:</b> 3:18</li>\n<li><b>Apocalipsis:</b> 5:9, 7:9, 10:11, 11:9, 13:7, 14:6, 16:10, 17:15</li>\n</ul>\n<p>(En 1 Corintios 12:10, 1 Corintios 14:5 y Santiago 3:6 aparece dos veces en el mismo versículo.) En el punto siguiente vemos qué sentido tiene en esos versículos.</p>"
+            },
+            {
+              "tipo": "texto",
               "texto": "<p>Si vamos a los textos originales, vemos que la palabra <b>\"extrañas\"</b> o <b>\"desconocidas\"</b></p>\n<p>Referente a este término, en los versículos donde Pablo habla del don de lenguas, no existe en el griego; fue injertado posteriormente por algunos traductores.</p>\n<p>Por ejemplo, la Reina-Valera 1960 dice “lengua extraña” en 1 Corintios 14:4, 13 y 27. Pero en esos tres versículos el griego dice solamente <span class=\"g\">glōssa</span>, “lengua”. La palabra “extraña” no está.</p>"
             },
             {
@@ -72,14 +76,14 @@
             },
             {
               "tipo": "texto",
-              "texto": "<p><b>O sea, la única vez que la Biblia dice de verdad “lenguas extrañas”, habla de idiomas reales de otros pueblos, no de un lenguaje que nadie entiende.</b></p>\n<p>El término griego empleado es <span class=\"g\">glōssa</span>, lo que quiere decir literalmente <b>\"lengua\" o \"idioma humano\"</b>.</p>"
+              "texto": "<p><b>O sea, la única vez que la Biblia dice de verdad “lenguas extrañas”, habla de idiomas reales de otros pueblos, no de un lenguaje que nadie entiende.</b></p>"
             }
           ],
           "fuentes": [
             {
               "tipo": "fuente",
               "titulo": "Bible Hub · Strong G1100 glōssa",
-              "texto": "Glōssa: la lengua del cuerpo, un idioma o una forma de lengua. Ahí se ven todos los versículos donde aparece.",
+              "texto": "Glōssa: la lengua del cuerpo, un idioma o una forma de lengua. Ahí se ven los 50 lugares donde aparece en el Nuevo Testamento.",
               "url": "https://biblehub.com/greek/1100.htm"
             },
             {
