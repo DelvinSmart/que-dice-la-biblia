@@ -22,7 +22,7 @@
           "bloques": [
             {
               "tipo": "texto",
-              "texto": "<p>Si vamos a los textos originales, vemos que la palabra <b>\"extrañas\"</b> o <b>\"desconocidas\"</b></p>\n<p>Referente a este término, no existe en las Escrituras; ellas fueron injertadas posteriormente por algunos traductores.</p>\n<p>(En 1 Corintios 14:21, donde la traducción dice \"lenguas extrañas\", el griego usa <i>heteroglōssois</i>, que significa \"de otras lenguas\", o sea, idiomas de otros pueblos; Pablo está citando a Isaías 28:11, donde esas “otras lenguas” eran el idioma de los asirios: un idioma humano.)</p>\n<p>El término griego empleado es <span class=\"g\">glōssa</span>, lo que quiere decir literalmente <b>\"lengua\" o \"idioma humano\"</b>.</p>"
+              "texto": "<p>Si vamos a los textos originales, vemos que la palabra <b>\"extrañas\"</b> o <b>\"desconocidas\"</b></p>\n<p>Referente a este término, en los versículos donde Pablo habla del don de lenguas, no existe en el griego; fue injertado posteriormente por algunos traductores.</p>\n<p>Por ejemplo, la Reina-Valera 1960 dice “lengua extraña” en 1 Corintios 14:4, 13 y 27. Pero en esos tres versículos el griego dice solamente <span class=\"g\">glōssa</span>, “lengua”. La palabra “extraña” no está.</p>\n<p>Y es igual en todo el capítulo 14: en los versículos 2, 4, 5, 6, 13, 14, 18, 19, 22, 23, 26, 27 y 39, el griego dice solamente <span class=\"g\">glōssa</span>. (En el versículo 9 también aparece, pero ahí es la lengua del cuerpo: “con la boca”.)</p>\n<p><b>Hay un solo lugar donde “extrañas” sí está en el griego: 1 Corintios 14:21.</b> Ahí la palabra es <span class=\"g\">heteroglōssois</span>, de <i>hetero</i>, “otro”, y <i>glōssa</i>, “lengua”: “de otras lenguas”. Y es la única vez que esa palabra aparece en todo el Nuevo Testamento.</p>\n<p>¿Y qué significa ahí? Pablo está citando Isaías 28:11, donde esas “otras lenguas” eran el idioma de los asirios: un idioma humano, de otro pueblo.</p>\n<p><b>O sea, la única vez que la Biblia dice de verdad “lenguas extrañas”, habla de idiomas reales de otros pueblos, no de un lenguaje que nadie entiende.</b></p>\n<p>El término griego empleado es <span class=\"g\">glōssa</span>, lo que quiere decir literalmente <b>\"lengua\" o \"idioma humano\"</b>.</p>"
             },
             {
               "tipo": "pasaje",
@@ -57,6 +57,34 @@
               "titulo": "Bible Hub · Strong G2084 heteroglōssos",
               "texto": "La palabra de 1 Corintios 14:21: “de otras lenguas”, o sea, de otro idioma.",
               "url": "https://biblehub.com/greek/2084.htm"
+            },
+            {
+              "tipo": "fuente",
+              "titulo": "Bible Gateway · 1 Corintios 14 RVR1960",
+              "texto": "La Reina-Valera 1960 dice “lengua extraña” en los versículos 4, 13 y 27.",
+              "url": "https://www.biblegateway.com/passage/?search=1+Corintios+14&version=RVR1960"
+            },
+            {
+              "tipo": "griego",
+              "referencia": "1 Corintios 14:4, 13, 21, 27",
+              "versiculos": [
+                {
+                  "numero": "4",
+                  "texto": "ὁ λαλῶν γλώσσῃ ἑαυτὸν οἰκοδομεῖ· ὁ δὲ προφητεύων ἐκκλησίαν οἰκοδομεῖ."
+                },
+                {
+                  "numero": "13",
+                  "texto": "Διὸ ὁ λαλῶν γλώσσῃ προσευχέσθω ἵνα διερμηνεύῃ."
+                },
+                {
+                  "numero": "21",
+                  "texto": "ἐν τῷ νόμῳ γέγραπται ὅτι Ἐν ἑτερογλώσσοις καὶ ἐν χείλεσιν ἑτέρων λαλήσω τῷ λαῷ τούτῳ, καὶ οὐδʼ οὕτως εἰσακούσονταί μου, λέγει κύριος."
+                },
+                {
+                  "numero": "27",
+                  "texto": "εἴτε γλώσσῃ τις λαλεῖ, κατὰ δύο ἢ τὸ πλεῖστον τρεῖς, καὶ ἀνὰ μέρος, καὶ εἷς διερμηνευέτω·"
+                }
+              ]
             }
           ]
         },
