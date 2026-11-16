@@ -239,6 +239,7 @@ function dibujarBloque(b, ruta) {
         ${botonAbrirBiblia(b.referencia)}
         ${pasajeVacio(b) && leerReferencia(b.referencia) ? `<button type="button" class="btn" data-accion="reusar" data-ruta="${ruta}">Buscar en mis estudios</button>` : ""}
       </div>
+      <p class="ayuda-pegar ref-aviso" role="status"></p>
       ${b.imagen ? `<img class="pasaje-img" src="${esc(rutaImagen(b.imagen))}" alt="">` : ""}
       <div class="fila-botones">
         <label class="btn foto">${b.imagen ? "Cambiar imagen" : "Imagen en vez de versículos"}<input type="file" accept="image/*" data-imagen="${ruta}.imagen" hidden></label>
@@ -290,28 +291,46 @@ function buscadorHTML(b, ruta, griego = false) {
 
 // La versión del pasaje, en su propio campo al lado de la referencia. Se guarda igual que siempre, al final de
 // la referencia ("Juan 3:16 LBLA"), porque de esa sigla dependen el aviso de Lockman, el medidor y los botones.
-// Primero las versiones del idioma del estudio; una sigla que no está en la lista se conserva tal cual.
+// Primero las versiones del idioma del estudio. Con "Otra versión" se escribe la sigla a mano (KJV, NTLH…):
+// se guarda igual, pero como no está en la lista, debajo del pasaje no sale su nombre completo.
 function selectorVersion(ref, ruta) {
   const actual = versionDeReferencia(ref);
+  const deOtra = actual && !NOMBRES_VERSION[actual];
   const propias = VERSIONES_POR_IDIOMA[estudio.idioma === "pt" ? "pt" : "es"];
   const otras = Object.keys(NOMBRES_VERSION).filter(v => !propias.includes(v));
-  const opcion = v => `<option value="${v}"${v === actual ? " selected" : ""}>${v} · ${esc(NOMBRES_VERSION[v] || "otra versión")}</option>`;
+  const opcion = v => `<option value="${v}"${v === actual ? " selected" : ""}>${v} · ${esc(NOMBRES_VERSION[v])}</option>`;
   return `<select class="ref-version" data-version="${ruta}" aria-label="Versión">
           ${actual ? "" : `<option value="" selected>— Versión —</option>`}
           ${propias.map(opcion).join("")}
           <optgroup label="Otras">${otras.map(opcion).join("")}</optgroup>
-          ${actual && !NOMBRES_VERSION[actual] ? opcion(actual) : ""}
-        </select>`;
+          <option value="otra"${deOtra ? " selected" : ""}>Otra versión: escribir la sigla…</option>
+        </select>
+        <input class="ref-otra" data-version="${ruta}" value="${deOtra ? esc(actual) : ""}" placeholder="Sigla, ej: KJV" aria-label="Sigla de la versión" maxlength="10" size="8" autocapitalize="characters"${deOtra ? "" : " hidden"}>`;
 }
 
-// Junta lo que dicen los dos campos en la referencia guardada. Si en la referencia se escribe la sigla al final
-// ("Juan 3:16 ARA"), pasa sola al campo de la versión.
+// La sigla escrita a mano: en mayúsculas y sin espacios. Para que la página la reconozca tiene que ser de
+// 2 a 6 letras, con números al final si los tiene (como RVR1960).
+const limpiarSigla = texto => texto.toUpperCase().replace(/[^A-Z0-9]/g, "");
+const siglaValida = sigla => /^[A-Z]{2,6}\d*$/.test(sigla);
+
+// Junta lo que dicen los campos en la referencia guardada. Si en la referencia se escribe la sigla al final
+// ("Juan 3:16 ARA", "Juan 3:16 KJV"), pasa sola al campo de la versión.
 function guardarReferencia(fila) {
-  const campo = fila.querySelector("[data-referencia]"), selector = fila.querySelector(".ref-version");
+  const campo = fila.querySelector("[data-referencia]"), selector = fila.querySelector(".ref-version"), otra = fila.querySelector(".ref-otra");
+  const aviso = fila.nextElementSibling;
   const texto = limpiarReferencia(campo.value);
   const escrita = versionDeReferencia(texto);
-  if (escrita && NOMBRES_VERSION[escrita]) selector.value = escrita;
-  const ref = conVersion(texto, selector.value);
+  if (escrita) {
+    selector.value = NOMBRES_VERSION[escrita] ? escrita : "otra";
+    if (!NOMBRES_VERSION[escrita]) otra.value = escrita;
+  }
+  const esOtra = selector.value === "otra";
+  if (otra.hidden === esOtra) { otra.hidden = !esOtra; if (esOtra && !otra.value) otra.focus(); }
+  if (esOtra) otra.value = limpiarSigla(otra.value);
+  const sigla = esOtra ? otra.value : selector.value;
+  aviso.textContent = esOtra && sigla && !siglaValida(sigla)
+    ? "La sigla tiene que ser de 2 a 6 letras, con números al final si los tiene (como RVR1960)." : "";
+  const ref = conVersion(texto, sigla);
   asignar(`${campo.dataset.referencia}.referencia`, ref);
   fila.querySelector(".abrir-biblia").outerHTML = botonAbrirBiblia(ref);
   marcarCambio();
@@ -492,8 +511,10 @@ $("editor").addEventListener("change", e => {
     asignar(e.target.dataset.campo, e.target.value);
     marcarCambio();
   }
-  // Al escoger otra versión se vuelve a dibujar: "Buscar en mis estudios" busca en esa versión
-  if (e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo], input[data-campo$='.url'], select.ref-version")) dibujar();
+  // Al cambiar la versión se vuelve a dibujar ("Buscar en mis estudios" busca en esa versión); con "Otra versión",
+  // recién cuando se termina de escribir la sigla
+  const versionLista = e.target.matches("select.ref-version") ? e.target.value !== "otra" : e.target.matches(".ref-otra");
+  if (versionLista || e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo], input[data-campo$='.url']")) dibujar();
 });
 
 // Negrita, cursiva y listas en los bloques de texto

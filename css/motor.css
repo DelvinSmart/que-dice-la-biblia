@@ -224,6 +224,10 @@
   --lbla-columna-resta:97px;
   --lbla-ancho-letra:8.1px;   /* medido con 16 versículos reales en 375px y 600px de ancho */
   --lbla-letras-notas:12;     /* letras de más por las notas de Lockman (a, b, c…): con 12, de 32 versículos medidos solo 1 queda corto */
+  /* Sin el texto de la LBLA pegado, el largo sale de la RVR 1960, que a veces es mucho más corta (Marcos 7:33: 98
+     letras en la RVR y 137 en la LBLA, y se cortaba una línea). Se cuenta la RVR un 20% más larga: en un versículo
+     corto puede sobrar un poco de espacio, pero no se corta el texto. */
+  --lbla-proporcion-rvr:1.2;
   --lbla-sobra:260px;
   /* Colores de avisos */
   --aviso:#ffb36b;

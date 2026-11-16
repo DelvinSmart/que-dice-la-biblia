@@ -164,6 +164,8 @@
 .fila-referencia input{flex:1;min-width:0}
 /* La versión del pasaje, al lado de la referencia: del ancho de su texto */
 .fila-referencia .ref-version{flex:0 1 auto;min-width:0}
+/* La sigla escrita a mano ("Otra versión"): pequeña, del ancho que le da su atributo size */
+.fila-referencia .ref-otra{flex:0 0 auto;width:auto;text-transform:uppercase}
 .abrir-biblia{white-space:nowrap;text-decoration:none}
 @media (max-width:640px){
   .buscador{grid-template-columns:var(--medida-fluida-9)}

@@ -179,7 +179,8 @@ function abrirPasaje(chip) {
 // la página se arma siempre en su diseño angosto (hasta --lbla-ancho-max), reducida a --lbla-escala, y se corre
 // hacia arriba lo que mide su encabezado. El navegador no deja leer ni medir la página de Lockman, así que el alto
 // se CALCULA: el recuadro del versículo mide --lbla-tarjeta (bordes y título) más --lbla-linea por cada línea, y las
-// líneas salen del largo del mismo versículo en la Reina-Valera 1960 (Logos), que mide casi lo mismo. Debajo, a
+// líneas salen del largo del versículo: el de la LBLA si el autor ya lo pegó, o si no el de la Reina-Valera 1960
+// (Logos), contado un poco más largo porque la LBLA suele tener más palabras. Debajo, a
 // --lbla-hueco, empieza "in context": el corte queda antes. Si una línea no entra, "Ver más" agrega una.
 // Medido en bible.lockman.org el 15 nov 2026 (css/motor.css).
 function medidasLBLA(anchoReal) {
@@ -197,8 +198,21 @@ function medidasLBLA(anchoReal) {
     tarjetaAncho: ancho - 2 * px("--lbla-tarjeta-izquierda") - px("--lbla-tarjeta-resta"),
     sobra: px("--lbla-sobra"),
     letrasPorLinea: Math.max(10, Math.floor((ancho - px("--lbla-columna-resta")) / px("--lbla-ancho-letra"))),
-    letrasNotas: px("--lbla-letras-notas")
+    letrasNotas: px("--lbla-letras-notas"),
+    proporcionRVR: px("--lbla-proporcion-rvr") || 1
   };
+}
+
+// El texto de la LBLA que el autor ya pegó en este pasaje, por número de versículo (su recuadro va justo antes)
+function textosPegadosLBLA(caja) {
+  const pasaje = caja.previousElementSibling;
+  const textos = new Map();
+  if (!pasaje || !pasaje.matches(".pasaje-abierto")) return textos;
+  pasaje.querySelectorAll(".passage > p:not(.pasaje-pendiente)").forEach(p => {
+    const numero = p.querySelector("b")?.textContent.trim();
+    if (numero && /^\d+$/.test(numero)) textos.set(numero, p.textContent.slice(p.querySelector("b").textContent.length).trim());
+  });
+  return textos;
 }
 
 function abrirLBLA(boton) {
@@ -229,6 +243,8 @@ function prepararLBLA(boton, caja) {
     </div>`;
   const recortes = [...caja.querySelectorAll(".lbla-recorte")];
   const lineas = new Map(versos.map(n => [String(n), 2]));
+  const lineasDe = letras => Math.max(1, Math.ceil((letras + m.letrasNotas) / m.letrasPorLinea));
+  const pegados = textosPegadosLBLA(caja);
   const medir = recorte => {
     const marco = recorte.querySelector("iframe");
     const alto = m.tarjeta + m.linea * (lineas.get(recorte.dataset.versiculo) + extra);   // el recuadro del versículo
@@ -243,10 +259,12 @@ function prepararLBLA(boton, caja) {
   recortes.forEach(recorte => {
     const marco = recorte.querySelector("iframe"), n = recorte.dataset.versiculo;
     marco.addEventListener("load", () => { marco.classList.add("listo"); recorte.querySelector(".ventana-cargando").hidden = true; });
+    // El largo del versículo: el de la LBLA si ya está pegado en el estudio (exacto); si no, el de la
+    // Reina-Valera 1960, contado un poco más largo (--lbla-proporcion-rvr)
+    if (pegados.get(n)) lineas.set(n, lineasDe(pegados.get(n).length));
     medir(recorte);
-    // El largo del versículo: el mismo en la Reina-Valera 1960
-    if (r && typeof versiculoRVR === "function") versiculoRVR(r.libro, r.capitulo, n).then(texto => {
-      lineas.set(n, Math.max(1, Math.ceil((texto.length + m.letrasNotas) / m.letrasPorLinea)));
+    if (!pegados.get(n) && r && typeof versiculoRVR === "function") versiculoRVR(r.libro, r.capitulo, n).then(texto => {
+      lineas.set(n, lineasDe(texto.length * m.proporcionRVR));
       medir(recorte);
     }).catch(() => {});
   });
