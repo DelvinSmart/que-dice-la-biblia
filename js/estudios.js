@@ -184,7 +184,8 @@ function paginaFuentesHTML(e) {
 }
 
 // Un subpunto. En la página los pasajes salen cerrados, como botoncitos con su referencia: los que van
-// seguidos quedan en una misma fila y, al tocar uno, se abre debajo (js/mapa.js). Con "completo"
+// seguidos quedan en una misma fila y, al tocar uno, se abre justo debajo de él y empuja hacia abajo los
+// que vienen después (sus recuadros van pegados a su botoncito, no al final de la fila; js/mapa.js). Con "completo"
 // (PDF y "Ver cómo queda" del panel) salen abiertos.
 function puntoHTML(p, completo = false) {
   const bloques = p.bloques || [];
@@ -196,8 +197,9 @@ function puntoHTML(p, completo = false) {
     while (k < bloques.length && bloques[k].tipo === "pasaje") grupo.push(bloques[k++]);
     k--;
     partes.push(`<div class="pasajes">${grupo.map(b =>
-      `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonLBLA(b)}${botonRVR(b)}</span>`).join("")
-    }${grupo.map(b => `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div><div class="lbla-abierto" hidden></div><div class="rvr-abierto" hidden></div>`).join("")}</div>`);
+      `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonLBLA(b)}${botonRVR(b)}</span>` +
+      `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div><div class="lbla-abierto" hidden></div><div class="rvr-abierto" hidden></div>`).join("")
+    }</div>`);
   }
   return partes.join("\n") + botonesFuentesHTML(p);
 }

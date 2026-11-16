@@ -70,6 +70,8 @@ button:focus-visible{outline:var(--borde-3) solid var(--accent);outline-offset:v
 .pasaje-y-rvr:not(:has(.boton-version)) .chip-pasaje{padding-right:var(--esp-12)}
 .chip-pasaje:active{transform:scale(.97)}
 .pasaje-abierto[hidden]{display:none}
+/* Abierto debajo de su botoncito: los botoncitos que siguen bajan y quedan separados del recuadro */
+.pasaje-abierto,.lbla-abierto,.rvr-abierto{margin-bottom:var(--esp-8)}
 .pasaje-abierto.cerrando{opacity:0;transform:translateY(var(--esp-n6)) scale(.98);filter:blur(var(--desenfoque-4));
   transition:opacity var(--dur-200) ease,transform var(--dur-200) ease,filter var(--dur-200) ease}
 
