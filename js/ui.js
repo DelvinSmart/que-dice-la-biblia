@@ -10,7 +10,7 @@ const TEXTOS = {
     ayuda: "Toca cualquier punto del mapa, o usa ← → en el teclado para avanzar en orden.",
     pdf: "Descargar PDF:", pdfClaro: "Claro", pdfOscuro: "Oscuro",
     fuentesTitulo: "Fuentes del estudio", fuentesCuenta: "fuentes",
-    cargandoLBLA: "Cargando la Biblia de las Américas desde bible.lockman.org…", verMas: "Ver más ↓",
+    cargandoLBLA: "Cargando la Biblia de las Américas desde bible.lockman.org…", verMas: "Ver más ↓", verMenos: "Ver menos ↑",
     cargandoRVR: "Cargando la Reina-Valera 1960…", sinRVR: "No se pudo cargar la Reina-Valera 1960. Revisa tu internet."
   },
   pt: {
@@ -22,7 +22,7 @@ const TEXTOS = {
     ayuda: "Toque em qualquer ponto do mapa, ou use ← → no teclado para avançar em ordem.",
     pdf: "Baixar PDF:", pdfClaro: "Claro", pdfOscuro: "Escuro",
     fuentesTitulo: "Fontes do estudo", fuentesCuenta: "fontes",
-    cargandoLBLA: "Carregando a Biblia de las Américas de bible.lockman.org…", verMas: "Ver mais ↓",
+    cargandoLBLA: "Carregando a Biblia de las Américas de bible.lockman.org…", verMas: "Ver mais ↓", verMenos: "Ver menos ↑",
     cargandoRVR: "Carregando a Reina-Valera 1960…", sinRVR: "Não foi possível carregar a Reina-Valera 1960."
   }
 };

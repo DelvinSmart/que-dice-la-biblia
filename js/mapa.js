@@ -217,6 +217,8 @@ function textosPegadosLBLA(caja) {
 
 function abrirLBLA(boton) {
   const caja = boton.closest(".pasajes").querySelectorAll(".lbla-abierto")[posicionDe(boton)];
+  // Cada vez que se vuelve a abrir, sale de su tamaño normal (sin lo que se agregó con "Ver más")
+  if (caja.hidden && caja.restablecerLBLA) caja.restablecerLBLA();
   abrirRecuadro(boton, caja, () => prepararLBLA(boton, caja));
 }
 
@@ -239,6 +241,7 @@ function prepararLBLA(boton, caja) {
     </div>
     <div class="lbla-pie">
       <a class="lbla-link" href="${esc(enlaceLockman(ref, versos[0]))}" target="_blank" rel="noopener">${esc(r ? `${r.libro[LANG === "pt" ? "pt" : "es"]} ${ref.replace(/^.*?(\d+:)/, "$1").replace(/\s+[A-Z]{2,6}\d*$/, "")}` : "")} · bible.lockman.org ↗</a>
+      <button type="button" class="lbla-mas lbla-menos" hidden>${T.verMenos}</button>
       <button type="button" class="lbla-mas">${T.verMas}</button>
     </div>`;
   const recortes = [...caja.querySelectorAll(".lbla-recorte")];
@@ -268,7 +271,16 @@ function prepararLBLA(boton, caja) {
       medir(recorte);
     }).catch(() => {});
   });
-  caja.querySelector(".lbla-mas").addEventListener("click", () => { extra += 1; recortes.forEach(medir); });
+  // "Ver más" agrega una línea a cada versículo y "Ver menos" la quita (solo aparece si se agregó alguna)
+  const menos = caja.querySelector(".lbla-menos");
+  const cambiar = lineasMas => {
+    extra = Math.max(0, extra + lineasMas);
+    menos.hidden = extra === 0;
+    recortes.forEach(medir);
+  };
+  caja.querySelector(".lbla-mas:not(.lbla-menos)").addEventListener("click", () => cambiar(1));
+  menos.addEventListener("click", () => cambiar(-1));
+  caja.restablecerLBLA = () => cambiar(-extra);
 }
 
 // RVR 1960: el pasaje en la Reina-Valera, en el mismo lugar y con el mismo formato de nuestros pasajes. El texto
