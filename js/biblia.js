@@ -37,6 +37,21 @@ const LIBROS = [
 const VERSIONES = { LBLA: 89, RVR1960: 149, NVI: 128, ARA: 1608, ARC: 212 };
 const VERSION_POR_IDIOMA = { es: "LBLA", pt: "ARA" };
 
+// El nombre completo de cada versión: va debajo del pasaje abierto (la LBLA lleva además el crédito de Lockman).
+// En el panel se escoge de esta lista, con las del idioma del estudio primero. Para agregar una versión: su sigla
+// y su nombre aquí, y su número de Bible.com en VERSIONES (para "Abrir en la Biblia").
+const NOMBRES_VERSION = {
+  LBLA: "La Biblia de las Américas", RVR1960: "Reina-Valera 1960", NVI: "Nueva Versión Internacional",
+  ARA: "Almeida Revista e Atualizada", ARC: "Almeida Revista e Corrigida"
+};
+const VERSIONES_POR_IDIOMA = { es: ["LBLA", "RVR1960", "NVI"], pt: ["ARA", "ARC"] };
+
+// La versión va al final de la referencia ("Marcos 7:33, 35 LBLA"); estas la separan y la vuelven a poner
+const SIGLA_FINAL = /\s+([A-Z]{2,6}\d*)\s*$/;
+const versionDeReferencia = ref => (SIGLA_FINAL.exec(ref || "") || [])[1] || "";
+const sinVersion = ref => String(ref || "").replace(SIGLA_FINAL, "").trim();
+const conVersion = (ref, version) => [sinVersion(ref), version].filter(Boolean).join(" ");
+
 // Las mismas letras sin tildes ni mayúsculas, para comparar nombres de libros
 const sinTildes = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
 const LIBRO_POR_NOMBRE = new Map(LIBROS.flatMap(l => [l.es, l.pt, ...l.otros].map(n => [sinTildes(n), l])));

@@ -35,7 +35,7 @@ function bloqueHTML(b) {
         !(b.versiculos || []).some(v => v.texto) && !b.imagen && botonRVR(b) ? `<p class="pasaje-pendiente">${etiquetasFuente().pendiente}</p>` : ""}${
         b.imagen ? `<img class="pasaje-img" src="${esc(rutaImagen(b.imagen))}" alt="${esc(b.referencia)}" loading="lazy">` : ""}${
         (b.versiculos || []).filter(v => v.texto).map(v => `<p>${v.numero ? `<b>${esc(v.numero)}</b>` : ""}${v.texto}</p>`).join("")
-      }${esLBLA(b.referencia) ? CREDITO_LBLA : ""}</div>`;
+      }${creditoVersion(b.referencia)}</div>`;
     case "video":
       return videoHTML(b);
     case "fuente":
@@ -77,6 +77,18 @@ const AVISO_LBLA = `Escrituras tomadas de La Biblia de las Américas (LBLA), Cop
 
 // La referencia con la versión LBLA como enlace: "Génesis 2:18 LBLA"
 const refHTML = ref => esLBLA(ref) ? esc(ref).replace(/\bLBLA\b/, enlaceLBLA("LBLA")) : esc(ref);
+
+// Debajo del pasaje abierto: la LBLA lleva el crédito de Lockman; otra versión, su nombre completo
+// (js/biblia.js, que el PDF no carga: ahí solo sale el de la LBLA)
+function creditoVersion(ref) {
+  if (esLBLA(ref)) return CREDITO_LBLA;
+  const nombre = typeof NOMBRES_VERSION !== "undefined" && NOMBRES_VERSION[versionDeReferencia(ref)];
+  return nombre ? `<div class="credito">${esc(nombre)}</div>` : "";
+}
+
+// En el botoncito del pasaje cerrado va la referencia sin la versión ("Marcos 7:33, 35"): la versión ya está
+// en los botones LBLA y RVR 1960, y sale en el pasaje abierto
+const refSinVersion = ref => typeof sinVersion === "function" ? sinVersion(ref) : String(ref || "");
 
 // ¿El estudio cita la LBLA? Entonces lleva el aviso completo
 const usaLBLA = e => (e.temas || []).some(t => (t.puntos || []).some(p => (p.bloques || []).some(b => b.tipo === "pasaje" && esLBLA(b.referencia))));
@@ -197,7 +209,7 @@ function puntoHTML(p, completo = false) {
     while (k < bloques.length && bloques[k].tipo === "pasaje") grupo.push(bloques[k++]);
     k--;
     partes.push(`<div class="pasajes">${grupo.map(b =>
-      `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(b.referencia || "—")}</button>${botonLBLA(b)}${botonRVR(b)}</span>` +
+      `<span class="pasaje-y-rvr"><button type="button" class="chip-pasaje" aria-expanded="false">${esc(refSinVersion(b.referencia) || "—")}</button>${botonLBLA(b)}${botonRVR(b)}</span>` +
       `<div class="pasaje-abierto" hidden>${bloqueHTML(b)}</div><div class="lbla-abierto" hidden></div><div class="rvr-abierto" hidden></div>`).join("")
     }</div>`);
   }

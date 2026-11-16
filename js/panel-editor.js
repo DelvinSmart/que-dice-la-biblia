@@ -234,7 +234,8 @@ function dibujarBloque(b, ruta) {
         <div class="seleccion"></div>
       </details>
       <div class="fila-referencia">
-        <input data-campo="${ruta}.referencia" data-limpiar="referencia" value="${esc(b.referencia)}" placeholder="Referencia y versión, ej: Juan 3:16 LBLA">
+        <input data-referencia="${ruta}" value="${esc(sinVersion(b.referencia))}" placeholder="Referencia, ej: Juan 3:16" aria-label="Referencia">
+        ${selectorVersion(b.referencia, ruta)}
         ${botonAbrirBiblia(b.referencia)}
         ${pasajeVacio(b) && leerReferencia(b.referencia) ? `<button type="button" class="btn" data-accion="reusar" data-ruta="${ruta}">Buscar en mis estudios</button>` : ""}
       </div>
@@ -285,6 +286,36 @@ function buscadorHTML(b, ruta, griego = false) {
         <button type="button" class="btn${griego ? " principal" : ""}" data-accion="${griego ? "traer-griego" : "poner-referencia"}" data-ruta="${ruta}">${griego ? "Traer el griego" : "Poner"}</button>
         <p class="ayuda-pegar b-aviso" role="status">${avisosPasaje.get(b) || (r && r.tramos.length > 1 ? "Esta referencia tiene versículos salteados: el buscador muestra el primero. Para cambiarla completa, escríbela abajo." : "")}</p>
       </div>`;
+}
+
+// La versión del pasaje, en su propio campo al lado de la referencia. Se guarda igual que siempre, al final de
+// la referencia ("Juan 3:16 LBLA"), porque de esa sigla dependen el aviso de Lockman, el medidor y los botones.
+// Primero las versiones del idioma del estudio; una sigla que no está en la lista se conserva tal cual.
+function selectorVersion(ref, ruta) {
+  const actual = versionDeReferencia(ref);
+  const propias = VERSIONES_POR_IDIOMA[estudio.idioma === "pt" ? "pt" : "es"];
+  const otras = Object.keys(NOMBRES_VERSION).filter(v => !propias.includes(v));
+  const opcion = v => `<option value="${v}"${v === actual ? " selected" : ""}>${v} · ${esc(NOMBRES_VERSION[v] || "otra versión")}</option>`;
+  return `<select class="ref-version" data-version="${ruta}" aria-label="Versión">
+          ${actual ? "" : `<option value="" selected>— Versión —</option>`}
+          ${propias.map(opcion).join("")}
+          <optgroup label="Otras">${otras.map(opcion).join("")}</optgroup>
+          ${actual && !NOMBRES_VERSION[actual] ? opcion(actual) : ""}
+        </select>`;
+}
+
+// Junta lo que dicen los dos campos en la referencia guardada. Si en la referencia se escribe la sigla al final
+// ("Juan 3:16 ARA"), pasa sola al campo de la versión.
+function guardarReferencia(fila) {
+  const campo = fila.querySelector("[data-referencia]"), selector = fila.querySelector(".ref-version");
+  const texto = limpiarReferencia(campo.value);
+  const escrita = versionDeReferencia(texto);
+  if (escrita && NOMBRES_VERSION[escrita]) selector.value = escrita;
+  const ref = conVersion(texto, selector.value);
+  asignar(`${campo.dataset.referencia}.referencia`, ref);
+  fila.querySelector(".abrir-biblia").outerHTML = botonAbrirBiblia(ref);
+  marcarCambio();
+  actualizarVista(campo);
 }
 
 const botonAbrirBiblia = ref => {
@@ -440,19 +471,13 @@ $("editor").addEventListener("click", e => {
 
 $("editor").addEventListener("input", e => {
   const el = e.target;
-  if (el.dataset.campo) {
-    const valor = el.type === "checkbox" ? el.checked
-      : el.dataset.limpiar === "referencia" ? limpiarReferencia(el.value) : el.value;
-    asignar(el.dataset.campo, valor);
-  } else if (el.dataset.rico) asignar(el.dataset.rico, limpiarHTML(el.innerHTML));
+  if (el.dataset.referencia || el.dataset.version) return guardarReferencia(el.closest(".fila-referencia"));
+  if (el.dataset.campo) asignar(el.dataset.campo, el.type === "checkbox" ? el.checked : el.value);
+  else if (el.dataset.rico) asignar(el.dataset.rico, limpiarHTML(el.innerHTML));
   else if (el.dataset.verso) asignar(el.dataset.verso, limpiarVerso(el.innerHTML));
   else return;
   marcarCambio();
   actualizarVista(el);
-  if (el.dataset.limpiar === "referencia") {
-    const fila = el.closest(".fila-referencia");
-    fila.querySelector(".abrir-biblia").outerHTML = botonAbrirBiblia(el.value);
-  }
 });
 
 // Un link escrito o pegado sin "https://" (ej. "es.wikipedia.org/wiki/…") se completa solo al salir del campo
@@ -467,7 +492,8 @@ $("editor").addEventListener("change", e => {
     asignar(e.target.dataset.campo, e.target.value);
     marcarCambio();
   }
-  if (e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo], input[data-campo$='.url']")) dibujar();
+  // Al escoger otra versión se vuelve a dibujar: "Buscar en mis estudios" busca en esa versión
+  if (e.target.matches("select[data-campo='idioma'], input[type=checkbox][data-campo], input[data-campo$='.url'], select.ref-version")) dibujar();
 });
 
 // Negrita, cursiva y listas en los bloques de texto

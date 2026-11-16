@@ -162,6 +162,8 @@
 .buscador .b-aviso:empty{display:none}
 .fila-referencia{display:flex;gap:var(--esp-8);align-items:center}
 .fila-referencia input{flex:1;min-width:0}
+/* La versión del pasaje, al lado de la referencia: del ancho de su texto */
+.fila-referencia .ref-version{flex:0 1 auto;min-width:0}
 .abrir-biblia{white-space:nowrap;text-decoration:none}
 @media (max-width:640px){
   .buscador{grid-template-columns:var(--medida-fluida-9)}
