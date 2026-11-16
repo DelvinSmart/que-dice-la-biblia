@@ -37,6 +37,12 @@ button:focus-visible{outline:var(--borde-3) solid var(--accent);outline-offset:v
 .reader{position:sticky;top:calc(env(safe-area-inset-top, 0px) + var(--esp-16));background:var(--surface);border:var(--borde-1) solid var(--line);border-radius:var(--radio-14);
   display:flex;flex-direction:column;max-height:calc(100vh - var(--esp-32));min-width:0}
 @media (max-width:920px){.reader{position:static;max-height:none}}
+/* Teléfono: el lector se abre debajo del subpunto tocado (js/mapa.js, ubicarLector), a todo el ancho del punto */
+.leaves > .reader{flex:0 0 calc(100% + var(--esp-44));margin:var(--esp-4) 0 var(--esp-10) calc(var(--esp-44) * -1)}
+.rama-fuentes > .reader{margin:var(--esp-10) 0}
+.reader[hidden]{display:none}
+.reader.cerrando{opacity:0;transform:translateY(var(--esp-n6)) scale(.98);filter:blur(var(--desenfoque-4));
+  transition:opacity var(--dur-200) ease,transform var(--dur-200) ease,filter var(--dur-200) ease}
 .rtop{padding:var(--esp-16) var(--esp-22) var(--esp-12);border-bottom:var(--borde-1) solid var(--line);display:flex;gap:var(--esp-12);align-items:center;justify-content:space-between;flex-wrap:wrap}
 .rtag{font-size:var(--letra-12);font-weight:var(--peso-semi);letter-spacing:var(--tracking-0-06);text-transform:uppercase;color:var(--c)}
 .rlabel{font-family:var(--display);font-weight:var(--peso-extra);font-size:var(--letra-22);line-height:var(--interlinea-1-15);margin-top:var(--esp-2)}

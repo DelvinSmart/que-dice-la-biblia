@@ -57,6 +57,8 @@ function marcarVisto(p, chip) {
 }
 
 function dibujarMapa() {
+  // En el teléfono el lector puede estar dentro del mapa: se saca antes de borrarlo
+  document.querySelector(".wrap").appendChild($("reader"));
   STEPS = []; chips = [];
   $("tree").innerHTML = "";
   (ESTUDIO.temas || []).forEach((tema, bi) => (tema.puntos || []).forEach((p, li) => STEPS.push({ tema, bi, p, li })));
@@ -93,10 +95,53 @@ function dibujarMapa() {
   }
 }
 
+// Teléfono y tableta parada (hasta 920px): el lector no va debajo de todo el mapa, sino justo debajo del
+// subpunto que se tocó, y los puntos que siguen bajan para dejarle lugar. Así la página no tiene que viajar
+// pasando por todos los puntos. Al entrar queda cerrado hasta que se toca un subpunto; tocar el mismo subpunto
+// otra vez o "Mapa ↑" lo cierra. En la computadora y en la tableta acostada sigue al lado del mapa.
+const ANGOSTO = window.matchMedia("(max-width:920px)");
+let lectorAbierto = VISTA;
+let relojLector = null;
+function ubicarLector(animar) {
+  const r = $("reader");
+  clearTimeout(relojLector);
+  r.classList.remove("cerrando");
+  if (!ANGOSTO.matches || !STEPS.length) {
+    document.querySelector(".wrap").appendChild(r);
+    r.hidden = !STEPS.length;
+    return;
+  }
+  const chip = chips[cur];
+  if (!lectorAbierto || !chip) { r.hidden = true; return; }
+  chip.after(r);
+  r.hidden = false;
+  if (animar) revelar([r], 0);
+  if (!VISTA) chip.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function cerrarLector() {
+  const r = $("reader"), chip = chips[cur];
+  lectorAbierto = false;
+  chip?.classList.remove("on");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) r.hidden = true;
+  else {
+    r.classList.add("cerrando");
+    relojLector = setTimeout(() => { r.hidden = true; r.classList.remove("cerrando"); }, duracionCierre());
+  }
+  chip?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  chip?.focus({ preventScroll: true });
+}
+ANGOSTO.addEventListener("change", () => {
+  if (ANGOSTO.matches) lectorAbierto = true; // si estaba leyendo al lado del mapa, sigue leyendo
+  ubicarLector(false);
+});
+
 // Muestra el punto i en el panel de lectura. "animar" en false lo cambia sin el efecto de entrada.
 function show(i, fromMap, animar = true, marcar = true) {
-  $("reader").hidden = !STEPS.length;
-  if (!STEPS.length) return;
+  if (!STEPS.length) { $("reader").hidden = true; return; }
+  if (fromMap && ANGOSTO.matches) {
+    if (lectorAbierto && i === cur && !$("reader").hidden && !$("reader").classList.contains("cerrando")) return cerrarLector();
+    lectorAbierto = true;
+  }
   cur = Math.max(0, Math.min(STEPS.length - 1, i));
   const s = STEPS[cur];
   $("reader").style.setProperty("--c", s.fuentes ? "var(--b11)" : `var(${colorDe(s.tema)})`);
@@ -115,8 +160,8 @@ function show(i, fromMap, animar = true, marcar = true) {
   $("pos").textContent = `${cur + 1} / ${STEPS.length}`;
   $("prev").disabled = cur === 0;
   $("next").disabled = cur === STEPS.length - 1;
-  chips.forEach((c, k) => c.classList.toggle("on", k === cur));
-  if (fromMap && window.matchMedia("(max-width:920px)").matches) $("reader").scrollIntoView({ behavior: "smooth", block: "start" });
+  chips.forEach((c, k) => c.classList.toggle("on", k === cur && (lectorAbierto || !ANGOSTO.matches)));
+  ubicarLector(animar);
   if (!VISTA) { try { localStorage.setItem("paso-" + SLUG, String(cur)); } catch (e) {} }
 }
 
@@ -319,6 +364,7 @@ function controles() {
   $("prev").addEventListener("click", () => show(cur - 1));
   $("next").addEventListener("click", () => show(cur + 1));
   $("tomap").addEventListener("click", () => {
+    if (ANGOSTO.matches) return cerrarLector();
     chips[cur].scrollIntoView({ behavior: "smooth", block: "center" });
     chips[cur].focus({ preventScroll: true });
   });
